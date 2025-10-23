@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="description" content="Rock City | Born to Bleed Style - Tienda de accesorios y perforaciones con estilo rebelde">
+    <meta name="keywords" content="Rock City, Rock Shop, estilo rock, ropa rock, accesorios rock, perforaciones, tattoos">
+    <meta name="author" content="Rock City">
+    <meta name="theme-color" content="#E60000">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Rock City | Born to Bleed Style">
+    <meta property="og:description" content="Tienda de accesorios y perforaciones con estilo rebelde">
+    <meta property="og:image" content="logo.png">
+    <meta property="og:image:alt" content="Rock City - Born to Bleed Style Logo">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:url" content="https://yourusername.github.io/rockcity/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Rock City">
+    <meta property="og:locale" content="es_MX">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rock City | Born to Bleed Style">
+    <meta name="twitter:description" content="Tienda de accesorios y perforaciones con estilo rebelde">
+    <meta name="twitter:image" content="logo.png">
+    <meta name="twitter:image:alt" content="Rock City - Born to Bleed Style Logo">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="logo.png">
+
+    <title>Rock City | Born to Bleed Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- GSAP CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <h1 class="loading-title">ROCK CITY</h1>
+            <div class="loading-bar-container">
+                <div class="loading-bar"></div>
+            </div>
+            <p class="loading-subtitle">Born to Bleed Style</p>
+        </div>
+    </div>
+
+    <!-- Header Video Section -->
+    <header class="header-video">
+        <video class="header-bg-video" autoplay muted loop playsinline>
+            <source src="korn.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+
+        <div class="header-content">
+            <h1 class="main-title">
+                <span class="title-line">BORN TO</span>
+                <span class="title-line highlight">BLEED</span>
+                <span class="title-line">STYLE</span>
+            </h1>
+            <div class="title-underline"></div>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+            <span>Scroll</span>
+        </div>
+    </header>
+
+    <!-- Hero Image Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-image-wrapper">
+                <video class="hero-image" autoplay muted loop playsinline>
+                    <source src="portada.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <div class="hero-glow"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Action Buttons Section -->
+    <section class="action-section">
+        <div class="action-container">
+            <div class="action-buttons-grid">
+                <a href="tel:+527774808222" class="action-btn primary-btn">
+                    <div class="btn-icon">📞</div>
+                    <div class="btn-content">
+                        <span class="btn-title">LLAMAR AHORA</span>
+                        <span class="btn-subtitle">+52 777 480 8222</span>
+                    </div>
+                    <div class="btn-ripple"></div>
+                </a>
+
+                <a href="https://wa.me/527774808222?text=Hola%20Rock%20City%2C%20quiero%20agendar%20una%20cita"
+                    class="action-btn secondary-btn"
+                    target="_blank">
+                    <div class="btn-icon">💀</div>
+                    <div class="btn-content">
+                        <span class="btn-title">AGENDAR CITA</span>
+                        <span class="btn-subtitle">WhatsApp</span>
+                    </div>
+                    <div class="btn-ripple"></div>
+                </a>
+
+                <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:Rock City%0AORG:Rock City - Born to Bleed Style%0ATEL:+52 777 480 8222%0AEMAIL:rockcity@gmail.com%0AURL:https://www.facebook.com/profile.php?id=61582657080200%0AADR:;;México%0ANOTE:Tienda de accesorios y perforaciones con estilo rebelde%0AEND:VCARD"
+                    class="action-btn tertiary-btn"
+                    download="rock-city-contact.vcf">
+                    <div class="btn-icon">👤</div>
+                    <div class="btn-content">
+                        <span class="btn-title">AGREGAR A CONTACTOS</span>
+                        <span class="btn-subtitle">Guardar vCard</span>
+                    </div>
+                    <div class="btn-ripple"></div>
+                </a>
+
+                <a href="https://maps.app.goo.gl/zbxBpZa8CGJU281F9"
+                    class="action-btn quaternary-btn"
+                    target="_blank">
+                    <div class="btn-icon">📍</div>
+                    <div class="btn-content">
+                        <span class="btn-title">VER UBICACIÓN</span>
+                        <span class="btn-subtitle">Google Maps</span>
+                    </div>
+                    <div class="btn-ripple"></div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Video Section -->
+    <footer class="footer-video">
+        <video class="footer-bg-video" autoplay muted loop playsinline>
+            <source src="kornmovil.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="footer-overlay"></div>
+
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-text">
+                    <h2 class="footer-title">ROCK CITY</h2>
+                    <p class="footer-tagline">Born to Bleed Style</p>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.facebook.com/profile.php?id=61582657080200" target="_blank" aria-label="Facebook" class="facebook-link">Facebook</a>
+                    <a href="https://www.instagram.com/luisfernandomsnver" target="_blank" aria-label="Instagram" class="instagram-link">Instagram</a>
+                    <a href="https://www.tiktok.com/@rockcitygear" target="_blank" aria-label="TikTok" class="tiktok-link">TikTok</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Background Music -->
+    <audio id="background-music" loop volume="0.3">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Music Toggle -->
+    <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
+        <span class="music-icon">🔊</span>
+    </button>
+
+    <script src="script.js"></script>
+</body>
+</html>
