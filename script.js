@@ -1,5 +1,6 @@
 // ========================================
-// ROCK CITY - BORN TO BLEED STYLE
+// {INIT /<IDEA>} - STUDIO DIGITAL
+// Code. Create. Connect.
 // Enhanced with GSAP Animations
 // ========================================
 
@@ -10,7 +11,9 @@ document.addEventListener('DOMContentLoaded', function() {
     initBackgroundMusic();
     initInteractiveEffects();
     initScrollEffects();
+    init3DEffects();
     initPerformanceOptimizations();
+    initMobileOptimizations();
 });
 
 // ========================================
@@ -62,9 +65,9 @@ function initGSAPAnimations() {
     gsap.registerPlugin(ScrollTrigger);
 
     // Header video parallax
-    gsap.to('.header-bg-video', {
+    gsap.to('.hero-video', {
         scrollTrigger: {
-            trigger: '.header-video',
+            trigger: '.hero-header',
             start: 'top top',
             end: 'bottom top',
             scrub: 0.3
@@ -73,37 +76,77 @@ function initGSAPAnimations() {
         ease: 'none'
     });
 
-    // Hero image scale animation
-    gsap.from('.hero-image', {
+    // About section animations
+    gsap.from('.about-text', {
         scrollTrigger: {
-            trigger: '.hero-section',
-            start: 'top 80%',
-            end: 'bottom 20%',
-            scrub: 0.5
-        },
-        scale: 0.8,
-        opacity: 0.7,
-        ease: 'none'
-    });
-
-    // Action buttons staggered animation
-    gsap.from('.action-btn', {
-        scrollTrigger: {
-            trigger: '.action-section',
+            trigger: '.about-section',
             start: 'top 70%',
             toggleActions: 'play none none reverse'
         },
         duration: 0.8,
+        x: -100,
+        opacity: 0,
+        ease: 'power2.out'
+    });
+
+    gsap.from('.about-media', {
+        scrollTrigger: {
+            trigger: '.about-section',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.8,
+        x: 100,
+        opacity: 0,
+        ease: 'power2.out'
+    });
+
+    // Service cards staggered animation
+    gsap.from('.service-card', {
+        scrollTrigger: {
+            trigger: '.services-section',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.8,
+        y: 100,
+        opacity: 0,
+        stagger: 0.15,
+        ease: 'back.out(1.7)'
+    });
+
+    // Reasons cards animation
+    gsap.from('.reason-card', {
+        scrollTrigger: {
+            trigger: '.why-us-section',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.6,
         y: 50,
         opacity: 0,
-        stagger: 0.2,
+        stagger: 0.1,
+        ease: 'power2.out'
+    });
+
+    // CTA buttons animation
+    gsap.from('.cta-btn', {
+        scrollTrigger: {
+            trigger: '.cta-section',
+            start: 'top 70%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.6,
+        y: 50,
+        opacity: 0,
+        stagger: 0.1,
         ease: 'back.out(1.7)'
     });
 
     // Footer video parallax
-    gsap.to('.footer-bg-video', {
+    gsap.to('.footer-video', {
         scrollTrigger: {
-            trigger: '.footer-video',
+            trigger: '.footer-section',
             start: 'top bottom',
             end: 'bottom top',
             scrub: 0.3
@@ -112,12 +155,18 @@ function initGSAPAnimations() {
         ease: 'none'
     });
 
-    // Floating elements
-    gsap.to('.main-title .highlight', {
-        duration: 3,
-        rotationY: 360,
-        repeat: -1,
-        ease: 'none'
+    // Social buttons animation
+    gsap.from('.social-btn', {
+        scrollTrigger: {
+            trigger: '.social-section',
+            start: 'top 80%',
+            toggleActions: 'play none none reverse'
+        },
+        duration: 0.5,
+        scale: 0,
+        opacity: 0,
+        stagger: 0.08,
+        ease: 'back.out(1.7)'
     });
 
     // Continuous floating animation for scroll indicator
@@ -127,6 +176,54 @@ function initGSAPAnimations() {
         repeat: -1,
         yoyo: true,
         ease: 'power2.inOut'
+    });
+
+    // Neon pulse animation for main title
+    gsap.to('.main-title .text-init, .main-title .text-idea', {
+        duration: 3,
+        filter: 'hue-rotate(360deg)',
+        repeat: -1,
+        ease: 'none'
+    });
+}
+
+// ========================================
+// 3D EFFECTS
+// ========================================
+function init3DEffects() {
+    const cards = document.querySelectorAll('.service-card');
+
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            if (window.innerWidth < 768) return; // Disable on mobile
+
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            gsap.to(card, {
+                duration: 0.3,
+                rotateX: -rotateX,
+                rotateY: rotateY,
+                transformPerspective: 1000,
+                ease: 'power2.out'
+            });
+        });
+
+        card.addEventListener('mouseleave', () => {
+            gsap.to(card, {
+                duration: 0.5,
+                rotateX: 0,
+                rotateY: 0,
+                ease: 'power2.out'
+            });
+        });
     });
 }
 
@@ -139,58 +236,60 @@ function initBackgroundMusic() {
     let isMusicPlaying = false;
 
     // Set initial volume
-    backgroundMusic.volume = 0.3;
+    if (backgroundMusic) {
+        backgroundMusic.volume = 0.3;
 
-    // Auto-play with user interaction fallback
-    const playMusic = async () => {
-        try {
-            await backgroundMusic.play();
-            isMusicPlaying = true;
-            musicToggle.innerHTML = '🔊';
-            console.log('🎵 Music started');
-        } catch (error) {
-            console.log('Autoplay blocked, waiting for interaction');
-            // Add event listeners for user interaction
-            const interactionHandler = async () => {
-                try {
-                    await backgroundMusic.play();
-                    isMusicPlaying = true;
-                    musicToggle.innerHTML = '🔊';
-                    console.log('🎵 Music started after interaction');
-                    // Remove listeners after successful play
-                    ['click', 'touchstart', 'keydown'].forEach(event => {
-                        document.removeEventListener(event, interactionHandler);
-                    });
-                } catch (retryError) {
-                    console.log('Failed to play music:', retryError);
-                }
-            };
-
-            ['click', 'touchstart', 'keydown'].forEach(event => {
-                document.addEventListener(event, interactionHandler, { once: true });
-            });
-        }
-    };
-
-    // Initialize music
-    playMusic();
-
-    // Music toggle functionality
-    musicToggle.addEventListener('click', async () => {
-        try {
-            if (isMusicPlaying) {
-                backgroundMusic.pause();
-                musicToggle.innerHTML = '🔇';
-                isMusicPlaying = false;
-            } else {
+        // Auto-play with user interaction fallback
+        const playMusic = async () => {
+            try {
                 await backgroundMusic.play();
-                musicToggle.innerHTML = '🔊';
                 isMusicPlaying = true;
+                musicToggle.innerHTML = '🔊';
+                console.log('🎵 Music started');
+            } catch (error) {
+                console.log('Autoplay blocked, waiting for interaction');
+                // Add event listeners for user interaction
+                const interactionHandler = async () => {
+                    try {
+                        await backgroundMusic.play();
+                        isMusicPlaying = true;
+                        musicToggle.innerHTML = '🔊';
+                        console.log('🎵 Music started after interaction');
+                        // Remove listeners after successful play
+                        ['click', 'touchstart', 'keydown'].forEach(event => {
+                            document.removeEventListener(event, interactionHandler);
+                        });
+                    } catch (retryError) {
+                        console.log('Failed to play music:', retryError);
+                    }
+                };
+
+                ['click', 'touchstart', 'keydown'].forEach(event => {
+                    document.addEventListener(event, interactionHandler, { once: true });
+                });
             }
-        } catch (error) {
-            console.log('Music toggle failed:', error);
-        }
-    });
+        };
+
+        // Initialize music
+        playMusic();
+
+        // Music toggle functionality
+        musicToggle.addEventListener('click', async () => {
+            try {
+                if (isMusicPlaying) {
+                    backgroundMusic.pause();
+                    musicToggle.innerHTML = '🔇';
+                    isMusicPlaying = false;
+                } else {
+                    await backgroundMusic.play();
+                    musicToggle.innerHTML = '🔊';
+                    isMusicPlaying = true;
+                }
+            } catch (error) {
+                console.log('Music toggle failed:', error);
+            }
+        });
+    }
 }
 
 // ========================================
@@ -198,9 +297,11 @@ function initBackgroundMusic() {
 // ========================================
 function initInteractiveEffects() {
     // Button ripple effect
-    document.querySelectorAll('.action-btn').forEach(btn => {
+    document.querySelectorAll('.cta-btn, .social-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
             const ripple = this.querySelector('.btn-ripple');
+            if (!ripple) return;
+
             const rect = this.getBoundingClientRect();
             const size = Math.max(rect.width, rect.height);
             const x = e.clientX - rect.left - size / 2;
@@ -236,10 +337,10 @@ function initInteractiveEffects() {
         });
     });
 
-    // Hero image hover effect
-    const heroImage = document.querySelector('.hero-image');
-    if (heroImage) {
-        heroImage.addEventListener('mouseenter', function() {
+    // About video hover effect
+    const aboutVideo = document.querySelector('.about-video');
+    if (aboutVideo) {
+        aboutVideo.addEventListener('mouseenter', function() {
             gsap.to(this, {
                 duration: 0.5,
                 scale: 1.05,
@@ -247,7 +348,7 @@ function initInteractiveEffects() {
             });
         });
 
-        heroImage.addEventListener('mouseleave', function() {
+        aboutVideo.addEventListener('mouseleave', function() {
             gsap.to(this, {
                 duration: 0.5,
                 scale: 1,
@@ -272,12 +373,12 @@ function initInteractiveEffects() {
 function initScrollEffects() {
     // Parallax for header video
     ScrollTrigger.create({
-        trigger: '.header-video',
+        trigger: '.hero-header',
         start: 'top top',
         end: 'bottom top',
         scrub: 0.3,
         onUpdate: (self) => {
-            const video = document.querySelector('.header-bg-video');
+            const video = document.querySelector('.hero-video');
             if (video) {
                 gsap.set(video, {
                     y: self.progress * 100
@@ -286,46 +387,43 @@ function initScrollEffects() {
         }
     });
 
-    // Hero section animations
+    // About section animations
     ScrollTrigger.create({
-        trigger: '.hero-section',
-        start: 'top 80%',
-        end: 'bottom 20%',
+        trigger: '.about-section',
+        start: 'top 70%',
         onEnter: () => {
-            gsap.to('.hero-image', {
+            gsap.to('.about-text', {
                 duration: 1,
-                scale: 1,
+                x: 0,
                 opacity: 1,
-                ease: 'back.out(1.7)'
+                ease: 'power2.out'
             });
-        },
-        onLeaveBack: () => {
-            gsap.to('.hero-image', {
-                duration: 0.5,
-                scale: 0.9,
-                opacity: 0.8,
+            gsap.to('.about-media', {
+                duration: 1,
+                x: 0,
+                opacity: 1,
                 ease: 'power2.out'
             });
         }
     });
 
-    // Action buttons entrance animation
+    // Services section animations
     ScrollTrigger.create({
-        trigger: '.action-section',
+        trigger: '.services-section',
         start: 'top 70%',
         onEnter: () => {
-            gsap.fromTo('.action-btn',
+            gsap.fromTo('.service-card',
                 {
                     y: 100,
                     opacity: 0,
-                    rotationX: -45
+                    rotationX: -15
                 },
                 {
                     duration: 0.8,
                     y: 0,
                     opacity: 1,
                     rotationX: 0,
-                    stagger: 0.2,
+                    stagger: 0.15,
                     ease: 'back.out(1.7)'
                 }
             );
@@ -334,12 +432,12 @@ function initScrollEffects() {
 
     // Footer parallax
     ScrollTrigger.create({
-        trigger: '.footer-video',
+        trigger: '.footer-section',
         start: 'top bottom',
         end: 'bottom top',
         scrub: 0.3,
         onUpdate: (self) => {
-            const video = document.querySelector('.footer-bg-video');
+            const video = document.querySelector('.footer-video');
             if (video) {
                 gsap.set(video, {
                     y: self.progress * 50
@@ -376,15 +474,13 @@ function initPerformanceOptimizations() {
         });
     });
 
-    // Image loading optimization
-    const images = document.querySelectorAll('img');
-    images.forEach(img => {
-        img.loading = 'lazy';
-
-        img.addEventListener('error', function() {
-            console.log('Image failed to load:', this.src);
-            this.style.display = 'none';
-        });
+    // Resize handler with debouncing
+    let resizeTimeout;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+            ScrollTrigger.refresh();
+        }, 250);
     });
 
     // Network-aware optimizations
@@ -403,19 +499,51 @@ function initPerformanceOptimizations() {
 
         if (connection.saveData) {
             // Disable non-essential animations
-            gsap.killTweensOf('.main-title .highlight');
+            gsap.killTweensOf('.main-title .text-init, .main-title .text-idea');
             gsap.killTweensOf('.scroll-indicator');
         }
     }
+}
 
-    // Resize handler with debouncing
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        clearTimeout(resizeTimeout);
-        resizeTimeout = setTimeout(() => {
-            ScrollTrigger.refresh();
-        }, 250);
+// ========================================
+// MOBILE OPTIMIZATIONS
+// ========================================
+function initMobileOptimizations() {
+    // Enhanced touch support
+    const interactiveElements = document.querySelectorAll('.cta-btn, .social-btn, .service-card');
+
+    interactiveElements.forEach(element => {
+        // Improve touch targets for mobile
+        if ('ontouchstart' in window) {
+            element.style.minHeight = '48px';
+            element.style.touchAction = 'manipulation';
+        }
+
+        // Add haptic feedback if available
+        element.addEventListener('touchend', function() {
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        });
     });
+
+    // iOS viewport fix
+    const setVH = () => {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    setVH();
+    window.addEventListener('resize', setVH);
+
+    // Prevent zoom on double-tap (iOS)
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+        const now = (new Date()).getTime();
+        if (now - lastTouchEnd <= 300) {
+            event.preventDefault();
+        }
+        lastTouchEnd = now;
+    }, false);
 }
 
 // ========================================
@@ -426,12 +554,7 @@ function initPerformanceOptimizations() {
 function logPerformance() {
     if (window.performance) {
         const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
-        console.log('🚀 Rock City loaded in:', loadTime + 'ms');
-
-        // Log Core Web Vitals if available
-        if ('web-vitals' in window) {
-            console.log('📊 Performance metrics available');
-        }
+        console.log('🚀 {INIT IDEA} loaded in:', loadTime + 'ms');
     }
 }
 
@@ -463,7 +586,7 @@ document.addEventListener('keydown', (e) => {
             duration: 0.1,
             repeat: 10,
             yoyo: true,
-            backgroundColor: '#ff0000',
+            backgroundColor: '#00FFFF',
             ease: 'power2.inOut'
         });
     }
@@ -471,60 +594,13 @@ document.addEventListener('keydown', (e) => {
 
 // Console welcome message
 console.log(`
-🤘 Welcome to Rock City - Born to Bleed Style! 🤘
+%c{INIT /<IDEA>}
+%cCode. Create. Connect.
 
-Built with:
-- GSAP for animations
-- Modern CSS with custom properties
-- Mobile-first responsive design
-- Performance optimizations
-- Accessibility features
-
-Ready to rock? 🎸
-`);
-
-// ========================================
-// MOBILE OPTIMIZATIONS
-// ========================================
-function initMobileOptimizations() {
-    // Enhanced touch support
-    const actionBtns = document.querySelectorAll('.action-btn');
-
-    actionBtns.forEach(btn => {
-        // Prevent double-tap zoom on iOS but allow link functionality
-        btn.addEventListener('touchend', function(e) {
-            // Only prevent default for non-link interactions
-            const rect = this.getBoundingClientRect();
-            const isTapOnLink = e.target.closest('a') === this;
-
-            if (!isTapOnLink) {
-                e.preventDefault();
-            }
-
-            // Add haptic feedback if available
-            if (navigator.vibrate) {
-                navigator.vibrate(50);
-            }
-        });
-
-        // Improve touch targets for mobile
-        if ('ontouchstart' in window) {
-            btn.style.minHeight = '60px';
-            btn.style.minWidth = '60px';
-            btn.style.touchAction = 'manipulation';
-        }
-    });
-
-    // Smooth scrolling for iOS
-    document.documentElement.style.scrollBehavior = 'smooth';
-
-    // Prevent horizontal scroll
-    document.body.addEventListener('touchmove', (e) => {
-        if (e.target === document.body) {
-            e.preventDefault();
-        }
-    }, { passive: false });
-}
-
-// Initialize mobile optimizations
-initMobileOptimizations();
+%cStudio Digital Integral
+Built with GSAP, Modern CSS, and lots of ❤️
+`,
+'color: #00FFFF; font-size: 24px; font-weight: bold; font-family: Orbitron;',
+'color: #A366FF; font-size: 16px; font-weight: bold;',
+'color: #FFFFFF; font-size: 12px;'
+);
