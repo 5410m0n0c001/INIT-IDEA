@@ -1,458 +1,131 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta name="description" content="{INIT IDEA} Studio Digital - Code. Create. Connect. Transformamos ideas en soluciones digitales efectivas y creativas">
-    <meta name="keywords" content="desarrollo web, diseño gráfico, marketing digital, apps, branding, fotografía, studio digital">
-    <meta name="author" content="{INIT IDEA} Studio Digital">
-    <meta name="theme-color" content="#00FFFF">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>{INIT /<IDEA>} — Code. Create. Connect.</title>
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="{INIT IDEA} | Code. Create. Connect.">
-    <meta property="og:description" content="Studio Digital Integral - Transformamos ideas en soluciones digitales efectivas y creativas">
-    <meta property="og:image" content="logo.png">
-    <meta property="og:image:alt" content="{INIT IDEA} Studio Digital Logo">
-    <meta property="og:image:width" content="512">
-    <meta property="og:image:height" content="512">
-    <meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="{INIT IDEA}">
-    <meta property="og:locale" content="es_MX">
+  <!-- Keep project name exactly: {INIT /<IDEA>} -->
+  <meta name="description" content="{INIT /<IDEA>} — Digital Studio. Code. Create. Connect. Web Design, Digital Marketing, Multimedia Production & Consulting." />
+  <meta name="author" content="{INIT /<IDEA>}" />
 
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="{INIT IDEA} | Code. Create. Connect.">
-    <meta name="twitter:description" content="Studio Digital Integral - Transformamos ideas en soluciones digitales efectivas y creativas">
-    <meta name="twitter:image" content="logo.png">
-    <meta name="twitter:image:alt" content="{INIT IDEA} Studio Digital Logo">
+  <!-- Open Graph -->
+  <meta property="og:title" content="{INIT /<IDEA>} — Code. Create. Connect." />
+  <meta property="og:description" content="We turn ideas into digital experiences." />
+  <meta property="og:image" content="assets/logo.png" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
 
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="logo.png">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{INIT /<IDEA>} — Code. Create. Connect." />
+  <meta name="twitter:description" content="Digital studio for web design, development, multimedia, and consulting." />
+  <meta name="theme-color" content="#00FFFF" />
 
-    <title>{INIT IDEA} | Code. Create. Connect.</title>
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <link rel="manifest" href="manifest.json" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-
-    <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- GSAP CDN -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loading-screen" class="loading-screen">
-        <div class="loading-content">
-            <h1 class="loading-title">
-                <span class="bracket">{</span>
-                <span class="text-init">INIT</span>
-                <span class="slash">/</span>
-                <span class="text-idea">IDEA</span>
-                <span class="bracket">}</span>
-            </h1>
-            <div class="loading-bar-container">
-                <div class="loading-bar"></div>
-            </div>
-            <p class="loading-subtitle">Code. Create. Connect.</p>
-        </div>
+  <!-- LOADING -->
+  <div id="loading-screen" class="loading-screen">
+    <div class="loading-content">
+      <img src="assets/logo.png" alt="INIT IDEA logo" class="loading-logo" width="120" height="120">
+      <h1>{INIT /<IDEA>}</h1>
+      <p class="tagline">Code. Create. Connect.</p>
+      <div class="progress"><span></span></div>
     </div>
+  </div>
 
-    <!-- Header/Hero Section -->
-    <header class="hero-header">
-        <video class="hero-video" autoplay muted loop playsinline>
-            <source src="header-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="hero-overlay"></div>
-
-        <div class="hero-content">
-            <h1 class="main-title">
-                <span class="bracket">{</span>
-                <span class="text-init">INIT</span>
-                <span class="slash">/</span>
-                <span class="text-idea">IDEA</span>
-                <span class="bracket">}</span>
-            </h1>
-            <div class="title-underline"></div>
-            <p class="hero-tagline">Code. Create. Connect.</p>
-            <p class="hero-description">Transformamos ideas en soluciones digitales efectivas y creativas</p>
+  <!-- HEADER with background video -->
+  <header class="header-video">
+    <video class="header-bg-video" autoplay muted loop playsinline poster="assets/logo.png">
+      <source src="assets/header-video.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay"></div>
+    <div class="header-inner">
+      <div class="brand">
+        <img src="assets/logo.png" alt="INIT IDEA logo" class="logo">
+        <div class="brand-text">
+          <h1>{INIT /<IDEA>}</h1>
+          <p class="slogan">Code. Create. Connect.</p>
         </div>
+      </div>
+      <nav class="cta-row">
+        <a class="btn btn-primary" href="tel:+527772383264">CALL: 7772383264</a>
+        <a class="btn btn-secondary" href="contact.vcf" download="INIT-IDEA-contact.vcf">Download vCard</a>
+        <a class="btn btn-cta" href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-        <div class="scroll-indicator">
-            <div class="scroll-arrow"></div>
-            <span>Scroll</span>
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <video class="hero-video" autoplay muted loop playsinline poster="assets/logo.png">
+        <source src="assets/hero-video.mp4" type="video/mp4" />
+      </video>
+      <div class="hero-copy">
+        <h2>We transform ideas into digital solutions</h2>
+        <p>Services: Web Design, Development, AI Integration, Digital Marketing, Multimedia, and Technical Support.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-outline" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener">GitHub</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/company/init-idea/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
-    </header>
-
-    <!-- About Section -->
-    <section class="about-section">
-        <div class="about-container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2 class="section-title">Studio Digital Integral</h2>
-                    <p class="about-description">
-                        En <strong>{INIT /<IDEA>}</strong> combinamos creatividad y tecnología para ofrecer soluciones digitales completas.
-                        Desde estrategias de marketing hasta desarrollo de aplicaciones, nuestro enfoque integral
-                        garantiza resultados que impulsan tu presencia digital al siguiente nivel.
-                    </p>
-                    <div class="about-features">
-                        <div class="feature-item">
-                            <i class="fas fa-rocket"></i>
-                            <span>Innovación constante</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-lightbulb"></i>
-                            <span>Creatividad sin límites</span>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-handshake"></i>
-                            <span>Colaboración activa</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-media">
-                    <video class="about-video" autoplay muted loop playsinline>
-                        <source src="hero-video.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="video-glow"></div>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services-section">
-        <div class="services-container">
-            <h2 class="section-title">Nuestros Servicios</h2>
-            <p class="section-subtitle">Soluciones completas para tu presencia digital</p>
-
-            <div class="services-grid">
-                <!-- Marketing Digital -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-bullhorn"></i>
-                    </div>
-                    <h3 class="service-title">Marketing Digital</h3>
-                    <ul class="service-features">
-                        <li>Estrategias personalizadas para redes sociales</li>
-                        <li>Optimización de contenido y Social Media Management</li>
-                        <li>Marketing digital musical y promoción de artistas</li>
-                        <li>Tiendas online flexibles y personalizadas</li>
-                    </ul>
-                    <div class="service-glow"></div>
-                </div>
-
-                <!-- Diseño y Desarrollo -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3 class="service-title">Diseño & Desarrollo</h3>
-                    <ul class="service-features">
-                        <li>Diseño web profesional y responsivo</li>
-                        <li>Desarrollo de aplicaciones y automatizaciones con IA</li>
-                        <li>Apps móviles personalizadas</li>
-                        <li>Soluciones web escalables</li>
-                    </ul>
-                    <div class="service-glow"></div>
-                </div>
-
-                <!-- Producción Multimedia -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-video"></i>
-                    </div>
-                    <h3 class="service-title">Producción Multimedia</h3>
-                    <ul class="service-features">
-                        <li>Fotografía profesional y video creativo</li>
-                        <li>Edición y material digital para redes sociales</li>
-                        <li>Contenido audiovisual para marketing</li>
-                        <li>Producción de contenido visual impactante</li>
-                    </ul>
-                    <div class="service-glow"></div>
-                </div>
-
-                <!-- Branding y Diseño -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3 class="service-title">Branding & Diseño</h3>
-                    <ul class="service-features">
-                        <li>Logotipos, banners y material promocional</li>
-                        <li>Portadas y contenido visual para redes</li>
-                        <li>Identidad corporativa completa</li>
-                        <li>Diseño de material digital optimizado</li>
-                    </ul>
-                    <div class="service-glow"></div>
-                </div>
-
-                <!-- Soporte y Consultoría -->
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3 class="service-title">Soporte & Consultoría</h3>
-                    <ul class="service-features">
-                        <li>Reparación y mantenimiento de equipos</li>
-                        <li>Asistencia virtual y oficina virtual</li>
-                        <li>Trámites: registro de marca, pasaportes, actas</li>
-                        <li>Consultoría tecnológica personalizada</li>
-                    </ul>
-                    <div class="service-glow"></div>
-                </div>
-            </div>
-        </div>
+    <!-- SERVICES -->
+    <section class="services">
+      <h3>Main Services</h3>
+      <div class="grid">
+        <article class="card"><h4>Web Design & Development</h4><p>WordPress, HTML, CSS, JS, UX/UI</p></article>
+        <article class="card"><h4>Digital Marketing</h4><p>SEO, SEM, Social Media, Email Marketing</p></article>
+        <article class="card"><h4>Multimedia Production</h4><p>Video, photography, and creative content</p></article>
+        <article class="card"><h4>Tech Support & Consulting</h4><p>Maintenance, Automation, and Guidance</p></article>
+      </div>
     </section>
 
-    <!-- Why Choose Us Section -->
-    <section class="why-us-section">
-        <div class="why-us-container">
-            <h2 class="section-title">¿Por Qué Elegirnos?</h2>
+    <!-- SOCIAL LINKS -->
+    <aside class="social-fixed">
+      <a href="https://www.facebook.com/profile.php?id=61582855106237" class="social fb">Facebook</a>
+      <a href="https://www.instagram.com/alexros2.0/" class="social ig">Instagram</a>
+      <a href="https://www.tiktok.com/@alexros2.0" class="social tt">TikTok</a>
+      <a href="https://github.com/5410m0n0c001" class="social gh">GitHub</a>
+      <a href="https://discord.gg/4kHSzxNz" class="social dc">Discord</a>
+    </aside>
 
-            <div class="reasons-grid">
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-sliders-h"></i>
-                    </div>
-                    <h3 class="reason-title">Flexibilidad</h3>
-                    <p class="reason-description">
-                        Trabajamos con cualquier presupuesto, desde pequeños emprendimientos
-                        hasta empresas consolidadas. Adaptamos nuestras soluciones a tus necesidades.
-                    </p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-paint-brush"></i>
-                    </div>
-                    <h3 class="reason-title">Creatividad</h3>
-                    <p class="reason-description">
-                        Cada proyecto se desarrolla con innovación y pasión. Buscamos soluciones
-                        únicas que destaquen tu marca en el mundo digital.
-                    </p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="reason-title">Colaboración</h3>
-                    <p class="reason-description">
-                        Abiertos a alianzas, colaboraciones y nuevos retos. Trabajamos
-                        contigo en cada etapa del proceso para garantizar resultados óptimos.
-                    </p>
-                </div>
-
-                <div class="reason-card">
-                    <div class="reason-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3 class="reason-title">Resultados Reales</h3>
-                    <p class="reason-description">
-                        Soluciones adaptadas a cada cliente para generar impacto medible.
-                        Nos enfocamos en entregar valor tangible y crecimiento sostenible.
-                    </p>
-                </div>
-            </div>
-        </div>
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <h3>Contact</h3>
+      <p>Email: 5410m0n.r4m1r3z@gmail.com · Phone: 7772383264 · Studio: 7777107522</p>
+      <div class="contact-links">
+        <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com">Send Email</a>
+        <a class="btn btn-ghost" href="https://5410m0n0c001.github.io/INIT-IDEA" target="_blank" rel="noopener">Visit Website</a>
+      </div>
     </section>
+  </main>
 
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <div class="cta-container">
-            <h2 class="section-title">¿Listo para Transformar tu Idea?</h2>
-            <p class="section-subtitle">Contáctanos y comencemos a trabajar juntos</p>
-
-            <div class="cta-buttons-grid">
-                <a href="tel:+527772383264" class="cta-btn primary-btn">
-                    <div class="btn-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="btn-content">
-                        <span class="btn-title">LLAMAR AHORA</span>
-                        <span class="btn-subtitle">+52 777 238 3264</span>
-                    </div>
-                    <div class="btn-ripple"></div>
-                </a>
-
-                <a href="https://wa.me/527772383264?text=Hola%20{INIT%20IDEA},%20quiero%20más%20información%20sobre%20sus%20servicios"
-                   class="cta-btn secondary-btn"
-                   target="_blank">
-                    <div class="btn-icon">
-                        <i class="fab fa-whatsapp"></i>
-                    </div>
-                    <div class="btn-content">
-                        <span class="btn-title">WHATSAPP</span>
-                        <span class="btn-subtitle">Chatear ahora</span>
-                    </div>
-                    <div class="btn-ripple"></div>
-                </a>
-
-                <a href="mailto:5410m0n.r4m1r3z@gmail.com?subject=Consulta%20{INIT%20IDEA}&body=Hola,%20me%20interesan%20sus%20servicios"
-                   class="cta-btn tertiary-btn">
-                    <div class="btn-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <div class="btn-content">
-                        <span class="btn-title">EMAIL</span>
-                        <span class="btn-subtitle">5410m0n.r4m1r3z@gmail.com</span>
-                    </div>
-                    <div class="btn-ripple"></div>
-                </a>
-
-                <a href="data:text/vcard;charset=utf-8,BEGIN:VCARD%0AVERSION:3.0%0AFN:{INIT IDEA} Studio Digital%0AORG:{INIT IDEA}%0ATEL;TYPE=CELL:+52 777 238 3264%0ATEL;TYPE=WORK:+52 777 710 7522%0AEMAIL:5410m0n.r4m1r3z@gmail.com%0AURL:https://5410m0n0c001.github.io/INIT-IDEA%0AADR:;;Ciudad Valles, San Luis Potosí;México%0ANOTE:Code. Create. Connect. - Studio Digital Integral%0AEND:VCARD"
-                   class="cta-btn quaternary-btn"
-                   download="init-idea-contact.vcf">
-                    <div class="btn-icon">
-                        <i class="fas fa-address-card"></i>
-                    </div>
-                    <div class="btn-content">
-                        <span class="btn-title">AGREGAR CONTACTO</span>
-                        <span class="btn-subtitle">Descargar vCard</span>
-                    </div>
-                    <div class="btn-ripple"></div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer Section -->
-    <footer class="footer-section">
-        <video class="footer-video" autoplay muted loop playsinline>
-            <source src="footer-video.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="footer-overlay"></div>
-
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-brand">
-                    <h2 class="footer-title">
-                        <span class="bracket">{</span>
-                        <span class="text-init">INIT</span>
-                        <span class="slash">/</span>
-                        <span class="text-idea">IDEA</span>
-                        <span class="bracket">}</span>
-                    </h2>
-                    <p class="footer-tagline">Code. Create. Connect.</p>
-                    <p class="footer-description">
-                        Studio Digital Integral<br>
-                        Transformamos ideas en soluciones digitales
-                    </p>
-                </div>
-
-                <div class="footer-contact">
-                    <div class="contact-info">
-                        <h3>Contacto</h3>
-                        <p><i class="fas fa-phone"></i> +52 777 238 3264</p>
-                        <p><i class="fas fa-building"></i> +52 777 710 7522</p>
-                        <p><i class="fas fa-envelope"></i> 5410m0n.r4m1r3z@gmail.com</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Ciudad Valles, S.L.P., México</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Social Links - 7 botones completos -->
-            <div class="social-section">
-                <h3 class="social-title">Síguenos en Redes Sociales</h3>
-                <div class="social-links-grid">
-                    <a href="https://www.facebook.com/profile.php?id=61582855106237"
-                       class="social-btn facebook-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                        <span>Facebook</span>
-                    </a>
-
-                    <a href="https://www.instagram.com/alexros2.0/"
-                       class="social-btn instagram-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                        <span>Instagram</span>
-                    </a>
-
-                    <a href="https://www.tiktok.com/@alexros2.0"
-                       class="social-btn tiktok-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                        <span>TikTok</span>
-                    </a>
-
-                    <a href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q"
-                       class="social-btn youtube-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="YouTube">
-                        <i class="fab fa-youtube"></i>
-                        <span>YouTube</span>
-                    </a>
-
-                    <a href="https://www.linkedin.com/company/init-idea/"
-                       class="social-btn linkedin-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="LinkedIn">
-                        <i class="fab fa-linkedin-in"></i>
-                        <span>LinkedIn</span>
-                    </a>
-
-                    <a href="https://github.com/5410m0n0c001"
-                       class="social-btn github-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="GitHub">
-                        <i class="fab fa-github"></i>
-                        <span>GitHub</span>
-                    </a>
-
-                    <a href="https://discord.gg/4kHSzxNz"
-                       class="social-btn discord-btn"
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       aria-label="Discord">
-                        <i class="fab fa-discord"></i>
-                        <span>Discord</span>
-                    </a>
-                </div>
-            </div>
-
-            <div class="footer-bottom">
-                <p class="copyright">
-                    &copy; 2025 {INIT /<IDEA>} Studio Digital. Todos los derechos reservados.
-                </p>
-                <p class="website-link">
-                    <a href="https://5410m0n0c001.github.io/INIT-IDEA" target="_blank">
-                        5410m0n0c001.github.io/INIT-IDEA
-                    </a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Background Music -->
-    <audio id="background-music" loop volume="0.3">
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Music Toggle -->
-    <button id="music-toggle" class="music-toggle" aria-label="Toggle Music">
-        <span class="music-icon">🎵</span>
-    </button>
-
-    <script src="script.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <video class="footer-bg" autoplay muted loop playsinline>
+      <source src="assets/footer-video.mp4" type="video/mp4" />
+    </video>
+    <div class="footer-overlay"></div>
+    <div class="footer-inner">
+      <img src="assets/logo.png" alt="INIT IDEA logo" width="80" height="80">
+      <div>
+        <h4>{INIT /<IDEA>}</h4>
+        <p>Code. Create. Connect.</p>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
