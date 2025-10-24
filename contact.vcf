@@ -1,11 +1,9 @@
 BEGIN:VCARD
 VERSION:3.0
-FN:{INIT /<IDEA>}
-ORG:{INIT /<IDEA>}
-TITLE:Digital Studio - Code. Create. Connect.
-TEL;WORK;VOICE:+52 7772383264
-TEL;WORK;VOICE;EXT:7777107522
+FN:Salomón Ramírez Ortega
+ORG:Init Idea
+NOTE:Estudio creativo enfocado en desarrollo web, diseño digital y soluciones tecnológicas innovadoras.
+TEL:7772383264
 EMAIL:5410m0n.r4m1r3z@gmail.com
-URL:https://5410m0n0c001.github.io/INIT-IDEA
-NOTE:Digital studio - Web design, marketing, multimedia, support.
+URL:https://5410m0n0c001.github.io/INIT-IDEA/
 END:VCARD
