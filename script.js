@@ -1,120 +1,54 @@
-// Loading animation
-window.addEventListener('load', () => {
-  const loading = document.getElementById('loading-screen');
-  const progress = loading.querySelector('.progress span');
+document.addEventListener('DOMContentLoaded', ()=> {
+  // loading screen
+  setTimeout(()=> {
+    const load = document.getElementById('loading-screen');
+    if(load){ load.style.opacity = 0; load.setAttribute('aria-hidden','true'); setTimeout(()=> load.remove(),700); }
+  }, 800);
 
-  let width = 0;
-  const interval = setInterval(() => {
-    width += 10;
-    progress.style.width = width + '%';
-    if (width >= 100) {
-      clearInterval(interval);
-      setTimeout(() => {
-        loading.style.opacity = '0';
-        setTimeout(() => {
-          loading.style.display = 'none';
-          initGSAP();
-        }, 500);
-      }, 500);
+  // GSAP animations (register safely)
+  if(window.gsap && window.ScrollTrigger){
+    gsap.registerPlugin(ScrollTrigger);
+    // subtle parallax for hero and header videos
+    gsap.to('#headerVideo', {yPercent: 8, ease:'none', scrollTrigger:{trigger:'.header-video', start:'top top', end:'bottom top', scrub:0.6}});
+    gsap.to('#heroVideo', {scale:1.02, ease:'none', scrollTrigger:{trigger:'.hero', start:'top 80%', end:'bottom top', scrub:0.6}});
+    gsap.from('.card', {y:30, opacity:0, stagger:0.12, duration:0.8, scrollTrigger:{trigger:'.services', start:'top 80%'}});
+  }
+
+  // IntersectionObserver: pause videos when not visible (saves mobile battery)
+  const vids = document.querySelectorAll('video');
+  const io = new IntersectionObserver((entries)=> {
+    entries.forEach(e=>{
+      const v = e.target;
+      if(e.isIntersecting){ v.play().catch(()=>{}); } else { v.pause(); }
+    });
+  }, {threshold: 0.3});
+  vids.forEach(v=> io.observe(v));
+
+  // Social bar adaptiveness to prevent overlap:
+  const socialBar = document.getElementById('socialBar');
+  function adaptSocial(){
+    const items = socialBar.querySelectorAll('.social').length;
+    const requiredHeight = items * 48; // approx per item
+    if(window.innerHeight < requiredHeight + 120){ // if not enough vertical space
+      socialBar.style.flexDirection = 'row';
+      socialBar.style.right = '50%';
+      socialBar.style.transform = 'translateX(50%)';
+      socialBar.style.bottom = '12px';
+      socialBar.style.gap = '8px';
+    } else {
+      socialBar.style.flexDirection = 'column';
+      socialBar.style.right = '18px';
+      socialBar.style.transform = '';
+      socialBar.style.bottom = '18px';
+      socialBar.style.gap = '10px';
     }
-  }, 100);
+  }
+  adaptSocial();
+  window.addEventListener('resize', adaptSocial);
+
+  // Ensure videos are visible without overlays (force CSS safety)
+  document.querySelectorAll('video').forEach(v => { v.style.filter = 'none'; });
+
+  // Accessibility: keyboard focus detection
+  document.body.addEventListener('keyup', (e) => { if(e.key === 'Tab') document.documentElement.classList.add('show-focus'); });
 });
-
-// GSAP animations
-function initGSAP() {
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Parallax for videos
-  gsap.to('.header-bg-video', {
-    yPercent: -50,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.header-video',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: true
-    }
-  });
-
-  gsap.to('.hero-video', {
-    yPercent: -50,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.hero',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: true
-    }
-  });
-
-  gsap.to('.footer-bg', {
-    yPercent: -50,
-    ease: 'none',
-    scrollTrigger: {
-      trigger: '.footer',
-      start: 'top bottom',
-      end: 'bottom top',
-      scrub: true
-    }
-  });
-
-  // Fade in animations
-  gsap.from('.hero-copy', {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    delay: 0.5
-  });
-
-  gsap.from('.card', {
-    opacity: 0,
-    y: 50,
-    stagger: 0.2,
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.services',
-      start: 'top 80%'
-    }
-  });
-
-  gsap.from('.contact', {
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    scrollTrigger: {
-      trigger: '.contact',
-      start: 'top 80%'
-    }
-  });
-
-  // Social icons animation
-  gsap.from('.social', {
-    opacity: 0,
-    x: 100,
-    stagger: 0.1,
-    duration: 0.5,
-    delay: 1
-  });
-
-  // Button hover effects
-  const buttons = document.querySelectorAll('.btn');
-  buttons.forEach(btn => {
-    btn.addEventListener('mouseenter', () => {
-      gsap.to(btn, { scale: 1.05, duration: 0.3 });
-    });
-    btn.addEventListener('mouseleave', () => {
-      gsap.to(btn, { scale: 1, duration: 0.3 });
-    });
-  });
-
-  // Card hover effects
-  const cards = document.querySelectorAll('.card');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => {
-      gsap.to(card, { y: -10, duration: 0.3 });
-    });
-    card.addEventListener('mouseleave', () => {
-      gsap.to(card, { y: 0, duration: 0.3 });
-    });
-  });
-}

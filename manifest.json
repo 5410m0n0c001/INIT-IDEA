@@ -1,6 +1,6 @@
 {
   "name": "{INIT /<IDEA>}",
-  "short_name": "INITIDEA",
+  "short_name": "INIT-IDEA",
   "description": "Digital Studio - Code. Create. Connect.",
   "start_url": "/",
   "display": "standalone",

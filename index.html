@@ -1,29 +1,28 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover" />
   <title>{INIT /<IDEA>} — Code. Create. Connect.</title>
 
-  <!-- Keep project name exactly: {INIT /<IDEA>} -->
-  <meta name="description" content="{INIT /<IDEA>} — Digital Studio. Code. Create. Connect. Web Design, Digital Marketing, Multimedia Production & Consulting." />
+  <!-- Keep project name exactly as literal text -->
+  <meta name="description" content="{INIT /<IDEA>} — Digital Studio: Web design, development, multimedia, marketing, and consulting." />
   <meta name="author" content="{INIT /<IDEA>}" />
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Twitter meta (logo.png only used here) -->
   <meta property="og:title" content="{INIT /<IDEA>} — Code. Create. Connect." />
   <meta property="og:description" content="We turn ideas into digital experiences." />
   <meta property="og:image" content="assets/logo.png" />
   <meta property="og:type" content="website" />
   <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="{INIT /<IDEA>} — Code. Create. Connect." />
   <meta name="twitter:description" content="Digital studio for web design, development, multimedia, and consulting." />
+  <meta name="twitter:image" content="assets/logo.png" />
   <meta name="theme-color" content="#00FFFF" />
 
   <link rel="icon" href="assets/logo.png" type="image/png" />
-  <link rel="apple-touch-icon" href="assets/logo.png" />
   <link rel="manifest" href="manifest.json" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
@@ -35,95 +34,106 @@
 </head>
 <body>
   <!-- LOADING -->
-  <div id="loading-screen" class="loading-screen">
+  <div id="loading-screen" class="loading-screen" role="status" aria-live="polite">
     <div class="loading-content">
-      <img src="assets/logo.png" alt="INIT IDEA logo" class="loading-logo" width="120" height="120">
-      <h1>{INIT /<IDEA>}</h1>
+      <h1 class="brand-title">{INIT /<IDEA>}</h1>
       <p class="tagline">Code. Create. Connect.</p>
       <div class="progress"><span></span></div>
     </div>
   </div>
 
-  <!-- HEADER with background video -->
-  <header class="header-video">
-    <video class="header-bg-video" autoplay muted loop playsinline poster="assets/logo.png">
+  <!-- HEADER with full-clarity video background (no blur) -->
+  <header class="header-video" role="banner">
+    <video id="headerVideo" class="header-bg-video" autoplay muted loop playsinline preload="auto" poster="">
       <source src="assets/header-video.mp4" type="video/mp4">
+      Your browser does not support the header video.
     </video>
-    <div class="video-overlay"></div>
-    <div class="header-inner">
-      <div class="brand">
-        <img src="assets/logo.png" alt="INIT IDEA logo" class="logo">
+
+    <!-- Glass panel for readable text (keeps video visually clear) -->
+    <div class="header-glass" aria-hidden="false">
+      <div class="header-inner">
         <div class="brand-text">
-          <h1>{INIT /<IDEA>}</h1>
+          <h1 class="brand-title">{INIT /<IDEA>}</h1>
           <p class="slogan">Code. Create. Connect.</p>
         </div>
+
+        <nav class="cta-row" aria-label="Primary actions">
+          <a class="btn btn-primary" href="tel:+527772383264" rel="nofollow">CALL: 7772383264</a>
+          <a class="btn btn-secondary" href="contact.vcf" download="INIT-IDEA-contact.vcf">Download vCard</a>
+          <a class="btn btn-cta" href="#contact">Contact</a>
+        </nav>
       </div>
-      <nav class="cta-row">
-        <a class="btn btn-primary" href="tel:+527772383264">CALL: 7772383264</a>
-        <a class="btn btn-secondary" href="contact.vcf" download="INIT-IDEA-contact.vcf">Download vCard</a>
-        <a class="btn btn-cta" href="#contact">Contact</a>
-      </nav>
     </div>
   </header>
 
-  <!-- HERO -->
   <main>
-    <section class="hero">
-      <video class="hero-video" autoplay muted loop playsinline poster="assets/logo.png">
-        <source src="assets/hero-video.mp4" type="video/mp4" />
-      </video>
+    <!-- HERO: clear video -->
+    <section class="hero" id="home" aria-labelledby="hero-heading">
+      <div class="hero-media" role="img" aria-hidden="true">
+        <video id="heroVideo" class="hero-video" autoplay muted loop playsinline preload="auto" poster="">
+          <source src="assets/hero-video.mp4" type="video/mp4" />
+        </video>
+      </div>
       <div class="hero-copy">
-        <h2>We transform ideas into digital solutions</h2>
+        <h2 id="hero-heading">We transform ideas into digital solutions</h2>
         <p>Services: Web Design, Development, AI Integration, Digital Marketing, Multimedia, and Technical Support.</p>
         <div class="hero-ctas">
-          <a class="btn btn-outline" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener">GitHub</a>
-          <a class="btn btn-outline" href="https://www.linkedin.com/company/init-idea/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-outline" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="btn btn-outline" href="https://5410m0n0c001.github.io/CV_SALOMON_RAMIREZ_ORTEGA/" target="_blank" rel="noopener noreferrer">Download CV</a>
         </div>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="services">
-      <h3>Main Services</h3>
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <h3 id="services-heading">Main Services</h3>
       <div class="grid">
         <article class="card"><h4>Web Design & Development</h4><p>WordPress, HTML, CSS, JS, UX/UI</p></article>
         <article class="card"><h4>Digital Marketing</h4><p>SEO, SEM, Social Media, Email Marketing</p></article>
-        <article class="card"><h4>Multimedia Production</h4><p>Video, photography, and creative content</p></article>
+        <article class="card"><h4>Multimedia Production</h4><p>Video, photography, creative content</p></article>
         <article class="card"><h4>Tech Support & Consulting</h4><p>Maintenance, Automation, and Guidance</p></article>
       </div>
     </section>
 
-    <!-- SOCIAL LINKS -->
-    <aside class="social-fixed">
-      <a href="https://www.facebook.com/profile.php?id=61582855106237" class="social fb">Facebook</a>
-      <a href="https://www.instagram.com/alexros2.0/" class="social ig">Instagram</a>
-      <a href="https://www.tiktok.com/@alexros2.0" class="social tt">TikTok</a>
-      <a href="https://github.com/5410m0n0c001" class="social gh">GitHub</a>
-      <a href="https://discord.gg/4kHSzxNz" class="social dc">Discord</a>
-    </aside>
-
     <!-- CONTACT -->
-    <section id="contact" class="contact">
-      <h3>Contact</h3>
-      <p>Email: 5410m0n.r4m1r3z@gmail.com · Phone: 7772383264 · Studio: 7777107522</p>
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <h3 id="contact-heading">Contact</h3>
+      <p>Email: <a href="mailto:5410m0n.r4m1r3z@gmail.com">5410m0n.r4m1r3z@gmail.com</a> · Phone: 7772383264 · Studio: 7777107522</p>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com">Send Email</a>
-        <a class="btn btn-ghost" href="https://5410m0n0c001.github.io/INIT-IDEA" target="_blank" rel="noopener">Visit Website</a>
+        <a class="btn btn-ghost" href="https://5410m0n0c001.github.io/INIT-IDEA" target="_blank" rel="noopener noreferrer">Visit Website</a>
       </div>
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <video class="footer-bg" autoplay muted loop playsinline>
+  <!-- FIXED SOCIAL BAR (desktop right / mobile bottom) -->
+  <aside id="socialBar" class="social-fixed" aria-label="Social links">
+    <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a class="social" href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer">Discord</a>
+    <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </aside>
+
+  <!-- FOOTER with full-clarity video (no blur) -->
+  <footer class="footer" role="contentinfo">
+    <video id="footerVideo" class="footer-bg" autoplay muted loop playsinline preload="auto" poster="">
       <source src="assets/footer-video.mp4" type="video/mp4" />
     </video>
-    <div class="footer-overlay"></div>
-    <div class="footer-inner">
-      <img src="assets/logo.png" alt="INIT IDEA logo" width="80" height="80">
-      <div>
-        <h4>{INIT /<IDEA>}</h4>
-        <p>Code. Create. Connect.</p>
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <div>
+          <h4>{INIT /<IDEA>}</h4>
+          <p>Code. Create. Connect.</p>
+        </div>
+        <div class="footer-contacts">
+          <p><a href="mailto:5410m0n.r4m1r3z@gmail.com">5410m0n.r4m1r3z@gmail.com</a></p>
+          <p>Tel: 7772383264 · Studio: 7777107522</p>
+          <p><a href="https://5410m0n0c001.github.io/CV_SALOMON_RAMIREZ_ORTEGA/" target="_blank" rel="noopener noreferrer">CV / Resume</a></p>
+        </div>
       </div>
     </div>
   </footer>

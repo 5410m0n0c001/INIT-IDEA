@@ -1,51 +1,17 @@
-# {INIT /<IDEA>}
+# {INIT /<IDEA>} — Code. Create. Connect.
 
-**Code. Create. Connect.**
+**Note:** The project name is literal text: `{INIT /<IDEA>}` (includes braces, slash and angle brackets). Do NOT modify the literal characters when copying the project name.
 
-{INIT /<IDEA>} is a digital studio specializing in web design, development, multimedia production, and consulting. This website showcases our services with a modern, responsive design optimized for GitHub Pages.
+This repository contains a GitHub Pages-ready static site. Assets expected: header-video.mp4, hero-video.mp4, footer-video.mp4, logo.png (logo.png is used only for meta and manifest).
 
-## Features
+Social links used:
+- Facebook: https://www.facebook.com/profile.php?id=61582855106237
+- Instagram: https://www.instagram.com/alexros2.0/
+- TikTok: https://www.tiktok.com/@alexros2.0
+- YouTube: https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q
+- LinkedIn: https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/
+- Discord: https://discord.gg/4kHSzxNz
+- GitHub: https://github.com/5410m0n0c001
+- CV: https://5410m0n0c001.github.io/CV_SALOMON_RAMIREZ_ORTEGA/
 
-- **Modern Design**: Glassmorphism effects, gradient lighting, and subtle 3D parallax.
-- **Animations**: GSAP-powered scroll animations and motion design.
-- **Responsive Layout**: Adaptive design for mobile and desktop.
-- **Video Backgrounds**: Engaging header, hero, and footer sections.
-- **Social Integration**: Fixed social media links.
-- **Contact Options**: Email, phone, and vCard download.
-
-## Technologies Used
-
-- HTML5
-- CSS3 (with backdrop-filter for glassmorphism)
-- Vanilla JavaScript
-- GSAP for animations
-- Responsive design principles
-
-## Usage
-
-1. Clone or download the repository.
-2. Open `index.html` in a web browser.
-3. For deployment on GitHub Pages, push to a GitHub repository and enable Pages.
-
-## Project Structure
-
-- `index.html` - Main HTML file
-- `styles.css` - Stylesheet with modern CSS features
-- `script.js` - JavaScript for animations and interactions
-- `assets/` - Directory containing videos and logo
-- `manifest.json` - Web app manifest
-- `contact.vcf` - vCard for contact information
-- `.nojekyll` - For GitHub Pages compatibility
-- `LICENSE` - MIT License
-
-## Contact
-
-- Email: 5410m0n.r4m1r3z@gmail.com
-- Phone: 7772383264
-- Studio: 7777107522
-
-Visit our [GitHub](https://github.com/5410m0n0c001) or [LinkedIn](https://www.linkedin.com/company/init-idea/) for more.
-
----
-
-Built with passion by {INIT /<IDEA>}.
+Deployment: add files to repo root, include `.nojekyll` (already created), publish GitHub Pages from `main` root.
