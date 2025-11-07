@@ -24,23 +24,22 @@ document.addEventListener('DOMContentLoaded', ()=> {
   }, {threshold: 0.3});
   vids.forEach(v=> io.observe(v));
 
+  // Social bar toggle functionality
+  const socialToggle = document.getElementById('socialToggle');
+  if (socialToggle) {
+    socialToggle.addEventListener('click', () => {
+      socialBar.classList.toggle('collapsed');
+    });
+  }
+
   // Social bar adaptiveness to prevent overlap:
-  const socialBar = document.getElementById('socialBar');
   function adaptSocial(){
-    const items = socialBar.querySelectorAll('.social').length;
-    const requiredHeight = items * 48; // approx per item
-    if(window.innerHeight < requiredHeight + 120){ // if not enough vertical space
-      socialBar.style.flexDirection = 'row';
-      socialBar.style.right = '50%';
-      socialBar.style.transform = 'translateX(50%)';
-      socialBar.style.bottom = '12px';
-      socialBar.style.gap = '8px';
+    // Hide the social links on mobile to save space, show only toggle button
+    if (window.innerWidth < 768) {
+      socialBar.classList.add('collapsed');
     } else {
-      socialBar.style.flexDirection = 'column';
-      socialBar.style.right = '18px';
-      socialBar.style.transform = '';
-      socialBar.style.bottom = '18px';
-      socialBar.style.gap = '10px';
+      // On desktop, keep expanded by default
+      socialBar.classList.remove('collapsed');
     }
   }
   adaptSocial();

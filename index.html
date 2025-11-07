@@ -62,7 +62,7 @@
         <nav class="cta-row" aria-label="Primary actions">
           <a class="btn btn-primary" href="tel:+527772383264" rel="nofollow"><i class="fas fa-phone"></i> Call Now</a>
           <a class="btn btn-primary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Send WhatsApp</a>
-          <a class="btn btn-secondary" href="contact.vcf" download="INIT-IDEA-contact.vcf" style="background: linear-gradient(90deg, #00FF00, #00AA00); color: #000;"><i class="fas fa-address-book"></i> Add Contact</a>
+          <a class="btn btn-primary" href="contact.vcf" download="INIT-IDEA-contact.vcf"><i class="fas fa-address-book"></i> Add Contact</a>
           <a class="btn btn-cta" href="#contact">Contact</a>
         </nav>
       </div>
@@ -78,13 +78,10 @@
         </video>
       </div>
       <div class="hero-copy">
+        <h1 class="brand-title" style="font-size: clamp(1.6rem, 5vw, 3rem); margin-bottom: 10px;">{INIT /<IDEA>}</h1>
         <h2 id="hero-heading">We transform ideas into digital solutions</h2>
         <p>Services: Web Design, Development, AI Integration, Digital Marketing, Multimedia, and Technical Support.</p>
-        <div class="hero-ctas">
-          <a class="btn btn-outline" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
-          <a class="btn btn-outline" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a class="btn btn-outline" href="https://5410m0n0c001.github.io/CV_SALOMON_RAMIREZ_ORTEGA/" target="_blank" rel="noopener noreferrer">Download CV</a>
-        </div>
+        <!-- Professional links available in social bar -->
       </div>
     </section>
 
@@ -102,25 +99,35 @@
     <!-- CONTACT -->
     <section id="contact" class="contact" aria-labelledby="contact-heading">
       <h3 id="contact-heading">Contact</h3>
-      <p>Email: <a href="mailto:5410m0n.r4m1r3z@gmail.com">5410m0n.r4m1r3z@gmail.com</a> · Phone: 7772383264 · Studio: 7777107522</p>
       <div class="contact-links">
         <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com">Send Email</a>
-        <a class="btn btn-ghost" href="https://5410m0n0c001.github.io/INIT-IDEA" target="_blank" rel="noopener noreferrer">Visit Website</a>
-        <a class="btn btn-secondary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer">WhatsApp</a>
       </div>
     </section>
   </main>
 
-  <!-- FIXED SOCIAL BAR (desktop right / mobile bottom) -->
-  <aside id="socialBar" class="social-fixed" aria-label="Social links">
-    <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer">Facebook</a>
-    <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer">Instagram</a>
-    <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer">TikTok</a>
-    <a class="social" href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q" target="_blank" rel="noopener noreferrer">YouTube</a>
-    <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-    <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer">Discord</a>
-    <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
+  <!-- FIXED SOCIAL BAR (collapsible) -->
+  <aside id="socialBar" class="social-fixed collapsed" aria-label="Social links">
+    <button id="socialToggle" class="social-toggle" aria-label="Toggle social links">
+      <img src="logo2.0.jpeg" alt="Social Menu" class="social-toggle-img">
+    </button>
+    <div class="social-links">
+      <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer">Facebook</a>
+      <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer">TikTok</a>
+      <a class="social" href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q" target="_blank" rel="noopener noreferrer">YouTube</a>
+      <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+      <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer">Discord</a>
+      <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
+    </div>
   </aside>
+
+  <!-- Floating chat button -->
+  <div class="floating-chat">
+    <a class="floating-chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank" rel="noopener noreferrer" title="Chatea con nuestro agente">
+      <i class="fas fa-comments"></i>
+      <span>¿Tienes dudas? Chatea con nuestro agente</span>
+    </a>
+  </div>
 
   <!-- FOOTER with full-clarity video (no blur) -->
   <footer class="footer" role="contentinfo">
@@ -134,9 +141,7 @@
           <p>Code. Create. Connect.</p>
         </div>
         <div class="footer-contacts">
-          <p><a href="mailto:5410m0n.r4m1r3z@gmail.com">5410m0n.r4m1r3z@gmail.com</a></p>
-          <p>Tel: 7772383264 · Studio: 7777107522</p>
-          <p><a href="https://5410m0n0c001.github.io/CV_SALOMON_RAMIREZ_ORTEGA/" target="_blank" rel="noopener noreferrer">CV / Resume</a></p>
+          <!-- Contact buttons available above -->
         </div>
       </div>
     </div>
