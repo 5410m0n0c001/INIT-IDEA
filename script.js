@@ -1,4 +1,34 @@
 document.addEventListener('DOMContentLoaded', ()=> {
+  // Register Service Worker for PWA support (GitHub Pages)
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((registration) => {
+          console.log('SW registered: ', registration);
+        })
+        .catch((registrationError) => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    });
+  }
+
+  // Mobile detection and optimizations
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // Add mobile class to body for mobile-specific styles
+    document.body.classList.add('mobile-device');
+    
+    // Optimize video playback for mobile
+    const videos = document.querySelectorAll('video');
+    videos.forEach(video => {
+      // Set mobile-optimized video attributes
+      video.setAttribute('playsinline', 'true');
+      video.setAttribute('webkit-playsinline', 'true');
+      video.muted = true; // Ensure autoplay works on mobile
+    });
+  }
+
   // loading screen
   setTimeout(()=> {
     const load = document.getElementById('loading-screen');
@@ -47,28 +77,74 @@ document.addEventListener('DOMContentLoaded', ()=> {
     });
   }
 
-  // GSAP animations (register safely)
+  // GSAP animations (register safely) with mobile optimizations
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
-    // subtle parallax for hero and header videos
-    gsap.to('#headerVideo', {yPercent: 8, ease:'none', scrollTrigger:{trigger:'.header-video', start:'top top', end:'bottom top', scrub:0.6}});
-    gsap.to('#heroVideo', {scale:1.02, ease:'none', scrollTrigger:{trigger:'.hero', start:'top 80%', end:'bottom top', scrub:0.6}});
-    gsap.from('.card', {y:30, opacity:0, stagger:0.12, duration:0.8, scrollTrigger:{trigger:'.services', start:'top 80%'}});
+    // Mobile-friendly animations (reduced complexity for mobile)
+    if (isMobile) {
+      gsap.from('.card', {y:20, opacity:0, stagger:0.08, duration:0.6, scrollTrigger:{trigger:'.services', start:'top 85%'}});
+    } else {
+      // Desktop parallax
+      gsap.to('#headerVideo', {yPercent: 8, ease:'none', scrollTrigger:{trigger:'.header-video', start:'top top', end:'bottom top', scrub:0.6}});
+      gsap.to('#heroVideo', {scale:1.02, ease:'none', scrollTrigger:{trigger:'.hero', start:'top 80%', end:'bottom top', scrub:0.6}});
+      gsap.from('.card', {y:30, opacity:0, stagger:0.12, duration:0.8, scrollTrigger:{trigger:'.services', start:'top 80%'}});
+    }
   }
 
-  // IntersectionObserver: pause videos when not visible (saves mobile battery)
+  // Enhanced IntersectionObserver for mobile performance
   const vids = document.querySelectorAll('video');
   const io = new IntersectionObserver((entries)=> {
     entries.forEach(e=>{
       const v = e.target;
-      if(e.isIntersecting){ v.play().catch(()=>{}); } else { v.pause(); }
+      if(e.isIntersecting){
+        v.play().catch(()=>{});
+      } else {
+        v.pause();
+      }
     });
-  }, {threshold: 0.3});
+  }, {
+    threshold: isMobile ? 0.5 : 0.3, // Higher threshold on mobile for better performance
+    rootMargin: '50px' // Start loading videos 50px before they come into view
+  });
   vids.forEach(v=> io.observe(v));
 
-  // Ensure videos are visible without overlays (force CSS safety)
-  document.querySelectorAll('video').forEach(v => { v.style.filter = 'none'; });
+  // Enhanced video optimization
+  document.querySelectorAll('video').forEach(v => {
+    v.style.filter = 'none';
+    // Add mobile-specific video loading
+    if (isMobile) {
+      v.preload = 'metadata'; // Reduce mobile data usage
+    }
+  });
+
+  // Mobile-specific touch improvements
+  if (isMobile) {
+    // Improve touch responsiveness
+    document.body.style.webkitTapHighlightColor = 'transparent';
+    document.body.style.webkitUserSelect = 'none';
+    document.body.style.userSelect = 'none';
+    
+    // Add touch event listeners for better mobile interaction
+    const buttons = document.querySelectorAll('.btn, .chat-btn, .social-toggle, .project-video-btn');
+    buttons.forEach(button => {
+      button.addEventListener('touchstart', function() {
+        this.style.transform = 'scale(0.98)';
+      });
+      
+      button.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.style.transform = '';
+        }, 150);
+      });
+    });
+  }
 
   // Accessibility: keyboard focus detection
   document.body.addEventListener('keyup', (e) => { if(e.key === 'Tab') document.documentElement.classList.add('show-focus'); });
+  
+  // GitHub Pages specific optimizations
+  if (window.location.hostname.includes('github.io')) {
+    console.log('Running on GitHub Pages - optimizations applied');
+    // Add any GitHub Pages specific code here if needed
+  }
 });
