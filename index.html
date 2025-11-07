@@ -27,15 +27,11 @@
   <link rel="manifest" href="manifest.json" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <!-- AOS Animation Library for Scroll Effects -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
   <!-- GSAP + ScrollTrigger -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
-  <!-- AOS Animation Library -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -66,7 +62,7 @@
         <nav class="cta-row" aria-label="Primary actions">
           <a class="btn btn-primary" href="tel:+527772383264" rel="nofollow"><i class="fas fa-phone"></i> Call Now</a>
           <a class="btn btn-primary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> Send WhatsApp</a>
-          <a class="btn btn-primary" href="contact.vcf" download="INIT-IDEA-contact.vcf"><i class="fas fa-address-book"></i> Add Contact</a>
+          <a class="btn btn-secondary" href="contact.vcf" download="INIT-IDEA-contact.vcf" style="background: linear-gradient(90deg, #00FF00, #00AA00); color: #000;"><i class="fas fa-address-book"></i> Add Contact</a>
           <a class="btn btn-cta" href="#contact">Contact</a>
         </nav>
       </div>
@@ -90,77 +86,50 @@
     </section>
 
     <!-- SERVICES -->
-    <section class="services" id="services" aria-labelledby="services-heading" data-aos="fade-up" data-aos-delay="100">
-      <h3 id="services-heading" data-aos="fade-up" data-aos-delay="200">Main Services</h3>
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <h3 id="services-heading">Main Services</h3>
       <div class="grid">
-        <article class="card" data-aos="fade-up" data-aos-delay="300" data-tilt>
-          <h4>Web Design & Development</h4>
-          <p>WordPress, HTML, CSS, JS, UX/UI</p>
-        </article>
-        <article class="card" data-aos="fade-up" data-aos-delay="400" data-tilt>
-          <h4>Digital Marketing</h4>
-          <p>SEO, SEM, Social Media, Email Marketing</p>
-        </article>
-        <article class="card" data-aos="fade-up" data-aos-delay="500" data-tilt>
-          <h4>Multimedia Production</h4>
-          <p>Video, photography, creative content</p>
-        </article>
-        <article class="card" data-aos="fade-up" data-aos-delay="600" data-tilt>
-          <h4>Tech Support & Consulting</h4>
-          <p>Maintenance, Automation, and Guidance</p>
-        </article>
+        <article class="card"><h4>Web Design & Development</h4><p>WordPress, HTML, CSS, JS, UX/UI</p></article>
+        <article class="card"><h4>Digital Marketing</h4><p>SEO, SEM, Social Media, Email Marketing</p></article>
+        <article class="card"><h4>Multimedia Production</h4><p>Video, photography, creative content</p></article>
+        <article class="card"><h4>Tech Support & Consulting</h4><p>Maintenance, Automation, and Guidance</p></article>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section id="contact" class="contact" aria-labelledby="contact-heading" data-aos="fade-up" data-aos-delay="200">
-      <h3 id="contact-heading" data-aos="fade-up" data-aos-delay="300">Contact</h3>
+    <section id="contact" class="contact" aria-labelledby="contact-heading">
+      <h3 id="contact-heading">Contact</h3>
       <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com" data-aos="zoom-in" data-aos-delay="400">Send Email</a>
-        <a class="video-btn" href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in" data-aos-delay="500">
-          <video class="video-button" src="c2.mp4" muted autoplay loop playsinline preload="auto" webkit-playsinline="true"></video>
-        </a>
-        <a class="video-btn" href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in" data-aos-delay="600">
-          <video class="video-button" src="c3.mp4" muted autoplay loop playsinline preload="auto" webkit-playsinline="true"></video>
-        </a>
-        <a class="video-btn" href="https://5410m0n0c001.github.io/" target="_blank" rel="noopener noreferrer" data-aos="zoom-in" data-aos-delay="700">
-          <video class="video-button" src="c4.mp4" muted autoplay loop playsinline preload="auto" webkit-playsinline="true"></video>
-        </a>
+        <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com">Send Email</a>
       </div>
-      <p class="projects-legend" data-aos="fade-up" data-aos-delay="800">Our latest projects</p>
     </section>
   </main>
 
-  <!-- FIXED SOCIAL BAR (collapsible) -->
-<aside id="socialBar" class="social-fixed collapsed" aria-label="Social links" data-aos="fade-left" data-aos-delay="500">
-  <button id="socialToggle" class="social-toggle" aria-label="Toggle social links" data-tilt>
-    <img src="logo2.0.jpeg" alt="Social Menu" class="social-toggle-img">
-  </button>
-  <div class="social-links">
-    <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="100">Facebook</a>
-    <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="200">Instagram</a>
-    <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="300">TikTok</a>
-    <a class="social" href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="400">YouTube</a>
-    <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="500">LinkedIn</a>
-    <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="600">Discord</a>
-    <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer" data-aos="fade-left" data-aos-delay="700">GitHub</a>
-  </div>
-</aside>
+  <!-- FIXED SOCIAL BAR (desktop right / mobile bottom) -->
+  <aside id="socialBar" class="social-fixed" aria-label="Social links">
+    <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer">Facebook</a>
+    <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer">Instagram</a>
+    <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer">TikTok</a>
+    <a class="social" href="https://youtube.com/@salomonramirezortega?si=7W63IoK4djKSzR3Q" target="_blank" rel="noopener noreferrer">YouTube</a>
+    <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer">Discord</a>
+    <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer">GitHub</a>
+  </aside>
 
-<!-- Floating chat button -->
-<div class="floating-chat" data-aos="zoom-in" data-aos-delay="1000">
-  <a class="floating-chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank" rel="noopener noreferrer" title="Chatea con nuestro agente" data-tilt>
-    <i class="fas fa-comments"></i>
-    <span>¿Tienes dudas? Chatea con nuestro agente</span>
-  </a>
-</div>
+  <!-- Floating chat button -->
+  <div class="floating-chat">
+    <a class="floating-chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank" rel="noopener noreferrer" title="Chatea con nuestro agente">
+      <i class="fas fa-comments"></i>
+      <span>¿Tienes dudas? Chatea con nuestro agente</span>
+    </a>
+  </div>
 
   <!-- FOOTER with full-clarity video (no blur) -->
-  <footer class="footer" role="contentinfo" data-aos="fade-up" data-aos-delay="200">
+  <footer class="footer" role="contentinfo">
     <video id="footerVideo" class="footer-bg" autoplay muted loop playsinline preload="auto" poster="">
       <source src="assets/footer-video.mp4" type="video/mp4" />
     </video>
-    <div class="footer-glass" data-tilt>
+    <div class="footer-glass">
       <div class="footer-inner">
         <div>
           <h4>{INIT /<IDEA>}</h4>
@@ -172,8 +141,5 @@
       </div>
     </div>
   </footer>
-
-  <!-- Mouse cursor follower -->
-  <div class="cursor-follower"></div>
 </body>
 </html>
