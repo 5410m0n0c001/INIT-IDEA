@@ -41,6 +41,54 @@
 .btn-cta{background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--muted)}
 .btn-outline{background:transparent;border:1px solid rgba(255,255,255,.06);color:var(--muted)}
 
+/* Project video buttons */
+.projects-section{
+  margin-top: 24px;
+  text-align: center;
+}
+
+.projects-title{
+  color: var(--accent);
+  font-family: var(--ff-primary);
+  font-size: 1.2rem;
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.project-buttons{
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.project-video-btn{
+  display: inline-block;
+  padding: 0;
+  border-radius: 12px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,.3);
+  border: 2px solid rgba(0,255,255,0.2);
+}
+
+.project-video-btn:hover{
+  transform: translateY(-4px);
+  box-shadow: 0 8px 25px rgba(0,255,255,0.4);
+  border-color: var(--accent);
+}
+
+.project-video{
+  width: 120px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+  display: block;
+}
+
 /* Hero */
 .hero{display:flex;flex-direction:column;gap:18px;padding:28px 18px}
 .hero-media{width:100%;display:flex;justify-content:center}
@@ -125,13 +173,71 @@
 .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;gap:12px;align-items:center}
 .footer-contacts{color:var(--muted)}
 
-/* Social fixed bar */
-.social-fixed{position:fixed;right:18px;bottom:18px;display:flex;flex-direction:column;gap:10px;z-index:1200;transition:all .28s ease}
+/* Header-level social media container */
+.social-container{
+  position:fixed;
+  right:20px;
+  top:30%;
+  z-index:1200;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:8px;
+}
+
+/* Social media toggle button */
+.social-toggle{
+  width:81px;
+  height:81px;
+  border:none;
+  background:transparent;
+  padding:0;
+  cursor:pointer;
+  border-radius:50%;
+  transition:all .3s ease;
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  overflow:hidden;
+}
+
+.social-toggle:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 25px rgba(0,255,255,0.3);
+}
+
+.social-logo{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/* Collapsible social dropdown */
+.social-dropdown{
+  position:absolute;
+  right:70px;
+  top:0;
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+  opacity:0;
+  transform:translateX(20px) scale(0.8);
+  visibility:hidden;
+  transition:all .3s ease;
+  pointer-events:none;
+}
+
+.social-dropdown.open{
+  opacity:1;
+  transform:translateX(0) scale(1);
+  visibility:visible;
+  pointer-events:auto;
+}
+
 .social{
   display:inline-block;
   padding:8px 12px;
   border-radius:10px;
-  background:rgba(10,10,10,.45); /* darker glass background for Edge */
+  background:rgba(10,10,10,.45);
   text-decoration:none;
   color:#fff;
   -webkit-backdrop-filter:blur(6px);
@@ -142,10 +248,32 @@
   box-shadow:0 8px 24px rgba(0,0,0,.5);
   transition:all .3s ease;
 }
+
 .social:hover{
   transform:translateY(-4px);
   background:linear-gradient(90deg,var(--accent),var(--accent-2));
   color:#000;
+}
+
+/* Follow Us legend */
+.social-legend{
+  position: relative;
+  color: var(--accent);
+  font-family: var(--ff-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 12px;
+  padding: 4px 8px;
+  background: rgba(0, 255, 255, 0.1);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 20px;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  z-index: 10;
 }
 
 /* Responsive rules */
@@ -168,50 +296,123 @@
   }
 }
 
-/* Floating chat button */
-.floating-chat{
+/* Header-level chat button */
+.hero-chat{
   position: fixed;
-  bottom: 20px;
   left: 20px;
-  z-index: 1300;
+  top: 32%;
+  z-index: 1250;
 }
 
-.floating-chat-btn{
+.chat-btn{
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 16px;
-  background: linear-gradient(90deg, #25D366, #128C7E);
-  color: white;
+  gap: 6px;
+  padding: 11px 16px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  color: #000;
   text-decoration: none;
-  border-radius: 25px;
-  box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+  border-radius: 24px;
+  box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
   transition: all 0.3s ease;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 10px;
   white-space: nowrap;
   border: 2px solid rgba(255, 255, 255, 0.1);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
+  max-width: 189px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.floating-chat-btn i{
-  font-size: 18px;
+.chat-btn i{
+  font-size: 14px;
+  color: #000;
+  flex-shrink: 0;
 }
 
-.floating-chat-btn:hover{
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
-  background: linear-gradient(90deg, #128C7E, #25D366);
+.chat-btn:hover{
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 30px rgba(0, 255, 255, 0.6);
+  background: linear-gradient(90deg, var(--accent-2), var(--accent));
 }
 
-.floating-chat-btn span{
+.chat-btn span{
   display: none;
+  line-height: 1.2;
 }
 
+/* Tablet styles */
+@media (min-width: 480px){
+  .hero-chat{
+    left: 24px;
+  }
+  
+  .chat-btn{
+    font-size: 11px;
+    padding: 12px 18px;
+    max-width: 216px;
+  }
+  
+  .chat-btn i{
+    font-size: 15px;
+  }
+}
+
+/* Desktop styles */
 @media (min-width: 768px){
-  .floating-chat-btn span{
+  .hero-chat{
+    left: 27px;
+    top: 30%;
+    z-index: 1300;
+  }
+  
+  .chat-btn{
+    font-size: 14px;
+    padding: 16px 22px;
+    max-width: none;
+    gap: 10px;
+    border-radius: 34px;
+  }
+  
+  .chat-btn span{
     display: inline;
+  }
+  
+  .chat-btn i{
+    font-size: 18px;
+  }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 600px){
+  .hero-chat{
+    left: 16px;
+    top: 34%;
+    z-index: 1200;
+  }
+  
+  .chat-btn{
+    font-size: 9px;
+    padding: 8px 14px;
+    max-width: 162px;
+    border-radius: 22px;
+    gap: 4px;
+  }
+  
+  .chat-btn i{
+    font-size: 12px;
+  }
+  
+  /* Adjust social media for mobile */
+  .social-container{
+    right: 16px;
+  }
+  
+  .social-legend{
+    font-size: 0.7rem;
+    padding: 2px 6px;
   }
 }
 

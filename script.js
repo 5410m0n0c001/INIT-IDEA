@@ -5,6 +5,48 @@ document.addEventListener('DOMContentLoaded', ()=> {
     if(load){ load.style.opacity = 0; load.setAttribute('aria-hidden','true'); setTimeout(()=> load.remove(),700); }
   }, 800);
 
+  // Social media collapsible functionality
+  const socialToggle = document.getElementById('socialToggle');
+  const socialDropdown = document.getElementById('socialDropdown');
+  
+  if (socialToggle && socialDropdown) {
+    socialToggle.addEventListener('click', () => {
+      const isOpen = socialDropdown.classList.contains('open');
+      
+      if (isOpen) {
+        // Close dropdown
+        socialDropdown.classList.remove('open');
+        socialToggle.setAttribute('aria-expanded', 'false');
+        socialDropdown.setAttribute('aria-hidden', 'true');
+      } else {
+        // Open dropdown
+        socialDropdown.classList.add('open');
+        socialToggle.setAttribute('aria-expanded', 'true');
+        socialDropdown.setAttribute('aria-hidden', 'false');
+      }
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      const socialContainer = document.getElementById('socialContainer');
+      if (!socialContainer.contains(e.target)) {
+        socialDropdown.classList.remove('open');
+        socialToggle.setAttribute('aria-expanded', 'false');
+        socialDropdown.setAttribute('aria-hidden', 'true');
+      }
+    });
+
+    // Close dropdown on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        socialDropdown.classList.remove('open');
+        socialToggle.setAttribute('aria-expanded', 'false');
+        socialDropdown.setAttribute('aria-hidden', 'true');
+        socialToggle.focus();
+      }
+    });
+  }
+
   // GSAP animations (register safely)
   if(window.gsap && window.ScrollTrigger){
     gsap.registerPlugin(ScrollTrigger);
@@ -23,28 +65,6 @@ document.addEventListener('DOMContentLoaded', ()=> {
     });
   }, {threshold: 0.3});
   vids.forEach(v=> io.observe(v));
-
-  // Social bar adaptiveness to prevent overlap:
-  const socialBar = document.getElementById('socialBar');
-  function adaptSocial(){
-    const items = socialBar.querySelectorAll('.social').length;
-    const requiredHeight = items * 48; // approx per item
-    if(window.innerHeight < requiredHeight + 120){ // if not enough vertical space
-      socialBar.style.flexDirection = 'row';
-      socialBar.style.right = '50%';
-      socialBar.style.transform = 'translateX(50%)';
-      socialBar.style.bottom = '12px';
-      socialBar.style.gap = '8px';
-    } else {
-      socialBar.style.flexDirection = 'column';
-      socialBar.style.right = '18px';
-      socialBar.style.transform = '';
-      socialBar.style.bottom = '18px';
-      socialBar.style.gap = '10px';
-    }
-  }
-  adaptSocial();
-  window.addEventListener('resize', adaptSocial);
 
   // Ensure videos are visible without overlays (force CSS safety)
   document.querySelectorAll('video').forEach(v => { v.style.filter = 'none'; });
