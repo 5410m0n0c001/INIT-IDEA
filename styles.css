@@ -25,6 +25,13 @@
 /* Reset and base styles - Optimized */
 *{box-sizing:border-box}html,body{height:100%}body{margin:0;font-family:var(--ff-text);background:var(--bg);color:#fff;overflow-x:hidden;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 
+/* Splash screen - Logo introduction */
+.splash-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#000000,#070708);z-index:10000;opacity:1;transition:opacity 0.8s ease-out}
+.splash-content{display:flex;align-items:center;justify-content:center;width:100%;height:100%}
+.splash-logo{max-width:200px;max-height:200px;object-fit:contain;filter:drop-shadow(0 0 30px rgba(0,255,255,0.3));animation:splashPulse 1.5s ease-in-out}
+.splash-screen.fade-out{opacity:0;pointer-events:none}
+@keyframes splashPulse{0%,100%{transform:scale(1);opacity:0.9}50%{transform:scale(1.05);opacity:1}}
+
 /* Loading screen - Enhanced accessibility */
 .loading-screen{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#020202,#070708);z-index:9999}
 .loading-content{text-align:center}

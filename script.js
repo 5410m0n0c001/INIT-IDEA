@@ -29,15 +29,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Loading screen with optimized timing
-  setTimeout(() => {
-    const load = document.getElementById('loading-screen');
-    if (load) {
-      load.style.opacity = 0;
-      load.setAttribute('aria-hidden', 'true');
-      setTimeout(() => load.remove(), 700);
-    }
-  }, 800);
+  // Splash screen sequence - Logo introduction
+  const splashScreen = document.getElementById('splash-screen');
+  if (splashScreen) {
+    // Show splash for 1.8 seconds, then fade out and start loading screen
+    setTimeout(() => {
+      splashScreen.classList.add('fade-out');
+      setTimeout(() => {
+        splashScreen.remove();
+        // Start loading screen after splash fades
+        startLoadingScreen();
+      }, 800); // Match fade-out transition duration
+    }, 1800);
+  } else {
+    // Fallback if splash screen not found
+    startLoadingScreen();
+  }
+
+  // Loading screen function
+  function startLoadingScreen() {
+    setTimeout(() => {
+      const load = document.getElementById('loading-screen');
+      if (load) {
+        load.style.opacity = 0;
+        load.setAttribute('aria-hidden', 'true');
+        setTimeout(() => load.remove(), 700);
+      }
+    }, 800);
+  }
 
   // Social media collapsible functionality - Robust version
   const socialToggle = document.getElementById('socialToggle');
