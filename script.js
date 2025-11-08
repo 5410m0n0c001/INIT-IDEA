@@ -39,12 +39,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 800);
 
-  // Social media collapsible functionality - Enhanced
+  // Social media collapsible functionality - Robust version
   const socialToggle = document.getElementById('socialToggle');
   const socialDropdown = document.getElementById('socialDropdown');
+  const socialContainer = document.getElementById('socialContainer');
 
-  if (socialToggle && socialDropdown) {
-    socialToggle.addEventListener('click', () => {
+  if (socialToggle && socialDropdown && socialContainer) {
+    // Robust toggle function
+    const toggleSocialDropdown = (e) => {
+      e.stopPropagation(); // Prevent event bubbling
       const isOpen = socialDropdown.classList.contains('open');
 
       if (isOpen) {
@@ -58,26 +61,57 @@ document.addEventListener('DOMContentLoaded', () => {
         socialToggle.setAttribute('aria-expanded', 'true');
         socialDropdown.setAttribute('aria-hidden', 'false');
       }
-    });
+    };
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      const socialContainer = document.getElementById('socialContainer');
+    // Close dropdown function
+    const closeSocialDropdown = () => {
+      socialDropdown.classList.remove('open');
+      socialToggle.setAttribute('aria-expanded', 'false');
+      socialDropdown.setAttribute('aria-hidden', 'true');
+    };
+
+    // Toggle event listeners (prevent duplicates) - Use only click for proper toggle behavior
+    socialToggle.addEventListener('click', toggleSocialDropdown);
+    // Remove touchstart to avoid conflicts - click handles both mouse and touch
+
+    // Stop propagation on dropdown clicks to prevent closing when clicking inside
+    socialDropdown.addEventListener('click', (e) => e.stopPropagation());
+
+    // Close when clicking outside (single event for both mouse and touch)
+    const handleOutsideClick = (e) => {
       if (!socialContainer.contains(e.target)) {
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-        socialDropdown.setAttribute('aria-hidden', 'true');
+        closeSocialDropdown();
       }
-    });
+    };
 
-    // Close dropdown on escape key
+    document.addEventListener('click', handleOutsideClick);
+
+    // Close on escape key
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-        socialDropdown.setAttribute('aria-hidden', 'true');
+      if (e.key === 'Escape' && socialDropdown.classList.contains('open')) {
+        closeSocialDropdown();
         socialToggle.focus();
       }
+    });
+
+    // Keyboard navigation for dropdown items
+    const socialLinks = socialDropdown.querySelectorAll('.social');
+    socialLinks.forEach((link, index) => {
+      link.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowDown' && index < socialLinks.length - 1) {
+          e.preventDefault();
+          socialLinks[index + 1].focus();
+        } else if (e.key === 'ArrowUp' && index > 0) {
+          e.preventDefault();
+          socialLinks[index - 1].focus();
+        } else if (e.key === 'Home') {
+          e.preventDefault();
+          socialLinks[0].focus();
+        } else if (e.key === 'End') {
+          e.preventDefault();
+          socialLinks[socialLinks.length - 1].focus();
+        }
+      });
     });
   }
 
@@ -744,47 +778,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize all 2025 effects
   init2025Effects();
 
-  // Social media collapsible functionality
-  const socialToggle = document.getElementById('socialToggle');
-  const socialDropdown = document.getElementById('socialDropdown');
-
-  if (socialToggle && socialDropdown) {
-    socialToggle.addEventListener('click', () => {
-      const isOpen = socialDropdown.classList.contains('open');
-
-      if (isOpen) {
-        // Close dropdown
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-        socialDropdown.setAttribute('aria-hidden', 'true');
-      } else {
-        // Open dropdown
-        socialDropdown.classList.add('open');
-        socialToggle.setAttribute('aria-expanded', 'true');
-        socialDropdown.setAttribute('aria-hidden', 'false');
-      }
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      const socialContainer = document.getElementById('socialContainer');
-      if (!socialContainer.contains(e.target)) {
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-        socialDropdown.setAttribute('aria-hidden', 'true');
-      }
-    });
-
-    // Close dropdown on escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-        socialDropdown.setAttribute('aria-hidden', 'true');
-        socialToggle.focus();
-      }
-    });
-  }
+  // Social media functionality already handled above - this duplicate is removed
 
   // GSAP animations with 2025 enhancements
   if (window.gsap && window.ScrollTrigger) {
