@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(e => {
       const v = e.target;
       if (e.isIntersecting) {
-        v.play().catch(() => {});
+        v.play().catch(() => { });
       } else {
         v.pause();
       }
@@ -223,11 +223,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add touch event listeners for better mobile interaction
     const buttons = document.querySelectorAll('.btn, .chat-btn, .social-toggle');
     buttons.forEach(button => {
-      button.addEventListener('touchstart', function() {
+      button.addEventListener('touchstart', function () {
         this.style.transform = 'scale(0.98)';
       });
 
-      button.addEventListener('touchend', function() {
+      button.addEventListener('touchend', function () {
         setTimeout(() => {
           this.style.transform = '';
         }, 150);
@@ -411,7 +411,7 @@ function initButtonEffects() {
 
   buttons.forEach(button => {
     // Add neón glow on hover
-    button.addEventListener('mouseenter', function() {
+    button.addEventListener('mouseenter', function () {
       if (isMobile) return;
 
       this.style.filter = 'brightness(1.2) saturate(1.3)';
@@ -421,7 +421,7 @@ function initButtonEffects() {
       this.style.animation = 'buttonPulse 0.6s ease-in-out';
     });
 
-    button.addEventListener('mouseleave', function() {
+    button.addEventListener('mouseleave', function () {
       if (isMobile) return;
 
       this.style.filter = 'brightness(1)';
@@ -430,7 +430,7 @@ function initButtonEffects() {
     });
 
     // Add ripple effect on click
-    button.addEventListener('click', function(e) {
+    button.addEventListener('click', function (e) {
       if (isMobile) return; // Skip ripple on mobile
 
       const ripple = document.createElement('span');
@@ -493,7 +493,7 @@ function initTiltEffect() {
 
     element.style.transformStyle = 'preserve-3d';
 
-    element.addEventListener('mousemove', function(e) {
+    element.addEventListener('mousemove', function (e) {
       const rect = this.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
@@ -506,12 +506,12 @@ function initTiltEffect() {
 
       // Add dynamic lighting
       this.style.boxShadow = `
-        ${-rotateY/2}px ${rotateX/2}px 30px rgba(0,0,0,0.3),
+        ${-rotateY / 2}px ${rotateX / 2}px 30px rgba(0,0,0,0.3),
         ${-rotateY}px ${rotateX}px 50px rgba(0,255,255,0.1)
       `;
     });
 
-    element.addEventListener('mouseleave', function() {
+    element.addEventListener('mouseleave', function () {
       this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
       this.style.boxShadow = '';
     });
@@ -794,6 +794,36 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, 800);
 
+  // Share Button Functionality
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const shareData = {
+        title: 'INIT IDEA | Estudio Digital',
+        text: 'Te comparto el trabajo de INIT IDEA, un estudio digital enfocado en diseño, branding y soluciones creativas para marcas que buscan verse más profesionales y crecer.',
+        url: 'https://5410m0n0c001.github.io/INIT-IDEA/'
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(shareData);
+          console.log('Shared successfully');
+        } catch (err) {
+          console.log('Error sharing:', err);
+        }
+      } else {
+        // Fallback: Copy to clipboard
+        try {
+          await navigator.clipboard.writeText(shareData.url);
+          alert('Enlace copiado al portapapeles: ' + shareData.url);
+        } catch (err) {
+          console.error('Failed to copy: ', err);
+          alert('No se pudo compartir automáticamente. Por favor copia manualmente la URL.');
+        }
+      }
+    });
+  }
+
   // Initialize all 2025 effects
   init2025Effects();
 
@@ -890,7 +920,7 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(e => {
       const v = e.target;
       if (e.isIntersecting) {
-        v.play().catch(() => {});
+        v.play().catch(() => { });
       } else {
         v.pause();
       }

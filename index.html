@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -11,13 +12,16 @@
   <title>Salomón Ramírez Ortega | INIT IDEA — Tecnología, Creatividad e Innovación Digital</title>
 
   <!-- Optimized meta tags for SEO and social sharing -->
-  <meta name="description" content="Desarrollador multidisciplinario y fundador de INIT IDEA, laboratorio creativo enfocado en innovación digital, IA aplicada y diseño tecnológico." />
+  <meta name="description"
+    content="Desarrollador multidisciplinario y fundador de INIT IDEA, laboratorio creativo enfocado en innovación digital, IA aplicada y diseño tecnológico." />
   <meta name="author" content="Salomón Ramírez Ortega" />
-  <meta name="keywords" content="Salomón Ramírez Ortega, INIT IDEA, desarrollo web, IA aplicada, diseño digital, innovación tecnológica, automatización inteligente, proyectos prácticos" />
+  <meta name="keywords"
+    content="Salomón Ramírez Ortega, INIT IDEA, desarrollo web, IA aplicada, diseño digital, innovación tecnológica, automatización inteligente, proyectos prácticos" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Init Idea - Portafolio de Salomón Ramírez" />
-  <meta property="og:description" content="Desarrollador web, analista y creador de soluciones digitales. Explora mis proyectos en Init Idea." />
+  <meta property="og:description"
+    content="Desarrollador web, analista y creador de soluciones digitales. Explora mis proyectos en Init Idea." />
   <meta property="og:image" content="https://5410m0n0c001.github.io/INIT-IDEA/logo2.0.png" />
   <meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA/" />
   <meta property="og:type" content="website" />
@@ -38,10 +42,14 @@
   <link rel="manifest" href="manifest.json" />
 
   <!-- Fonts with preload for performance -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap"
+    rel="stylesheet">
 
   <!-- Font Awesome with integrity check -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <!-- Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -51,6 +59,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <!-- SPLASH SCREEN - Logo introduction -->
   <div id="splash-screen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading INIT IDEA">
@@ -70,7 +79,8 @@
 
   <!-- HEADER with full-clarity video background (no blur) -->
   <header class="header-video" role="banner">
-    <video id="headerVideo" class="header-bg-video" autoplay muted loop playsinline preload="auto" poster="" aria-hidden="true">
+    <video id="headerVideo" class="header-bg-video" autoplay muted loop playsinline preload="auto" poster=""
+      aria-hidden="true">
       <source src="assets/header-video.mp4" type="video/mp4">
       Your browser does not support the header video.
     </video>
@@ -87,13 +97,19 @@
           <a class="btn btn-primary" href="tel:+527772383264" rel="nofollow" aria-label="Call us at +52 777 238 3264">
             <i class="fas fa-phone" aria-hidden="true"></i> Call Now
           </a>
-          <a class="btn btn-primary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Send WhatsApp message">
+          <a class="btn btn-primary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n"
+            target="_blank" rel="noopener noreferrer" aria-label="Send WhatsApp message">
             <i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp
           </a>
-          <a class="btn btn-primary" href="contact.vcf" download="INIT-IDEA-contact.vcf" aria-label="Download contact information">
+          <a class="btn btn-primary" href="contact.vcf" download="INIT-IDEA-contact.vcf"
+            aria-label="Download contact information">
             <i class="fas fa-address-book" aria-hidden="true"></i> Add Contact
           </a>
-          <a class="btn btn-cta" href="tel:+527777107522" aria-label="Call studio phone number +52 777 710 7522">Studio phone number</a>
+          <button id="shareBtn" class="btn btn-primary" type="button" aria-label="Share INIT IDEA">
+            <i class="fas fa-share-alt" aria-hidden="true"></i> Compartir
+          </button>
+          <a class="btn btn-cta" href="tel:+527777107522" aria-label="Call studio phone number +52 777 710 7522">Studio
+            phone number</a>
         </nav>
       </div>
     </div>
@@ -142,8 +158,10 @@
     <section id="contact" class="contact" aria-labelledby="contact-heading">
       <h3 id="contact-heading">Contact</h3>
       <div class="contact-links">
-        <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com" aria-label="Send email to 5410m0n.r4m1r3z@gmail.com">Send Email</a>
-        <a class="btn btn-primary" href="https://t.me/initidea" target="_blank" rel="noopener noreferrer" aria-label="Send Telegram message">
+        <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com"
+          aria-label="Send email to 5410m0n.r4m1r3z@gmail.com">Send Email</a>
+        <a class="btn btn-primary" href="https://t.me/initidea" target="_blank" rel="noopener noreferrer"
+          aria-label="Send Telegram message">
           <i class="fab fa-telegram-plane" aria-hidden="true"></i> Send Telegram
         </a>
 
@@ -153,29 +171,36 @@
           <div class="project-buttons">
             <!-- Rock City Project -->
             <div class="project-item">
-              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster=""
+                aria-hidden="true">
                 <source src="assets/c2.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <a href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer" class="video-overlay" aria-label="View Rock City project"></a>
+              <a href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer"
+                class="video-overlay" aria-label="View Rock City project"></a>
             </div>
 
             <!-- All in One Cabo Project -->
             <div class="project-item">
-              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster=""
+                aria-hidden="true">
                 <source src="assets/c4.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <a href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer" class="video-overlay" aria-label="View All in One Cabo project"></a>
+              <a href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer"
+                class="video-overlay" aria-label="View All in One Cabo project"></a>
             </div>
 
             <!-- Creta Volkswagen Project -->
             <div class="project-item">
-              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <video class="project-video-bg" autoplay muted loop playsinline preload="metadata" poster=""
+                aria-hidden="true">
                 <source src="assets/lt.mp4" type="video/mp4">
                 Your browser does not support the video tag.
               </video>
-              <a href="https://5410m0n0c001.github.io/Erick-Salgado-Castrejon-cresta-volks-wagen-cuernavaca/" target="_blank" rel="noopener noreferrer" class="video-overlay" aria-label="View Creta Volkswagen project"></a>
+              <a href="https://5410m0n0c001.github.io/Erick-Salgado-Castrejon-cresta-volks-wagen-cuernavaca/"
+                target="_blank" rel="noopener noreferrer" class="video-overlay"
+                aria-label="View Creta Volkswagen project"></a>
             </div>
           </div>
         </div>
@@ -192,35 +217,43 @@
 
     <!-- Collapsible social media links -->
     <div id="socialDropdown" class="social-dropdown" aria-hidden="true">
-      <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer" aria-label="Visit Facebook page">
+      <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank"
+        rel="noopener noreferrer" aria-label="Visit Facebook page">
         <i class="fab fa-facebook-f" aria-hidden="true"></i>
         <span>Facebook</span>
       </a>
-      <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile">
+      <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit Instagram profile">
         <i class="fab fa-instagram" aria-hidden="true"></i>
         <span>Instagram</span>
       </a>
-      <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer" aria-label="Join Discord server">
+      <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer"
+        aria-label="Join Discord server">
         <i class="fab fa-discord" aria-hidden="true"></i>
         <span>Discord</span>
       </a>
-      <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+      <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank"
+        rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
         <i class="fab fa-linkedin-in" aria-hidden="true"></i>
         <span>LinkedIn</span>
       </a>
-      <a class="social" href="https://x.com/alexros2_0" target="_blank" rel="noopener noreferrer" aria-label="Visit X (Twitter) profile">
+      <a class="social" href="https://x.com/alexros2_0" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit X (Twitter) profile">
         <i class="fab fa-x-twitter" aria-hidden="true"></i>
         <span>X (Twitter)</span>
       </a>
-      <a class="social" href="https://youtube.com/@salomonramirezortega" target="_blank" rel="noopener noreferrer" aria-label="Visit YouTube channel">
+      <a class="social" href="https://youtube.com/@salomonramirezortega" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit YouTube channel">
         <i class="fab fa-youtube" aria-hidden="true"></i>
         <span>YouTube</span>
       </a>
-      <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+      <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit GitHub profile">
         <i class="fab fa-github" aria-hidden="true"></i>
         <span>GitHub</span>
       </a>
-      <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer" aria-label="Visit TikTok profile">
+      <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer"
+        aria-label="Visit TikTok profile">
         <i class="fab fa-tiktok" aria-hidden="true"></i>
         <span>TikTok</span>
       </a>
@@ -232,7 +265,8 @@
 
   <!-- HERO-LEVEL CHAT BUTTON -->
   <div class="hero-chat">
-    <a class="chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank" rel="noopener noreferrer" title="Chatea con nuestro agente" aria-label="Chat with our agent">
+    <a class="chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank"
+      rel="noopener noreferrer" title="Chatea con nuestro agente" aria-label="Chat with our agent">
       <i class="fas fa-comments" aria-hidden="true"></i>
       <span>¿Tienes dudas conversa con nuestro agente</span>
     </a>
@@ -252,7 +286,8 @@
         <!-- Rock City Project -->
         <div class="latest-project-card" data-project="rock-city">
           <div class="project-card-bg">
-            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster=""
+              aria-hidden="true">
               <source src="assets/c2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -265,7 +300,8 @@
               <h3 class="project-title">Rock City</h3>
               <p class="project-description">Interactive music venue experience</p>
             </div>
-            <a href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Rock City project">
+            <a href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer"
+              class="project-link" aria-label="View Rock City project">
               <span>View Project</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -275,7 +311,8 @@
         <!-- All In One Cabo Project -->
         <div class="latest-project-card" data-project="all-in-one-cabo">
           <div class="project-card-bg">
-            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster=""
+              aria-hidden="true">
               <source src="c4.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -288,7 +325,8 @@
               <h3 class="project-title">All In One Cabo</h3>
               <p class="project-description">Comprehensive tourism platform</p>
             </div>
-            <a href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View All In One Cabo project">
+            <a href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer"
+              class="project-link" aria-label="View All In One Cabo project">
               <span>View Project</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -298,7 +336,8 @@
         <!-- Volkswagen Cresta Cuernavaca Project -->
         <div class="latest-project-card" data-project="volkswagen-cresta">
           <div class="project-card-bg">
-            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster=""
+              aria-hidden="true">
               <source src="lt.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
@@ -311,7 +350,9 @@
               <h3 class="project-title">Volkswagen Cresta Cuernavaca</h3>
               <p class="project-description">Automotive dealership showcase</p>
             </div>
-            <a href="https://5410m0n0c001.github.io/Erick-Salgado-Castrejon-cresta-volks-wagen-cuernavaca/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Volkswagen Cresta Cuernavaca project">
+            <a href="https://5410m0n0c001.github.io/Erick-Salgado-Castrejon-cresta-volks-wagen-cuernavaca/"
+              target="_blank" rel="noopener noreferrer" class="project-link"
+              aria-label="View Volkswagen Cresta Cuernavaca project">
               <span>View Project</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -331,7 +372,8 @@
               <h3 class="project-title">Primavera Events Group</h3>
               <p class="project-description">Event planning and management</p>
             </div>
-            <a href="https://salomonr9.sg-host.com/primavera-events-group/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Primavera Events Group project">
+            <a href="https://primaveraeventsgroup.com/home" target="_blank" rel="noopener noreferrer"
+              class="project-link" aria-label="View Primavera Events Group project">
               <span>View Project</span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
@@ -343,7 +385,8 @@
 
   <!-- FOOTER with full-clarity video (no blur) -->
   <footer class="footer" role="contentinfo">
-    <video id="footerVideo" class="footer-bg" autoplay muted loop playsinline preload="auto" poster="" aria-hidden="true">
+    <video id="footerVideo" class="footer-bg" autoplay muted loop playsinline preload="auto" poster=""
+      aria-hidden="true">
       <source src="assets/footer-video.mp4" type="video/mp4" />
     </video>
     <div class="footer-glass">
@@ -359,4 +402,5 @@
     </div>
   </footer>
 </body>
+
 </html>
