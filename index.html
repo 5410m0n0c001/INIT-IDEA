@@ -242,6 +242,13 @@
               <span><span class="lang-es">Ver Proyecto</span><span class="lang-en">View Project</span></span>
               <i class="fas fa-arrow-right" aria-hidden="true"></i>
             </a>
+            <!-- BOTÓN ORDENAR TARJETA DIGITAL -->
+            <button id="orderCardBtn" class="order-card-btn" type="button" onclick="document.getElementById('orderModal').classList.add('open')">
+              <i class="fas fa-credit-card" aria-hidden="true"></i>
+              <span class="lang-es">&#x1F4B3; ¡Deseo ordenar mi Tarjeta Digital o Link Dashboard!</span>
+              <span class="lang-en">&#x1F4B3; I want to order my Digital Card or Link Dashboard!</span>
+              <span class="order-btn-pulse"></span>
+            </button>
           </div>
         </div>
 
@@ -423,5 +430,102 @@
       </div>
     </div>
   </footer>
+
+  <!-- MODAL: ORDENAR TARJETA DIGITAL -->
+  <div id="orderModal" class="order-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="orderModalTitle">
+    <div class="order-modal-box">
+      <button class="order-modal-close" onclick="document.getElementById('orderModal').classList.remove('open')" aria-label="Cerrar">&times;</button>
+      <div class="order-modal-icon"><i class="fas fa-id-card-alt"></i></div>
+      <h2 id="orderModalTitle" class="order-modal-title">
+        <span class="lang-es">&#x1F4B3; Ordena tu Tarjeta de Presentación Digital</span>
+        <span class="lang-en">&#x1F4B3; Order your Digital Business Card</span>
+      </h2>
+
+      <!-- NOTA DE DINÁMICA -->
+      <div class="order-modal-note">
+        <i class="fas fa-info-circle"></i>
+        <div>
+          <p class="lang-es"><strong>¿Cómo funciona?</strong></p>
+          <p class="lang-en"><strong>How does it work?</strong></p>
+          <ul class="lang-es">
+            <li>1&#x20E3; Haz clic en el botón de abajo para acceder al formulario de pedido.</li>
+            <li>2&#x20E3; Ingresa todos los datos que deseas en tu tarjeta digital o invitación.</li>
+            <li>3&#x20E3; Realiza tu pago (Mercado Pago, transferencia o depósito OXXO).</li>
+            <li>4&#x20E3; Sube la imagen de tu comprobante de pago y el número de movimiento Banxico en el formulario.</li>
+            <li>5&#x20E3; Verifica que tus datos de envío sean correctos.</li>
+            <li>&#x1F4CC; Tu tarjeta llegará en <strong>1 a 15 días hábiles</strong> según la complejidad.</li>
+          </ul>
+          <ul class="lang-en">
+            <li>1&#x20E3; Click the button below to access the order form.</li>
+            <li>2&#x20E3; Enter all the details you want on your digital card or invitation.</li>
+            <li>3&#x20E3; Make your payment (Mercado Pago, bank transfer, or OXXO deposit).</li>
+            <li>4&#x20E3; Upload your payment proof and Banxico movement number in the form.</li>
+            <li>5&#x20E3; Double-check your delivery details are correct.</li>
+            <li>&#x1F4CC; Your card will be ready in <strong>1 to 15 business days</strong> depending on complexity.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- BOTÓN FORMULARIO GOOGLE -->
+      <a href="https://forms.gle/uo3d4ptQkkNWVR31A" target="_blank" rel="noopener noreferrer" class="order-modal-cta">
+        <i class="fas fa-file-alt"></i>
+        <span class="lang-es">&#x1F4DD; Acceder al Formulario de Pedido</span>
+        <span class="lang-en">&#x1F4DD; Access the Order Form</span>
+      </a>
+
+      <!-- MÉTODOS DE PAGO -->
+      <div class="order-modal-payment">
+        <h3 class="order-modal-payment-title lang-es">&#x1F4B0; Métodos de Pago Disponibles</h3>
+        <h3 class="order-modal-payment-title lang-en">&#x1F4B0; Available Payment Methods</h3>
+
+        <!-- Mercado Pago -->
+        <div class="pay-method">
+          <div class="pay-method-header">
+            <i class="fas fa-mobile-alt"></i>
+            <strong>Mercado Pago <span class="lang-es">(link de pago — también a meses con intereses)</span><span class="lang-en">(payment link — installments with interest available)</span></strong>
+          </div>
+          <a href="https://mpago.la/1MYqpJv" target="_blank" rel="noopener noreferrer" class="pay-link-btn">
+            <i class="fas fa-external-link-alt"></i>
+            <span class="lang-es">Pagar con Mercado Pago</span>
+            <span class="lang-en">Pay with Mercado Pago</span>
+          </a>
+        </div>
+
+        <!-- Transferencia Bancaria -->
+        <div class="pay-method">
+          <div class="pay-method-header">
+            <i class="fas fa-university"></i>
+            <strong class="lang-es">Transferencia / Depósito Bancario (BBVA)</strong>
+            <strong class="lang-en">Bank Transfer / Deposit (BBVA)</strong>
+          </div>
+          <div class="pay-details">
+            <div class="pay-detail-row"><span class="lang-es">Banco:</span><span class="lang-en">Bank:</span><strong>BBVA</strong></div>
+            <div class="pay-detail-row"><span class="lang-es">Titular:</span><span class="lang-en">Account Holder:</span><strong>Salomón Ramírez Ortega</strong></div>
+            <div class="pay-detail-row"><span class="lang-es">CLABE:</span><span class="lang-en">CLABE:</span><strong>012 320 00853 283 2007</strong></div>
+            <div class="pay-detail-row"><span class="lang-es">Tarjeta:</span><span class="lang-en">Card #:</span><strong>4152 3136 9979 5694</strong></div>
+          </div>
+        </div>
+
+        <!-- OXXO -->
+        <div class="pay-method">
+          <div class="pay-method-header">
+            <i class="fas fa-store"></i>
+            <strong class="lang-es">Depósito en OXXO</strong>
+            <strong class="lang-en">OXXO Cash Deposit</strong>
+          </div>
+          <div class="pay-details">
+            <div class="pay-detail-row"><span class="lang-es">Tarjeta BBVA:</span><span class="lang-en">BBVA Card:</span><strong>4152 3136 9979 5694</strong></div>
+            <div class="pay-detail-row"><span class="lang-es">Nombre:</span><span class="lang-en">Name:</span><strong>Salomón Ramírez Ortega</strong></div>
+            <p class="lang-es pay-note"><i class="fas fa-exclamation-circle"></i> Solicita al cajero un depósito a tarjeta BBVA con el número indicado.</p>
+            <p class="lang-en pay-note"><i class="fas fa-exclamation-circle"></i> Ask the cashier for a BBVA card deposit using the card number above.</p>
+          </div>
+        </div>
+
+        <p class="order-modal-disclaimer lang-es">&#x23F1; Tiempo de entrega estimado: <strong>1 semana a 15 días hábiles</strong> dependiendo de la complejidad de tu tarjeta.</p>
+        <p class="order-modal-disclaimer lang-en">&#x23F1; Estimated delivery: <strong>1 to 15 business days</strong> depending on your card complexity.</p>
+      </div>
+    </div>
+  </div>
+
 </body>
 </html>

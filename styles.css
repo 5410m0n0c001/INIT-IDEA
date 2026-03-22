@@ -725,3 +725,276 @@ body {
   0%, 100% { border-color: var(--accent); }
   50% { border-color: transparent; }
 }
+
+/* ══════════════════════════════════════════
+   ORDER CARD BUTTON (Botón Ordenar Tarjeta)
+══════════════════════════════════════════ */
+.order-card-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 14px 26px;
+  background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: var(--ff-primary);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  overflow: hidden;
+  width: max-content;
+  max-width: 100%;
+  transition: filter 0.3s ease, transform 0.3s ease;
+  animation: orderBtnGlow 2.5s ease-in-out infinite;
+  z-index: 1;
+}
+@keyframes orderBtnGlow {
+  0%, 100% { box-shadow: 0 0 12px rgba(0, 210, 255, 0.5), 0 0 30px rgba(123, 47, 247, 0.3); }
+  50% { box-shadow: 0 0 20px rgba(0, 210, 255, 0.8), 0 0 50px rgba(123, 47, 247, 0.6); }
+}
+@media (hover: hover) {
+  .order-card-btn:hover {
+    filter: brightness(1.15);
+    transform: scale(1.04);
+  }
+}
+.order-card-btn:active {
+  transform: scale(0.97);
+}
+/* Ripple pulse ring around the button */
+.order-btn-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 40px;
+  border: 2px solid rgba(0, 210, 255, 0.6);
+  animation: orderPulseRing 2s ease-out infinite;
+  pointer-events: none;
+}
+@keyframes orderPulseRing {
+  0%   { opacity: 0.8; transform: scale(1); }
+  70%  { opacity: 0; transform: scale(1.15); }
+  100% { opacity: 0; transform: scale(1.15); }
+}
+
+/* ══════════════════════════════════════════
+   ORDER MODAL (Modal de pago)
+══════════════════════════════════════════ */
+.order-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 5000;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  overflow-y: auto;
+}
+.order-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+.order-modal-box {
+  background: #101014;
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 24px;
+  padding: 36px 32px;
+  width: 100%;
+  max-width: 540px;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7), 0 0 40px rgba(0,210,255,0.1);
+}
+.order-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: var(--muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: color 0.2s;
+}
+.order-modal-close:hover { color: var(--text); }
+.order-modal-icon {
+  font-size: 2.4rem;
+  text-align: center;
+  margin-bottom: 12px;
+  background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.order-modal-title {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+/* Nota de dinámica */
+.order-modal-note {
+  display: flex;
+  gap: 14px;
+  background: rgba(0, 210, 255, 0.06);
+  border: 1px solid rgba(0, 210, 255, 0.2);
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 22px;
+  font-size: 0.88rem;
+  color: var(--text);
+}
+.order-modal-note > .fa-info-circle {
+  color: #00d2ff;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.order-modal-note ul {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.order-modal-note ul li {
+  color: var(--muted);
+  line-height: 1.45;
+}
+/* Botón CTA formulario */
+.order-modal-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 28px;
+  background: linear-gradient(135deg, #00d2ff, #7b2ff7);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 30px;
+  margin-bottom: 24px;
+  transition: filter 0.25s ease, transform 0.25s ease;
+  text-align: center;
+}
+@media (hover: hover) {
+  .order-modal-cta:hover {
+    filter: brightness(1.15);
+    transform: scale(1.03);
+  }
+}
+/* Métodos de pago */
+.order-modal-payment {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.order-modal-payment-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.pay-method {
+  background: var(--card);
+  border: 1px solid var(--glass-border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.pay-method-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+.pay-method-header i {
+  color: #00d2ff;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+.pay-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  background: #009ee3;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.85rem;
+  border-radius: 20px;
+  width: max-content;
+  transition: background 0.2s;
+}
+.pay-link-btn:hover { background: #007abe; }
+.pay-details {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.pay-detail-row {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  gap: 6px;
+  align-items: center;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.pay-detail-row strong {
+  color: var(--text);
+  font-weight: 600;
+  word-break: break-all;
+}
+.pay-note {
+  font-size: 0.82rem;
+  color: #f0a500;
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  margin-top: 4px;
+}
+.pay-note i { flex-shrink: 0; margin-top: 2px; }
+.order-modal-disclaimer {
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  line-height: 1.5;
+  margin-top: 8px;
+  padding: 10px 14px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+}
+
+@media (max-width: 480px) {
+  .order-modal-box {
+    padding: 28px 18px;
+  }
+  .order-card-btn {
+    font-size: 0.88rem;
+    padding: 12px 18px;
+  }
+}

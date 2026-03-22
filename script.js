@@ -283,6 +283,21 @@ document.addEventListener('DOMContentLoaded', () => {
       document.body.classList.toggle('lang-en', isEs);
     });
   }
+
+  // Order Card Modal
+  const orderModal = document.getElementById('orderModal');
+  if (orderModal) {
+    // Close on overlay click (outside the box)
+    orderModal.addEventListener('click', (e) => {
+      if (e.target === orderModal) orderModal.classList.remove('open');
+    });
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && orderModal.classList.contains('open')) {
+        orderModal.classList.remove('open');
+      }
+    });
+  }
 });
 
 // Safety net: remove loading screen after 5 seconds no matter what
