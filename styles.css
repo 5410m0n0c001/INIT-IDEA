@@ -100,11 +100,12 @@ body {
 /* Header */
 .header-video {
   position: relative;
-  height: 70vh;
-  min-height: 400px;
+  height: 90vh;
+  min-height: 650px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 15vh; /* Shifts content downwards natively */
   overflow: hidden;
   background: var(--bg);
 }
