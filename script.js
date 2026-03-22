@@ -181,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       const v = e.target;
+      // Skip intersection observer for footerVideo for more consistent playback
+      if (v.id === 'footerVideo') return;
+      
       if (e.isIntersecting) {
         v.play().catch(() => {});
       } else {
@@ -188,8 +191,8 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: isMobile ? 0.5 : 0.3, // Higher threshold on mobile for better performance
-    rootMargin: '50px' // Start loading videos 50px before they come into view
+    threshold: isMobile ? 0.5 : 0.3,
+    rootMargin: '50px'
   });
   vids.forEach(v => io.observe(v));
 
@@ -205,20 +208,47 @@ document.addEventListener('DOMContentLoaded', () => {
   // Handle autoplay with sound for footerVideo (respect user request)
   const footerVideo = document.getElementById('footerVideo');
   if (footerVideo) {
-    const playFooterWithSound = () => {
-      footerVideo.muted = false;
-      footerVideo.play().catch(err => {
-        console.log('Autoplay with sound was blocked. Waiting for interaction.');
+    footerVideo.preload = 'auto';
+    
+    // Ensure video plays as soon as it can
+    footerVideo.addEventListener('canplay', () => {
+      footerVideo.play().catch(() => {
+        // Fallback: browser blocked play with sound, try muted (should work with muted attribute)
+        footerVideo.muted = true;
+        footerVideo.play();
       });
+    }, { once: true });
+
+    const playFooterWithSound = () => {
+      // Unmute and ensure it's playing
+      footerVideo.muted = false;
+      const playPromise = footerVideo.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          console.log('Video unmuted and playing successfully');
+        }).catch(err => {
+          console.log('Play on interaction failed:', err);
+        });
+      }
+      
       // Remove these listeners once sound is active
-      ['click', 'touchstart', 'scroll'].forEach(ev => {
+      ['click', 'touchstart', 'scroll', 'mousedown'].forEach(ev => {
         window.removeEventListener(ev, playFooterWithSound);
       });
     };
 
-    ['click', 'touchstart', 'scroll'].forEach(ev => {
-      window.addEventListener(ev, playFooterWithSound, { once: true });
+    ['click', 'touchstart', 'scroll', 'mousedown'].forEach(ev => {
+      window.addEventListener(ev, playFooterWithSound, { once: true, passive: true });
     });
+
+    // Final attempt if already loaded
+    if (footerVideo.readyState >= 3) {
+      footerVideo.play().catch(() => {
+        footerVideo.muted = true;
+        footerVideo.play();
+      });
+    }
   }
 
   // Mobile-specific touch improvements
