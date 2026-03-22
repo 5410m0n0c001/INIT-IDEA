@@ -1,6 +1,6 @@
 {
-  "name": "{INIT /<IDEA>} — Digital Studio",
-  "short_name": "INIT-IDEA",
+  "name": "INIT IDEA — Digital Studio",
+  "short_name": "INIT IDEA",
   "description": "We transform ideas into digital solutions. Web design, development, AI integration, digital marketing, multimedia, and technical support.",
   "start_url": "./",
   "scope": "./",

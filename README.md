@@ -1,6 +1,6 @@
-# {INIT /<IDEA>} — Code. Create. Connect.
+# INIT IDEA — Code. Create. Connect.
 
-**Note:** The project name is literal text: `{INIT /<IDEA>}` (includes braces, slash and angle brackets). Do NOT modify the literal characters when copying the project name.
+An innovative boutique digital studio.
 
 This repository contains a GitHub Pages-ready static site. Assets expected: header-video.mp4, hero-video.mp4, footer-video.mp4, logo.png (logo.png is used only for meta and manifest).
 

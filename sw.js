@@ -1,4 +1,4 @@
-// Service Worker for {INIT /<IDEA>} - PWA Support for GitHub Pages
+// Service Worker for INIT IDEA - PWA Support for GitHub Pages
 const CACHE_NAME = 'init-idea-v1.0.2';
 const urlsToCache = [
   './',

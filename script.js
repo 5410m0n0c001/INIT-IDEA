@@ -298,17 +298,40 @@ function initTypingEffect() {
   const titles = document.querySelectorAll('.brand-title, .hero-copy h2, .services h3, .contact h3');
 
   titles.forEach(title => {
-    if (isMobile) return; // Skip on mobile for performance
+    if (isMobile) return; 
 
-    const text = title.textContent;
-    title.textContent = '';
+    const langSpanEs = title.querySelector('.lang-es');
+    const langSpanEn = title.querySelector('.lang-en');
+    
+    // Choose what to type: the whole title or just the active span
+    let targetElement = title;
+    let textToType = title.textContent;
+
+    if (langSpanEs && langSpanEn) {
+      const isEs = document.body.classList.contains('lang-es');
+      targetElement = isEs ? langSpanEs : langSpanEn;
+      textToType = targetElement.textContent;
+    }
+
+    // Reset content and prepare typing
+    const originalFullContent = title.innerHTML; 
+    
+    // If it's a bilingual title, we only clear the target span's text
+    // to avoid destroying the other span (important for language toggle later)
+    if (langSpanEs && langSpanEn) {
+      langSpanEs.textContent = document.body.classList.contains('lang-es') ? '' : langSpanEs.textContent;
+      langSpanEn.textContent = document.body.classList.contains('lang-en') ? '' : langSpanEn.textContent;
+    } else {
+      title.textContent = '';
+    }
+
     title.style.borderRight = '2px solid var(--accent)';
     title.style.animation = 'blink 1s infinite';
 
     let i = 0;
     function typeWriter() {
-      if (i < text.length) {
-        title.textContent += text.charAt(i);
+      if (i < textToType.length) {
+        targetElement.textContent += textToType.charAt(i);
         i++;
         setTimeout(typeWriter, isTablet ? 75 : 50);
       } else {
@@ -319,7 +342,6 @@ function initTypingEffect() {
       }
     }
 
-    // Start typing effect when element comes into view
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
