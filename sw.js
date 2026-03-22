@@ -1,5 +1,6 @@
-// Service Worker for INIT IDEA - PWA Support for GitHub Pages
-const CACHE_NAME = 'init-idea-v1.1.0';
+// Service Worker for INIT IDEA - PWA Support v2.0.0
+// FIXED: waitUntil syntax + removed non-existent GSAP URLs
+const CACHE_NAME = 'init-idea-v2.0.0';
 const urlsToCache = [
   './',
   './index.html',
@@ -8,9 +9,7 @@ const urlsToCache = [
   './manifest.json',
   './logo2.0.jpeg',
   'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
-  'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js'
+  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css'
 ];
 
 // Install event - cache resources
@@ -19,40 +18,47 @@ self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
-        console.log('Cache opened');
-        return cache.addAll(urlsToCache);
-      })
-      .catch((error) => {
-        console.log('Cache installation failed:', error);
+        console.log('[SW] Cache opened');
+        // addAll fails if ANY url fails - use individual adds to be resilient
+        return Promise.allSettled(
+          urlsToCache.map(url => cache.add(url).catch(e => console.warn('[SW] Failed to cache:', url, e)))
+        );
       })
   );
 });
 
-// Fetch event - serve from cache when offline
+// Fetch event - network first for navigation, cache first for assets
 self.addEventListener('fetch', (event) => {
+  // Skip non-GET and cross-origin video requests (never cache videos)
+  if (event.request.method !== 'GET') return;
+  const url = new URL(event.request.url);
+  if (url.pathname.match(/\.(mp4|webm|ogg)$/i)) return;
+
   event.respondWith(
     caches.match(event.request)
       .then((response) => {
-        // Return cached version or fetch from network
-        return response || fetch(event.request);
-      }
-    )
+        return response || fetch(event.request).catch(() => {
+          // If both cache and network fail, return nothing gracefully
+        });
+      })
   );
 });
 
-// Activate event - clean up old caches
+// Activate event - FIXED: single Promise.all in waitUntil
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    clients.claim(),
-    caches.keys().then((cacheNames) => {
-      return Promise.all(
-        cacheNames.map((cacheName) => {
-          if (cacheName !== CACHE_NAME) {
-            console.log('Deleting old cache:', cacheName);
-            return caches.delete(cacheName);
-          }
-        })
-      );
-    })
+    Promise.all([
+      clients.claim(),
+      caches.keys().then((cacheNames) => {
+        return Promise.all(
+          cacheNames.map((cacheName) => {
+            if (cacheName !== CACHE_NAME) {
+              console.log('[SW] Deleting old cache:', cacheName);
+              return caches.delete(cacheName);
+            }
+          })
+        );
+      })
+    ])
   );
 });

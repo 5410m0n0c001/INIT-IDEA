@@ -1,6 +1,6 @@
 /**
  * INIT IDEA - Core Script 2025
- * Consolidated and optimized for mobile performance.
+ * FIXED: Mobile crash bugs - video memory, SW, scroll, duplicate classes
  */
 
 // 1. Global constants and mobile detection
@@ -8,7 +8,13 @@ const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/
 const isTablet = !isMobile && (window.innerWidth <= 1024);
 const isGitHubPages = window.location.hostname.includes('github.io');
 
-// 2. Initialization functions
+// Detect low-end devices early (used across functions)
+const isLiteMode = isMobile && (
+  (navigator.deviceMemory !== undefined && navigator.deviceMemory < 4) ||
+  (navigator.hardwareConcurrency !== undefined && navigator.hardwareConcurrency < 4)
+);
+
+// 2. Loading Screen
 function startLoadingScreen() {
   const splashScreen = document.getElementById('splash-screen');
   const load = document.getElementById('loading-screen');
@@ -17,7 +23,7 @@ function startLoadingScreen() {
     if (load) {
       load.style.opacity = 0;
       load.setAttribute('aria-hidden', 'true');
-      setTimeout(() => load.remove(), 700);
+      setTimeout(() => { if (load.parentNode) load.remove(); }, 700);
     }
   };
 
@@ -25,7 +31,7 @@ function startLoadingScreen() {
     setTimeout(() => {
       splashScreen.classList.add('fade-out');
       setTimeout(() => {
-        splashScreen.remove();
+        if (splashScreen.parentNode) splashScreen.remove();
         setTimeout(removeLoading, 500);
       }, 800);
     }, 1800);
@@ -34,20 +40,23 @@ function startLoadingScreen() {
   }
 }
 
-// Scroll Reveal Animation System
+// 3. Scroll Reveal - lightweight, no GSAP
 function initScrollReveal() {
-  const elements = document.querySelectorAll('.hero, .services, .contact, .footer, .header-inner, .latest-project-card');
+  const elements = document.querySelectorAll('.services, .footer, .header-inner, .latest-project-card');
+  
+  if (!window.IntersectionObserver) return; // guard for old browsers
+  
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry, index) => {
       if (entry.isIntersecting) {
-        const delay = isMobile ? index * 50 : index * 100;
+        const delay = isMobile ? index * 30 : index * 80;
         setTimeout(() => entry.target.classList.add('revealed'), delay);
         observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.1,
-    rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
+    threshold: 0.05,
+    rootMargin: isMobile ? '0px 0px -30px 0px' : '0px 0px -80px 0px'
   });
 
   elements.forEach(el => {
@@ -56,25 +65,26 @@ function initScrollReveal() {
   });
 }
 
-// Typing Effect for Titles
+// 4. Typing Effect (desktop only - skip on mobile to save resources)
 function initTypingEffect() {
-  if (isMobile) return; 
-  const titles = document.querySelectorAll('.brand-title, .hero-copy h2, .services h3, .contact h3');
+  if (isMobile) return;
+  const titles = document.querySelectorAll('.brand-title, .services h3');
 
   titles.forEach(title => {
     const langSpanEs = title.querySelector('.lang-es');
     const langSpanEn = title.querySelector('.lang-en');
-    
+
     let targetElement = title;
     let textToType = title.textContent;
 
     if (langSpanEs && langSpanEn) {
       const isEs = document.body.classList.contains('lang-es');
       targetElement = isEs ? langSpanEs : langSpanEn;
-      textToType = targetElement.textContent;
+      textToType = targetElement.textContent.trim();
       langSpanEs.textContent = isEs ? '' : langSpanEs.textContent;
       langSpanEn.textContent = !isEs ? '' : langSpanEn.textContent;
     } else {
+      textToType = title.textContent.trim();
       title.textContent = '';
     }
 
@@ -86,7 +96,7 @@ function initTypingEffect() {
       if (i < textToType.length) {
         targetElement.textContent += textToType.charAt(i);
         i++;
-        setTimeout(typeWriter, isTablet ? 75 : 50);
+        setTimeout(typeWriter, 55);
       } else {
         setTimeout(() => {
           title.style.borderRight = 'none';
@@ -107,79 +117,122 @@ function initTypingEffect() {
   });
 }
 
-// Video optimizations
+// 5. Video optimizations - prevents mobile memory crash
 function initVideoOptimizations() {
-  const vids = document.querySelectorAll('video');
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      const v = e.target;
-      if (v.id === 'footerVideo') return;
-      if (e.isIntersecting) {
-        v.play().catch(() => {});
-      } else {
-        v.pause();
-      }
-    });
-  }, {
-    threshold: isMobile ? 0.5 : 0.3,
-    rootMargin: '50px'
-  });
+  const headerVideo = document.getElementById('headerVideo');
+  const footerVideo = document.getElementById('footerVideo');
+  const projectVideos = document.querySelectorAll('.project-card-video');
 
-  // Detect if device is low-end or struggling (Lite Mode)
-  const isLiteMode = isMobile && (navigator.deviceMemory < 4 || navigator.hardwareConcurrency < 4);
-  
-  vids.forEach(v => {
-    // If Lite Mode, only allow header video to play
-    if (isLiteMode && v.id !== 'headerVideo' && v.id !== 'footerVideo') {
-      v.autoplay = false;
-      v.preload = 'none';
-      return;
+  // --- HEADER VIDEO ---
+  if (headerVideo) {
+    headerVideo.muted = true;
+    headerVideo.setAttribute('playsinline', 'true');
+    headerVideo.setAttribute('webkit-playsinline', 'true');
+    if (isMobile) {
+      headerVideo.preload = 'metadata';
     }
-
-    io.observe(v);
-    v.style.filter = 'none';
-    if (isMobile) v.preload = 'metadata';
-    v.setAttribute('playsinline', 'true');
-    v.setAttribute('webkit-playsinline', 'true');
-    if (v.id !== 'footerVideo') v.muted = true;
-
-    // Error handling to prevent repetitive play attempts
-    v.addEventListener('error', () => {
-      console.log('Video error on:', v.src);
-      v.style.display = 'none'; // Hide broken videos to save layout
-    });
-  });
-}
-
-// 2025 effects initialization
-function init2025Effects() {
-  initScrollReveal();
-  initTypingEffect();
-  initVideoOptimizations();
-  if (isGitHubPages) console.log('🚀 Visual effects initialized');
-}
-
-
-// ========================================
-// 2025 MODERN VISUAL EFFECTS - OPTIMIZED JAVASCRIPT
-// ========================================
-
-// 3. Main DOMContentLoaded entry point
-document.addEventListener('DOMContentLoaded', () => {
-  // Service Worker
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW failed:', err));
+    headerVideo.play().catch(() => {});
+    headerVideo.addEventListener('error', () => {
+      headerVideo.style.display = 'none';
     });
   }
 
-  // Body classes
-  if (isMobile) document.body.classList.add('mobile-device');
-  document.body.classList.add('lang-es');
+  // --- FOOTER VIDEO: load only when visible ---
+  if (footerVideo) {
+    footerVideo.muted = true;
+    footerVideo.preload = 'none'; // Don't preload until visible
+    footerVideo.setAttribute('playsinline', 'true');
+    footerVideo.setAttribute('webkit-playsinline', 'true');
 
-  // Initialization
+    const footerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // Only now load and play
+          if (!footerVideo.src && footerVideo.querySelector('source')) {
+            footerVideo.load();
+          }
+          footerVideo.play().catch(() => {});
+          footerObserver.unobserve(footerVideo);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    footerObserver.observe(footerVideo);
+    footerVideo.addEventListener('error', () => {
+      footerVideo.style.display = 'none';
+    });
+  }
+
+  // --- PROJECT CARD VIDEOS: pause when off-screen to save memory ---
+  if (projectVideos.length > 0) {
+    // In lite mode (low-end phones), disable all project card videos
+    if (isLiteMode) {
+      projectVideos.forEach(v => {
+        v.preload = 'none';
+        v.autoplay = false;
+        // Replace with poster image fallback
+        const card = v.closest('.project-card-bg');
+        if (card) {
+          v.style.display = 'none';
+          card.style.background = 'var(--card)';
+        }
+      });
+      console.log('[INIT] Lite mode: project videos disabled');
+      return;
+    }
+
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        const v = e.target;
+        if (e.isIntersecting) {
+          if (v.preload === 'none') {
+            v.preload = 'metadata';
+            v.load();
+          }
+          v.play().catch(() => {});
+        } else {
+          v.pause();
+          // Free memory on mobile when well off-screen
+          if (isMobile) {
+            try { v.currentTime = 0; } catch (_) {}
+          }
+        }
+      });
+    }, {
+      threshold: isMobile ? 0.5 : 0.25,
+      rootMargin: isMobile ? '0px' : '100px'
+    });
+
+    projectVideos.forEach(v => {
+      v.muted = true;
+      v.preload = isMobile ? 'none' : 'metadata'; // don't preload at all on mobile
+      v.setAttribute('playsinline', 'true');
+      v.setAttribute('webkit-playsinline', 'true');
+      v.addEventListener('error', () => { v.style.display = 'none'; });
+      videoObserver.observe(v);
+    });
+  }
+}
+
+// 6. Main DOMContentLoaded entry point
+document.addEventListener('DOMContentLoaded', () => {
+  // Service Worker registration
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js').catch(err => console.warn('[SW] registration failed:', err));
+    });
+  }
+
+  // Mobile body class (DO NOT add lang-es here - already in HTML)
+  if (isMobile) document.body.classList.add('mobile-device');
+
+  // Initialize everything
   startLoadingScreen();
-  init2025Effects();
+  initScrollReveal();
+  initTypingEffect();
+  initVideoOptimizations();
+
+  if (isGitHubPages) console.log('[INIT] 🚀 INIT IDEA loaded');
 
   // Social Toggle
   const socialToggle = document.getElementById('socialToggle');
@@ -190,7 +243,7 @@ document.addEventListener('DOMContentLoaded', () => {
     socialToggle.addEventListener('click', (e) => {
       e.stopPropagation();
       const isOpen = socialDropdown.classList.toggle('open');
-      socialToggle.setAttribute('aria-expanded', isOpen);
+      socialToggle.setAttribute('aria-expanded', String(isOpen));
     });
 
     document.addEventListener('click', (e) => {
@@ -232,10 +285,12 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// Global error handling fallback
+// Safety net: remove loading screen after 5 seconds no matter what
 window.addEventListener('load', () => {
   setTimeout(() => {
     const load = document.getElementById('loading-screen');
-    if (load) load.style.display = 'none';
+    if (load && load.parentNode) load.remove();
+    const splash = document.getElementById('splash-screen');
+    if (splash && splash.parentNode) splash.remove();
   }, 5000);
-});
+});
