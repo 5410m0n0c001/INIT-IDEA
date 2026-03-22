@@ -532,3 +532,12 @@ body {
 .project-buttons {
   display: none; /* Hide the legacy inline project buttons if any remain */
 }
+.btn-outline {
+  background: transparent;
+  color: var(--text);
+  border: 1px solid var(--glass-border);
+}
+.btn-outline:hover {
+  background: var(--glass-border);
+  transform: translateY(-2px);
+}
