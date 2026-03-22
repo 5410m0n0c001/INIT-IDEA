@@ -1000,4 +1000,21 @@ body {
     font-size: 1rem;
     padding: 12px 18px;
   }
+}/* --- UI HOTFIX FOR DEMO CARD OVERLAP --- */
+.main-project-module {
+    aspect-ratio: auto !important;
+    min-height: 380px !important;
+}
+.main-project-module .project-link {
+    position: relative !important;
+    bottom: auto !important;
+    left: auto !important;
+    margin-bottom: 15px !important;
+}
+.order-card-btn {
+    overflow: visible !important;
+    padding: 12px 20px !important;
+    min-height: 55px !important;
+    height: auto !important;
+    line-height: 1.4 !important;
 }
