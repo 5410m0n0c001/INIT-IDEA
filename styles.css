@@ -236,6 +236,8 @@ body {
 .card:hover {
   background: var(--card-hover);
   transform: translateY(-4px);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 45px rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 .card h4 {
   font-size: 1.2rem;
@@ -294,6 +296,8 @@ body {
 }
 .latest-project-card:hover {
   transform: scale(1.02);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.15), 0 0 45px rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 /* Make the main module stand out minimally */
 .main-project-module {

@@ -140,16 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile-friendly animations (reduced complexity for mobile)
     if (isMobile) {
-      gsap.from('.card', {
-        y: 20,
-        opacity: 0,
-        stagger: 0.08,
-        duration: 0.6,
-        scrollTrigger: {
-          trigger: '.services',
-          start: 'top 85%'
-        }
-      });
+      // Intentionally left blank to protect .card native opacity
+
     } else {
       // Desktop parallax
       gsap.to('#headerVideo', {
@@ -173,17 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
           scrub: 0.6
         }
       });
+      // Removed .card gsap animation to preserve visibility
 
-      gsap.from('.card', {
-        y: 30,
-        opacity: 0,
-        stagger: 0.12,
-        duration: 0.8,
-        scrollTrigger: {
-          trigger: '.services',
-          start: 'top 80%'
-        }
-      });
     }
   }
 
