@@ -206,11 +206,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const footerVideo = document.getElementById('footerVideo');
   if (footerVideo) {
     const playFooterWithSound = () => {
-      if (footerVideo.paused) {
-        footerVideo.play().catch(err => {
-          console.log('Autoplay with sound was blocked. Waiting for interaction.');
-        });
-      }
+      footerVideo.muted = false;
+      footerVideo.play().catch(err => {
+        console.log('Autoplay with sound was blocked. Waiting for interaction.');
+      });
       // Remove these listeners once sound is active
       ['click', 'touchstart', 'scroll'].forEach(ev => {
         window.removeEventListener(ev, playFooterWithSound);
