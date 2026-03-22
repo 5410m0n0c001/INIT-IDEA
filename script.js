@@ -298,12 +298,17 @@ function initParallax() {
   const parallaxElements = document.querySelectorAll('.header-bg-video, .hero-video, .footer-bg');
 
   function updateParallax() {
-    const scrolled = window.pageYOffset;
-
-    parallaxElements.forEach((element, index) => {
-      const speed = index * 0.3 + 0.2; // Different speeds for depth effect
-      const yPos = -(scrolled * speed);
-      element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+    parallaxElements.forEach((element) => {
+      const parent = element.parentElement;
+      if (!parent) return;
+      
+      const rect = parent.getBoundingClientRect();
+      // Only animate if the element is somewhat near the viewport
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        const speed = 0.15; // Subtle parallax
+        const yPos = (rect.top) * speed;
+        element.style.transform = `translate3d(0, ${yPos}px, 0)`;
+      }
     });
 
     ticking = false;
