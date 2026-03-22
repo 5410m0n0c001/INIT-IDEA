@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="msapplication-tap-highlight" content="no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>Salomón Ramírez Ortega | INIT IDEA — Tecnología, Creatividad e Innovación Digital</title>
+
+  <!-- Optimized meta tags for SEO and social sharing -->
+  <meta name="description" content="Desarrollador multidisciplinario y fundador de INIT IDEA, laboratorio creativo enfocado en innovación digital, IA aplicada y diseño tecnológico." />
+  <meta name="author" content="Salomón Ramírez Ortega" />
+  <meta name="keywords" content="Salomón Ramírez Ortega, INIT IDEA, desarrollo web, IA aplicada, diseño digital, innovación tecnológica, automatización inteligente, proyectos prácticos" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Init Idea - Portafolio de Salomón Ramírez" />
+  <meta property="og:description" content="Desarrollador web, analista y creador de soluciones digitales. Explora mis proyectos en Init Idea." />
+  <meta property="og:image" content="https://5410m0n0c001.github.io/INIT-IDEA/logo2.0.png" />
+  <meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_MX" />
+  <meta property="og:site_name" content="INIT IDEA" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Init Idea - Salomón Ramírez" />
+  <meta name="twitter:description" content="Explora proyectos y experimentos digitales creados por Salomón Ramírez." />
+  <meta name="twitter:image" content="https://5410m0n0c001.github.io/INIT-IDEA/logo2.0.png" />
+  <meta name="twitter:creator" content="@alexros2_0" />
+  <meta name="theme-color" content="#00FFFF" />
+
+  <!-- Favicon and icons -->
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- Fonts with preload for performance -->
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome with integrity check -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- GSAP + ScrollTrigger with preload -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <!-- SPLASH SCREEN - Logo introduction -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading INIT IDEA">
+    <div class="splash-content">
+      <img src="logo2.0.jpeg" alt="INIT IDEA Logo" class="splash-logo">
+    </div>
+  </div>
+
+  <!-- LOADING SCREEN - Optimized for accessibility -->
+  <div id="loading-screen" class="loading-screen" role="status" aria-live="polite" aria-label="Loading application">
+    <div class="loading-content">
+      <h1 class="brand-title">{INIT /<IDEA>}</h1>
+      <p class="tagline">Code. Create. Connect.</p>
+      <div class="progress" aria-hidden="true"><span></span></div>
+    </div>
+  </div>
+
+  <!-- CABECERA con hero video -->
+  <header class="header-video" role="banner" id="home">
+    <video id="headerVideo" class="header-bg-video" autoplay muted loop playsinline preload="auto" poster="" aria-hidden="true" style="width: 100%; height: 100%; object-fit: cover; position: absolute; z-index: 0;">
+      <source src="assets/hero-video.mp4" type="video/mp4">
+    </video>
+
+    <!-- Glass panel for readable text (keeps video visually clear) -->
+    <div class="header-glass" aria-hidden="false">
+      <div class="header-inner">
+        <div class="brand-text">
+          <h1 class="brand-title" style="font-size: clamp(2rem, 5vw, 3.5rem); margin-bottom: 5px;">{INIT /<IDEA>}</h1>
+          <h2 id="hero-heading" style="font-size: clamp(1.2rem, 3vw, 2rem); margin-bottom: 10px; color: var(--text);">Transformamos ideas en soluciones digitales</h2>
+          <p class="slogan" style="margin-bottom: 20px;">Diseño Web, Desarrollo, Integración de IA, Marketing Digital y Multimedia.</p>
+        </div>
+
+        <nav class="cta-row" aria-label="Primary actions">
+          <a class="btn btn-primary" href="tel:+527772383264" rel="nofollow" aria-label="Call us at +52 777 238 3264">
+            <i class="fas fa-phone" aria-hidden="true"></i> Call Now
+          </a>
+          <a class="btn btn-primary" href="https://wa.me/527772383264?text=Me%20quisiera%20informaci%C3%B3n" target="_blank" rel="noopener noreferrer" aria-label="Send WhatsApp message">
+            <i class="fab fa-whatsapp" aria-hidden="true"></i> Send WhatsApp
+          </a>
+          <a class="btn btn-primary" href="mailto:5410m0n.r4m1r3z@gmail.com" aria-label="Send email to 5410m0n.r4m1r3z@gmail.com">
+            <i class="fas fa-envelope" aria-hidden="true"></i> Send Email
+          </a>
+          <a class="btn btn-primary" href="https://t.me/initidea" target="_blank" rel="noopener noreferrer" aria-label="Send Telegram message">
+            <i class="fab fa-telegram-plane" aria-hidden="true"></i> Send Telegram
+          </a>
+          <a class="btn btn-primary" href="contact.vcf" download="INIT-IDEA-contact.vcf" aria-label="Download contact information">
+            <i class="fas fa-address-book" aria-hidden="true"></i> Add Contact
+          </a>
+          <button id="shareBtn" class="btn btn-primary" type="button" aria-label="Share INIT IDEA">
+            <i class="fas fa-share-alt" aria-hidden="true"></i> Compartir
+          </button>
+          <a class="btn btn-primary" href="tel:+527777107522" aria-label="Call studio phone number +52 777 710 7522">Studio phone number</a>
+        </nav>
+        <h3 id="contact-heading" style="margin-top: 15px; font-size: 1.6rem; font-weight: 600; color: var(--text);">Contacto</h3>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- SERVICES -->
+    <section class="services" id="services" aria-labelledby="services-heading">
+      <h3 id="services-heading">Servicios Principales</h3>
+      <div class="grid">
+        <article class="card">
+          <h4>Diseño Web</h4>
+          <p>Creación de sitios web estéticos y funcionales centrados en la experiencia de usuario.</p>
+        </article>
+        <article class="card">
+          <h4>Desarrollo Web</h4>
+          <p>Programación avanzada, integraciones y plataformas web robustas a medida.</p>
+        </article>
+        <article class="card">
+          <h4>Marketing Digital</h4>
+          <p>Estrategias SEO, SEM, gestión de redes sociales y posicionamiento de marca.</p>
+        </article>
+        <article class="card">
+          <h4>Consultoría</h4>
+          <p>Asesoría tecnológica profesional para automatizar y optimizar tus procesos empresariales.</p>
+        </article>
+        <article class="card">
+          <h4>Tarjetas de presentación digitales</h4>
+          <p>Tarjetas inteligentes interactivas para compartir tu contacto de forma moderna y eficiente.</p>
+        </article>
+        <article class="card">
+          <h4>Invitaciones digitales</h4>
+          <p>Invitaciones web premium personalizadas para bodas, eventos y celebraciones.</p>
+        </article>
+        <article class="card">
+          <h4>Menús digitales</h4>
+          <p>Menús con código QR dinámicos y atractivos para restaurantes y cafeterías.</p>
+        </article>
+        <article class="card">
+          <h4>Tiendas online</h4>
+          <p>Desarrollo de e-commerce completos con pasarelas de pago y gestión de inventario.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- HERO-LEVEL SOCIAL MEDIA SECTION - Repositioned below hero -->
+  <aside id="socialContainer" class="social-container" aria-label="Social media">
+    <!-- Social media toggle button with logo -->
+    <button id="socialToggle" class="social-toggle" aria-label="Toggle social media links" aria-expanded="false">
+      <img src="logo2.0.jpeg" alt="Social Media Toggle" class="social-logo">
+    </button>
+
+    <!-- Collapsible social media links -->
+    <div id="socialDropdown" class="social-dropdown" aria-hidden="true">
+      <a class="social" href="https://www.facebook.com/profile.php?id=61582855106237" target="_blank" rel="noopener noreferrer" aria-label="Visit Facebook page">
+        <i class="fab fa-facebook-f" aria-hidden="true"></i>
+        <span>Facebook</span>
+      </a>
+      <a class="social" href="https://www.instagram.com/alexros2.0/" target="_blank" rel="noopener noreferrer" aria-label="Visit Instagram profile">
+        <i class="fab fa-instagram" aria-hidden="true"></i>
+        <span>Instagram</span>
+      </a>
+      <a class="social" href="https://discord.gg/4kHSzxNz" target="_blank" rel="noopener noreferrer" aria-label="Join Discord server">
+        <i class="fab fa-discord" aria-hidden="true"></i>
+        <span>Discord</span>
+      </a>
+      <a class="social" href="https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/" target="_blank" rel="noopener noreferrer" aria-label="Visit LinkedIn profile">
+        <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+        <span>LinkedIn</span>
+      </a>
+      <a class="social" href="https://x.com/alexros2_0" target="_blank" rel="noopener noreferrer" aria-label="Visit X (Twitter) profile">
+        <i class="fab fa-x-twitter" aria-hidden="true"></i>
+        <span>X (Twitter)</span>
+      </a>
+      <a class="social" href="https://youtube.com/@salomonramirezortega" target="_blank" rel="noopener noreferrer" aria-label="Visit YouTube channel">
+        <i class="fab fa-youtube" aria-hidden="true"></i>
+        <span>YouTube</span>
+      </a>
+      <a class="social" href="https://github.com/5410m0n0c001" target="_blank" rel="noopener noreferrer" aria-label="Visit GitHub profile">
+        <i class="fab fa-github" aria-hidden="true"></i>
+        <span>GitHub</span>
+      </a>
+      <a class="social" href="https://www.tiktok.com/@alexros2.0" target="_blank" rel="noopener noreferrer" aria-label="Visit TikTok profile">
+        <i class="fab fa-tiktok" aria-hidden="true"></i>
+        <span>TikTok</span>
+      </a>
+    </div>
+
+    <!-- Follow Us legend -->
+    <div class="social-legend">Follow Us</div>
+  </aside>
+
+  <!-- HERO-LEVEL CHAT BUTTON -->
+  <div class="hero-chat">
+    <a class="chat-btn" href="https://ai.studio/apps/drive/1OHV2NEYXJLeBWvhMV8KQe_spqNI46zL2" target="_blank" rel="noopener noreferrer" title="Chatea con nuestro agente" aria-label="Chat with our agent">
+      <i class="fas fa-comments" aria-hidden="true"></i>
+      <span>¿Tienes dudas conversa con nuestro agente</span>
+    </a>
+    <!-- Mobile chat legend -->
+    <div class="chat-legend">Talk to our agent</div>
+  </div>
+
+  <!-- OUR LATEST PROJECTS - New modern section -->
+  <section class="latest-projects" id="latest-projects" aria-labelledby="latest-projects-heading">
+    <div class="latest-projects-container">
+      <div class="latest-projects-header">
+        <h2 id="latest-projects-heading" class="latest-projects-title">Our Latest Projects</h2>
+        <p class="latest-projects-subtitle">Explore some of our most recent creative developments.</p>
+      </div>
+
+      <div class="latest-projects-grid">
+        <!-- Explora el demo en vivo -->
+        <div class="latest-project-card main-project-module" data-project="demo-en-vivo">
+          <div class="project-card-bg">
+            <img src="logo2.0.jpeg" alt="Tarjeta de presentación Digital" class="project-card-image demo-image-bg">
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-id-badge" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Explora el demo en vivo</h3>
+              <p class="project-description">Tarjeta de presentación digital</p>
+            </div>
+            <a href="https://5410m0n0c001.github.io/Tarjeta-de-presentaci-n-digital-demo-/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Explora el demo en vivo">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Rock City Project -->
+        <div class="latest-project-card" data-project="rock-city">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/c2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-music" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Rock City</h3>
+              <p class="project-description">Interactive music venue experience</p>
+            </div>
+            <a href="https://5410m0n0c001.github.io/Rock-City/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Rock City project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- All In One Cabo Project -->
+        <div class="latest-project-card" data-project="all-in-one-cabo">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/c4.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-umbrella-beach" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">All In One Cabo</h3>
+              <p class="project-description">Comprehensive tourism platform</p>
+            </div>
+            <a href="https://5410m0n0c001.github.io/ALL-IN-ONE-CABO-/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View All In One Cabo project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Volkswagen Cresta Cuernavaca Project -->
+        <div class="latest-project-card" data-project="volkswagen-cresta">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/lt.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-car" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Volkswagen Cresta Cuernavaca</h3>
+              <p class="project-description">Automotive dealership showcase</p>
+            </div>
+            <a href="https://5410m0n0c001.github.io/Erick-Salgado-Castrejon-cresta-volks-wagen-cuernavaca/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Volkswagen Cresta Cuernavaca project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Primavera Events Group Project -->
+        <div class="latest-project-card" data-project="primavera-events">
+          <div class="project-card-bg">
+            <img src="assets/b2.png" alt="Primavera Events Group" class="project-card-image" aria-hidden="true">
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Primavera Events Group</h3>
+              <p class="project-description">Event planning and management</p>
+            </div>
+            <a href="https://primaveraeventsgroup.com/home" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Primavera Events Group project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Richard Hernández Project -->
+        <div class="latest-project-card" data-project="richard-hernandez">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/r.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-gem" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Richard Hernández</h3>
+              <p class="project-description">Wedding & Event Creative Director</p>
+            </div>
+            <a href="https://primaveraeventsgroup.com/richard-hernandez/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Richard Hernández project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Jessy Project -->
+        <div class="latest-project-card" data-project="jessy">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/y.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-heart" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Jessy</h3>
+              <p class="project-description">Wedding & Event Planner</p>
+            </div>
+            <a href="https://primaveraeventsgroup.com/jessy/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Jessy project">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Invitaciones Digitales Project -->
+        <div class="latest-project-card" data-project="invitaciones-digitales">
+          <div class="project-card-bg">
+            <video class="project-card-video" autoplay muted loop playsinline preload="metadata" poster="" aria-hidden="true">
+              <source src="assets/sobre.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="project-card-overlay">
+            <div class="project-card-content">
+              <div class="project-icon">
+                <i class="fas fa-envelope-open-text" aria-hidden="true"></i>
+              </div>
+              <h3 class="project-title">Invitaciones digitales</h3>
+              <p class="project-description">Invitaciones digitales personalizadas</p>
+            </div>
+            <a href="https://5410m0n0c001.github.io/invitacion-demo/" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="Ver el proyecto Invitaciones digitales">
+              <span>View Project</span>
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER with full-clarity video (no blur) -->
+  <footer class="footer" role="contentinfo">
+    <video id="footerVideo" class="footer-bg" autoplay muted loop playsinline preload="auto" poster="" aria-hidden="true">
+      <source src="assets/footer-video.mp4" type="video/mp4" />
+    </video>
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <div>
+          <h4>{INIT /<IDEA>}</h4>
+          <p>Code. Create. Connect.</p>
+        </div>
+        <div class="footer-contacts">
+          <!-- Contact buttons available above -->
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
