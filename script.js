@@ -25,7 +25,13 @@ document.addEventListener('DOMContentLoaded', () => {
       // Set mobile-optimized video attributes
       video.setAttribute('playsinline', 'true');
       video.setAttribute('webkit-playsinline', 'true');
-      video.muted = true; // Ensure autoplay works on mobile
+      
+      // Mute all except footerVideo to ensure autoplay works for most videos
+      if (video.id !== 'footerVideo') {
+        video.muted = true;
+      } else {
+        video.muted = false; // Respect user request for sound on footer video
+      }
     });
   }
 
@@ -195,6 +201,26 @@ document.addEventListener('DOMContentLoaded', () => {
       v.preload = 'metadata'; // Reduce mobile data usage
     }
   });
+
+  // Handle autoplay with sound for footerVideo (respect user request)
+  const footerVideo = document.getElementById('footerVideo');
+  if (footerVideo) {
+    const playFooterWithSound = () => {
+      if (footerVideo.paused) {
+        footerVideo.play().catch(err => {
+          console.log('Autoplay with sound was blocked. Waiting for interaction.');
+        });
+      }
+      // Remove these listeners once sound is active
+      ['click', 'touchstart', 'scroll'].forEach(ev => {
+        window.removeEventListener(ev, playFooterWithSound);
+      });
+    };
+
+    ['click', 'touchstart', 'scroll'].forEach(ev => {
+      window.addEventListener(ev, playFooterWithSound, { once: true });
+    });
+  }
 
   // Mobile-specific touch improvements
   if (isMobile) {

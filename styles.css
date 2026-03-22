@@ -516,10 +516,33 @@ body {
 
 /* Footer */
 .footer {
-  padding: 60px 20px;
-  border-top: 1px solid var(--glass-border);
+  position: relative;
+  padding: 80px 20px;
+  margin-top: 40px;
+  overflow: hidden;
   text-align: center;
-  background: var(--bg);
+}
+
+.footer-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.footer-glass {
+  position: relative;
+  z-index: 2;
+  padding: 40px 20px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  max-width: 900px;
+  margin: 0 auto;
 }
 .footer-inner h4 {
   font-size: 1.5rem;
