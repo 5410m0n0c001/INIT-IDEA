@@ -165,19 +165,19 @@ function initVideoOptimizations() {
 
   // --- PROJECT CARD VIDEOS: pause when off-screen to save memory ---
   if (projectVideos.length > 0) {
-    // In lite mode (low-end phones), disable all project card videos
-    if (isLiteMode) {
+    // On all mobile devices or low-end PCs, disable project card videos to prevent severe OOM crashes
+    if (isMobile || isLiteMode) {
       projectVideos.forEach(v => {
         v.preload = 'none';
         v.autoplay = false;
-        // Replace with poster image fallback
+        // Replace with static fallback
         const card = v.closest('.project-card-bg');
         if (card) {
           v.style.display = 'none';
           card.style.background = 'var(--card)';
         }
       });
-      console.log('[INIT] Lite mode: project videos disabled');
+      console.log('[INIT] Mobile mode: project videos disabled to prevent WebKit crashing');
       return;
     }
 

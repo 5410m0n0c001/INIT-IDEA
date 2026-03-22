@@ -1,6 +1,6 @@
-// Service Worker for INIT IDEA - PWA Support v2.0.1
+// Service Worker for INIT IDEA - PWA Support v2.0.2
 // FIXED: waitUntil syntax + removed non-existent GSAP URLs
-const CACHE_NAME = 'init-idea-v2.0.1';
+const CACHE_NAME = 'init-idea-v2.0.2';
 const urlsToCache = [
   './',
   './index.html',
