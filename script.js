@@ -895,6 +895,21 @@ document.addEventListener('DOMContentLoaded', () => {
     v.style.willChange = 'transform';
   });
 
+  // Language toggle system
+  document.body.classList.add('lang-es');
+  const langToggle = document.getElementById('langToggle');
+  if (langToggle) {
+    langToggle.addEventListener('click', () => {
+      if (document.body.classList.contains('lang-es')) {
+        document.body.classList.remove('lang-es');
+        document.body.classList.add('lang-en');
+      } else {
+        document.body.classList.remove('lang-en');
+        document.body.classList.add('lang-es');
+      }
+    });
+  }
+
   // Enhanced accessibility
   document.body.addEventListener('keyup', (e) => {
     if (e.key === 'Tab') {

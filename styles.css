@@ -16,6 +16,10 @@
   --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
 
+/* Language Switch System */
+body.lang-en .lang-es { display: none !important; }
+body.lang-es .lang-en { display: none !important; }
+
 * {
   box-sizing: border-box;
   margin: 0;
