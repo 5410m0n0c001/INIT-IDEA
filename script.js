@@ -125,13 +125,29 @@ function initVideoOptimizations() {
     rootMargin: '50px'
   });
 
+  // Detect if device is low-end or struggling (Lite Mode)
+  const isLiteMode = isMobile && (navigator.deviceMemory < 4 || navigator.hardwareConcurrency < 4);
+  
   vids.forEach(v => {
+    // If Lite Mode, only allow header video to play
+    if (isLiteMode && v.id !== 'headerVideo' && v.id !== 'footerVideo') {
+      v.autoplay = false;
+      v.preload = 'none';
+      return;
+    }
+
     io.observe(v);
     v.style.filter = 'none';
     if (isMobile) v.preload = 'metadata';
     v.setAttribute('playsinline', 'true');
     v.setAttribute('webkit-playsinline', 'true');
     if (v.id !== 'footerVideo') v.muted = true;
+
+    // Error handling to prevent repetitive play attempts
+    v.addEventListener('error', () => {
+      console.log('Video error on:', v.src);
+      v.style.display = 'none'; // Hide broken videos to save layout
+    });
   });
 }
 

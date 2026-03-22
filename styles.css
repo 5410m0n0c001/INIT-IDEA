@@ -412,8 +412,8 @@ body {
   border-radius: 50%;
   border: 1px solid var(--glass-border);
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -442,8 +442,8 @@ body {
   visibility: hidden;
   transition: all var(--transition-smooth);
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-radius: 16px;
   padding: 12px;
   border: 1px solid var(--glass-border);
@@ -473,7 +473,7 @@ body {
   background: var(--glass-bg);
   padding: 4px 10px;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
 }
 
@@ -510,7 +510,7 @@ body {
   background: var(--glass-bg);
   padding: 4px 10px;
   border-radius: 12px;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(8px);
   border: 1px solid var(--glass-border);
 }
 
@@ -542,8 +542,8 @@ body {
   z-index: 2;
   padding: 50px 30px;
   background: rgba(0, 0, 0, 0.3); /* More transparent to see the video */
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-radius: var(--radius);
   border: 1px solid rgba(255, 255, 255, 0.1);
   max-width: 800px;

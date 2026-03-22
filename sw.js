@@ -1,5 +1,5 @@
 // Service Worker for INIT IDEA - PWA Support for GitHub Pages
-const CACHE_NAME = 'init-idea-v1.0.2';
+const CACHE_NAME = 'init-idea-v1.1.0';
 const urlsToCache = [
   './',
   './index.html',
@@ -7,10 +7,6 @@ const urlsToCache = [
   './script.js',
   './manifest.json',
   './logo2.0.jpeg',
-  './assets/hero-video.mp4',
-  './assets/footer.mp4',
-  './assets/c2.mp4',
-  './assets/c4.mp4',
   'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js',
@@ -19,6 +15,7 @@ const urlsToCache = [
 
 // Install event - cache resources
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => {
@@ -46,6 +43,7 @@ self.addEventListener('fetch', (event) => {
 // Activate event - clean up old caches
 self.addEventListener('activate', (event) => {
   event.waitUntil(
+    clients.claim(),
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
