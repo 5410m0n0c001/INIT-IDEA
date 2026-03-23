@@ -53,7 +53,7 @@
   <!-- SPLASH SCREEN - Logo introduction -->
   <div id="splash-screen" class="splash-screen" role="status" aria-live="polite" aria-label="Loading INIT IDEA">
     <div class="splash-content">
-      <img src="logo2.0.jpeg" alt="INIT IDEA Logo" class="splash-logo">
+      <img src="logo2.0.jpeg" alt="INIT IDEA Logo" class="splash-logo" loading="eager">
     </div>
   </div>
 
@@ -163,7 +163,7 @@
   <aside id="socialContainer" class="social-container" aria-label="Social media">
     <!-- Social media toggle button with logo -->
     <button id="socialToggle" class="social-toggle" aria-label="Toggle social media links" aria-expanded="false">
-      <img src="logo2.0.jpeg" alt="Social Media Toggle" class="social-logo">
+      <img src="logo2.0.jpeg" alt="Social Media Toggle" class="social-logo" loading="lazy">
     </button>
 
     <!-- Collapsible social media links -->
@@ -228,7 +228,7 @@
         <!-- Explora el demo en vivo -->
         <div class="latest-project-card main-project-module" data-project="demo-en-vivo">
           <div class="project-card-bg">
-            <img src="logo2.0.jpeg" alt="Tarjeta de presentación Digital" class="project-card-image demo-image-bg">
+            <img src="logo2.0.jpeg" alt="Tarjeta de presentación Digital" class="project-card-image demo-image-bg" loading="lazy">
           </div>
           <div class="project-card-overlay">
             <div class="project-card-content">
@@ -255,8 +255,8 @@
         <!-- Rock City Project -->
         <div class="latest-project-card" data-project="rock-city">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/c2.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/c2.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -278,8 +278,8 @@
         <!-- All In One Cabo Project -->
         <div class="latest-project-card" data-project="all-in-one-cabo">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/c4.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/c4.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -301,8 +301,8 @@
         <!-- Volkswagen Cresta Cuernavaca Project -->
         <div class="latest-project-card" data-project="volkswagen-cresta">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/lt.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/lt.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -324,7 +324,7 @@
         <!-- Primavera Events Group Project -->
         <div class="latest-project-card" data-project="primavera-events">
           <div class="project-card-bg">
-            <img src="assets/b2.png" alt="Primavera Events Group" class="project-card-image" aria-hidden="true">
+            <img src="assets/b2.png" alt="Primavera Events Group" class="project-card-image" aria-hidden="true" loading="lazy">
           </div>
           <div class="project-card-overlay">
             <div class="project-card-content">
@@ -344,8 +344,8 @@
         <!-- Richard Hernández Project -->
         <div class="latest-project-card" data-project="richard-hernandez">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/r.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/r.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -367,8 +367,8 @@
         <!-- Jessy Project -->
         <div class="latest-project-card" data-project="jessy">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/y.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/y.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -390,8 +390,8 @@
         <!-- Invitaciones Digitales Project -->
         <div class="latest-project-card" data-project="invitaciones-digitales">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="metadata" aria-hidden="true">
-              <source src="assets/sobre.mp4" type="video/mp4">
+            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
+              <source data-src="assets/sobre.mp4" type="video/mp4">
               Your browser does not support the video tag.
             </video>
           </div>
@@ -416,7 +416,7 @@
   <!-- FOOTER with full-clarity video (no blur) -->
   <footer class="footer" role="contentinfo">
     <video id="footerVideo" class="footer-bg" muted loop playsinline preload="none" aria-hidden="true">
-      <source src="assets/footer.mp4" type="video/mp4" />
+      <source data-src="assets/footer.mp4" type="video/mp4" />
     </video>
     <div class="footer-glass">
       <div class="footer-inner">

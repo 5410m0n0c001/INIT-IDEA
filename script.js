@@ -9,7 +9,7 @@ const isTablet = !isMobile && (window.innerWidth <= 1024);
 const isGitHubPages = window.location.hostname.includes('github.io');
 
 // Detect low-end devices early (used across functions)
-const isLiteMode = isMobile && (
+const isLiteMode = isMobile || (
   (navigator.deviceMemory !== undefined && navigator.deviceMemory < 4) ||
   (navigator.hardwareConcurrency !== undefined && navigator.hardwareConcurrency < 4)
 );
@@ -123,14 +123,22 @@ function initVideoOptimizations() {
   const footerVideo = document.getElementById('footerVideo');
   const projectVideos = document.querySelectorAll('.project-card-video');
 
+  // Helper to load video source from data-src
+  const loadSource = (video) => {
+    const source = video.querySelector('source[data-src]');
+    if (source) {
+      source.src = source.getAttribute('data-src');
+      source.removeAttribute('data-src');
+      video.load();
+    }
+  };
+
   // --- HEADER VIDEO ---
   if (headerVideo) {
     headerVideo.muted = true;
     headerVideo.setAttribute('playsinline', 'true');
     headerVideo.setAttribute('webkit-playsinline', 'true');
-    if (isMobile) {
-      headerVideo.preload = 'metadata';
-    }
+    // On strong mobile/desktop, we play. On very low end, we might skip.
     headerVideo.play().catch(() => {});
     headerVideo.addEventListener('error', () => {
       headerVideo.style.display = 'none';
@@ -140,22 +148,19 @@ function initVideoOptimizations() {
   // --- FOOTER VIDEO: load only when visible ---
   if (footerVideo) {
     footerVideo.muted = true;
-    footerVideo.preload = 'none'; // Don't preload until visible
+    footerVideo.preload = 'none';
     footerVideo.setAttribute('playsinline', 'true');
     footerVideo.setAttribute('webkit-playsinline', 'true');
 
     const footerObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          // Only now load and play
-          if (!footerVideo.src && footerVideo.querySelector('source')) {
-            footerVideo.load();
-          }
+          loadSource(footerVideo);
           footerVideo.play().catch(() => {});
           footerObserver.unobserve(footerVideo);
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.05, rootMargin: '200px' });
 
     footerObserver.observe(footerVideo);
     footerVideo.addEventListener('error', () => {
@@ -165,47 +170,34 @@ function initVideoOptimizations() {
 
   // --- PROJECT CARD VIDEOS: pause when off-screen to save memory ---
   if (projectVideos.length > 0) {
-    // On all mobile devices or low-end PCs, disable project card videos to prevent severe OOM crashes
-    if (isMobile || isLiteMode) {
-      projectVideos.forEach(v => {
-        v.preload = 'none';
-        v.autoplay = false;
-        // Replace with static fallback
-        const card = v.closest('.project-card-bg');
-        if (card) {
-          v.style.display = 'none';
-          card.style.background = 'var(--card)';
-        }
-      });
-      console.log('[INIT] Mobile mode: project videos disabled to prevent WebKit crashing');
-      return;
-    }
-
+    // If specifically detected as very low end, we can disable them entirely
+    // but the user wants it optimized, not stripped. We'll use strict lazy load first.
+    
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         const v = e.target;
         if (e.isIntersecting) {
-          if (v.preload === 'none') {
-            v.preload = 'metadata';
-            v.load();
+          const source = v.querySelector('source[data-src]');
+          if (source) {
+            loadSource(v);
           }
           v.play().catch(() => {});
         } else {
           v.pause();
-          // Free memory on mobile when well off-screen
+          // On mobile, proactively clear time to release buffer
           if (isMobile) {
             try { v.currentTime = 0; } catch (_) {}
           }
         }
       });
     }, {
-      threshold: isMobile ? 0.5 : 0.25,
-      rootMargin: isMobile ? '0px' : '100px'
+      threshold: 0.1,
+      rootMargin: isMobile ? '100px' : '300px'
     });
 
     projectVideos.forEach(v => {
       v.muted = true;
-      v.preload = isMobile ? 'none' : 'metadata'; // don't preload at all on mobile
+      v.preload = 'none';
       v.setAttribute('playsinline', 'true');
       v.setAttribute('webkit-playsinline', 'true');
       v.addEventListener('error', () => { v.style.display = 'none'; });
@@ -223,8 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile body class (DO NOT add lang-es here - already in HTML)
+  // Mobile and performance classes
   if (isMobile) document.body.classList.add('mobile-device');
+  if (isLiteMode) document.body.classList.add('lite-mode');
 
   // Initialize everything
   startLoadingScreen();
