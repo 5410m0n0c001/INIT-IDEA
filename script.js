@@ -125,12 +125,17 @@ function initVideoOptimizations() {
 
   // Helper to load video source from data-src
   const loadSource = (video) => {
+    if (video.dataset.loaded) return false;
+    
     const source = video.querySelector('source[data-src]');
     if (source) {
       source.src = source.getAttribute('data-src');
       source.removeAttribute('data-src');
       video.load();
+      video.dataset.loaded = "true";
+      return true;
     }
+    return false;
   };
 
   // --- HEADER VIDEO ---
@@ -156,11 +161,11 @@ function initVideoOptimizations() {
       entries.forEach(e => {
         if (e.isIntersecting) {
           loadSource(footerVideo);
-          footerVideo.play().catch(() => {});
+          footerVideo.play().catch(err => console.warn('[VIDEO] Footer play failed:', err));
           footerObserver.unobserve(footerVideo);
         }
       });
-    }, { threshold: 0.05, rootMargin: '200px' });
+    }, { threshold: 0.01, rootMargin: '400px' });
 
     footerObserver.observe(footerVideo);
     footerVideo.addEventListener('error', () => {
@@ -177,22 +182,23 @@ function initVideoOptimizations() {
       entries.forEach(e => {
         const v = e.target;
         if (e.isIntersecting) {
-          const source = v.querySelector('source[data-src]');
-          if (source) {
-            loadSource(v);
-          }
-          v.play().catch(() => {});
+          loadSource(v);
+          // Small delay to ensure load() has initialized
+          setTimeout(() => {
+            v.play().catch(err => {
+              // If it fails, we try again on next interaction or keep it as is
+              console.warn('[VIDEO] Project play failed:', err);
+            });
+          }, 50);
         } else {
-          v.pause();
-          // On mobile, proactively clear time to release buffer
-          if (isMobile) {
-            try { v.currentTime = 0; } catch (_) {}
-          }
+          if (!isMobile) v.pause();
+          // We don't pause on mobile to avoid the "flicker" when re-entering, 
+          // unless it's way off screen. Memory management is handled by lazy load.
         }
       });
     }, {
-      threshold: 0.1,
-      rootMargin: isMobile ? '100px' : '300px'
+      threshold: 0.01,
+      rootMargin: isMobile ? '300px' : '500px'
     });
 
     projectVideos.forEach(v => {
