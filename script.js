@@ -1,310 +1,285 @@
-/**
- * INIT IDEA - Core Script 2025
- * FIXED: Mobile crash bugs - video memory, SW, scroll, duplicate classes
- */
+// ============================================================
+//  INIT IDEA — script.js
+//  Mobile-first performance + crash prevention
+// ============================================================
 
-// 1. Global constants and mobile detection
-const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-const isTablet = !isMobile && (window.innerWidth <= 1024);
-const isGitHubPages = window.location.hostname.includes('github.io');
+'use strict';
 
-// Detect low-end devices early (used across functions)
-const isLiteMode = isMobile || (
-  (navigator.deviceMemory !== undefined && navigator.deviceMemory < 4) ||
-  (navigator.hardwareConcurrency !== undefined && navigator.hardwareConcurrency < 4)
-);
+// ── DETECCIÓN DE DISPOSITIVO ─────────────────────────────────
 
-// 2. Loading Screen
-function startLoadingScreen() {
-  const splashScreen = document.getElementById('splash-screen');
-  const load = document.getElementById('loading-screen');
+const Device = {
+  isMobile: /Android|iPhone|iPad|iPod|webOS|BlackBerry/i.test(navigator.userAgent)
+    || window.innerWidth < 768,
 
-  const removeLoading = () => {
-    if (load) {
-      load.style.opacity = 0;
-      load.setAttribute('aria-hidden', 'true');
-      setTimeout(() => { if (load.parentNode) load.remove(); }, 700);
-    }
-  };
+  isLowEnd: (() => {
+    const mem   = navigator.deviceMemory;       // GB (Chrome/Android)
+    const cores = navigator.hardwareConcurrency; // número de núcleos
+    const conn  = navigator.connection?.effectiveType; // '2g','3g','4g'
+    return (mem && mem < 4)
+      || (cores && cores < 4)
+      || conn === '2g'
+      || conn === 'slow-2g';
+  })(),
 
-  if (splashScreen) {
-    setTimeout(() => {
-      splashScreen.classList.add('fade-out');
-      setTimeout(() => {
-        if (splashScreen.parentNode) splashScreen.remove();
-        setTimeout(removeLoading, 500);
-      }, 800);
-    }, 1800);
-  } else {
-    setTimeout(removeLoading, 800);
-  }
+  prefersReducedMotion: window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+};
+
+// Aplicar clase lite-mode al <html> lo antes posible
+if (Device.isLowEnd || Device.prefersReducedMotion) {
+  document.documentElement.classList.add('lite-mode');
 }
 
-// 3. Scroll Reveal - lightweight, no GSAP
-function initScrollReveal() {
-  const elements = document.querySelectorAll('.services, .footer, .header-inner, .latest-project-card');
-  
-  if (!window.IntersectionObserver) return; // guard for old browsers
-  
+// ── PANTALLAS DE CARGA ───────────────────────────────────────
+
+(function initLoadingScreens() {
+  const splash  = document.getElementById('splash-screen');
+  const loading = document.getElementById('loading-screen');
+
+  function hide(el, delay = 0) {
+    if (!el) return;
+    setTimeout(() => {
+      el.style.transition = 'opacity 0.4s ease';
+      el.style.opacity    = '0';
+      setTimeout(() => {
+        el.style.display = 'none';
+        el.setAttribute('aria-hidden', 'true');
+      }, 420);
+    }, delay);
+  }
+
+  // Timeout de seguridad: si algo falla, se ocultan igual
+  const splashTimeout  = setTimeout(() => hide(splash),        1500);
+  const loadingTimeout = setTimeout(() => hide(loading),       2800);
+
+  window.addEventListener('load', () => {
+    clearTimeout(splashTimeout);
+    clearTimeout(loadingTimeout);
+    hide(splash, 200);
+    hide(loading, 900);
+  }, { once: true });
+})();
+
+// ── HERO VIDEO ───────────────────────────────────────────────
+
+function initHeroVideo() {
+  const video = document.getElementById('headerVideo');
+  if (!video) return;
+
+  // Gama baja o reducción de movimiento: no reproducir video
+  if (Device.isLowEnd || Device.prefersReducedMotion) {
+    video.style.display = 'none';
+    // El poster queda visible como fondo estático
+    return;
+  }
+
+  // Móvil normal: intentar reproducir con manejo de error
+  if (Device.isMobile) {
+    video.preload = 'metadata'; // no precargar buffer completo
+    video.addEventListener('canplay', () => {
+      video.play().catch(() => {
+        // Autoplay bloqueado por política del browser → ocultar
+        video.style.display = 'none';
+      });
+    }, { once: true });
+    video.load();
+    return;
+  }
+
+  // Desktop: reproducción inmediata
+  video.play().catch(() => {
+    video.style.display = 'none';
+  });
+}
+
+// ── LAZY LOAD DE VIDEOS DE PROYECTOS ────────────────────────
+
+function initProjectVideos() {
+  const videos = document.querySelectorAll('.lazy-video');
+  if (!videos.length) return;
+
+  // En dispositivos de gama baja: mostrar solo el poster, sin video
+  if (Device.isLowEnd) {
+    videos.forEach(v => {
+      v.style.display = 'none';
+      // Mostrar el poster como imagen si existe
+      if (v.poster) {
+        const img = document.createElement('img');
+        img.src   = v.poster;
+        img.alt   = v.getAttribute('aria-label') || 'Video preview';
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:inherit;';
+        v.parentNode.insertBefore(img, v);
+      }
+    });
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry, index) => {
+    entries.forEach(entry => {
+      const v = entry.target;
+
       if (entry.isIntersecting) {
-        const delay = isMobile ? index * 30 : index * 80;
-        setTimeout(() => entry.target.classList.add('revealed'), delay);
-        observer.unobserve(entry.target);
+        // Inyectar <source> solo cuando está cerca del viewport
+        if (!v.querySelector('source') && v.dataset.src) {
+          const src = document.createElement('source');
+          src.src  = v.dataset.src;
+          src.type = 'video/mp4';
+          v.appendChild(src);
+          v.load();
+        }
+        // Reproducir
+        v.play().catch(() => {});
+
+      } else {
+        // Pausar cuando sale del viewport (libera GPU)
+        v.pause();
       }
     });
   }, {
-    threshold: 0.05,
-    rootMargin: isMobile ? '0px 0px -30px 0px' : '0px 0px -80px 0px'
+    rootMargin: '150px 0px',  // empieza 150px antes de entrar
+    threshold:  0.1,
   });
 
-  elements.forEach(el => {
-    el.classList.add('scroll-reveal');
+  videos.forEach(v => observer.observe(v));
+}
+
+// ── TOGGLE DE IDIOMA ─────────────────────────────────────────
+
+function initLangToggle() {
+  const btn  = document.getElementById('langToggle');
+  const body = document.body;
+  if (!btn) return;
+
+  // Leer idioma guardado (si existe)
+  const saved = localStorage.getItem('init-idea-lang');
+  if (saved === 'en') body.classList.replace('lang-es', 'lang-en');
+
+  btn.addEventListener('click', () => {
+    const isEs = body.classList.contains('lang-es');
+    body.classList.replace(
+      isEs ? 'lang-es' : 'lang-en',
+      isEs ? 'lang-en' : 'lang-es'
+    );
+    localStorage.setItem('init-idea-lang', isEs ? 'en' : 'es');
+  });
+}
+
+// ── BOTÓN DE SHARE ───────────────────────────────────────────
+
+function initShareBtn() {
+  const btn = document.getElementById('shareBtn');
+  if (!btn) return;
+
+  btn.addEventListener('click', async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'INIT IDEA',
+          text:  '¡Conoce INIT IDEA — Diseño Web, IA y más!',
+          url:   window.location.href,
+        });
+      } catch (e) {
+        if (e.name !== 'AbortError') fallbackCopy();
+      }
+    } else {
+      fallbackCopy();
+    }
+  });
+
+  function fallbackCopy() {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => alert('¡Enlace copiado al portapapeles!'))
+      .catch(() => {});
+  }
+}
+
+// ── SOCIAL TOGGLE ────────────────────────────────────────────
+
+function initSocialToggle() {
+  const toggle   = document.getElementById('socialToggle');
+  const dropdown = document.getElementById('socialDropdown');
+  if (!toggle || !dropdown) return;
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    dropdown.setAttribute('aria-hidden', String(isOpen));
+    dropdown.classList.toggle('open', !isOpen);
+  });
+
+  // Cerrar al hacer click fuera
+  document.addEventListener('click', e => {
+    const container = document.getElementById('socialContainer');
+    if (container && !container.contains(e.target)) {
+      toggle.setAttribute('aria-expanded', 'false');
+      dropdown.setAttribute('aria-hidden', 'true');
+      dropdown.classList.remove('open');
+    }
+  });
+}
+
+// ── ANIMACIONES DE SCROLL (solo en dispositivos capaces) ─────
+
+function initScrollAnimations() {
+  // No animar en gama baja o reduced-motion
+  if (Device.isLowEnd || Device.prefersReducedMotion) return;
+
+  const animElements = document.querySelectorAll(
+    '.card, .project-card, [data-animate]'
+  );
+  if (!animElements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target); // animar solo una vez
+      }
+    });
+  }, { threshold: 0.12 });
+
+  animElements.forEach(el => {
+    el.classList.add('animate-on-scroll');
     observer.observe(el);
   });
 }
 
-// 4. Typing Effect (desktop only - skip on mobile to save resources)
-function initTypingEffect() {
-  if (isMobile) return;
-  const titles = document.querySelectorAll('.brand-title, .services h3');
+// ── SERVICE WORKER REGISTRATION ──────────────────────────────
 
-  titles.forEach(title => {
-    const langSpanEs = title.querySelector('.lang-es');
-    const langSpanEn = title.querySelector('.lang-en');
-
-    let targetElement = title;
-    let textToType = title.textContent;
-
-    if (langSpanEs && langSpanEn) {
-      const isEs = document.body.classList.contains('lang-es');
-      targetElement = isEs ? langSpanEs : langSpanEn;
-      textToType = targetElement.textContent.trim();
-      langSpanEs.textContent = isEs ? '' : langSpanEs.textContent;
-      langSpanEn.textContent = !isEs ? '' : langSpanEn.textContent;
-    } else {
-      textToType = title.textContent.trim();
-      title.textContent = '';
-    }
-
-    title.style.borderRight = '2px solid var(--accent)';
-    title.style.animation = 'blink 1s infinite';
-
-    let i = 0;
-    function typeWriter() {
-      if (i < textToType.length) {
-        targetElement.textContent += textToType.charAt(i);
-        i++;
-        setTimeout(typeWriter, 55);
-      } else {
-        setTimeout(() => {
-          title.style.borderRight = 'none';
-          title.style.animation = 'none';
-        }, 1000);
-      }
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          setTimeout(typeWriter, 500);
-          observer.unobserve(entry.target);
-        }
-      });
-    });
-    observer.observe(title);
-  });
-}
-
-// 5. Video optimizations - prevents mobile memory crash
-function initVideoOptimizations() {
-  const headerVideo = document.getElementById('headerVideo');
-  const footerVideo = document.getElementById('footerVideo');
-  const projectVideos = document.querySelectorAll('.project-card-video');
-
-  // Helper to load video source from data-src
-  const loadSource = (video) => {
-    if (video.dataset.loaded) return false;
-    
-    const source = video.querySelector('source[data-src]');
-    if (source) {
-      source.src = source.getAttribute('data-src');
-      source.removeAttribute('data-src');
-      video.load();
-      video.dataset.loaded = "true";
-      return true;
-    }
-    return false;
-  };
-
-  // --- HEADER VIDEO ---
-  if (headerVideo) {
-    headerVideo.muted = true;
-    headerVideo.setAttribute('playsinline', 'true');
-    headerVideo.setAttribute('webkit-playsinline', 'true');
-    // On strong mobile/desktop, we play. On very low end, we might skip.
-    headerVideo.play().catch(() => {});
-    headerVideo.addEventListener('error', () => {
-      headerVideo.style.display = 'none';
-    });
-  }
-
-  // --- FOOTER VIDEO: load only when visible ---
-  if (footerVideo) {
-    footerVideo.muted = true;
-    footerVideo.preload = 'none';
-    footerVideo.setAttribute('playsinline', 'true');
-    footerVideo.setAttribute('webkit-playsinline', 'true');
-
-    const footerObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        if (e.isIntersecting) {
-          loadSource(footerVideo);
-          footerVideo.play().catch(err => console.warn('[VIDEO] Footer play failed:', err));
-          footerObserver.unobserve(footerVideo);
-        }
-      });
-    }, { threshold: 0.01, rootMargin: '400px' });
-
-    footerObserver.observe(footerVideo);
-    footerVideo.addEventListener('error', () => {
-      footerVideo.style.display = 'none';
-    });
-  }
-
-  // --- PROJECT CARD VIDEOS: pause when off-screen to save memory ---
-  if (projectVideos.length > 0) {
-    // If specifically detected as very low end, we can disable them entirely
-    // but the user wants it optimized, not stripped. We'll use strict lazy load first.
-    
-    const videoObserver = new IntersectionObserver((entries) => {
-      entries.forEach(e => {
-        const v = e.target;
-        if (e.isIntersecting) {
-          loadSource(v);
-          // Small delay to ensure load() has initialized
-          setTimeout(() => {
-            v.play().catch(err => {
-              // If it fails, we try again on next interaction or keep it as is
-              console.warn('[VIDEO] Project play failed:', err);
-            });
-          }, 50);
-        } else {
-          if (!isMobile) v.pause();
-          // We don't pause on mobile to avoid the "flicker" when re-entering, 
-          // unless it's way off screen. Memory management is handled by lazy load.
-        }
-      });
-    }, {
-      threshold: 0.01,
-      rootMargin: isMobile ? '300px' : '500px'
-    });
-
-    projectVideos.forEach(v => {
-      v.muted = true;
-      v.preload = 'none';
-      v.setAttribute('playsinline', 'true');
-      v.setAttribute('webkit-playsinline', 'true');
-      v.addEventListener('error', () => { v.style.display = 'none'; });
-      videoObserver.observe(v);
-    });
-  }
-}
-
-// 6. Main DOMContentLoaded entry point
-document.addEventListener('DOMContentLoaded', () => {
-  // Service Worker registration
+function registerServiceWorker() {
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(err => console.warn('[SW] registration failed:', err));
+      navigator.serviceWorker
+        .register('/sw.js', { scope: '/' })
+        .then(reg => {
+          console.log('[SW] Registrado:', reg.scope);
+
+          // Notificar al usuario si hay una actualización disponible
+          reg.addEventListener('updatefound', () => {
+            const newWorker = reg.installing;
+            newWorker.addEventListener('statechange', () => {
+              if (
+                newWorker.state === 'installed'
+                && navigator.serviceWorker.controller
+              ) {
+                // Hay versión nueva disponible — puedes mostrar un toast aquí
+                console.log('[SW] Nueva versión disponible. Recarga para actualizar.');
+              }
+            });
+          });
+        })
+        .catch(err => console.warn('[SW] Error al registrar:', err));
     });
   }
+}
 
-  // Mobile and performance classes
-  if (isMobile) document.body.classList.add('mobile-device');
-  if (isLiteMode) document.body.classList.add('lite-mode');
+// ── INIT PRINCIPAL ───────────────────────────────────────────
 
-  // Initialize everything
-  startLoadingScreen();
-  initScrollReveal();
-  initTypingEffect();
-  initVideoOptimizations();
-
-  if (isGitHubPages) console.log('[INIT] 🚀 INIT IDEA loaded');
-
-  // Social Toggle
-  const socialToggle = document.getElementById('socialToggle');
-  const socialDropdown = document.getElementById('socialDropdown');
-  const socialContainer = document.getElementById('socialContainer');
-
-  if (socialToggle && socialDropdown && socialContainer) {
-    socialToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = socialDropdown.classList.toggle('open');
-      socialToggle.setAttribute('aria-expanded', String(isOpen));
-    });
-
-    document.addEventListener('click', (e) => {
-      if (!socialContainer.contains(e.target)) {
-        socialDropdown.classList.remove('open');
-        socialToggle.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  // Share Button
-  const shareBtn = document.getElementById('shareBtn');
-  if (shareBtn) {
-    shareBtn.addEventListener('click', async () => {
-      const shareData = {
-        title: 'INIT IDEA | Estudio Digital',
-        text: 'Te comparto el trabajo de INIT IDEA...',
-        url: 'https://5410m0n0c001.github.io/INIT-IDEA/'
-      };
-      if (navigator.share) {
-        try { await navigator.share(shareData); } catch (e) {}
-      } else {
-        try {
-          await navigator.clipboard.writeText(shareData.url);
-          alert('Copiado al portapapeles');
-        } catch (e) {}
-      }
-    });
-  }
-
-  // Language Toggle
-  const langToggle = document.getElementById('langToggle');
-  if (langToggle) {
-    langToggle.addEventListener('click', () => {
-      const isEs = document.body.classList.contains('lang-es');
-      document.body.classList.toggle('lang-es', !isEs);
-      document.body.classList.toggle('lang-en', isEs);
-    });
-  }
-
-  // Order Card Modal
-  const orderModal = document.getElementById('orderModal');
-  if (orderModal) {
-    // Close on overlay click (outside the box)
-    orderModal.addEventListener('click', (e) => {
-      if (e.target === orderModal) orderModal.classList.remove('open');
-    });
-    // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && orderModal.classList.contains('open')) {
-        orderModal.classList.remove('open');
-      }
-    });
-  }
-});
-
-// Safety net: remove loading screen after 5 seconds no matter what
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    const load = document.getElementById('loading-screen');
-    if (load && load.parentNode) load.remove();
-    const splash = document.getElementById('splash-screen');
-    if (splash && splash.parentNode) splash.remove();
-  }, 5000);
+document.addEventListener('DOMContentLoaded', () => {
+  initHeroVideo();
+  initProjectVideos();
+  initLangToggle();
+  initShareBtn();
+  initSocialToggle();
+  initScrollAnimations();
+  registerServiceWorker();
 });

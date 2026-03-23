@@ -1030,3 +1030,204 @@ body {
     height: auto !important;
     line-height: 1.4 !important;
 }
+
+/* ============================================================
+   INIT IDEA — Mobile Performance Patch
+   INSTRUCCIÓN: Agrega este bloque al FINAL de tu styles.css
+   No reemplaza nada, solo añade y sobrescribe donde es necesario
+   ============================================================ */
+
+/* ── LITE MODE (dispositivos de gama baja) ────────────────── */
+
+.lite-mode *,
+.lite-mode *::before,
+.lite-mode *::after {
+  animation-duration:        0.01ms !important;
+  animation-iteration-count: 1      !important;
+  transition-duration:       0.08ms !important;
+  will-change:               auto   !important; /* libera capas GPU */
+}
+
+/* Eliminar blur en lite-mode — la causa principal de lentitud */
+.lite-mode .header-glass,
+.lite-mode .card,
+.lite-mode .loading-content,
+.lite-mode .splash-content,
+.lite-mode [style*="backdrop-filter"],
+.lite-mode [style*="-webkit-backdrop-filter"] {
+  backdrop-filter:         none !important;
+  -webkit-backdrop-filter: none !important;
+  /* Compensar con fondo más opaco para mantener legibilidad */
+  background-color: rgba(0, 0, 0, 0.72) !important;
+}
+
+
+/* ── BACKDROP-FILTER CONDICIONAL ─────────────────────────── */
+/* Por defecto (móvil) → sin blur */
+.header-glass {
+  background:              rgba(0, 0, 0, 0.58);
+  backdrop-filter:         none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Solo activar glassmorphism en desktop con hover (≠ touchscreen) */
+@media (min-width: 1024px) and (hover: hover) {
+  .header-glass {
+    background:              rgba(0, 0, 0, 0.35);
+    backdrop-filter:         blur(14px) saturate(1.4);
+    -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  }
+}
+
+/* Cards */
+.card {
+  backdrop-filter:         none;
+  -webkit-backdrop-filter: none;
+}
+
+@media (min-width: 1024px) and (hover: hover) {
+  .card {
+    backdrop-filter:         blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+}
+
+
+/* ── ANIMACIONES DE SCROLL ───────────────────────────────── */
+/* Solo se activan si JS agrega la clase .animate-on-scroll */
+
+.animate-on-scroll {
+  opacity:   0;
+  transform: translateY(18px);
+  /* NO usar will-change aquí — se activa justo antes de animar */
+}
+
+.animate-on-scroll.visible {
+  opacity:    1;
+  transform:  translateY(0);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+/* Sin animaciones si el usuario lo prefiere o es lite-mode */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .animate-on-scroll.visible {
+    opacity:    1 !important;
+    transform:  none !important;
+    transition: none !important;
+  }
+}
+
+
+/* ── VIDEOS — TAMAÑO Y CONTENEDOR ───────────────────────── */
+
+.header-bg-video {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  /* Limitar resolución de compositing en móvil */
+  max-height: 100vh;
+  /* GPU layer solo cuando es necesario */
+  transform:  translateZ(0);
+  will-change: auto; /* el JS lo activa solo si está en viewport */
+}
+
+/* Contenedor de videos de proyecto */
+.project-video {
+  width:       100%;
+  height:      100%;
+  object-fit:  cover;
+  display:     block;
+  border-radius: inherit;
+}
+
+/* Asegura que el poster se vea mientras el video carga */
+.lazy-video {
+  background-color: #111; /* fallback mientras carga poster */
+  background-size:    cover;
+  background-position: center;
+}
+
+
+/* ── SPLASH Y LOADING — TRANSICIONES SUAVES ──────────────── */
+
+.splash-screen,
+.loading-screen {
+  transition: opacity 0.4s ease;
+  /* Importante: quitar will-change cuando no se usa */
+  will-change: opacity;
+}
+
+/* Una vez ocultos, liberar capa GPU */
+.splash-screen[aria-hidden="true"],
+.loading-screen[aria-hidden="true"] {
+  will-change: auto;
+}
+
+
+/* ── SOCIAL DROPDOWN ACCESIBLE ───────────────────────────── */
+
+.social-dropdown {
+  overflow:   hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  opacity:    0;
+}
+
+.social-dropdown.open {
+  max-height: 600px; /* suficiente para todos los links */
+  opacity:    1;
+}
+
+/* Sin animación en lite-mode */
+.lite-mode .social-dropdown,
+.lite-mode .social-dropdown.open {
+  transition: none !important;
+}
+
+
+/* ── RENDIMIENTO GENERAL MÓVIL ───────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Desactivar text-shadow en móvil (cuesta compositing) */
+  h1, h2, h3, h4, .brand-title, .tagline {
+    text-shadow: none !important;
+  }
+
+  /* Desactivar box-shadow múltiple en cards */
+  .card {
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.25) !important;
+  }
+
+  /* Reducir bordes de glassmorphism a algo funcional */
+  .loading-screen,
+  .splash-screen {
+    backdrop-filter:         none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* Evitar overflow horizontal que causa repaints */
+  body {
+    overflow-x: hidden;
+  }
+
+  /* Contenedor del header: altura fija para evitar reflow */
+  .header-video {
+    min-height: 100svh; /* svh = small viewport height, más preciso en móvil */
+  }
+}
+
+
+/* ── IMÁGENES Y ASSETS ───────────────────────────────────── */
+
+img {
+  /* Evitar decode en hilo principal */
+  content-visibility: auto;
+}
+
+/* Hint al browser para optimizar imágenes LCP (hero) */
+.splash-logo {
+  /* La imagen más importante → carga prioritaria, sin lazy */
+  loading: eager; /* esto es atributo HTML, pero también aplica aquí via CSS */
+  decoding: sync;
+}

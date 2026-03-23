@@ -68,7 +68,16 @@
 
   <!-- CABECERA con hero video -->
   <header class="header-video" role="banner" id="home">
-    <video id="headerVideo" class="header-bg-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <video
+      id="headerVideo"
+      class="header-bg-video"
+      muted
+      loop
+      playsinline
+      preload="metadata"
+      poster="assets/hero-poster.jpg"
+      aria-hidden="true"
+    >
       <source src="assets/hero-video.mp4" type="video/mp4">
     </video>
 
@@ -255,9 +264,17 @@
         <!-- Rock City Project -->
         <div class="latest-project-card" data-project="rock-city">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/c2.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/c2.mp4"
+              poster="assets/rock-city-poster.jpg"
+              aria-label="Rock City Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -278,9 +295,17 @@
         <!-- All In One Cabo Project -->
         <div class="latest-project-card" data-project="all-in-one-cabo">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/c4.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/c4.mp4"
+              poster="assets/all-in-one-poster.jpg"
+              aria-label="All In One Cabo Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -301,9 +326,17 @@
         <!-- Volkswagen Cresta Cuernavaca Project -->
         <div class="latest-project-card" data-project="volkswagen-cresta">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/lt.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/lt.mp4"
+              poster="assets/volkswagen-poster.jpg"
+              aria-label="Volkswagen Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -344,9 +377,17 @@
         <!-- Richard Hernández Project -->
         <div class="latest-project-card" data-project="richard-hernandez">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/r.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/r.mp4"
+              poster="assets/richard-poster.jpg"
+              aria-label="Richard Hernández Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -367,9 +408,17 @@
         <!-- Jessy Project -->
         <div class="latest-project-card" data-project="jessy">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/y.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/y.mp4"
+              poster="assets/jessy-poster.jpg"
+              aria-label="Jessy Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -390,9 +439,17 @@
         <!-- Invitaciones Digitales Project -->
         <div class="latest-project-card" data-project="invitaciones-digitales">
           <div class="project-card-bg">
-            <video class="project-card-video" muted loop playsinline preload="none" aria-hidden="true">
-              <source data-src="assets/sobre.mp4" type="video/mp4">
-              Your browser does not support the video tag.
+            <video
+              class="project-video lazy-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-src="assets/sobre.mp4"
+              poster="assets/invitaciones-poster.jpg"
+              aria-label="Invitaciones Digitales Video"
+            >
+              <p>Tu navegador no soporta video.</p>
             </video>
           </div>
           <div class="project-card-overlay">
@@ -415,8 +472,8 @@
 
   <!-- FOOTER with full-clarity video (no blur) -->
   <footer class="footer" role="contentinfo">
-    <video id="footerVideo" class="footer-bg" muted loop playsinline preload="none" aria-hidden="true">
-      <source data-src="assets/footer.mp4" type="video/mp4" />
+    <video id="footerVideo" class="footer-bg lazy-video" muted loop playsinline preload="none" data-src="assets/footer.mp4" poster="assets/footer-poster.jpg" aria-hidden="true">
+      <p>Tu navegador no soporta video.</p>
     </video>
     <div class="footer-glass">
       <div class="footer-inner">
