@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v4';
+const CACHE_VERSION = 'v5';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
