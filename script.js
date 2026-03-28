@@ -224,7 +224,7 @@ function initScrollAnimations() {
   if (Device.isLowEnd || Device.prefersReducedMotion) return;
 
   const animElements = document.querySelectorAll(
-    '.card, .project-card, [data-animate]'
+    '.card, .project-card, .testimonial-card, [data-animate]'
   );
   if (!animElements.length) return;
 
