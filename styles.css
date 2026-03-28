@@ -419,6 +419,17 @@ body {
 }
 .project-card-content {
   margin-bottom: 20px;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px) saturate(160%);
+  -webkit-backdrop-filter: blur(15px) saturate(160%);
+  padding: 20px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  display: inline-block;
+  max-width: 95%;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  /* FIX: Ensure content stays sharp inside blur */
+  transform: translateZ(0);
 }
 .project-icon {
   font-size: 1.5rem;
@@ -430,36 +441,44 @@ body {
   font-size: 1.4rem;
   font-weight: 600;
   letter-spacing: -0.02em;
-  margin-bottom: 12px;
-  display: inline-block;
-  padding: 8px 16px;
-  background: rgba(0, 0, 0, 0.45);
-  backdrop-filter: blur(12px) saturate(180%);
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  margin-bottom: 8px;
+  color: var(--text);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
+
+/* Pulsing Demo Button Styling */
+@keyframes livePulse {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2); }
+  70% { transform: scale(1.03); box-shadow: 0 0 0 12px rgba(255, 255, 255, 0), 0 0 25px rgba(255, 255, 255, 0.1); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0), 0 0 15px rgba(255, 255, 255, 0.2); }
+}
+
 .project-title-btn {
   text-decoration: none;
   color: inherit;
   display: inline-block;
-  margin-bottom: 6px;
-  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  margin-bottom: 12px;
+  transition: transform 0.3s var(--transition-smooth);
 }
-.project-title-btn .project-title {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
-  border-color: rgba(255, 255, 255, 0.4);
-  margin-bottom: 0; /* Override margin when inside btn */
+
+.latest-project-card[data-project="demo-en-vivo"] .project-title-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+  padding: 12px 24px;
+  border-radius: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: livePulse 2.5s infinite ease-in-out;
+  margin-top: 8px;
 }
+
+.latest-project-card[data-project="demo-en-vivo"] .project-title-btn .project-title {
+  margin-bottom: 0;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem); /* Larger font for main demo */
+}
+
 @media (hover: hover) {
   .project-title-btn:hover {
     transform: scale(1.05);
-  }
-  .project-title-btn:hover .project-title {
     background: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.6);
   }
 }
 .main-project-module .project-title {
