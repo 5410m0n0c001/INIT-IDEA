@@ -1437,3 +1437,12 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Fix for Greeting Card Image */
+.card-felicitacion .project-card-image {
+  object-fit: contain !important;
+  background-color: var(--card); /* Matches the card background */
+  padding: 10px;
+}
+. c a r d - f e l i c i t a c i o n   . p r o j e c t - c a r d - i m a g e   {   o b j e c t - f i t :   c o n t a i n   ! i m p o r t a n t ;   b a c k g r o u n d - c o l o r :   # 0 0 0 ;   }  
+ 
