@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Invitaciones Digitales | INIT IDEA</title>
+  <meta name="description" content="Explora nuestros modelos de invitaciones digitales premium para bodas y XV años." />
+  <link rel="icon" href="logo2.0.jpeg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="lang-es">
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-label="Cargando">
+    <div class="splash-content">
+      <img src="logo2.0.jpeg" alt="Logo" class="splash-logo">
+    </div>
+  </div>
+
+  <header class="header-video" style="height: 40vh; min-height: 300px;">
+    <video id="headerVideo" class="header-bg-video" muted loop playsinline preload="auto">
+      <source src="assets/porrtadainvitaciones.mp4" type="video/mp4">
+    </video>
+    <div class="header-glass">
+      <div class="header-inner">
+        <h1 class="brand-title">Invitaciones Digitales</h1>
+        <p class="slogan">Elige el estilo perfecto para tu evento</p>
+        <a href="index.html" class="btn btn-outline" style="margin-top: 15px;">
+          <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="latest-projects" style="padding-top: 50px;">
+      <div class="latest-projects-container">
+        <div class="latest-projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          
+          <!-- MODELO BODAS -->
+          <div class="latest-project-card">
+            <div class="project-card-bg">
+              <video class="project-video lazy-video" muted loop playsinline preload="none" data-src="assets/sobre.mp4">
+                <p>Tu navegador no soporta video.</p>
+              </video>
+            </div>
+            <div class="project-card-overlay">
+              <div class="project-card-content">
+                <div class="project-icon"><i class="fas fa-heart"></i></div>
+                <h3 class="project-title">Invitaciones para Bodas</h3>
+                <p class="project-description">Elegancia y distinción para tu gran día.</p>
+              </div>
+              <a href="https://5410m0n0c001.github.io/invitacion-demo/" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- MODELO 15 AÑOS -->
+          <div class="latest-project-card">
+            <div class="project-card-bg">
+              <img src="assets/portadainvitaciones15.png" alt="Invitaciones 15 años" class="project-card-image">
+            </div>
+            <div class="project-card-overlay">
+              <div class="project-card-content">
+                <div class="project-icon"><i class="fas fa-star"></i></div>
+                <h3 class="project-title">Invitaciones para 15 Años</h3>
+                <p class="project-description">Un diseño único para una celebración inolvidable.</p>
+              </div>
+              <a href="https://5410m0n0c001.github.io/invitaciondemoxvanos/" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="min-height: 200px; padding: 40px 20px;">
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <h4>INIT IDEA</h4>
+        <p>Creamos momentos digitales únicos.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

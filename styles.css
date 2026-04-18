@@ -1323,9 +1323,10 @@ img {
   margin: 0 auto;
 }
 .testimonials-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 30px;
+  align-items: center; /* Center cards in the container */
 }
 .testimonial-card {
   background: var(--card);
@@ -1340,6 +1341,8 @@ img {
   /* Glass effect */
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
+  width: 100%;
+  max-width: 800px; /* Limit width on desktop for better readability */
 }
 @media (hover: hover) {
   .testimonial-card:hover {
