@@ -235,7 +235,7 @@ function initScrollAnimations() {
         observer.unobserve(entry.target); // animar solo una vez
       }
     });
-  }, { threshold: 0.12 });
+  }, { threshold: 0.05 });
 
   animElements.forEach(el => {
     el.classList.add('animate-on-scroll');

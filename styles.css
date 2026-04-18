@@ -512,8 +512,8 @@ body {
 /* Social & Chat Floating Buttons */
 .social-container {
   position: fixed;
-  right: 20px;
-  bottom: 20px;
+  right: 30px; /* Slightly more space */
+  bottom: 30px;
   z-index: 1400;
   display: flex;
   flex-direction: column;
@@ -612,8 +612,8 @@ body {
 
 .hero-chat {
   position: fixed;
-  left: 20px;
-  bottom: 20px;
+  left: 30px; /* Slightly more space */
+  bottom: 30px;
   z-index: 1250;
   display: flex;
   flex-direction: column;
@@ -1343,6 +1343,8 @@ img {
   -webkit-backdrop-filter: blur(10px);
   width: 100%;
   max-width: 800px; /* Limit width on desktop for better readability */
+  align-items: center; /* Center content horizontally on desktop */
+  text-align: center;  /* Center text on desktop */
 }
 @media (hover: hover) {
   .testimonial-card:hover {
@@ -1382,6 +1384,7 @@ img {
   display: flex;
   gap: 4px;
   margin-bottom: 5px;
+  justify-content: center; /* Center stars */
 }
 .testimonial-text {
   font-size: 1rem;
