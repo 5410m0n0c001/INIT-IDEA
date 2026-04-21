@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tarjetas de Felicitación | INIT IDEA</title>
+  <meta name="description" content="Tarjetas de felicitación personalizadas e interactivas para cualquier ocasión." />
+  <link rel="icon" href="logo2.0.jpeg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="lang-es">
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-label="Cargando">
+    <div class="splash-content">
+      <img src="logo2.0.jpeg" alt="Logo" class="splash-logo">
+    </div>
+  </div>
+
+  <header class="header-video" style="height: 50vh; min-height: 400px;">
+    <video id="headerVideo" class="header-bg-video" muted loop playsinline preload="auto">
+      <source src="assets/porrtadainvitaciones.mp4" type="video/mp4">
+    </video>
+    <div class="header-glass">
+      <div class="header-inner">
+        <h1 class="brand-title">Tarjetas de Felicitación</h1>
+        <p class="slogan">Mensajes que trascienden la distancia</p>
+        <a href="index.html" class="btn btn-outline" style="margin-top: 15px;">
+          <i class="fas fa-arrow-left"></i> Volver al Inicio
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- CARACTERÍSTICAS -->
+    <section class="services" id="characteristics" style="padding-bottom: 0;">
+      <div class="latest-projects-header" style="margin-bottom: 40px;">
+        <h2 class="latest-projects-title">Características</h2>
+        <p class="latest-projects-subtitle">Nuestras tarjetas están diseñadas para emocionar y sorprender.</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="project-icon"><i class="fas fa-magic"></i></div>
+          <h4>Personalización Total</h4>
+          <p>Adaptamos el diseño, mensajes, fotos y videos a la personalidad de quien recibe la tarjeta.</p>
+        </article>
+        <article class="card">
+          <div class="project-icon"><i class="fas fa-music"></i></div>
+          <h4>Experiencia Sensorial</h4>
+          <p>Música de fondo y efectos visuales que crean una atmósfera única y emotiva.</p>
+        </article>
+        <article class="card">
+          <div class="project-icon"><i class="fas fa-share-alt"></i></div>
+          <h4>Fácil de Compartir</h4>
+          <p>Envía tu felicitación a través de un link directo por WhatsApp, redes sociales o correo.</p>
+        </article>
+        <article class="card">
+          <div class="project-icon"><i class="fas fa-mobile-alt"></i></div>
+          <h4>Diseño Responsivo</h4>
+          <p>Tu tarjeta se verá impecable en smartphones, tablets y computadoras.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- MUESTRAS -->
+    <section class="latest-projects">
+      <div class="latest-projects-container">
+        <div class="latest-projects-header">
+          <h2 class="latest-projects-title">Nuestras Muestras</h2>
+          <p class="latest-projects-subtitle">Explora algunos de nuestros trabajos más recientes.</p>
+        </div>
+        <div class="latest-projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+          
+          <!-- MODELO JESSY -->
+          <div class="latest-project-card">
+            <div class="project-card-bg">
+              <img src="fj.png" alt="Modelo Jessy" class="project-card-image" loading="lazy">
+              <video
+                class="project-card-video lazy-video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-src="assets/y.mp4"
+                aria-label="Modelo Jessy Video"
+              >
+                <p>Tu navegador no soporta video.</p>
+              </video>
+            </div>
+            <div class="project-card-overlay">
+              <div class="project-card-content">
+                <div class="project-icon"><i class="fas fa-heart"></i></div>
+                <h3 class="project-title">Modelo Jessy</h3>
+                <p class="project-description">Una felicitación cálida y elegante para momentos inolvidables.</p>
+              </div>
+              <a href="https://5410m0n0c001.github.io/Feliz-cumplea-os-jessy/" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- MODELO RICHARD -->
+          <div class="latest-project-card">
+            <div class="project-card-bg">
+              <img src="assets/felicitacion.png" alt="Modelo Richard" class="project-card-image" loading="lazy">
+              <video
+                class="project-card-video lazy-video"
+                muted
+                loop
+                playsinline
+                preload="none"
+                data-src="assets/r.mp4"
+                aria-label="Modelo Richard Video"
+              >
+                <p>Tu navegador no soporta video.</p>
+              </video>
+            </div>
+            <div class="project-card-overlay">
+              <div class="project-card-content">
+                <div class="project-icon"><i class="fas fa-gem"></i></div>
+                <h3 class="project-title">Modelo Richard</h3>
+                <p class="project-description">Estilo moderno y dinámico para celebraciones llenas de energía.</p>
+              </div>
+              <a href="https://5410m0n0c001.github.io/feliz-cumplea-os-richard-/" target="_blank" rel="noopener noreferrer" class="project-link">
+                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="min-height: 200px; padding: 40px 20px;">
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <h4>INIT IDEA</h4>
+        <p>Programar. Crear. Conectar.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
