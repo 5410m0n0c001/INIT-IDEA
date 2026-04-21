@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Precios Felicitaciones Digitales | INIT IDEA</title>
+  <meta name="description" content="Precios y planes para felicitaciones digitales interactivas con voz de personajes." />
+  <link rel="icon" href="logo2.0.jpeg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="lang-es">
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-label="Cargando">
+    <div class="splash-content">
+      <img src="logo2.0.jpeg" alt="Logo" class="splash-logo">
+    </div>
+  </div>
+
+  <header class="header-video" style="height: 50vh; min-height: 400px;">
+    <video id="headerVideo" class="header-bg-video" muted loop playsinline preload="auto">
+      <source src="assets/porrtadainvitaciones.mp4" type="video/mp4">
+    </video>
+    <div class="header-glass">
+      <div class="header-inner">
+        <h1 class="brand-title">Felicitaciones Digitales</h1>
+        <p class="slogan">Un mensaje personalizado con la voz de tu personaje favorito 🎧✨</p>
+        <a href="tarjetas-felicitacion.html" class="btn btn-outline" style="margin-top: 15px;">
+          <i class="fas fa-arrow-left"></i> Volver a Felicitaciones
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- INTRO -->
+    <section class="pricing-intro" style="padding: 60px 20px; text-align: center; max-width: 900px; margin: 0 auto;">
+      <h2 class="section-title">¿Qué estás contratando?</h2>
+      <p style="font-size: 1.2rem; color: var(--muted); margin-top: 20px;">
+        Un mensaje personalizado con la voz del personaje que elijas, creado especialmente para sorprender, emocionar y hacer único ese momento 💎
+      </p>
+      <p style="font-style: italic; margin-top: 15px; color: var(--accent);">"No es el diseño… es lo que se escucha."</p>
+    </section>
+
+    <!-- TIERS -->
+    <section class="pricing-tiers" style="padding: 40px 20px;">
+      <div class="latest-projects-header">
+        <h2 class="latest-projects-title">Elige tu Nivel</h2>
+      </div>
+      <div class="grid" style="max-width: 1200px;">
+        <!-- ESENCIAL -->
+        <article class="card tier-card essential-border">
+          <div class="tier-badge" style="background: #2ecc71;">Esencial</div>
+          <h3 class="tier-price-large">$500</h3>
+          <p class="tier-tagline">Sorpresa auténtica y emocionante</p>
+          <ul class="tier-features-list">
+            <li><i class="fas fa-microphone"></i> Mensaje con voz del personaje</li>
+            <li><i class="fas fa-check"></i> Nombre del festejado(a)</li>
+            <li><i class="fas fa-check"></i> Dedicatoria personalizada</li>
+            <li><i class="fas fa-check"></i> Imagen temática del personaje</li>
+            <li><i class="fas fa-check"></i> Animación de sobre ✉️</li>
+            <li><i class="fas fa-check"></i> Música de fondo básica</li>
+            <li><i class="fas fa-check"></i> Botón compartir</li>
+          </ul>
+        </article>
+
+        <!-- PERSONALIZADO -->
+        <article class="card tier-card customized-border featured-tier">
+          <div class="tier-badge" style="background: #f1c40f; color: #000;">Personalizado</div>
+          <h3 class="tier-price-large">$750</h3>
+          <p class="tier-tagline">Más conexión emocional y detalle</p>
+          <ul class="tier-features-list">
+            <li><i class="fas fa-plus"></i> Todo lo anterior +</li>
+            <li><i class="fas fa-check"></i> Mensaje más elaborado (mejor guión)</li>
+            <li><i class="fas fa-check"></i> Música personalizada (a elección)</li>
+            <li><i class="fas fa-check"></i> Imagen más adaptada al festejado</li>
+            <li><i class="fas fa-check"></i> Mejor integración visual</li>
+            <li><i class="fas fa-check"></i> Controles de audio avanzados</li>
+          </ul>
+        </article>
+
+        <!-- PREMIUM -->
+        <article class="card tier-card premium-border">
+          <div class="tier-badge" style="background: #3498db;">Premium</div>
+          <h3 class="tier-price-large">$1,000</h3>
+          <p class="tier-tagline">Sorpresa memorable e inolvidable</p>
+          <ul class="tier-features-list">
+            <li><i class="fas fa-plus"></i> Todo lo anterior +</li>
+            <li><i class="fas fa-check"></i> Mensaje extendido (más natural)</li>
+            <li><i class="fas fa-video"></i> Micro video (6–8 seg animación) 🎬</li>
+            <li><i class="fas fa-music"></i> Canción personalizada (opcional)</li>
+            <li><i class="fas fa-check"></i> Diseño completamente adaptado</li>
+            <li><i class="fas fa-check"></i> Experiencia audiovisual pulida</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- DIFERENCIAL -->
+    <section class="differential" style="padding: 60px 20px; background: rgba(52, 152, 219, 0.05); text-align: center;">
+       <h3 style="font-family: 'Orbitron'; margin-bottom: 20px;">🎯 DIFERENCIAL CLAVE</h3>
+       <p style="font-size: 1.1rem; color: var(--text);">Todos los paquetes incluyen lo más importante: <strong>La voz personalizada del personaje</strong>.</p>
+       <p style="color: var(--muted); margin-top: 10px;">Eso es lo que sorprende, emociona y se comparte.</p>
+    </section>
+
+    <!-- CUSTOMIZATION TABLE -->
+    <section class="customization-section" style="padding: 80px 20px; background: rgba(255,255,255,0.02);">
+      <div class="latest-projects-header">
+        <h2 class="latest-projects-title">Personaliza tu Felicitación</h2>
+        <p class="latest-projects-subtitle">Hazla aún más especial con estos agregados</p>
+      </div>
+
+      <div class="custom-config-container" style="max-width: 800px; margin: 0 auto;">
+        <div class="base-box" style="background: var(--card); padding: 30px; border-radius: var(--radius); border: 1px solid var(--glass-border); margin-bottom: 30px;">
+          <h3 style="color: #2ecc71; margin-bottom: 15px;">🟢 BASE INCLUIDA — $500</h3>
+          <p style="color: var(--muted);">Incluye: Voz del personaje, Dedicatoria, Imagen, Animación y opción de compartir.</p>
+        </div>
+
+        <div class="add-ons-table">
+          <h3 style="margin-bottom: 20px; font-family: 'Orbitron'; font-size: 1.2rem;">🟡 Agrega más impacto</h3>
+          <div class="add-on-row"><span>Mejora de guión (mensaje emocional)</span><span class="price">+$100</span></div>
+          <div class="add-on-row"><span>Música personalizada</span><span class="price">+$100</span></div>
+          <div class="add-on-row"><span>Personaje específico complejo</span><span class="price">+$100</span></div>
+          <div class="add-on-row"><span>Animaciones mejoradas</span><span class="price">+$100</span></div>
+          
+          <h3 style="margin: 30px 0 20px; font-family: 'Orbitron'; font-size: 1.2rem;">🔵 Experiencia Avanzada</h3>
+          <div class="add-on-row"><span>🎧 Voz extendida (mensaje largo)</span><span class="price">+$200</span></div>
+          <div class="add-on-row"><span>🎬 Micro video (6–8 seg)</span><span class="price">+$150</span></div>
+          <div class="add-on-row standout"><span>🎵 Canción personalizada (letra+música)</span><span class="price">+$300 🔥</span></div>
+        </div>
+
+        <div class="logo-container" style="margin-top: 50px; text-align: center;">
+          <img src="assets/initlogo.png" alt="INIT IDEA Logo" style="max-width: 200px; height: auto; opacity: 0.8;">
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW TO CHOOSE -->
+    <section class="how-to-choose" style="padding: 80px 20px; text-align: center;">
+      <h2 style="font-family: 'Orbitron'; margin-bottom: 40px;">¿Cómo elegir?</h2>
+      <div class="grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="choice-card">
+          <div style="font-size: 3rem; margin-bottom: 15px;">🟢</div>
+          <p>Quieres sorprender</p>
+          <strong>Esencial</strong>
+        </div>
+        <div class="choice-card">
+          <div style="font-size: 3rem; margin-bottom: 15px;">🟡</div>
+          <p>Quieres emocionar más</p>
+          <strong>Personalizado</strong>
+        </div>
+        <div class="choice-card">
+          <div style="font-size: 3rem; margin-bottom: 15px;">🔵</div>
+          <p>Quieres algo inolvidable</p>
+          <strong>Premium</strong>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLOSURE -->
+    <section class="closure" style="padding: 100px 20px; text-align: center; background: var(--card);">
+      <h2 style="font-family: 'Orbitron'; margin-bottom: 20px;">Lo más importante ya lo tienes incluido</h2>
+      <p style="color: var(--muted); margin-bottom: 40px;">Ahora solo es decidir qué tan especial quieres hacerlo. La mayoría elige entre $600 y $1,000.</p>
+      
+      <div class="cta-row" style="flex-direction: column; gap: 20px;">
+        <a class="btn btn-primary" href="https://wa.me/527772383264?text=Quisiera%20cotizar%20una%20felicitacion%20digital%20personalizada" target="_blank" rel="noopener noreferrer" style="padding: 20px 40px; font-size: 1.1rem;">
+          <i class="fab fa-whatsapp"></i> Cuéntanos para quién es
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" style="min-height: 200px; padding: 40px 20px;">
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <h4>INIT IDEA</h4>
+        <p>Programar. Crear. Conectar.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

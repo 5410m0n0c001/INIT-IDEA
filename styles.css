@@ -1081,7 +1081,7 @@ body {
 }/* --- UI HOTFIX FOR DEMO CARD OVERLAP --- */
 .main-project-module {
     aspect-ratio: auto !important;
-    min-height: 380px !important;
+    min-height: 520px !important;
 }
 .main-project-module .project-link {
     position: relative !important;
@@ -1647,6 +1647,24 @@ img {
   margin-top: 10px;
   font-family: 'Orbitron';
   color: var(--text);
+}
+
+/* Tier Border Highlights */
+.essential-border { border-top: 4px solid #2ecc71 !important; }
+.customized-border { border-top: 4px solid #f1c40f !important; }
+.premium-border { border-top: 4px solid #3498db !important; }
+
+.featured-tier {
+  border-color: rgba(241, 196, 15, 0.5) !important;
+  transform: scale(1.05);
+  z-index: 2;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 1024px) {
+  .featured-tier {
+    transform: none;
+  }
 }
 
 @media (max-width: 768px) {
