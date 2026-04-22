@@ -12,11 +12,12 @@ const Device = {
     || window.innerWidth < 768,
 
   isLowEnd: (() => {
-    const mem   = navigator.deviceMemory;       // GB (Chrome/Android)
-    const cores = navigator.hardwareConcurrency; // número de núcleos
-    const conn  = navigator.connection?.effectiveType; // '2g','3g','4g'
-    return (mem && mem < 4)
-      || (cores && cores < 4)
+    // Relaxed detection: only very old devices or extremely slow connections
+    const mem   = navigator.deviceMemory;       
+    const cores = navigator.hardwareConcurrency; 
+    const conn  = navigator.connection?.effectiveType; 
+    return (mem && mem < 2)
+      || (cores && cores < 2)
       || conn === '2g'
       || conn === 'slow-2g';
   })(),
@@ -97,28 +98,13 @@ function initProjectVideos() {
   const videos = document.querySelectorAll('.lazy-video');
   if (!videos.length) return;
 
-  // En dispositivos de gama baja: mostrar solo el poster, sin video
-  if (Device.isLowEnd) {
-    videos.forEach(v => {
-      v.style.display = 'none';
-      // Mostrar el poster como imagen si existe
-      if (v.poster) {
-        const img = document.createElement('img');
-        img.src   = v.poster;
-        img.alt   = v.getAttribute('aria-label') || 'Video preview';
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:inherit;';
-        v.parentNode.insertBefore(img, v);
-      }
-    });
-    return;
-  }
-
+  // Optimized IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const v = entry.target;
 
       if (entry.isIntersecting) {
-        // Inyectar <source> solo cuando está cerca del viewport
+        // High-performance loading
         if (!v.querySelector('source') && v.dataset.src) {
           const src = document.createElement('source');
           src.src  = v.dataset.src;
@@ -126,17 +112,21 @@ function initProjectVideos() {
           v.appendChild(src);
           v.load();
         }
-        // Reproducir
-        v.play().catch(() => {});
+        
+        // Ensure play is only called when ready and handle errors gracefully
+        v.play().catch(error => {
+          console.warn('[Video] Playback blocked or failed:', error);
+          // Fallback: If autoplay fails, we keep the poster/static preview
+        });
 
       } else {
-        // Pausar cuando sale del viewport (libera GPU)
+        // Free GPU memory when not visible
         v.pause();
       }
     });
   }, {
-    rootMargin: '150px 0px',  // empieza 150px antes de entrar
-    threshold:  0.1,
+    rootMargin: '200px 0px', // Pre-load slightly earlier
+    threshold:  0.01,         // Trigger as soon as 1% is visible
   });
 
   videos.forEach(v => observer.observe(v));

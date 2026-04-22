@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v5';
+const CACHE_VERSION = 'v6';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -16,12 +16,15 @@ const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 // ⚠️ NO incluir .mp4 — se sirven directo desde red siempre
 const PRECACHE_ASSETS = [
   '/',
-  '/index.html',
-  '/styles.css',
-  '/script.js',
-  '/manifest.json',
-  '/logo2.0.jpeg',
-  '/contact.vcf',
+  'index.html',
+  'styles.css',
+  'script.js',
+  'manifest.json',
+  'logo2.0.jpeg',
+  'contact.vcf',
+  'assets/og-main.png',
+  'assets/og-invitaciones.png',
+  'assets/og-tarjetas.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
   'https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap',
 ];

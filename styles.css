@@ -344,20 +344,24 @@ body {
 }
 .latest-project-card {
   position: relative;
-  /* FIX: aspect-ratio can cause reflow on mobile - use fixed min-height as fallback */
-  aspect-ratio: 4/3;
-  min-height: 240px;
   width: 100%;
+  aspect-ratio: 4/3; /* Default for mobile */
+  min-height: 280px;
   border-radius: 20px;
   overflow: hidden;
   background: var(--card);
   display: flex;
   flex-direction: column;
   border: 1px solid var(--glass-border);
-  /* FIX: contain isolates each card's paint and layout from the rest of the page */
   contain: layout style paint;
-  /* FIX: isolate creates a new stacking context, prevents scroll-triggered repaints */
   isolation: isolate;
+}
+
+@media (min-width: 1024px) {
+  .latest-project-card {
+    aspect-ratio: auto;
+    height: 520px; /* Increasily slightly more for safety */
+  }
 }
 @media (hover: hover) {
   .latest-project-card {
@@ -385,19 +389,26 @@ body {
   inset: 0;
   z-index: 0;
 }
+/* Unified Video & Image class for high-performance rendering */
 .project-card-image,
-.project-card-video {
+.project-card-video,
+.project-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* FIX: promote video/image to GPU layer */
+  display: block;
+  border-radius: inherit;
+  /* GPU acceleration & composite isolation */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: transform;
+  background-color: #0c0c0e; /* Fallback color */
 }
+
 @media (hover: hover) {
   .latest-project-card:hover .project-card-image,
-  .latest-project-card:hover .project-card-video {
+  .latest-project-card:hover .project-card-video,
+  .latest-project-card:hover .project-video {
     transform: scale(1.05);
   }
 }
@@ -408,42 +419,57 @@ body {
 }
 
 .project-card-overlay {
-  position: relative;
-  z-index: 1;
-  height: 100%;
-  padding: 30px 24px;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+  justify-content: center; /* Centrado vertical del grupo */
+  align-items: center;    /* Centrado horizontal */
+  background: radial-gradient(circle at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.65) 100%);
+  text-align: center;
+  box-sizing: border-box;
 }
 .project-card-content {
-  margin-bottom: 20px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px) saturate(160%);
-  -webkit-backdrop-filter: blur(15px) saturate(160%);
-  padding: 20px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  padding: 15px 25px; /* Tighter padding */
   border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  display: inline-block;
-  max-width: 95%;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-  /* FIX: Ensure content stays sharp inside blur */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 96%;
+  max-width: 420px; /* Wider to allow titles to be on fewer lines */
+  min-height: min-content;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
   transform: translateZ(0);
+  flex: 0 0 auto;
+  margin: 0 auto;
 }
 .project-icon {
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: var(--text);
-  margin-bottom: 12px;
-  opacity: 0.8;
+  margin-bottom: 5px;
+  opacity: 0.9;
 }
 .project-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  margin-bottom: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
   color: var(--text);
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.2;
+}
+.project-description {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  margin-bottom: 0;
 }
 
 /* Pulsing Demo Button Styling */
@@ -498,9 +524,11 @@ body {
   text-decoration: none;
   border-radius: 30px;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   width: max-content;
-  transition: background var(--transition-smooth);
+  transition: all var(--transition-smooth);
+  margin-top: 10px; /* Tighter margin */
+  flex-shrink: 0;
 }
 @media (hover: hover) {
   .project-link:hover {
@@ -769,7 +797,28 @@ body {
     padding: 60px 16px;
   }
   .project-card-overlay {
-    padding: 20px 16px;
+    padding: 16px;
+    justify-content: center;
+  }
+  .project-card-content {
+    padding: 16px 20px;
+    width: 92%;
+    max-width: 320px; /* Increased for better readability on modern phones */
+    border-radius: 22px;
+  }
+  .project-title {
+    font-size: 1.15rem !important; /* Force mobile size */
+    margin-bottom: 4px;
+  }
+  .project-description {
+  font-size: 0.8rem; /* Ultra compact */
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.3;
+  margin-bottom: 0;
+}
+  .project-icon {
+    font-size: 1.2rem;
+    margin-bottom: 8px;
   }
   /* On small phones, hide the chat button label text to avoid overlap */
   .chat-btn span {
@@ -1083,18 +1132,13 @@ body {
     aspect-ratio: auto !important;
     min-height: 520px !important;
 }
-.main-project-module .project-link {
-    position: relative !important;
-    bottom: auto !important;
-    left: auto !important;
-    margin-bottom: 15px !important;
-}
 .order-card-btn {
     overflow: visible !important;
     padding: 12px 20px !important;
     min-height: 55px !important;
     height: auto !important;
     line-height: 1.4 !important;
+    margin-top: 10px !important;
 }
 
 /* ============================================================
@@ -1198,14 +1242,7 @@ body {
   will-change: auto; /* el JS lo activa solo si está en viewport */
 }
 
-/* Contenedor de videos de proyecto */
-.project-video {
-  width:       100%;
-  height:      100%;
-  object-fit:  cover;
-  display:     block;
-  border-radius: inherit;
-}
+/* Handled by consolidated classes above */
 
 /* Asegura que el poster se vea mientras el video carga */
 .lazy-video {
