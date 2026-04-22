@@ -396,13 +396,14 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  display: block !important;
   border-radius: inherit;
-  /* GPU acceleration & composite isolation */
   transform: translateZ(0);
   -webkit-transform: translateZ(0);
   will-change: transform;
-  background-color: #0c0c0e; /* Fallback color */
+  background-color: #0c0c0e;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 @media (hover: hover) {
@@ -1207,15 +1208,18 @@ body {
 /* Solo se activan si JS agrega la clase .animate-on-scroll */
 
 .animate-on-scroll {
-  opacity:   0;
-  transform: translateY(18px);
-  /* NO usar will-change aquí — se activa justo antes de animar */
+  /* Default state: visible if JS fails */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.init {
+  opacity: 0;
+  transform: translateY(25px);
 }
 
 .animate-on-scroll.visible {
-  opacity:    1;
-  transform:  translateY(0);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  opacity: 1 !important;
+  transform: translateY(0) !important;
 }
 
 /* Sin animaciones si el usuario lo prefiere o es lite-mode */

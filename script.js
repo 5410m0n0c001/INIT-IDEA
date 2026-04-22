@@ -98,13 +98,11 @@ function initProjectVideos() {
   const videos = document.querySelectorAll('.lazy-video');
   if (!videos.length) return;
 
-  // Optimized IntersectionObserver
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       const v = entry.target;
 
       if (entry.isIntersecting) {
-        // High-performance loading
         if (!v.querySelector('source') && v.dataset.src) {
           const src = document.createElement('source');
           src.src  = v.dataset.src;
@@ -113,23 +111,27 @@ function initProjectVideos() {
           v.load();
         }
         
-        // Ensure play is only called when ready and handle errors gracefully
-        v.play().catch(error => {
-          console.warn('[Video] Playback blocked or failed:', error);
-          // Fallback: If autoplay fails, we keep the poster/static preview
-        });
+        // Use a slight delay or wait for metadata to ensure play() works
+        setTimeout(() => {
+          v.play().catch(() => {
+            // Silently fail if autoplay blocked
+          });
+        }, 50);
 
       } else {
-        // Free GPU memory when not visible
         v.pause();
       }
     });
   }, {
-    rootMargin: '200px 0px', // Pre-load slightly earlier
-    threshold:  0.01,         // Trigger as soon as 1% is visible
+    rootMargin: '250px 0px',
+    threshold:  0.01,
   });
 
-  videos.forEach(v => observer.observe(v));
+  videos.forEach(v => {
+    // Ensure video is visible even if script is buggy
+    v.style.display = 'block';
+    observer.observe(v);
+  });
 }
 
 // ── TOGGLE DE IDIOMA ─────────────────────────────────────────
@@ -210,11 +212,11 @@ function initSocialToggle() {
 // ── ANIMACIONES DE SCROLL (solo en dispositivos capaces) ─────
 
 function initScrollAnimations() {
-  // No animar en gama baja o reduced-motion
-  if (Device.isLowEnd || Device.prefersReducedMotion) return;
+  // No animar en gama baja o si el usuario prefiere movimiento reducido
+  if (Device.prefersReducedMotion) return;
 
   const animElements = document.querySelectorAll(
-    '.card, .project-card, .testimonial-card, .scroll-reveal, .pricing-card-preview, [data-animate]'
+    '.card, .latest-project-card, .testimonial-card, .scroll-reveal, .pricing-card-preview, [data-animate]'
   );
   if (!animElements.length) return;
 
@@ -222,13 +224,14 @@ function initScrollAnimations() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // animar solo una vez
+        observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05 });
+  }, { threshold: 0.1 });
 
   animElements.forEach(el => {
-    el.classList.add('animate-on-scroll');
+    // Add initialization class and observe
+    el.classList.add('animate-on-scroll', 'init');
     observer.observe(el);
   });
 }
