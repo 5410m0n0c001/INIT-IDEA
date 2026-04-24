@@ -142,10 +142,8 @@ body {
   height: 100%;
   object-fit: cover;
   z-index: 0;
-  /* FIX: Promote video to its own compositor layer - prevents iOS crash */
-  will-change: transform;
+  /* GPU layer only for large hero video */
   transform: translateZ(0);
-  -webkit-transform: translateZ(0);
 }
 .header-glass {
   position: relative;
@@ -256,6 +254,8 @@ body {
 .services {
   padding: 80px 20px;
   background: var(--bg);
+  content-visibility: auto;
+  contain-intrinsic-size: 1000px;
 }
 .services h3, .contact h3 {
   text-align: center;
@@ -276,9 +276,7 @@ body {
   border-radius: var(--radius);
   padding: 32px 24px;
   border: 1px solid var(--glass-border);
-  transition: background var(--transition-smooth), border-color var(--transition-smooth);
-  /* FIX: contain each card to limit repaint scope */
-  contain: layout style;
+  transition: background var(--transition-smooth), border-color var(--transition-smooth), transform var(--transition-smooth);
 }
 @media (hover: hover) {
   .card:hover {
@@ -304,6 +302,8 @@ body {
 .latest-projects {
   padding: 100px 20px;
   background: var(--bg);
+  content-visibility: auto;
+  contain-intrinsic-size: 2000px;
 }
 .latest-projects-container {
   max-width: 1200px;
@@ -345,7 +345,7 @@ body {
 .latest-project-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3; /* Default for mobile */
+  aspect-ratio: 4/3;
   min-height: 280px;
   border-radius: 20px;
   overflow: hidden;
@@ -353,7 +353,6 @@ body {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--glass-border);
-  contain: layout style paint;
   isolation: isolate;
 }
 
@@ -398,9 +397,6 @@ body {
   object-fit: cover;
   display: block !important;
   border-radius: inherit;
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-  will-change: transform;
   background-color: #0c0c0e;
   opacity: 1 !important;
   visibility: visible !important;
@@ -1343,6 +1339,8 @@ img {
   background: var(--bg);
   position: relative;
   overflow: hidden;
+  content-visibility: auto;
+  contain-intrinsic-size: 1500px;
 }
 .testimonials-container {
   max-width: 1200px;

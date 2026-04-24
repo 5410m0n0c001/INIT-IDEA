@@ -103,6 +103,7 @@ function initProjectVideos() {
       const v = entry.target;
 
       if (entry.isIntersecting) {
+        // Load video if not already loaded
         if (!v.querySelector('source') && v.dataset.src) {
           const src = document.createElement('source');
           src.src  = v.dataset.src;
@@ -111,15 +112,21 @@ function initProjectVideos() {
           v.load();
         }
         
-        // Use a slight delay or wait for metadata to ensure play() works
-        setTimeout(() => {
-          v.play().catch(() => {
-            // Silently fail if autoplay blocked
-          });
-        }, 50);
+        // Play video
+        v.play().catch(() => {
+          // Silently fail if autoplay blocked
+        });
 
       } else {
         v.pause();
+        // Critical: unload video on mobile or low-end to save GPU memory
+        if (Device.isMobile || Device.isLowEnd) {
+          const sources = v.querySelectorAll('source');
+          if (sources.length) {
+            sources.forEach(s => s.remove());
+            v.load(); // This unloads the video resource
+          }
+        }
       }
     });
   }, {
@@ -128,7 +135,6 @@ function initProjectVideos() {
   });
 
   videos.forEach(v => {
-    // Ensure video is visible even if script is buggy
     v.style.display = 'block';
     observer.observe(v);
   });
