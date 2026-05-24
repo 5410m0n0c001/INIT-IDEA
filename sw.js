@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v6';
+const CACHE_VERSION = 'v7';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -22,7 +22,7 @@ const PRECACHE_ASSETS = [
   'manifest.json',
   'logo2.0.jpeg',
   'contact.vcf',
-  'assets/og-main.png',
+  'assets/initlogo.png',
   'assets/og-invitaciones.png',
   'assets/og-tarjetas.png',
   'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
