@@ -1,0 +1,574 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Modelos de Invitaciones XV Años | INIT IDEA</title>
+  <meta name="description" content="Explora nuestros modelos exclusivos de invitaciones digitales para XV años. Elige el diseño que mejor refleje tu estilo." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Modelos Invitaciones XV Años - INIT IDEA" />
+  <meta property="og:description" content="Modelos exclusivos de invitaciones digitales para XV años." />
+  <meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA/modelos-15-anos.html" />
+  <meta property="og:type" content="website" />
+
+  <link rel="icon" href="logo2.0.jpeg" type="image/jpeg" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+
+  <style>
+    /* ── Page-specific overrides ── */
+    .models-hero {
+      position: relative;
+      min-height: 38vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .models-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 50%, rgba(180, 90, 255, 0.35) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 70% at 80% 40%, rgba(255, 100, 180, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 50% 100%, rgba(100, 60, 200, 0.20) 0%, transparent 70%),
+        #080010;
+      animation: heroShift 10s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroShift {
+      0%   { filter: hue-rotate(0deg) brightness(1); }
+      100% { filter: hue-rotate(20deg) brightness(1.08); }
+    }
+
+    /* Floating orbs decoration */
+    .hero-orbs {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(60px);
+      opacity: 0.25;
+      animation: orbFloat 8s ease-in-out infinite alternate;
+    }
+    .orb-1 { width: 300px; height: 300px; background: #b44fff; top: -80px; left: -60px; animation-delay: 0s; }
+    .orb-2 { width: 200px; height: 200px; background: #ff64b4; top: 20%; right: 10%; animation-delay: -3s; }
+    .orb-3 { width: 250px; height: 250px; background: #6e3fc8; bottom: -60px; left: 40%; animation-delay: -5s; }
+
+    @keyframes orbFloat {
+      0%   { transform: translateY(0) scale(1); }
+      100% { transform: translateY(-30px) scale(1.1); }
+    }
+
+    .models-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .models-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(180, 79, 255, 0.15);
+      border: 1px solid rgba(180, 79, 255, 0.4);
+      border-radius: 100px;
+      padding: 6px 18px;
+      font-size: 0.78rem;
+      font-family: 'Poppins', sans-serif;
+      color: #d4a1ff;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .models-hero-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(2rem, 6vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      color: #fff;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #fff 30%, #d4a1ff 70%, #ffb3e0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .models-hero-sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      color: rgba(255,255,255,0.65);
+      max-width: 500px;
+      margin: 0 auto 26px;
+    }
+
+    .models-hero-nav {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ── Models grid ── */
+    .models-section {
+      padding: 70px 20px 80px;
+      background: #000;
+    }
+
+    .models-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 32px;
+    }
+
+    /* ── Model card ── */
+    .model-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #0d0010;
+      border: 1px solid rgba(180, 79, 255, 0.15);
+      transition: transform 0.35s cubic-bezier(.25,.1,.25,1), box-shadow 0.35s cubic-bezier(.25,.1,.25,1), border-color 0.3s;
+      cursor: pointer;
+    }
+
+    .model-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 30px 70px rgba(180, 79, 255, 0.3), 0 0 0 1px rgba(180,79,255,0.3);
+      border-color: rgba(180, 79, 255, 0.5);
+    }
+
+    /* Preview area */
+    .model-preview {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/10;
+      overflow: hidden;
+      background: #080008;
+    }
+
+    .model-preview iframe {
+      width: 200%;
+      height: 200%;
+      border: none;
+      transform: scale(0.5);
+      transform-origin: top left;
+      pointer-events: none;
+      transition: transform 0.5s ease;
+    }
+
+    .model-card:hover .model-preview iframe {
+      transform: scale(0.5) translateY(-20px);
+    }
+
+    .model-preview-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 40%, rgba(5,0,15,0.9) 100%);
+      z-index: 1;
+    }
+
+    /* Pill badge on card */
+    .model-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      z-index: 5;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 13px;
+      border-radius: 100px;
+      backdrop-filter: blur(12px);
+    }
+
+    .badge-tour {
+      background: rgba(255, 213, 0, 0.18);
+      border: 1px solid rgba(255, 213, 0, 0.5);
+      color: #ffd500;
+    }
+    .badge-modelo {
+      background: rgba(180, 79, 255, 0.18);
+      border: 1px solid rgba(180, 79, 255, 0.5);
+      color: #d4a1ff;
+    }
+
+    /* Card body */
+    .model-body {
+      padding: 22px 24px 26px;
+    }
+
+    .model-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: rgba(180,79,255,0.7);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .model-name {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 1.45rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .model-desc {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Tags */
+    .model-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 22px;
+    }
+
+    .model-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.72rem;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(180,79,255,0.1);
+      border: 1px solid rgba(180,79,255,0.2);
+      color: rgba(180,79,255,0.85);
+    }
+
+    /* CTA button */
+    .model-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .btn-demo {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: linear-gradient(135deg, #7c3aed, #b44fff);
+      color: #fff;
+      border: none;
+    }
+
+    .btn-demo:hover {
+      background: linear-gradient(135deg, #8b48f0, #cc66ff);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 25px rgba(180, 79, 255, 0.4);
+    }
+
+    .btn-demo-outline {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      background: transparent;
+      color: rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .btn-demo-outline:hover {
+      border-color: rgba(180,79,255,0.5);
+      color: #d4a1ff;
+      background: rgba(180,79,255,0.08);
+    }
+
+    /* ── Section header ── */
+    .models-header {
+      text-align: center;
+      margin-bottom: 52px;
+    }
+
+    .models-header-label {
+      display: inline-block;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(180,79,255,0.8);
+      margin-bottom: 12px;
+    }
+
+    .models-header-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .models-header-sub {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.95rem;
+      color: rgba(255,255,255,0.5);
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* Divider */
+    .section-divider {
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #7c3aed, #ff64b4);
+      border-radius: 2px;
+      margin: 16px auto 0;
+    }
+
+    /* ── CTA bottom ── */
+    .models-cta-section {
+      padding: 60px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(180,79,255,0.04));
+      border-top: 1px solid rgba(180,79,255,0.1);
+    }
+
+    .models-cta-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .models-cta-section p {
+      font-family: 'Poppins', sans-serif;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 28px;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .model-cta { flex-direction: column; }
+      .models-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="lang-es">
+
+  <!-- SPLASH SCREEN -->
+  <div id="splash-screen" class="splash-screen" role="status" aria-label="Cargando">
+    <div class="splash-content">
+      <img src="logo2.0.jpeg" alt="Logo" class="splash-logo">
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <header class="models-hero">
+    <div class="models-hero-bg"></div>
+    <div class="hero-orbs">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+    </div>
+    <div class="models-hero-content">
+      <div class="models-hero-badge">
+        <i class="fas fa-star"></i> Invitaciones para XV Años
+      </div>
+      <h1 class="models-hero-title">Elige tu Modelo<br>Favorito</h1>
+      <p class="models-hero-sub">Cada diseño cuenta una historia única. Descubre el que mejor refleja tu personalidad.</p>
+      <nav class="models-hero-nav">
+        <a href="invitaciones.html" class="btn btn-outline">
+          <i class="fas fa-arrow-left"></i> Volver
+        </a>
+        <a href="precios-invitaciones.html" class="btn btn-primary">
+          <i class="fas fa-tags"></i> Ver Precios
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MODELS GRID -->
+  <main>
+    <section class="models-section">
+      <div class="models-header">
+        <span class="models-header-label">Colección XV Años</span>
+        <h2 class="models-header-title">Nuestros Modelos Disponibles</h2>
+        <p class="models-header-sub">Selecciona el demo para explorar la invitación completa e interactiva</p>
+        <div class="section-divider"></div>
+      </div>
+
+      <div class="models-grid">
+
+        <!-- ── MODELO 1: Angela (Demo con Visita Guiada) ── -->
+        <div class="model-card">
+          <div class="model-preview">
+            <iframe
+              src="https://5410m0n0c001.github.io/invitaciondemoxvanos/"
+              title="Preview Angela XV Años"
+              loading="lazy"
+              scrolling="no"
+              tabindex="-1"
+            ></iframe>
+            <div class="model-preview-overlay"></div>
+          </div>
+          <span class="model-badge badge-tour">
+            <i class="fas fa-route"></i> Visita Guiada
+          </span>
+
+          <div class="model-body">
+            <div class="model-number">Modelo 01</div>
+            <h3 class="model-name">Ángela — Elegancia Clásica</h3>
+            <p class="model-desc">
+              Diseño elegante y romántico con visita guiada interactiva paso a paso.
+              Incluye galería de fotos, cuenta regresiva y ubicación del evento.
+            </p>
+            <div class="model-tags">
+              <span class="model-tag"><i class="fas fa-route"></i> Tour interactivo</span>
+              <span class="model-tag"><i class="fas fa-images"></i> Galería</span>
+              <span class="model-tag"><i class="fas fa-clock"></i> Cuenta regresiva</span>
+              <span class="model-tag"><i class="fas fa-map-marker-alt"></i> Ubicación</span>
+            </div>
+            <div class="model-cta">
+              <a href="https://5410m0n0c001.github.io/invitaciondemoxvanos/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-angela-btn">
+                <i class="fas fa-play"></i> Ver Demo Completo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── MODELO 2: Katherine ── -->
+        <div class="model-card">
+          <div class="model-preview">
+            <iframe
+              src="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/"
+              title="Preview Katherine XV Años"
+              loading="lazy"
+              scrolling="no"
+              tabindex="-1"
+            ></iframe>
+            <div class="model-preview-overlay"></div>
+          </div>
+          <span class="model-badge badge-modelo">
+            <i class="fas fa-gem"></i> Modelo Premium
+          </span>
+
+          <div class="model-body">
+            <div class="model-number">Modelo 02</div>
+            <h3 class="model-name">Katherine — Pasión &amp; Color</h3>
+            <p class="model-desc">
+              Invitación vibrante y moderna con animaciones de entrada, música de fondo y
+              diseño responsivo que impresiona en cualquier dispositivo.
+            </p>
+            <div class="model-tags">
+              <span class="model-tag"><i class="fas fa-music"></i> Música</span>
+              <span class="model-tag"><i class="fas fa-magic"></i> Animaciones</span>
+              <span class="model-tag"><i class="fas fa-mobile-alt"></i> Responsivo</span>
+              <span class="model-tag"><i class="fas fa-palette"></i> Diseño único</span>
+            </div>
+            <div class="model-cta">
+              <a href="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-katherine-btn">
+                <i class="fas fa-play"></i> Ver Demo Completo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── MODELO 3: Zafiro ── -->
+        <div class="model-card">
+          <div class="model-preview" style="background: linear-gradient(135deg, #1a0040 0%, #2d0060 40%, #1a0035 100%); display:flex; align-items:center; justify-content:center;">
+            <!-- Placeholder visual mientras carga -->
+            <div style="text-align:center; padding:30px;">
+              <i class="fas fa-gem" style="font-size:4rem; color:#a855f7; opacity:0.7; display:block; margin-bottom:12px;"></i>
+              <span style="font-family:'Playfair Display',serif; color:rgba(255,255,255,0.6); font-size:1.1rem;">Colección Zafiro</span>
+            </div>
+            <div class="model-preview-overlay"></div>
+          </div>
+          <span class="model-badge badge-modelo">
+            <i class="fas fa-gem"></i> Zafiro
+          </span>
+
+          <div class="model-body">
+            <div class="model-number">Modelo 03</div>
+            <h3 class="model-name">Zafiro — Morado &amp; Realeza</h3>
+            <p class="model-desc">
+              Paleta morada profunda inspirada en la elegancia real. Detalles dorados,
+              efectos de partículas y una presentación sofisticada para una quinceañera especial.
+            </p>
+            <div class="model-tags">
+              <span class="model-tag"><i class="fas fa-gem"></i> Tema Zafiro</span>
+              <span class="model-tag"><i class="fas fa-star"></i> Partículas</span>
+              <span class="model-tag"><i class="fas fa-crown"></i> Elegante</span>
+              <span class="model-tag"><i class="fas fa-palette"></i> Morado real</span>
+            </div>
+            <div class="model-cta">
+              <a href="https://5410m0n0c001.github.io/invitacion-muestra-zafiro/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-zafiro-btn">
+                <i class="fas fa-play"></i> Ver Demo Completo
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.models-grid -->
+    </section>
+
+    <!-- BOTTOM CTA -->
+    <section class="models-cta-section">
+      <h2>¿Encontraste tu modelo ideal?</h2>
+      <p>Contáctanos y personalizamos la invitación con los datos de tu evento</p>
+      <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+        <a href="precios-invitaciones.html" class="btn btn-primary" id="ver-precios-btn">
+          <i class="fas fa-tags"></i> Ver Precios y Paquetes
+        </a>
+        <a href="index.html" class="btn btn-outline" id="contacto-btn">
+          <i class="fas fa-home"></i> Volver al Inicio
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" role="contentinfo">
+    <video id="footerVideo" class="footer-bg lazy-video" muted loop playsinline preload="none" data-src="assets/footer.mp4" poster="" aria-hidden="true">
+      <p>Tu navegador no soporta video.</p>
+    </video>
+    <div class="footer-glass">
+      <div class="footer-inner">
+        <h4>INIT IDEA</h4>
+        <p>Creamos momentos digitales únicos.</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
