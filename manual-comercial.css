@@ -235,6 +235,7 @@ main {
 }
 .dot-hero { background-color: var(--accent); }
 .dot-what { background-color: var(--neon-blue); }
+.dot-ecosistema { background-color: var(--neon-pink); }
 .dot-pkg { background-color: var(--neon-green); }
 .dot-calc { background-color: var(--neon-pink); }
 .dot-addons { background-color: var(--neon-amber); }
@@ -1702,6 +1703,85 @@ tr.r-warn td {
     }
     
     .highlight-grid ul {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- ECOSISTEMA TECNOLOGICO --- */
+.ecosistema-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    margin-top: 30px;
+}
+
+.ecosistema-card {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 30px;
+    transition: var(--transition-smooth);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.ecosistema-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--border-color-hover);
+    background-color: var(--bg-card-hover);
+    box-shadow: var(--shadow-premium);
+}
+
+.ecosistema-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.ecosistema-card-header i {
+    font-size: 24px;
+}
+
+.ecosistema-card-header h3 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.ecosistema-card p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.ecosistema-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.eco-tag {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 12px;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: var(--transition-fast);
+}
+
+.eco-tag:hover {
+    background-color: rgba(99, 102, 241, 0.1);
+    border-color: var(--accent);
+    color: var(--text-primary);
+}
+
+@media (max-width: 1024px) {
+    .ecosistema-grid {
         grid-template-columns: 1fr;
     }
 }
