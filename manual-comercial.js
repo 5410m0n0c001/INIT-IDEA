@@ -485,3 +485,19 @@ window.nextStep = nextStep;
 window.prevStep = prevStep;
 window.calculateDiagnosis = calculateDiagnosis;
 window.restartQuiz = restartQuiz;
+
+window.openPdfModal = function() {
+    const modal = document.getElementById('pdfModal');
+    if (modal) {
+        modal.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+};
+
+window.closePdfModal = function() {
+    const modal = document.getElementById('pdfModal');
+    if (modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+};
