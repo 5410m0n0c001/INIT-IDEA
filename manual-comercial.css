@@ -244,6 +244,8 @@ main {
 .dot-reports { background-color: var(--neon-green); }
 .dot-faq { background-color: var(--neon-amber); }
 .dot-diagnostic { background-color: var(--neon-pink); }
+.dot-tools { background-color: var(--neon-blue); }
+.dot-projects { background-color: var(--accent); }
 
 .aside-footer {
     padding: 20px 24px 0;
