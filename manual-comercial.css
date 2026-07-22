@@ -1709,36 +1709,69 @@ tr.r-warn td {
 
 /* --- HERO CHANNELS SHOWCASE --- */
 .hero-channels-showcase {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 25px 0 35px;
-    max-width: 900px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap: 16px;
+    margin: 25px 0 40px;
+    max-width: 1000px;
 }
 
 .channel-chip {
-    display: inline-flex;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 8px;
-    background-color: rgba(255, 255, 255, 0.03);
+    justify-content: center;
+    text-align: center;
+    background-color: var(--bg-card);
     border: 1px solid var(--border-color);
-    border-radius: 8px;
-    padding: 8px 14px;
-    font-size: 12.5px;
-    font-weight: 600;
-    color: var(--text-secondary);
-    transition: all var(--transition-fast) ease;
+    border-radius: 12px;
+    padding: 20px 10px;
+    min-height: 100px;
+    transition: all var(--transition-smooth) ease;
     cursor: default;
 }
 
 .channel-chip i {
-    font-size: 14.5px;
+    font-size: 26px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.channel-chip span {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    letter-spacing: 0.2px;
 }
 
 .channel-chip:hover {
-    background-color: rgba(255, 255, 255, 0.06);
+    background-color: var(--bg-card-hover);
     border-color: var(--accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.25);
+}
+
+.channel-chip:hover span {
     color: var(--text-primary);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.15);
+}
+
+@media (max-width: 768px) {
+    .hero-channels-showcase {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 10px;
+    }
+    
+    .channel-chip {
+        padding: 15px 8px;
+        min-height: 85px;
+    }
+    
+    .channel-chip i {
+        font-size: 22px;
+        margin-bottom: 8px;
+    }
+    
+    .channel-chip span {
+        font-size: 10.5px;
+    }
 }
