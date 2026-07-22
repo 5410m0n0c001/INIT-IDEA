@@ -21,8 +21,10 @@ function initLangToggle() {
     const saved = localStorage.getItem('init-idea-lang');
     if (saved === 'en') {
         body.classList.replace('lang-es', 'lang-en');
+        document.title = "Commercial & Operational Manual · INIT IDEA";
     } else {
         body.classList.replace('lang-en', 'lang-es');
+        document.title = "Manual Comercial y Operativo · INIT IDEA";
     }
 
     btn.addEventListener('click', () => {
@@ -32,6 +34,11 @@ function initLangToggle() {
             isEs ? 'lang-en' : 'lang-es'
         );
         localStorage.setItem('init-idea-lang', isEs ? 'en' : 'es');
+        
+        // Actualizar el título de la página según el idioma
+        document.title = isEs 
+            ? "Commercial & Operational Manual · INIT IDEA" 
+            : "Manual Comercial y Operativo · INIT IDEA";
         
         // Recalcular cotización en caso de cambio de idioma (por los textos dinámicos de los bullets)
         if (typeof window.recalculatePricing === 'function') {
