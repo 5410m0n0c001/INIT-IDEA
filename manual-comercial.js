@@ -45,45 +45,83 @@ function initNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('main section');
 
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').substring(1);
-            
-            // Actualizar clase activa en enlaces
-            navLinks.forEach(l => l.classList.remove('active'));
-            link.classList.add('active');
+    // Función reutilizable para cambiar de sección
+    function switchSection(targetId) {
+        // Encontrar si la sección existe
+        const targetSec = document.getElementById(targetId);
+        if (!targetSec) return;
 
-            // Mostrar sección correspondiente y ocultar las demás
-            sections.forEach(sec => {
-                if (sec.id === targetId) {
-                    sec.classList.add('active-sec');
-                    sec.style.display = 'block';
-                    setTimeout(() => {
-                        sec.style.opacity = '1';
-                        sec.style.transform = 'translateY(0)';
-                    }, 50);
-                } else {
-                    sec.classList.remove('active-sec');
-                    sec.style.display = 'none';
-                    sec.style.opacity = '0';
-                    sec.style.transform = 'translateY(15px)';
-                }
-            });
-
-            // Cerrar menú móvil al navegar
-            const sidebar = document.getElementById('sidebar');
-            if (sidebar.classList.contains('open')) {
-                sidebar.classList.remove('open');
+        // Actualizar clase activa en los links del sidebar
+        navLinks.forEach(l => {
+            const href = l.getAttribute('href');
+            if (href && href.substring(1) === targetId) {
+                l.classList.add('active');
+            } else {
+                l.classList.remove('active');
             }
-
-            // Scroll suave hacia arriba en el main
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
         });
+
+        // Mostrar sección correspondiente y ocultar las demás
+        sections.forEach(sec => {
+            if (sec.id === targetId) {
+                sec.classList.add('active-sec');
+                sec.style.display = 'block';
+                setTimeout(() => {
+                    sec.style.opacity = '1';
+                    sec.style.transform = 'translateY(0)';
+                }, 50);
+            } else {
+                sec.classList.remove('active-sec');
+                sec.style.display = 'none';
+                sec.style.opacity = '0';
+                sec.style.transform = 'translateY(15px)';
+            }
+        });
+
+        // Cerrar menú móvil al navegar
+        const sidebar = document.getElementById('sidebar');
+        if (sidebar && sidebar.classList.contains('open')) {
+            sidebar.classList.remove('open');
+        }
+
+        // Scroll suave hacia arriba en el main
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    }
+
+    // Escuchar clicks en cualquier link de la página que sea un anchor interno
+    document.addEventListener('click', (e) => {
+        const anchor = e.target.closest('a');
+        if (!anchor) return;
+
+        const href = anchor.getAttribute('href');
+        if (href && href.startsWith('#')) {
+            const targetId = href.substring(1);
+            // Verificar si el targetId es una sección de main
+            const isSection = Array.from(sections).some(sec => sec.id === targetId);
+            if (isSection) {
+                e.preventDefault();
+                switchSection(targetId);
+                // Si la URL tiene un hash, actualizamos el hash del historial sin recargar
+                history.pushState(null, null, href);
+            }
+        }
     });
+
+    // Manejar navegación cuando se carga la página con un hash (ej: #diagnostico)
+    const initialHash = window.location.hash;
+    if (initialHash) {
+        const targetId = initialHash.substring(1);
+        const isSection = Array.from(sections).some(sec => sec.id === targetId);
+        if (isSection) {
+            // Un pequeño retraso para asegurar que la página se inicializó
+            setTimeout(() => {
+                switchSection(targetId);
+            }, 100);
+        }
+    }
 }
 
 /* 3. Menú Móvil Lateral */
