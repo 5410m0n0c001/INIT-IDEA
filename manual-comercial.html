@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title class="lang-es">Manual Comercial y Operativo · INIT IDEA</title>
+    <title class="lang-en">Commercial & Operational Manual · INIT IDEA</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="manual-comercial.css">
+    <!-- FontAwesome from main repository for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="lang-es">
+    <!-- Mobile Navigation Toggle -->
+    <button class="mobile-toggle" id="mobile-toggle" aria-label="Abrir menú">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+        </svg>
+    </button>
+
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar">
+        <div class="logo-area">
+            <img src="assets/initlogo.png" alt="INIT IDEA Logo" class="logo-img">
+            <div class="logo-meta">
+                <span class="logo-title">INIT IDEA</span>
+                <span class="logo-subtitle lang-es">Manual Comercial</span>
+                <span class="logo-subtitle lang-en">Sales Manual</span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <a href="#hero" class="nav-link active" data-sec="hero">
+                <span class="nav-dot dot-hero"></span> 
+                <span class="lang-es">Propuesta de Valor</span><span class="lang-en">Value Proposition</span>
+            </a>
+            <a href="#que-hacemos" class="nav-link" data-sec="que-hacemos">
+                <span class="nav-dot dot-what"></span> 
+                <span class="lang-es">¿Qué Hacemos?</span><span class="lang-en">What We Do</span>
+            </a>
+            <a href="#paquetes" class="nav-link" data-sec="paquetes">
+                <span class="nav-dot dot-pkg"></span> 
+                <span class="lang-es">Planes y Precios</span><span class="lang-en">Plans & Prices</span>
+            </a>
+            <a href="#cotizador" class="nav-link" data-sec="cotizador">
+                <span class="nav-dot dot-calc"></span> 
+                <span class="lang-es">Cotizador Comercial</span><span class="lang-en">Interactive Calculator</span>
+            </a>
+            <a href="#add-ons" class="nav-link" data-sec="add-ons">
+                <span class="nav-dot dot-addons"></span> 
+                <span class="lang-es">Servicios Extra</span><span class="lang-en">Additional Services</span>
+            </a>
+            <a href="#formatos" class="nav-link" data-sec="formatos">
+                <span class="nav-dot dot-formats"></span> 
+                <span class="lang-es">Formatos de Contenido</span><span class="lang-en">Content Formats</span>
+            </a>
+            <a href="#campanas" class="nav-link" data-sec="campanas">
+                <span class="nav-dot dot-campaigns"></span> 
+                <span class="lang-es">Biblioteca de Ads</span><span class="lang-en">Ads Library</span>
+            </a>
+            <a href="#opt-digital" class="nav-link" data-sec="opt-digital">
+                <span class="nav-dot dot-opt"></span> 
+                <span class="lang-es">Optimización Digital</span><span class="lang-en">Digital Optimization</span>
+            </a>
+            <a href="#reportes" class="nav-link" data-sec="reportes">
+                <span class="nav-dot dot-reports"></span> 
+                <span class="lang-es">Reportes y Analítica</span><span class="lang-en">Reports & Analytics</span>
+            </a>
+            <a href="#faq" class="nav-link" data-sec="faq">
+                <span class="nav-dot dot-faq"></span> 
+                <span class="lang-es">Preguntas Frecuentes</span><span class="lang-en">FAQ</span>
+            </a>
+            <a href="#diagnostico" class="nav-link" data-sec="diagnostico">
+                <span class="nav-dot dot-diagnostic"></span> 
+                <span class="lang-es">Diagnóstico Digital</span><span class="lang-en">Digital Diagnostic</span>
+            </a>
+        </nav>
+        <div class="aside-footer">
+            <p>© 2026 INIT IDEA</p>
+            <p class="lang-es">Boutique Digital Studio</p>
+            <p class="lang-en">Boutique Digital Studio</p>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main>
+        <!-- Top Sticky Utility Header -->
+        <header class="manual-header">
+            <a href="index.html" class="back-home-btn">
+                <i class="fas fa-arrow-left"></i>
+                <span class="lang-es">Volver a Inicio</span>
+                <span class="lang-en">Back to Home</span>
+            </a>
+            <button class="lang-btn" id="langToggle">
+                <i class="fas fa-globe"></i>
+                <span class="lang-es">EN</span>
+                <span class="lang-en">ES</span>
+            </button>
+        </header>
+
+        <!-- Section: Hero -->
+        <section id="hero" class="active-sec">
+            <div class="hero-bg-accent"></div>
+            <div class="hero-content">
+                <span class="hero-badge lang-es">Manual Operativo & Comercial</span>
+                <span class="hero-badge lang-en">Operational & Sales Manual</span>
+                
+                <h1 class="hero-title lang-es">Transformamos la presencia digital en <span>conversión y negocio</span></h1>
+                <h1 class="hero-title lang-en">We transform digital presence into <span>conversion and business</span></h1>
+                
+                <p class="hero-lead lang-es">Un manual de referencia estratégico para el equipo de INIT IDEA. Diseñado para estructurar propuestas comerciales, definir la producción de contenidos de alto impacto y configurar ecosistemas digitales listos para vender.</p>
+                <p class="hero-lead lang-en">A strategic reference manual for the INIT IDEA team. Designed to structure commercial proposals, define high-impact content production, and set up digital ecosystems ready to sell.</p>
+                
+                <div class="hero-actions">
+                    <a href="#cotizador" class="hero-btn-primary lang-es">Cotizador Interactivo</a>
+                    <a href="#cotizador" class="hero-btn-primary lang-en">Interactive Calculator</a>
+                    <a href="#diagnostico" class="hero-btn-secondary lang-es">Iniciar Diagnóstico</a>
+                    <a href="#diagnostico" class="hero-btn-secondary lang-en">Start Diagnostic</a>
+                </div>
+            </div>
+            <div class="quick-kpis">
+                <div class="kpi-card">
+                    <span class="kpi-label lang-es">Foco de Tráfico</span>
+                    <span class="kpi-label lang-en">Traffic Focus</span>
+                    <span class="kpi-val text-neon-blue">Instagram</span>
+                    <span class="kpi-sub lang-es">Mayor poder adquisitivo</span>
+                    <span class="kpi-sub lang-en">Higher purchasing power</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label lang-es">Metodología</span>
+                    <span class="kpi-label lang-en">Methodology</span>
+                    <span class="kpi-val text-neon-green">External</span>
+                    <span class="kpi-sub lang-es">Dpto. Externo de Marketing</span>
+                    <span class="kpi-sub lang-en">External Marketing Dept.</span>
+                </div>
+                <div class="kpi-card">
+                    <span class="kpi-label lang-es">Optimización</span>
+                    <span class="kpi-label lang-en">Optimization</span>
+                    <span class="kpi-val text-neon-amber">Full Suite</span>
+                    <span class="kpi-sub lang-es">GA4, Tag Manager, Ads</span>
+                    <span class="kpi-sub lang-en">GA4, Tag Manager, Ads</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: ¿Qué Hacemos? -->
+        <section id="que-hacemos" class="sec-padding">
+            <h2 class="sec-title lang-es">¿Qué Hacemos en INIT IDEA?</h2>
+            <h2 class="sec-title lang-en">What We Do at INIT IDEA?</h2>
+            <p class="sec-subtitle lang-es">Dejamos atrás la lista de servicios aislada. Proveemos un departamento externo de marketing digital.</p>
+            <p class="sec-subtitle lang-en">We leave behind the isolated services list. We provide an external digital marketing department.</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 6a7.5 7.5 0 1 0 7.5 7.5h-7.5V6Z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 10.5H21A7.5 7.5 0 0 0 13.5 3v7.5Z" />
+                        </svg>
+                    </div>
+                    <h3 class="lang-es">Planificación Estratégica</h3>
+                    <h3 class="lang-en">Strategic Planning</h3>
+                    <p class="lang-es">Definimos el rumbo de la marca con base en datos, tendencias de mercado y el perfil del comprador ideal (principalmente en Instagram y Facebook).</p>
+                    <p class="lang-en">We define the direction of the brand based on data, market trends, and the ideal buyer persona (primarily on Instagram and Facebook).</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m15.75 10.5 4.72-4.72a.75.75 0 0 1 1.28.53v11.38a.75.75 0 0 1-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 0 0 2.25-2.25v-9a2.25 2.25 0 0 0-2.25-2.25h-9A2.25 2.25 0 0 0 2.25 7.5v9a2.25 2.25 0 0 0 2.25 2.25Z" />
+                        </svg>
+                    </div>
+                    <h3 class="lang-es">Producción Audiovisual</h3>
+                    <h3 class="lang-en">Audiovisual Production</h3>
+                    <p class="lang-es">Colaboramos activamente con organizadores (wedding planners) y fotógrafos de eventos para generar contenido de alta fidelidad como Reels, Shorts y TikToks.</p>
+                    <p class="lang-en">We actively collaborate with event organizers (wedding planners) and photographers to generate high-fidelity content like Reels, Shorts, and TikToks.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-1.971-.659-1.171-.879-1.171-2.303 0-3.182 1.172-.879 3.07-.879 4.242 0L15 9M5.25 12H20.25" />
+                        </svg>
+                    </div>
+                    <h3 class="lang-es">Campañas Pagadas</h3>
+                    <h3 class="lang-en">Paid Campaigns</h3>
+                    <p class="lang-es">Configuramos y administramos presupuestos publicitarios en Meta Ads, Google Ads y TikTok Ads para alimentar constantemente el embudo de ventas.</p>
+                    <p class="lang-en">We set up and manage advertising budgets in Meta Ads, Google Ads, and TikTok Ads to constantly feed the sales funnel.</p>
+                </div>
+            </div>
+
+            <div class="vision-banner">
+                <h3 class="lang-es">El Concepto de Morelos y PYMES</h3>
+                <h3 class="lang-en">The Concept for Morelos and SMBs</h3>
+                <p class="lang-es">En el mercado local de Morelos y en PYMES a nivel nacional, un paquete de manejo de redes tradicional de bajo costo no genera resultados tangibles. Nosotros defendemos una propuesta integral con valor real, donde el cliente entiende que contrata un <strong>departamento externo de marketing especializado</strong> en lugar de un diseñador de posts aislado. Esto justifica tarifas óptimas y genera un retorno de inversión saludable.</p>
+                <p class="lang-en">In the local market of Morelos and in SMBs nationwide, a traditional low-cost social media package does not generate tangible results. We stand behind an integrated proposal with real value, where the client understands that they are hiring a <strong>specialized external marketing department</strong> rather than an isolated post designer. This justifies optimal rates and generates a healthy return on investment.</p>
+            </div>
+        </section>
+
+        <!-- Section: Paquetes -->
+        <section id="paquetes" class="sec-padding">
+            <h2 class="sec-title lang-es">Nuestros Paquetes Mensuales</h2>
+            <h2 class="sec-title lang-en">Our Monthly Packages</h2>
+            <p class="sec-subtitle lang-es">Planes escalables para diferentes niveles de madurez comercial.</p>
+            <p class="sec-subtitle lang-en">Scalable plans for different levels of commercial maturity.</p>
+
+            <div class="pricing-grid">
+                <!-- Plan 1: Starter -->
+                <div class="pricing-card">
+                    <div class="card-header">
+                        <h3 class="pkg-name">Starter</h3>
+                        <div class="pkg-price">
+                            <span class="currency">$</span>
+                            <span class="amount">3,500</span>
+                            <span class="period">/ <span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                        </div>
+                        <p class="pkg-desc lang-es">Esencial para tener presencia activa y profesional en los canales principales.</p>
+                        <p class="pkg-desc lang-en">Essential for an active and professional presence on the main channels.</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="pkg-features">
+                            <li><strong class="text-neon-blue">Facebook + Instagram</strong></li>
+                            <li><span class="lang-es"><strong>8</strong> publicaciones mensuales</span><span class="lang-en"><strong>8</strong> monthly posts</span></li>
+                            <li><span class="lang-es"><strong>4</strong> reels verticales mensuales</span><span class="lang-en"><strong>4</strong> monthly reels</span></li>
+                            <li><span class="lang-es"><strong>12</strong> historias en total</span><span class="lang-en"><strong>12</strong> total stories</span></li>
+                            <li><span class="lang-es">Diseño gráfico profesional</span><span class="lang-en">Professional graphic design</span></li>
+                            <li><span class="lang-es">Copywriting persuasivo y hashtags</span><span class="lang-en">Persuasive copywriting & hashtags</span></li>
+                            <li><span class="lang-es">Calendario editorial mensual</span><span class="lang-en">Monthly editorial calendar</span></li>
+                            <li><span class="lang-es">Programación e informes de publicación</span><span class="lang-en">Scheduling and publishing reports</span></li>
+                            <li><span class="lang-es">Respuestas básicas a comentarios</span><span class="lang-en">Basic responses to comments</span></li>
+                            <li class="disabled lang-es">No incluye pauta pagada (Ads)</li>
+                            <li class="disabled lang-en">Paid advertising not included</li>
+                            <li class="disabled lang-es">No incluye cobertura en eventos</li>
+                            <li class="disabled lang-en">Event coverage not included</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Plan 2: Growth -->
+                <div class="pricing-card popular">
+                    <div class="popular-tag lang-es">Más Recomendado</div>
+                    <div class="popular-tag lang-en">Most Recommended</div>
+                    <div class="card-header">
+                        <h3 class="pkg-name">Growth</h3>
+                        <div class="pkg-price">
+                            <span class="currency">$</span>
+                            <span class="amount">8,000</span>
+                            <span class="period">/ <span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                        </div>
+                        <p class="pkg-desc lang-es">Para marcas activas que buscan ganar autoridad y viralidad orgánica.</p>
+                        <p class="pkg-desc lang-en">For active brands looking to gain authority and organic reach.</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="pkg-features">
+                            <li><strong class="text-neon-blue">FB + IG + TikTok + YouTube Shorts</strong></li>
+                            <li><span class="lang-es"><strong>12</strong> publicaciones mensuales</span><span class="lang-en"><strong>12</strong> monthly posts</span></li>
+                            <li><span class="lang-es"><strong>8</strong> reels / videos cortos al mes</span><span class="lang-en"><strong>8</strong> reels / short videos</span></li>
+                            <li><span class="lang-es"><strong>20</strong> historias mensuales</span><span class="lang-en"><strong>20</strong> monthly stories</span></li>
+                            <li><span class="lang-es"><strong>2</strong> carruseles educativos</span><span class="lang-en"><strong>2</strong> educational carousels</span></li>
+                            <li><span class="lang-es">Investigación constante de tendencias</span><span class="lang-en">Constant trends research</span></li>
+                            <li><span class="lang-es">Biblioteca de formatos aplicada</span><span class="lang-en">Applied formats library</span></li>
+                            <li><span class="lang-es">Community Management activo</span><span class="lang-en">Active Community Management</span></li>
+                            <li><span class="lang-es">Reporte ejecutivo mensual de KPIs</span><span class="lang-en">Monthly executive KPI report</span></li>
+                            <li><span class="lang-es">Reunión estratégica mensual de análisis</span><span class="lang-en">Monthly strategic meeting</span></li>
+                            <li class="disabled lang-es">No incluye administración de campañas</li>
+                            <li class="disabled lang-en">Ad campaign management not included</li>
+                            <li class="disabled lang-es">No incluye producción en locación/eventos</li>
+                            <li class="disabled lang-en">On-site event production not included</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Plan 3: Scale -->
+                <div class="pricing-card premium">
+                    <div class="card-header">
+                        <h3 class="pkg-name">Scale</h3>
+                        <div class="pkg-price">
+                            <span class="currency">$</span>
+                            <span class="amount">15,000</span>
+                            <span class="period">/ <span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                        </div>
+                        <p class="pkg-desc lang-es">Tu departamento externo completo de marketing digital para máxima conversión.</p>
+                        <p class="pkg-desc lang-en">Your complete external digital marketing department for maximum conversion.</p>
+                    </div>
+                    <div class="card-body">
+                        <ul class="pkg-features">
+                            <li><strong class="text-neon-blue">FB + IG + TikTok + YT + LinkedIn (B2B)</strong></li>
+                            <li><span class="lang-es"><strong>16</strong> publicaciones mensuales</span><span class="lang-en"><strong>16</strong> monthly posts</span></li>
+                            <li><span class="lang-es"><strong>12</strong> reels de alta calidad</span><span class="lang-en"><strong>12</strong> high-quality reels</span></li>
+                            <li><span class="lang-es"><strong>30</strong> historias mensuales (1 diaria)</span><span class="lang-en"><strong>30</strong> monthly stories (1 daily)</span></li>
+                            <li><span class="lang-es"><strong>4</strong> carruseles educativos y dinámicos</span><span class="lang-en"><strong>4</strong> educational/dynamic carousels</span></li>
+                            <li><span class="lang-es"><strong>2</strong> infografías profesionales</span><span class="lang-en"><strong>2</strong> professional infographics</span></li>
+                            <li><span class="lang-es"><strong>1</strong> video largo para YT (5-10 min)*</span><span class="lang-en"><strong>1</strong> long video for YT (5-10 min)*</span></li>
+                            <li><span class="lang-es">Reciclaje estratégico de contenido</span><span class="lang-en">Strategic content recycling</span></li>
+                            <li><span class="lang-es">Estrategia editorial completa y Lab</span><span class="lang-en">Full editorial strategy & Lab</span></li>
+                            <li><span class="lang-es">Networking con proveedores / Wedding Planners</span><span class="lang-en">Networking with vendors / planners</span></li>
+                            <li><span class="lang-es">Optimización continua de perfiles</span><span class="lang-en">Continuous profile optimization</span></li>
+                            <li><span class="lang-es">Reporte integral de KPIs y reunión</span><span class="lang-en">Comprehensive KPI report & meeting</span></li>
+                            <li class="disabled lang-es">*Sujeto a material provisto por el cliente</li>
+                            <li class="disabled lang-en">*Subject to material provided by client</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Cotizador Interactivo -->
+        <section id="cotizador" class="sec-padding section-widget">
+            <h2 class="sec-title lang-es">Cotizador Interactivo INIT IDEA</h2>
+            <h2 class="sec-title lang-en">INIT IDEA Interactive Calculator</h2>
+            <p class="sec-subtitle lang-es">Configura una propuesta personalizada sumando la gestión base con los servicios adicionales.</p>
+            <p class="sec-subtitle lang-en">Configure a customized proposal by combining the base package with additional services.</p>
+
+            <div class="widget-container calculator-grid">
+                <div class="calc-inputs">
+                    <div class="input-group">
+                        <label class="input-label lang-es">1. Selecciona un Plan Base</label>
+                        <label class="input-label lang-en">1. Select a Base Plan</label>
+                        <div class="plan-selector">
+                            <label class="plan-option">
+                                <input type="radio" name="base-plan" value="0" checked>
+                                <div class="option-content">
+                                    <span class="name lang-es">Sin Plan Base (Solo Add-ons)</span>
+                                    <span class="name lang-en">No Base Plan (Add-ons only)</span>
+                                    <span class="price">$0</span>
+                                </div>
+                            </label>
+                            <label class="plan-option">
+                                <input type="radio" name="base-plan" value="3500">
+                                <div class="option-content">
+                                    <span class="name">Starter</span>
+                                    <span class="price">$3,500/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                            <label class="plan-option">
+                                <input type="radio" name="base-plan" value="8000">
+                                <div class="option-content">
+                                    <span class="name">Growth</span>
+                                    <span class="price">$8,000/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                            <label class="plan-option">
+                                <input type="radio" name="base-plan" value="15000">
+                                <div class="option-content">
+                                    <span class="name">Scale</span>
+                                    <span class="price">$15,000/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label lang-es">2. Añade Servicios y Ads (Mensual)</label>
+                        <label class="input-label lang-en">2. Add Ads & Management (Monthly)</label>
+                        <div class="addons-checklist">
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc" data-price="3500" value="Meta Ads">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Administración de Meta Ads</span>
+                                    <span class="addon-name lang-en">Meta Ads Management</span>
+                                    <span class="addon-price">+$3,500/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc" data-price="3000" value="TikTok Ads">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Administración de TikTok Ads</span>
+                                    <span class="addon-name lang-en">TikTok Ads Management</span>
+                                    <span class="addon-price">+$3,000/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc" data-price="4000" value="Google Ads">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Administración de Google Ads</span>
+                                    <span class="addon-name lang-en">Google Ads Management</span>
+                                    <span class="addon-price">+$4,000/<span class="lang-es">mes</span><span class="lang-en">mo</span></span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label class="input-label lang-es">3. Añade Configuraciones y Únicos (Pago Único)</label>
+                        <label class="input-label lang-en">3. Add Setup & Web Assets (One-Time)</label>
+                        <div class="addons-checklist">
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc-once" data-price="10000" value="Premium Onboarding">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Premium Onboarding (Recomendado)</span>
+                                    <span class="addon-name lang-en">Premium Onboarding (Recommended)</span>
+                                    <span class="addon-price">+$10,000</span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc-once" data-price="2500" value="Auditoría Digital">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Auditoría Digital Integral</span>
+                                    <span class="addon-name lang-en">Comprehensive Digital Audit</span>
+                                    <span class="addon-price">+$2,500</span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc-once" data-price="5000" value="Optimización Perfiles">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Optimización Completa de Redes</span>
+                                    <span class="addon-name lang-en">Complete Profiles Optimization</span>
+                                    <span class="addon-price">+$5,000</span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc-once" data-price="10000" value="Landing Page">
+                                <div class="check-content">
+                                    <span class="addon-name">Landing Page</span>
+                                    <span class="addon-price">+$10,000</span>
+                                </div>
+                            </label>
+                            <label class="addon-check-item">
+                                <input type="checkbox" class="addon-calc-once" data-price="20000" value="Sitio Web">
+                                <div class="check-content">
+                                    <span class="addon-name lang-es">Sitio Web Corporativo</span>
+                                    <span class="addon-name lang-en">Corporate Website</span>
+                                    <span class="addon-price">+$20,000</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="calc-results">
+                    <div class="results-card">
+                        <h3 class="lang-es">Resumen del Presupuesto</h3>
+                        <h3 class="lang-en">Budget Summary</h3>
+                        <div class="result-row">
+                            <span class="lang-es">Inversión Mensual Gestión:</span>
+                            <span class="lang-en">Monthly Investment:</span>
+                            <span id="res-monthly" class="res-val">$0</span>
+                        </div>
+                        <div class="result-row">
+                            <span class="lang-es">Servicios Únicos:</span>
+                            <span class="lang-en">One-Time Services:</span>
+                            <span id="res-once" class="res-val">$0</span>
+                        </div>
+                        <div class="result-divider"></div>
+                        <div class="result-row total">
+                            <span class="lang-es">Inversión Inicial Estimada:</span>
+                            <span class="lang-en">Estimated Initial Investment:</span>
+                            <span id="res-total" class="res-val text-neon-green">$0</span>
+                        </div>
+                        <div class="result-bullets">
+                            <h4 class="lang-es">Entregables Básicos del Plan:</h4>
+                            <h4 class="lang-en">Plan Deliverables:</h4>
+                            <ul id="res-bullets-list">
+                                <li>Selecciona un plan para ver los entregables</li>
+                            </ul>
+                        </div>
+                        <a href="#diagnostico" class="widget-action-btn lang-es">Solicitar Diagnóstico en base a esta Cotización</a>
+                        <a href="#diagnostico" class="widget-action-btn lang-en">Request Diagnostic based on this Quote</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Servicios Adicionales -->
+        <section id="add-ons" class="sec-padding">
+            <h2 class="sec-title lang-es">Tabla de Servicios Adicionales</h2>
+            <h2 class="sec-title lang-en">Additional Services Table</h2>
+            <p class="sec-subtitle lang-es">Cotizaciones individuales para mantener la flexibilidad y rentabilidad de los proyectos.</p>
+            <p class="sec-subtitle lang-en">Individual pricing to maintain project flexibility and profitability.</p>
+            
+            <div class="t-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="lang-es">Servicio</th><th class="lang-en">Service</th>
+                            <th class="lang-es">Descripción Comercial</th><th class="lang-en">Commercial Description</th>
+                            <th class="num lang-es">Precio Sugerido</th><th class="num lang-en">Suggested Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="name lang-es">Auditoría Digital Integral</td><td class="name lang-en">Comprehensive Digital Audit</td>
+                            <td class="lang-es">Revisión de accesos, pixeles configurados, calidad gráfica de las publicaciones y SEO local.</td>
+                            <td class="lang-en">Review of accesses, active pixels, graphic quality of posts, and local SEO.</td>
+                            <td class="num font-bold">$2,500</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Optimización de Ecosistema</td><td class="name lang-en">Ecosystem Optimization</td>
+                            <td class="lang-es">Corrección de biografías, enlazado web, configuración de destacados y SEO interno en perfiles.</td>
+                            <td class="lang-en">Correction of bios, web links, highlights settings, and internal SEO on profiles.</td>
+                            <td class="num font-bold">$5,000</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Meta Business Manager Config</td><td class="name lang-en">Meta Business Manager Setup</td>
+                            <td class="lang-es">Creación/verificación de Business Manager, cuenta publicitaria, roles, accesos y pixel.</td>
+                            <td class="lang-en">Creation/verification of Business Manager, ad accounts, roles, access, and pixel.</td>
+                            <td class="num font-bold">$3,500</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Google Analytics 4 & GTM</td><td class="name lang-en">Google Analytics 4 & GTM</td>
+                            <td class="lang-es">Instalación de Tag Manager, Google Analytics 4 y Search Console en el sitio web del cliente.</td>
+                            <td class="lang-en">Installation of Tag Manager, GA4, and Google Search Console on client's site.</td>
+                            <td class="num font-bold">$3,500</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">TikTok Business Config</td><td class="name lang-en">TikTok Business Config</td>
+                            <td class="lang-es">Apertura de cuenta Business, vinculación con el pixel de TikTok y pruebas de eventos.</td>
+                            <td class="lang-en">Opening Business account, linking TikTok pixel, and event testing.</td>
+                            <td class="num font-bold">$2,500</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Google Business Profile</td><td class="name lang-en">Google Business Profile</td>
+                            <td class="lang-es">Alta y optimización de la ficha de Google Maps, carga de fotos, horarios y productos.</td>
+                            <td class="lang-en">Setup and optimization of Google Maps profile, photo uploads, hours, and products.</td>
+                            <td class="num font-bold">$2,000</td>
+                        </tr>
+                        <tr class="r-warn">
+                            <td class="name lang-es">Administración de Meta Ads</td><td class="name lang-en">Meta Ads Management</td>
+                            <td class="lang-es">Creación, segmentación y optimización de campañas semanales (excluye presupuesto publicitario).</td>
+                            <td class="lang-en">Creation, targeting, and optimization of weekly campaigns (excludes ad budget).</td>
+                            <td class="num font-bold">$3,500 / <span class="lang-es">mes</span><span class="lang-en">mo</span></td>
+                        </tr>
+                        <tr class="r-warn">
+                            <td class="name lang-es">Administración de TikTok Ads</td><td class="name lang-en">TikTok Ads Management</td>
+                            <td class="lang-es">Creación y gestión de campañas en TikTok. Enfoque dinámico y de tendencias.</td>
+                            <td class="lang-en">Creation and management of campaigns on TikTok. Dynamic and trends focus.</td>
+                            <td class="num font-bold">$3,000 / <span class="lang-es">mes</span><span class="lang-en">mo</span></td>
+                        </tr>
+                        <tr class="r-warn">
+                            <td class="name lang-es">Administración de Google Ads</td><td class="name lang-en">Google Ads Management</td>
+                            <td class="lang-es">Estrategia de búsqueda (Search), display o locales para captar leads con alta intención.</td>
+                            <td class="lang-en">Search, display, or local campaigns to capture high-intent leads.</td>
+                            <td class="num font-bold">$4,000 / <span class="lang-es">mes</span><span class="lang-en">mo</span></td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Producción de Contenido Local</td><td class="name lang-en">Local Content Production</td>
+                            <td class="lang-es">Visita física a eventos o locación para captar video/fotos profesionales. Cobertura in-situ.</td>
+                            <td class="lang-en">Physical visit to events or location to capture video/photos. On-site coverage.</td>
+                            <td class="num font-bold">Personalizado</td>
+                        </tr>
+                        <tr>
+                            <td class="name">Landing Page</td><td class="name">Landing Page</td>
+                            <td class="lang-es">Página única optimizada para conversión directa y captación de clientes potenciales.</td>
+                            <td class="lang-en">Single page optimized for direct conversion and lead capture.</td>
+                            <td class="num font-bold">Desde $10,000</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Sitio Web Corporativo</td><td class="name lang-en">Corporate Website</td>
+                            <td class="lang-es">Hasta 5 secciones internas, autoadministrable, integrado con analítica y WhatsApp.</td>
+                            <td class="lang-en">Up to 5 sections, self-manageable, integrated with analytics and WhatsApp.</td>
+                            <td class="num font-bold">Desde $20,000</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">E-commerce / Tienda</td><td class="name lang-en">Online Store / E-commerce</td>
+                            <td class="lang-es">Catálogo completo, pasarelas de pago, cálculo de envíos e integraciones avanzadas.</td>
+                            <td class="lang-en">Full product catalog, payment gateways, shipping calculator, and integrations.</td>
+                            <td class="num font-bold">Desde $35,000</td>
+                        </tr>
+                        <tr>
+                            <td class="name lang-es">Automatizaciones CRM</td><td class="name lang-en">CRM Automations</td>
+                            <td class="lang-es">Vínculo de formularios web con WhatsApp Business, CRM, envíos de correo automático, etc.</td>
+                            <td class="lang-en">Linking web forms with WhatsApp Business, CRM setup, auto emails, etc.</td>
+                            <td class="num font-bold">Desde $8,000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="add-on-highlight">
+                <div class="highlight-header">
+                    <span class="badge b-blue lang-es">Servicio Premium</span>
+                    <span class="badge b-blue lang-en">Premium Service</span>
+                    <h3 class="lang-es">Onboarding Digital (Lanzamiento Obligatorio)</h3>
+                    <h3 class="highlight-title lang-en">Digital Onboarding (Mandatory Launch)</h3>
+                    <span class="price-badge">$8,000 - $12,000</span>
+                </div>
+                <p class="lang-es">Recomendamos firmemente este servicio de arranque a clientes nuevos. Asegura que el proyecto comience con cimientos técnicos estables, evitando que consumamos horas operativas resolviendo problemas de accesos, pixeles rotos o imágenes desactualizadas en el transcurso del fee mensual. Posiciona a INIT IDEA como una consultora seria desde el día uno.</p>
+                <p class="lang-en">We strongly recommend this kick-off service for new clients. It ensures the project starts on solid technical foundations, preventing us from spending monthly operational hours troubleshooting access, broken pixels, or outdated profiles. It positions INIT IDEA as a professional consulting studio from day one.</p>
+                <div class="highlight-grid">
+                    <div><strong>ES:</strong></div>
+                    <ul class="lang-es">
+                        <li>Auditoría de marca profunda</li>
+                        <li>Optimización completa de perfiles</li>
+                        <li>Configuración de Meta Business Suite y Cuentas Publicitarias</li>
+                        <li>Analytics, Tag Manager y Google Search Console instalados</li>
+                        <li>Configuración y catálogo de WhatsApp Business</li>
+                        <li>Definición de línea estética e identidad visual base</li>
+                        <li>Calendario estratégico y plan de acción para los primeros 90 días</li>
+                    </ul>
+                    <div class="lang-en"><strong>EN:</strong></div>
+                    <ul class="lang-en">
+                        <li>Deep brand audit</li>
+                        <li>Complete profile optimization</li>
+                        <li>Meta Business Suite and Ad Accounts configuration</li>
+                        <li>Analytics, Tag Manager, and Google Search Console installed</li>
+                        <li>WhatsApp Business configuration and catalog setup</li>
+                        <li>Definition of visual guidelines and base aesthetic</li>
+                        <li>Strategic calendar and action plan for the first 90 days</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Biblioteca de Formatos de Contenido -->
+        <section id="formatos" class="sec-padding">
+            <h2 class="sec-title lang-es">Biblioteca de Formatos de Contenido</h2>
+            <h2 class="sec-title lang-en">Content Formats Library</h2>
+            <p class="sec-subtitle lang-es">Nuestros 20 formatos validados para detener el scroll, enganchar y convertir en redes.</p>
+            <p class="sec-subtitle lang-en">Our 20 validated formats to stop the scroll, engage, and convert on social networks.</p>
+
+            <div class="formats-search-bar">
+                <input type="text" id="format-search" class="lang-es" placeholder="Filtrar por nombre o palabra clave (ej. Reel, Infografía)...">
+                <input type="text" id="format-search-en" class="lang-en" placeholder="Filter by name or keyword (e.g., Reel, Infographic)...">
+            </div>
+
+            <div class="formats-grid" id="formats-container">
+                <!-- 20 Formatos Bilingües -->
+                <!-- Format 1 -->
+                <div class="format-card" data-title="hooks de alto impacto high impact hooks scroll stoppers">
+                    <div class="format-num">01</div>
+                    <h3 class="format-title">Hooks de Alto Impacto / High Impact Hooks</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Vídeo Corto</span>
+                    <span class="format-badge bg-neon-blue lang-en">Short Video</span>
+                    <p class="format-brief lang-es">Frase, imagen o escena clave en los primeros 3 segundos del video para evitar el deslizamiento (scroll) y captar retención.</p>
+                    <p class="format-brief lang-en">Key phrase, image, or scene in the first 3 seconds of a video to prevent scroll and maximize retention.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Retener a la audiencia y mejorar el algoritmo de visualización.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Retain the audience and boost algorithmic distribution.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "El error que arruina el 80% de las bodas" o "No apartes un jardín en Morelos sin ver esto".</p>
+                        <p class="lang-en"><strong>Example:</strong> "The mistake that ruins 80% of weddings" or "Don't book a garden before seeing this".</p>
+                    </div>
+                </div>
+
+                <!-- Format 2 -->
+                <div class="format-card" data-title="storytelling narrativo story">
+                    <div class="format-num">02</div>
+                    <h3 class="format-title">Storytelling Narrativo / Storytelling</h3>
+                    <span class="format-badge bg-neon-purple lang-es">Conexión</span>
+                    <span class="format-badge bg-neon-purple lang-en">Connection</span>
+                    <p class="format-brief lang-es">Contar una historia real sin vender directamente, logrando una conexión emocional profunda con la audiencia.</p>
+                    <p class="format-brief lang-en">Telling a real story without direct sales pitch, establishing a deep emotional connection with the audience.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Ideal para:</strong> Bodas, XV años, graduaciones y eventos corporativos con alta carga de emoción.</p>
+                        <p class="lang-en"><strong>Ideal for:</strong> Weddings, sweet fifteens, graduations, and emotional corporate events.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> Video recopilatorio mostrando desde los nervios de los novios a las 8 AM hasta el baile final.</p>
+                        <p class="lang-en"><strong>Example:</strong> A summary video showing from the groom's nerves at 8 AM to the final dance.</p>
+                    </div>
+                </div>
+
+                <!-- Format 3 -->
+                <div class="format-card" data-title="voice over reel voz en off">
+                    <div class="format-num">03</div>
+                    <h3 class="format-title">Voice Over Reel</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Producción</span>
+                    <span class="format-badge bg-neon-blue lang-en">Production</span>
+                    <p class="format-brief lang-es">Narración de fondo (voz en off) combinada con tomas estéticas cinematográficas del montaje del evento.</p>
+                    <p class="format-brief lang-en">Voice-over narration combined with cinematic, aesthetic shots of the event setup.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Uno de los formatos con mayor tiempo de reproducción promedio y tasa de guardado.</p>
+                        <p class="lang-en"><strong>Goal:</strong> High average watch-time and save rate.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "Todo comenzó a las 6 AM. Nuestro equipo llegó a un jardín completamente vacío..."</p>
+                        <p class="lang-en"><strong>Example:</strong> "Everything started at 6 AM. Our team arrived at an empty garden..."</p>
+                    </div>
+                </div>
+
+                <!-- Format 4 -->
+                <div class="format-card" data-title="contenido educativo autoridad educational content">
+                    <div class="format-num">04</div>
+                    <h3 class="format-title">Contenido Educativo / Educational</h3>
+                    <span class="format-badge bg-neon-green lang-es">Autoridad</span>
+                    <span class="format-badge bg-neon-green lang-en">Authority</span>
+                    <p class="format-brief lang-es">Explicar conceptos útiles sobre planificación, aportando valor gratuito para posicionar a la marca como líder.</p>
+                    <p class="format-brief lang-en">Explaining useful planning tips, providing free value to position the brand as an expert leader.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Construir credibilidad e instruir al prospecto en la toma de decisiones.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Build credibility and educate the lead through their decision journey.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "Cómo elegir las flores para una boda de tarde" o "Cómo calcular las porciones de banquete".</p>
+                        <p class="lang-en"><strong>Example:</strong> "How to choose flowers for an afternoon wedding" or "How to calculate catering portions".</p>
+                    </div>
+                </div>
+
+                <!-- Format 5 -->
+                <div class="format-card" data-title="comparativas vs debate dual">
+                    <div class="format-num">05</div>
+                    <h3 class="format-title">Comparativas (VS) / Comparisons</h3>
+                    <span class="format-badge bg-neon-amber lang-es">Debate</span>
+                    <span class="format-badge bg-neon-amber lang-en">Debate</span>
+                    <p class="format-brief lang-es">Comparar dos opciones populares para fomentar que la gente comente y debata en la publicación.</p>
+                    <p class="format-brief lang-en">Comparing two popular choices to encourage comments, debate, and organic engagement.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Incrementar la métrica de comentarios (engagement orgánico masivo).</p>
+                        <p class="lang-en"><strong>Goal:</strong> Maximize comment metrics (massive organic engagement).</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "¿DJ o Banda en vivo?" o "¿Salón cerrado vs Jardín en Cuernavaca?".</p>
+                        <p class="lang-en"><strong>Example:</strong> "DJ vs Live Band?" or "Indoor Hall vs Garden in Cuernavaca?".</p>
+                    </div>
+                </div>
+
+                <!-- Format 6 -->
+                <div class="format-card" data-title="mitos vs realidad myths reality">
+                    <div class="format-num">06</div>
+                    <h3 class="format-title">Mitos vs Realidad / Myths vs Reality</h3>
+                    <span class="format-badge bg-neon-red lang-es">Educativo</span>
+                    <span class="format-badge bg-neon-red lang-en">Educational</span>
+                    <p class="format-brief lang-es">Desmentir creencias falsas comunes que retrasan o impiden la contratación de un servicio premium.</p>
+                    <p class="format-brief lang-en">Debunking common false beliefs that delay or block the hire of a premium service.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Romper objeciones de venta de forma sutil y entretenida.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Overcome sales objections subtly and dynamically.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "Mito: una boda elegante siempre es el doble de cara. Realidad: depende de la optimización del banquete."</p>
+                        <p class="lang-en"><strong>Example:</strong> "Myth: an elegant wedding is always double the price. Reality: it depends on catering optimization."</p>
+                    </div>
+                </div>
+
+                <!-- Format 7 -->
+                <div class="format-card" data-title="top listados list top 5 top 10">
+                    <div class="format-num">07</div>
+                    <h3 class="format-title">Top 5 / Top 10</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Formatos rápidos</span>
+                    <span class="format-badge bg-neon-blue lang-en">Quick Format</span>
+                    <p class="format-brief lang-es">Listados prácticos y rápidos. Son sumamente sencillos de consumir y tienen alto nivel de compartidos.</p>
+                    <p class="format-brief lang-en">Fast, practical lists. Easy to consume, yielding high shares and saves.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Generar contenido altamente guardable para que lo consulten después.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Generate highly saveable content for future reference.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "Top 5 jardines para bodas boutique en Morelos" o "Top 7 tendencias en menús de boda".</p>
+                        <p class="lang-en"><strong>Example:</strong> "Top 5 gardens for boutique weddings in Morelos" or "Top 7 wedding menu trends".</p>
+                    </div>
+                </div>
+
+                <!-- Format 8 -->
+                <div class="format-card" data-title="opinion del experto expert opinion">
+                    <div class="format-num">08</div>
+                    <h3 class="format-title">Opinión del Experto / Expert Opinion</h3>
+                    <span class="format-badge bg-neon-green lang-es">Credibilidad</span>
+                    <span class="format-badge bg-neon-green lang-en">Credibility</span>
+                    <p class="format-brief lang-es">El director o chef responde una pregunta técnica frente a la cámara de forma directa y profesional.</p>
+                    <p class="format-brief lang-en">The director or chef answers a technical question directly on camera, building authority.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Humanizar la marca y transmitir profesionalismo técnico.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Humanize the brand and showcase technical expertise.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "Como Wedding Planner con 10 años de experiencia, yo elegiría..."</p>
+                        <p class="lang-en"><strong>Example:</strong> "As a Wedding Planner with 10 years of experience, I would choose..."</p>
+                    </div>
+                </div>
+
+                <!-- Format 9 -->
+                <div class="format-card" data-title="before after antes despues transformation">
+                    <div class="format-num">09</div>
+                    <h3 class="format-title">Before & After / Antes y Después</h3>
+                    <span class="format-badge bg-neon-purple lang-es">Visual</span>
+                    <span class="format-badge bg-neon-purple lang-en">Visual</span>
+                    <p class="format-brief lang-es">Demostrar visualmente el impacto del trabajo mostrando el punto de inicio y el montaje de lujo finalizado.</p>
+                    <p class="format-brief lang-en">Visually showing the transformational impact, comparing empty setups with final luxury layouts.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Mostrar el poder transformador de la decoración y el catering.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Showcase the styling power of the decoration and catering.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> Un jardín vacío a las 9 AM comparado con la recepción de noche iluminada a las 8 PM.</p>
+                        <p class="lang-en"><strong>Example:</strong> An empty garden at 9 AM compared to the fully illuminated venue at 8 PM.</p>
+                    </div>
+                </div>
+
+                <!-- Format 10 -->
+                <div class="format-card" data-title="pov point of view experiencia novio">
+                    <div class="format-num">10</div>
+                    <h3 class="format-title">POV (Point of View)</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Inmersión</span>
+                    <span class="format-badge bg-neon-blue lang-en">Immersion</span>
+                    <p class="format-brief lang-es">Grabar en primera persona simulando que el espectador está viviendo la experiencia o el evento en directo.</p>
+                    <p class="format-brief lang-en">First-person recording simulating that the viewer is experiencing the event live.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Hacer sentir al cliente potencial el lujo y la emoción del servicio.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Connect the potential client directly with the event's emotion and luxury.</p>
+                        <p class="lang-es"><strong>Ejemplo práctico:</strong> "POV: eres el novio y faltan cinco minutos para entrar al altar en un jardín de Morelos."</p>
+                        <p class="lang-en"><strong>Example:</strong> "POV: you're the groom and there are 5 minutes left before entering the altar."</p>
+                    </div>
+                </div>
+
+                <!-- Formatos 11 al 20 simplificados para mantener rendimiento y limpieza -->
+                <!-- Format 11 -->
+                <div class="format-card" data-title="behind the scenes detras de camaras">
+                    <div class="format-num">11</div>
+                    <h3 class="format-title">Behind The Scenes</h3>
+                    <span class="format-badge bg-neon-amber lang-es">Transparencia</span>
+                    <span class="format-badge bg-neon-amber lang-en">Transparency</span>
+                    <p class="format-brief lang-es">Exponer el esfuerzo, la coordinación en cocina y la logística detrás de cámaras.</p>
+                    <p class="format-brief lang-en">Showing the hard work, kitchen coordination, and logistics behind the scenes.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Ejemplo:</strong> Timelapse de la cocina montando 150 platos calientes al mismo tiempo.</p>
+                        <p class="lang-en"><strong>Example:</strong> Timelapse of the kitchen plating 150 hot dishes simultaneously.</p>
+                    </div>
+                </div>
+
+                <!-- Format 12 -->
+                <div class="format-card" data-title="case study caso de exito success story">
+                    <div class="format-num">12</div>
+                    <h3 class="format-title">Case Study / Casos de Éxito</h3>
+                    <span class="format-badge bg-neon-green lang-es">Confianza</span>
+                    <span class="format-badge bg-neon-green lang-en">Trust</span>
+                    <p class="format-brief lang-es">Explicar un problema específico que tenía un cliente y cómo lo solucionamos.</p>
+                    <p class="format-brief lang-en">Explaining a specific customer issue and how we successfully resolved it.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Ejemplo:</strong> "Cómo rescatamos un evento de 200 personas ante una tormenta imprevista."</p>
+                        <p class="lang-en"><strong>Example:</strong> "How we saved a 200-person event from a sudden storm."</p>
+                    </div>
+                </div>
+
+                <!-- Format 13 -->
+                <div class="format-card" data-title="trend adaptation tendencias tiktok audio viral">
+                    <div class="format-num">13</div>
+                    <h3 class="format-title">Trend Adaptation</h3>
+                    <span class="format-badge bg-neon-pink lang-es">Viralidad</span>
+                    <span class="format-badge bg-neon-pink lang-en">Virality</span>
+                    <p class="format-brief lang-es">Adaptar tendencias virales de TikTok/Reels al sector premium de eventos.</p>
+                    <p class="format-brief lang-en">Adapting TikTok/Reels viral trends to the premium event business.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Atraer alcance orgánico masivo con audios de tendencia.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Gain massive organic reach using trending audios.</p>
+                    </div>
+                </div>
+
+                <!-- Format 14 -->
+                <div class="format-card" data-title="reels cinematograficos cinematic reels high quality">
+                    <div class="format-num">14</div>
+                    <h3 class="format-title">Reels Cinematográficos / Cinematic Reels</h3>
+                    <span class="format-badge bg-neon-purple lang-es">Exclusividad</span>
+                    <span class="format-badge bg-neon-purple lang-en">Exclusivity</span>
+                    <p class="format-brief lang-es">Videos cortos con edición y color grading profesional enfocado en transmitir lujo.</p>
+                    <p class="format-brief lang-en">Short videos with professional editing and grading focused on conveying luxury.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Ejemplo:</strong> Tomas macro en cámara lenta del vertido de champaña.</p>
+                        <p class="lang-en"><strong>Example:</strong> Slow-motion macro shots of champagne pouring.</p>
+                    </div>
+                </div>
+
+                <!-- Format 15 -->
+                <div class="format-card" data-title="testimoniales reviews reviews testimonios">
+                    <div class="format-num">15</div>
+                    <h3 class="format-title">Testimoniales / Reviews</h3>
+                    <span class="format-badge bg-neon-green lang-es">Conversión</span>
+                    <span class="format-badge bg-neon-green lang-en">Conversion</span>
+                    <p class="format-brief lang-es">Clientes reales contando su experiencia de satisfacción tras su evento.</p>
+                    <p class="format-brief lang-en">Real clients sharing their feedback and happiness after the event.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Objetivo:</strong> Acelerar la conversión de prospectos captados en anuncios.</p>
+                        <p class="lang-en"><strong>Goal:</strong> Accelerate conversion rate of paid traffic.</p>
+                    </div>
+                </div>
+
+                <!-- Format 16 -->
+                <div class="format-card" data-title="carruseles carousels slides">
+                    <div class="format-num">16</div>
+                    <h3 class="format-title">Carruseles Educativos / Carousels</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Interacción</span>
+                    <span class="format-badge bg-neon-blue lang-en">Interaction</span>
+                    <p class="format-brief lang-es">Secuencias deslizables de imágenes en Instagram aportando consejos útiles.</p>
+                    <p class="format-brief lang-en">Swipable image sequences on Instagram providing practical checklists.</p>
+                    <div class="format-detail">
+                        <p class="lang-es"><strong>Ejemplo:</strong> "Las 4 cosas que debes saber sobre el menú de trasnochada."</p>
+                        <p class="lang-en"><strong>Example:</strong> "4 things you must know about late-night menus."</p>
+                    </div>
+                </div>
+
+                <!-- Format 17 -->
+                <div class="format-card" data-title="infografias visual summaries">
+                    <div class="format-num">17</div>
+                    <h3 class="format-title">Infografías / Infographics</h3>
+                    <span class="format-badge bg-neon-blue lang-es">Compartidos</span>
+                    <span class="format-badge bg-neon-blue lang-en">Shares</span>
+                    <p class="format-brief lang-es">Gráficos explicativos ideales para ser compartidos de forma masiva.</p>
+                    <p class="format-brief lang-en">Visual explanatory guides perfect for massive sharing.</p>
+                </div>
+
+                <!-- Format 18 -->
+                <div class="format-card" data-title="checklists lists list">
+                    <div class="format-num">18</div>
+                    <h3 class="format-title">Checklists</h3>
+                    <span class="format-badge bg-neon-amber lang-es">Guardados</span>
+                    <span class="format-badge bg-neon-amber lang-en">Saves</span>
+                    <p class="format-brief lang-es">Listas de tareas prácticas que los clientes guardan para organizar su boda.</p>
+                    <p class="format-brief lang-en">Actionable check lists that potential clients save for future use.</p>
+                </div>
+
+                <!-- Format 19 -->
+                <div class="format-card" data-title="miniaturas thumbnails youtube ctr">
+                    <div class="format-num">19</div>
+                    <h3 class="format-title">Miniaturas de Impacto / Covers</h3>
+                    <span class="format-badge bg-neon-pink lang-es">CTR</span>
+                    <span class="format-badge bg-neon-pink lang-en">CTR</span>
+                    <p class="format-brief lang-es">Portadas dinámicas diseñadas para aumentar la tasa de reproducción en feeds.</p>
+                    <p class="format-brief lang-en">Optimized covers designed to maximize click-through rate (CTR) on feeds.</p>
+                </div>
+
+                <!-- Format 20 -->
+                <div class="format-card" data-title="visual hooks scroll stoppers">
+                    <div class="format-num">20</div>
+                    <h3 class="format-title">Visual Hooks</h3>
+                    <span class="format-badge bg-neon-red lang-es">Scroll Stoppers</span>
+                    <span class="format-badge bg-neon-red lang-en">Scroll Stoppers</span>
+                    <p class="format-brief lang-es">Elementos gráficos de alto contraste para interrumpir el scroll automático.</p>
+                    <p class="format-brief lang-en">High contrast visual elements to stop automatic scrolling.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Biblioteca de Campañas Publicitarias -->
+        <section id="campanas" class="sec-padding">
+            <h2 class="sec-title lang-es">Biblioteca de Campañas Publicitarias (Ads)</h2>
+            <h2 class="sec-title lang-en">Ad Campaigns Library</h2>
+            <p class="sec-subtitle lang-es">Cómo monetizamos la presencia de las marcas en Meta Ads, Google Ads y TikTok Ads.</p>
+            <p class="sec-subtitle lang-en">How we monetize brand visibility on Meta Ads, Google Ads, and TikTok Ads.</p>
+
+            <div class="campaign-info-grid">
+                <div class="campaign-card-vertical">
+                    <h3>Meta Ads (Facebook & Instagram)</h3>
+                    <div class="pricing-tag lang-es">Desde $3,500/mes de gestión + Ads</div>
+                    <div class="pricing-tag lang-en">From $3,500/mo management + Ads</div>
+                    <p class="lang-es">Concentra el 80% del presupuesto en **Instagram** (donde reside el público con mayor poder adquisitivo en Morelos).</p>
+                    <p class="lang-en">Concentrates 80% of budget on **Instagram** (targeting the high purchasing power audience in Morelos).</p>
+                    <ul>
+                        <li class="lang-es"><strong>Campaña de Tráfico a WhatsApp:</strong> Lead directo al cerrador.</li>
+                        <li class="lang-en"><strong>WhatsApp Traffic:</strong> Direct lead to the sales rep.</li>
+                        <li class="lang-es"><strong>Retargeting Dinámico:</strong> Impactar a visitas previas.</li>
+                        <li class="lang-en"><strong>Dynamic Retargeting:</strong> Retargeting previous profile visitors.</li>
+                        <li class="lang-es"><strong>Formularios de Clientes Potenciales:</strong> Citas y fechas.</li>
+                        <li class="lang-en"><strong>Lead Forms:</strong> Capture event dates and contact details.</li>
+                    </ul>
+                </div>
+
+                <div class="campaign-card-vertical">
+                    <h3>TikTok Ads</h3>
+                    <div class="pricing-tag lang-es">Desde $3,000/mes de gestión + Ads</div>
+                    <div class="pricing-tag lang-en">From $3,000/mo management + Ads</div>
+                    <p class="lang-es">Alcance masivo y viral para XV años y graduaciones. Enfoque dinámico y de tendencias.</p>
+                    <p class="lang-en">Massive, viral reach for sweet fifteens and school graduations. Trend-focused.</p>
+                    <ul>
+                        <li class="lang-es"><strong>Spark Ads:</strong> Impulso de videos orgánicos con gran engagement.</li>
+                        <li class="lang-en"><strong>Spark Ads:</strong> Boost high-engagement organic videos.</li>
+                        <li class="lang-es"><strong>Formularios Nativos:</strong> Captación veloz en móviles.</li>
+                        <li class="lang-en"><strong>Native Forms:</strong> Rapid lead capture on mobile devices.</li>
+                    </ul>
+                </div>
+
+                <div class="campaign-card-vertical">
+                    <h3>Google Ads</h3>
+                    <div class="pricing-tag lang-es">Desde $4,000/mes de gestión + Ads</div>
+                    <div class="pricing-tag lang-en">From $4,000/mo management + Ads</div>
+                    <p class="lang-es">Orientada a la intención de búsqueda directa para jardines de bodas y catering de lujo.</p>
+                    <p class="lang-en">Targeted to high-intent active searches for wedding gardens and luxury catering.</p>
+                    <ul>
+                        <li class="lang-es"><strong>Búsqueda (Search):</strong> Primeros resultados para "jardines en Morelos".</li>
+                        <li class="lang-en"><strong>Search Campaigns:</strong> Top ranks for terms like "gardens in Morelos".</li>
+                        <li class="lang-es"><strong>Ficha Local:</strong> Visibilidad patrocinada en Google Maps.</li>
+                        <li class="lang-en"><strong>Local Profile:</strong> Sponsored visibility on Google Maps.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="camp-mechanics">
+                <h3 class="lang-es">Esquema Operativo de Campañas para INIT IDEA</h3>
+                <h3 class="lang-en">Campaign Operational Pipeline for INIT IDEA</h3>
+                <div class="mechanics-steps">
+                    <div class="mech-step">
+                        <div class="step-num">1</div>
+                        <h4 class="lang-es">Auditoría Previa</h4><h4 class="lang-en">Previous Audit</h4>
+                        <p class="lang-es">Validamos accesos, métodos de pago y roles en Business Suite.</p>
+                        <p class="lang-en">We validate accesses, payment methods, and Business Manager roles.</p>
+                    </div>
+                    <div class="mech-step">
+                        <div class="step-num">2</div>
+                        <h4 class="lang-es">Estructura Mixta</h4><h4 class="lang-en">Mixed Structure</h4>
+                        <p class="lang-es">Lanzamos campañas con múltiples creativos compitiendo entre sí.</p>
+                        <p class="lang-en">We launch ad sets with multiple creatives competing in parallel.</p>
+                    </div>
+                    <div class="mech-step">
+                        <div class="step-num">3</div>
+                        <h4 class="lang-es">Foto/Video de Evento</h4><h4 class="lang-en">Photographer Assets</h4>
+                        <p class="lang-es">Aprovechamos el material crudo de fotógrafos del cliente.</p>
+                        <p class="lang-en">We reuse raw materials from the client's official event photographers.</p>
+                    </div>
+                    <div class="mech-step">
+                        <div class="step-num">4</div>
+                        <h4 class="lang-es">Sincronización Web</h4><h4 class="lang-en">Web Sync</h4>
+                        <p class="lang-es">Instalamos el Pixel de Meta y etiquetas con Google Tag Manager.</p>
+                        <p class="lang-en">We deploy Meta Pixel and conversion tracking tags via GTM.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Optimización Digital -->
+        <section id="opt-digital" class="sec-padding">
+            <h2 class="sec-title lang-es">Optimización Digital del Ecosistema</h2>
+            <h2 class="sec-title lang-en">Digital Ecosystem Optimization</h2>
+            <p class="sec-subtitle lang-es">El listado de activos digitales que auditamos y dejamos listos en la fase de Onboarding.</p>
+            <p class="sec-subtitle lang-en">The list of digital assets we audit and set up during the onboarding phase.</p>
+
+            <div class="opt-checklist-grid">
+                <div class="opt-box">
+                    <div class="opt-header">
+                        <span class="dot bg-neon-blue"></span>
+                        <h4 class="lang-es">Redes Sociales (Perfiles)</h4>
+                        <h4 class="lang-en">Social Media Profiles</h4>
+                    </div>
+                    <ul class="opt-list">
+                        <li><strong>Facebook:</strong> <span class="lang-es">Información completa y botón de WhatsApp.</span><span class="lang-en">Complete info and WhatsApp action button.</span></li>
+                        <li><strong>Instagram:</strong> <span class="lang-es">Biografía optimizada, destacados y Linktree/sitio.</span><span class="lang-en">Optimized bio, highlights, and bio links.</span></li>
+                        <li><strong>TikTok:</strong> <span class="lang-es">Perfil de empresa y link web activado.</span><span class="lang-en">Business profile and active web link.</span></li>
+                        <li><strong>YouTube:</strong> <span class="lang-es">Configuración para Shorts y banner unificado.</span><span class="lang-en">Channel setup for Shorts and branding banner.</span></li>
+                        <li><strong>Google Business:</strong> <span class="lang-es">Ficha local optimizada en Google Maps.</span><span class="lang-en">Optimized local profile on Google Maps.</span></li>
+                    </ul>
+                </div>
+
+                <div class="opt-box">
+                    <div class="opt-header">
+                        <span class="dot bg-neon-green"></span>
+                        <h4 class="lang-es">Herramientas de Medición</h4>
+                        <h4 class="lang-en">Analytics Tools</h4>
+                    </div>
+                    <ul class="opt-list">
+                        <li><strong>Meta Pixel & API:</strong> <span class="lang-es">Seguimiento de conversiones y clicks.</span><span class="lang-en">Conversion tracking and clicks.</span></li>
+                        <li><strong>Google Analytics 4:</strong> <span class="lang-es">Estadísticas completas de tráfico web.</span><span class="lang-en">Full web traffic statistics.</span></li>
+                        <li><strong>Google Tag Manager:</strong> <span class="lang-es">Centralización óptima de scripts de trackeo.</span><span class="lang-en">Centralized script deployment.</span></li>
+                        <li><strong>Search Console:</strong> <span class="lang-es">Indexación en Google y diagnóstico técnico SEO.</span><span class="lang-en">Google indexation and SEO health check.</span></li>
+                        <li><strong>Dominio:</strong> <span class="lang-es">Verificación de DNS y seguridad SSL.</span><span class="lang-en">DNS verification and SSL security.</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Reportes y Analítica -->
+        <section id="reportes" class="sec-padding">
+            <h2 class="sec-title lang-es">Reportes y Analítica Mensual</h2>
+            <h2 class="sec-title lang-en">Monthly Reports & Analytics</h2>
+            <p class="sec-subtitle lang-es">Tomamos decisiones basadas en datos e ingresos, no en likes y métricas vanidosas.</p>
+            <p class="sec-subtitle lang-en">We take actions based on business data and revenue, not vanity likes.</p>
+
+            <div class="report-block">
+                <div class="report-desc">
+                    <h3 class="lang-es">¿Cómo es un Reporte de Resultados de INIT IDEA?</h3>
+                    <h3 class="lang-en">What does an INIT IDEA report look like?</h3>
+                    <p class="lang-es">Nuestros reportes de resultados se enfocan en medir las variables que impactan directamente el flujo de caja del cliente: costo por lead (CPL), cantidad de conversaciones iniciadas en WhatsApp y el CTR de los anuncios.</p>
+                    <p class="lang-en">Our reports focus on variables that directly impact the client's cash flow: cost per lead (CPL), number of WhatsApp conversations started, and ad CTR.</p>
+                    <p class="lang-es">Haz clic en el siguiente botón interactivo para ver un ejemplo real de cómo luce un Dashboard mensual de resultados desarrollado por nuestro equipo para un negocio del sector de eventos (Primavera Events).</p>
+                    <p class="lang-en">Click the following interactive button to review a live example of a monthly results Dashboard built by our team for a business in the event industry (Primavera Events).</p>
+                    
+                    <a href="https://5410m0n0c001.github.io/banquetes-primavera-project/reporte_resultados_marketing.html" target="_blank" class="report-action-btn">
+                        <span class="lang-es">Ver Muestra de Reporte Mensual de Resultados</span>
+                        <span class="lang-en">View Sample Monthly Marketing Report</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="report-visual-preview">
+                    <!-- SVG Dashboard Graphic mock -->
+                    <svg viewBox="0 0 400 240" fill="none" xmlns="http://www.w3.org/2000/svg" class="report-svg">
+                        <rect width="400" height="240" rx="10" fill="#161b26" stroke="#2a3347" stroke-width="2"/>
+                        <rect x="20" y="20" width="110" height="50" rx="6" fill="#1e2535" stroke="#2a3347"/>
+                        <text x="30" y="38" fill="#8b96b0" font-size="8" font-family="Inter" font-weight="600">COSTO POR LEAD (CPL)</text>
+                        <text x="30" y="58" fill="#e8edf5" font-size="16" font-family="Inter" font-weight="700">$34.50 MXN</text>
+                        
+                        <rect x="145" y="20" width="110" height="50" rx="6" fill="#1e2535" stroke="#2a3347"/>
+                        <text x="155" y="38" fill="#8b96b0" font-size="8" font-family="Inter" font-weight="600">LEADS TOTALES</text>
+                        <text x="155" y="58" fill="#22c55e" font-size="16" font-family="Inter" font-weight="700">234 (+18%)</text>
+                        
+                        <rect x="270" y="20" width="110" height="50" rx="6" fill="#1e2535" stroke="#2a3347"/>
+                        <text x="280" y="38" fill="#8b96b0" font-size="8" font-family="Inter" font-weight="600">CONVERSIONES (BODAS)</text>
+                        <text x="280" y="58" fill="#3b82f6" font-size="16" font-family="Inter" font-weight="700">12 Cerradas</text>
+
+                        <!-- Bar chart mock -->
+                        <rect x="20" y="90" width="360" height="130" rx="6" fill="#0f1117" stroke="#2a3347"/>
+                        <line x1="40" y1="190" x2="360" y2="190" stroke="#2a3347" stroke-width="1"/>
+                        <line x1="40" y1="120" x2="360" y2="120" stroke="#2a3347" stroke-dasharray="2 2" stroke-width="1"/>
+                        
+                        <rect x="60" y="150" width="30" height="40" rx="3" fill="#6366f1"/>
+                        <text x="65" y="145" fill="#8b96b0" font-size="7" font-family="Inter">Sem 1</text>
+                        
+                        <rect x="130" y="130" width="30" height="60" rx="3" fill="#3b82f6"/>
+                        <text x="135" y="125" fill="#8b96b0" font-size="7" font-family="Inter">Sem 2</text>
+                        
+                        <rect x="200" y="110" width="30" height="80" rx="3" fill="#22c55e"/>
+                        <text x="205" y="105" fill="#8b96b0" font-size="7" font-family="Inter">Sem 3</text>
+                        
+                        <rect x="270" y="120" width="30" height="70" rx="3" fill="#a855f7"/>
+                        <text x="275" y="115" fill="#8b96b0" font-size="7" font-family="Inter">Sem 4</text>
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Preguntas Frecuentes -->
+        <section id="faq" class="sec-padding">
+            <h2 class="sec-title lang-es">Preguntas Frecuentes</h2>
+            <h2 class="sec-title lang-en">Frequently Asked Questions</h2>
+            <p class="sec-subtitle lang-es">Alineamos dudas frecuentes de la operación y el proceso de ventas.</p>
+            <p class="sec-subtitle lang-en">We align typical questions from operations and the sales flow.</p>
+
+            <div class="faq-container">
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="lang-es">¿El presupuesto publicitario está incluido en los costos de los paquetes?</span>
+                        <span class="lang-en">Is the advertising budget included in the package costs?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="faq-chevron">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                    <div class="faq-content">
+                        <p class="lang-es">No. El presupuesto destinado a pauta pagada en Meta Ads, Google Ads o TikTok Ads lo paga directamente el cliente a las respectivas plataformas utilizando su propia tarjeta. Nosotros cobramos una tarifa fija mensual por la conceptualización, segmentación, diseño, redacción y optimización de la campaña.</p>
+                        <p class="lang-en">No. The ad budget is paid directly by the client to the platforms (Meta, Google, TikTok) using their credit/debit card. We charge a monthly management fee for strategy, copy, design, targeting, and optimization.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="lang-es">¿Por qué es obligatorio el servicio de Onboarding Digital?</span>
+                        <span class="lang-en">Why is the Digital Onboarding service mandatory?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="faq-chevron">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                    <div class="faq-content">
+                        <p class="lang-es">El Onboarding Digital nos permite auditar la situación técnica del cliente y optimizar sus perfiles de forma integral antes de comenzar la publicación regular. Iniciar sin esto suele acarrear problemas técnicos de accesos, pixeles rotos o cuentas bloqueadas que consumen tiempo y dañan el rendimiento. Es la única forma de garantizar resultados.</p>
+                        <p class="lang-en">Onboarding allows us to audit tech integrations, access levels, and optimize profiles before starting. Launching without it usually creates technical issues with pixels or account bans that consume operational hours and harm performance. It guarantees a clean start.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-trigger">
+                        <span class="lang-es">¿Cómo gestionan el material audiovisual para los Reels de eventos?</span>
+                        <span class="lang-en">How do you manage video assets for event Reels?</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="faq-chevron">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                        </svg>
+                    </button>
+                    <div class="faq-content">
+                        <p class="lang-es">Contamos con dos esquemas. Si el cliente tiene acuerdos con los fotógrafos de cada evento para conseguir material crudo, nosotros nos encargamos de su edición, agregado de efectos, hooks y voice-over. Si el cliente requiere cobertura física por nuestra cuenta para captar video in-situ, se cotiza de forma independiente como un Add-on.</p>
+                        <p class="lang-en">We use two methods. If the client has partnerships with event photographers to get raw files, we do the editing, hooks, and voice-over. If the client requires us to cover the event in person, we quote it as an on-site coverage Add-on.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: Solicitar Diagnóstico -->
+        <section id="diagnostico" class="sec-padding section-widget">
+            <h2 class="sec-title lang-es">Diagnóstico de Salud Digital</h2>
+            <h2 class="sec-title lang-en">Digital Health Diagnostic</h2>
+            <p class="sec-subtitle lang-es">Calcula el estado actual de tus redes y activos comerciales en 1 minuto. Recibe recomendaciones al instante.</p>
+            <p class="sec-subtitle lang-en">Check the status of your profiles and assets in 1 minute. Get instant recommendations.</p>
+
+            <div class="widget-container">
+                <div id="diagnostic-quiz">
+                    <div class="quiz-step active" id="step-1">
+                        <h3 class="lang-es">Paso 1: Ecosistema Actual</h3>
+                        <h3 class="lang-en">Step 1: Current Ecosystem</h3>
+                        <p class="quiz-question lang-es">¿Con qué activos digitales cuentas actualmente?</p>
+                        <p class="quiz-question lang-en">Which digital assets do you currently have?</p>
+                        <div class="quiz-options">
+                            <label class="quiz-opt">
+                                <input type="checkbox" name="q1" value="pixel">
+                                <span class="lang-es">Tengo Pixel de Meta instalado y verificado</span>
+                                <span class="lang-en">I have Meta Pixel installed and verified</span>
+                            </label>
+                            <label class="quiz-opt">
+                                <input type="checkbox" name="q1" value="ga4">
+                                <span class="lang-es">Tengo Google Analytics 4 y Tag Manager</span>
+                                <span class="lang-en">I have Google Analytics 4 and Tag Manager</span>
+                            </label>
+                            <label class="quiz-opt">
+                                <input type="checkbox" name="q1" value="business">
+                                <span class="lang-es">Tengo Meta Business Manager activo</span>
+                                <span class="lang-en">I have Meta Business Manager configured</span>
+                            </label>
+                            <label class="quiz-opt">
+                                <input type="checkbox" name="q1" value="whatsapp">
+                                <span class="lang-es">Uso WhatsApp Business con catálogo</span>
+                                <span class="lang-en">I use WhatsApp Business with active catalog</span>
+                            </label>
+                        </div>
+                        <button class="quiz-btn lang-es" onclick="nextStep(2)">Siguiente Paso</button>
+                        <button class="quiz-btn lang-en" onclick="nextStep(2)">Next Step</button>
+                    </div>
+
+                    <div class="quiz-step" id="step-2">
+                        <h3 class="lang-es">Paso 2: Generación de Contenido</h3>
+                        <h3 class="lang-en">Step 2: Content Creation</h3>
+                        <p class="quiz-question lang-es">¿Qué volumen de contenidos subes de forma activa?</p>
+                        <p class="quiz-question lang-en">How often do you post content?</p>
+                        <div class="quiz-options">
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q2" value="low" checked>
+                                <span class="lang-es">Poco o nada (menos de 1 post a la semana)</span>
+                                <span class="lang-en">Rarely (less than 1 post per week)</span>
+                            </label>
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q2" value="med">
+                                <span class="lang-es">Moderado (1 a 2 publicaciones por semana)</span>
+                                <span class="lang-en">Moderate (1 to 2 posts per week)</span>
+                            </label>
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q2" value="high">
+                                <span class="lang-es">Activo (Más de 3 posts incluyendo Reels/TikToks)</span>
+                                <span class="lang-en">Active (More than 3 posts including Reels/TikToks)</span>
+                            </label>
+                        </div>
+                        <button class="quiz-btn-back lang-es" onclick="prevStep(1)">Regresar</button>
+                        <button class="quiz-btn-back lang-en" onclick="prevStep(1)">Back</button>
+                        <button class="quiz-btn lang-es" onclick="nextStep(3)">Siguiente Paso</button>
+                        <button class="quiz-btn lang-en" onclick="nextStep(3)">Next Step</button>
+                    </div>
+
+                    <div class="quiz-step" id="step-3">
+                        <h3 class="lang-es">Paso 3: Pauta Pagada</h3>
+                        <h3 class="lang-en">Step 3: Paid Ads</h3>
+                        <p class="quiz-question lang-es">¿Cómo manejas actualmente la publicidad pagada?</p>
+                        <p class="quiz-question lang-en">How do you currently run ads?</p>
+                        <div class="quiz-options">
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q3" value="none" checked>
+                                <span class="lang-es">No invierto o solo uso el botón "Promocionar"</span>
+                                <span class="lang-en">No budget, or I only use the blue "Boost" button</span>
+                            </label>
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q3" value="self">
+                                <span class="lang-es">Hago campañas yo mismo desde Ads Manager</span>
+                                <span class="lang-en">I manage campaigns myself in Ads Manager</span>
+                            </label>
+                            <label class="quiz-opt-radio">
+                                <input type="radio" name="q3" value="agency">
+                                <span class="lang-es">Tengo una agencia/freelance a cargo</span>
+                                <span class="lang-en">I hire an agency or freelancer</span>
+                            </label>
+                        </div>
+                        <button class="quiz-btn-back lang-es" onclick="prevStep(2)">Regresar</button>
+                        <button class="quiz-btn-back lang-en" onclick="prevStep(2)">Back</button>
+                        <button class="quiz-btn lang-es" onclick="calculateDiagnosis()">Ver Resultados</button>
+                        <button class="quiz-btn lang-en" onclick="calculateDiagnosis()">View Results</button>
+                    </div>
+
+                    <!-- Step 4: Results (hidden initially) -->
+                    <div class="quiz-step" id="step-results">
+                        <h3 class="lang-es">Resultados de tu Diagnóstico</h3>
+                        <h3 class="lang-en">Your Diagnostic Results</h3>
+                        <div class="score-container">
+                            <div class="score-circle">
+                                <span id="score-num">0%</span>
+                                <span class="score-label lang-es">Salud Digital</span>
+                                <span class="score-label lang-en">Digital Health</span>
+                            </div>
+                        </div>
+                        <div class="results-feedback">
+                            <h4 id="feedback-title">Analizando...</h4>
+                            <p id="feedback-desc"></p>
+                            <div class="suggested-plan">
+                                <strong class="lang-es">Plan sugerido:</strong>
+                                <strong class="lang-en">Suggested Plan:</strong>
+                                <span id="suggested-plan-val" class="badge bg-neon-green">Ninguno</span>
+                            </div>
+                        </div>
+                        <form class="lead-form" id="lead-form">
+                            <div class="form-row">
+                                <input type="text" id="lead-name" placeholder="Nombre / Name" required>
+                                <input type="email" id="lead-email" placeholder="Correo / Email" required>
+                            </div>
+                            <div class="form-row">
+                                <input type="tel" id="lead-phone" placeholder="WhatsApp" required>
+                                <input type="text" id="lead-instagram" placeholder="Instagram User / Link">
+                            </div>
+                            <button type="submit" class="submit-btn lang-es">Enviar Resultados al Consultor de INIT IDEA</button>
+                            <button type="submit" class="submit-btn lang-en">Send Results to INIT IDEA Specialist</button>
+                        </form>
+                        <button class="quiz-restart-btn lang-es" onclick="restartQuiz()">Reiniciar Diagnóstico</button>
+                        <button class="quiz-restart-btn lang-en" onclick="restartQuiz()">Restart quiz</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="manual-comercial.js"></script>
+</body>
+</html>
