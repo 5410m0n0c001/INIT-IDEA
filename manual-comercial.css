@@ -1775,3 +1775,20 @@ tr.r-warn td {
         font-size: 10.5px;
     }
 }
+
+/* --- CATEGORIAS --- */
+.category-block {
+    margin-top: 35px;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 13.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    border-left: 3px solid var(--accent);
+    padding-left: 12px;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
