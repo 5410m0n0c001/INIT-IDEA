@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v14';
+const CACHE_VERSION = 'v15';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -28,6 +28,7 @@ const PRECACHE_ASSETS = [
   'assets/1762379809138.jpg',
   'assets/1758484913649.jpg',
   'assets/1758485288710.jpg',
+  'assets/1759981586373.jpg',
   'manual-comercial.html',
   'manual-comercial.css',
   'manual-comercial.js',
