@@ -225,7 +225,7 @@ function initPricingCalculator() {
         },
         '8000': {
             es: [
-                'FB + IG + TikTok + YouTube Shorts',
+                'Meta (FB + IG, fijo) + 1 red flexible (TikTok o YT Shorts)',
                 '12 publicaciones mensuales de alto impacto',
                 '8 Reels / TikToks mensuales',
                 '20 Historias mensuales',
@@ -234,7 +234,7 @@ function initPricingCalculator() {
                 'Reunión estratégica mensual de análisis de KPIs'
             ],
             en: [
-                'FB + IG + TikTok + YouTube Shorts',
+                'Meta (FB + IG, fixed) + 1 flexible network (TikTok or YT Shorts)',
                 '12 high-impact monthly posts',
                 '8 Reels / TikToks monthly',
                 '20 monthly stories',
@@ -251,6 +251,7 @@ function initPricingCalculator() {
                 '30 Historias mensuales (1 diaria de lunes a sábado)',
                 '4 Carruseles e infografías educativas',
                 '1 Video largo para YouTube (sujeto a material del cliente)',
+                'Optimización de Perfil de Negocio de Google, Maps y Workspace',
                 'Estrategia completa y optimización constante de perfiles',
                 'Reuniones quincenales/mensuales del departamento de marketing'
             ],
@@ -261,6 +262,7 @@ function initPricingCalculator() {
                 '30 monthly stories (1 daily Mon-Sat)',
                 '4 educational carousels & infographics',
                 '1 long video for YouTube (subject to material)',
+                'Google Business Profile, Maps & Workspace optimization',
                 'Full strategy and constant profile optimization',
                 'Biweekly/monthly marketing department meetings'
             ]
@@ -279,6 +281,27 @@ function initPricingCalculator() {
                 selectedPlanPrice = parseInt(radio.value);
             }
         });
+
+        // Lógica condicional: Deshabilitar "Red Social Extra" si es Scale (15000)
+        const extraNetCheck = Array.from(monthlyChecks).find(c => c.value === 'Red Social Extra');
+        if (extraNetCheck) {
+            const checkItem = extraNetCheck.closest('.addon-check-item');
+            if (selectedPlanPrice === 15000) {
+                extraNetCheck.checked = false;
+                extraNetCheck.disabled = true;
+                if (checkItem) {
+                    checkItem.style.opacity = '0.5';
+                    checkItem.style.pointerEvents = 'none';
+                }
+            } else {
+                extraNetCheck.disabled = false;
+                if (checkItem) {
+                    checkItem.style.opacity = '1';
+                    checkItem.style.pointerEvents = 'auto';
+                }
+            }
+        }
+
         monthlyTotal += selectedPlanPrice;
 
         // 2. Obtener add-ons mensuales (Ads)
