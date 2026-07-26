@@ -225,7 +225,7 @@ function initPricingCalculator() {
         },
         '8000': {
             es: [
-                'Meta (FB + IG, fijo) + 1 red flexible (TikTok o YT Shorts)',
+                'Meta (FB + IG, fijo) + 1 red extra a elegir (TikTok, YT, LinkedIn, Pinterest, etc.)',
                 '12 publicaciones mensuales de alto impacto',
                 '8 Reels / TikToks mensuales',
                 '20 Historias mensuales',
@@ -234,7 +234,7 @@ function initPricingCalculator() {
                 'Reunión estratégica mensual de análisis de KPIs'
             ],
             en: [
-                'Meta (FB + IG, fixed) + 1 flexible network (TikTok or YT Shorts)',
+                'Meta (FB + IG, fixed) + 1 extra network of choice (TikTok, YT, LinkedIn, Pinterest, etc.)',
                 '12 high-impact monthly posts',
                 '8 Reels / TikToks monthly',
                 '20 monthly stories',
@@ -245,7 +245,7 @@ function initPricingCalculator() {
         },
         '15000': {
             es: [
-                'FB + IG + TikTok + YouTube Shorts + LinkedIn',
+                '5 redes a elegir (ej. FB, IG, TikTok, YT, LinkedIn, Pinterest, X)',
                 '16 publicaciones al mes',
                 '12 Reels de alta calidad estética',
                 '30 Historias mensuales (1 diaria de lunes a sábado)',
@@ -256,7 +256,7 @@ function initPricingCalculator() {
                 'Reuniones quincenales/mensuales del departamento de marketing'
             ],
             en: [
-                'FB + IG + TikTok + YouTube Shorts + LinkedIn',
+                '5 networks of choice (e.g., FB, IG, TikTok, YT, LinkedIn, Pinterest, X)',
                 '16 monthly posts',
                 '12 high-aesthetic reels',
                 '30 monthly stories (1 daily Mon-Sat)',
