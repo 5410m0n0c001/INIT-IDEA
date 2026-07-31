@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPricingCalculator();
     initFaqAccordion();
     initLeadForm();
+    initSectionShareButtons();
 });
 
 /* 1. Sincronización de Idioma con LocalStorage */
@@ -530,6 +531,63 @@ window.closePdfModal = function() {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
     }
+};
+
+// Compartir una seccion completa del menu lateral (distinto de shareTool, que comparte un modulo puntual dentro de Herramientas)
+function initSectionShareButtons() {
+    const navLinks = document.querySelectorAll('.nav-menu .nav-link[data-sec]');
+
+    navLinks.forEach(link => {
+        const sectionId = link.getAttribute('data-sec');
+        const section = document.getElementById(sectionId);
+        if (!section) return;
+
+        const titles = section.querySelectorAll(':scope > h2.sec-title');
+        if (titles.length === 0) return; // ej. "hero" no usa este patron de titulo
+
+        titles.forEach(titleEl => {
+            const btn = document.createElement('button');
+            btn.className = 'section-share-btn';
+            btn.innerHTML = '<i class="fas fa-share-alt"></i>';
+            btn.style.cssText = 'display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; margin-left:12px; border-radius:50%; background:rgba(255,255,255,0.05); border:1px solid var(--border-color); color:var(--text-secondary); cursor:pointer; font-size:11px; vertical-align:middle; transition:all .2s;';
+            btn.title = titleEl.classList.contains('lang-en') ? 'Share this section' : 'Compartir esta sección';
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                shareSection(sectionId, btn);
+            });
+            titleEl.appendChild(btn);
+        });
+    });
+}
+
+// Compartir el enlace directo a una seccion completa (ancla #id), no solo un modulo dentro de ella
+window.shareSection = function(sectionId, btnEl) {
+    const isEn = document.body.classList.contains('lang-en');
+    const section = document.getElementById(sectionId);
+    const titleEl = section ? section.querySelector(`h2.sec-title.lang-${isEn ? 'en' : 'es'}`) : null;
+    const sectionTitle = titleEl ? titleEl.textContent.trim() : 'INIT IDEA';
+    const url = window.location.origin + window.location.pathname + '#' + sectionId;
+
+    const shareData = {
+        title: sectionTitle + ' · INIT IDEA',
+        text: isEn ? `Check out this section from INIT IDEA: ${sectionTitle}` : `Mira esta sección de INIT IDEA: ${sectionTitle}`,
+        url: url
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(err => { if (err.name !== 'AbortError') console.error(err); });
+        return;
+    }
+
+    navigator.clipboard.writeText(url).then(() => {
+        if (btnEl) {
+            const original = btnEl.innerHTML;
+            btnEl.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => { btnEl.innerHTML = original; }, 1500);
+        }
+    }).catch(() => {
+        alert((isEn ? 'Copy this link: ' : 'Copia este enlace: ') + url);
+    });
 };
 
 // Compartir el enlace directo a una herramienta puntual (ancla #id), sin compartir todo el sitio
