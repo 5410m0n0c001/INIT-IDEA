@@ -1825,7 +1825,9 @@
             <div class="portfolio-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px;">
                 
                 <!-- HERRAMIENTA 1: Croquis 2D/3D -->
-                <div class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                <div id="tool-croquis" class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;">
+                    <button onclick="shareTool('tool-croquis', this)" class="lang-es" title="Compartir esta herramienta" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
+                    <button onclick="shareTool('tool-croquis', this)" class="lang-en" title="Share this tool" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
                     <div>
                         <div class="card-icon" style="color: var(--neon-blue); font-size: 24px; margin-bottom: 15px;"><i class="fas fa-cubes"></i></div>
                         <h4 class="lang-es" style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 10px;">Croquis Interactivo (Plano 2D/3D)</h4>
@@ -1854,7 +1856,9 @@
                 </div>
 
                 <!-- HERRAMIENTA 2: Primavera Events - Ficha Técnica -->
-                <div class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                <div id="tool-ficha-tecnica" class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                    <button onclick="shareTool('tool-ficha-tecnica', this)" class="lang-es" title="Compartir esta herramienta" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
+                    <button onclick="shareTool('tool-ficha-tecnica', this)" class="lang-en" title="Share this tool" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
                     <div>
                         <div class="card-icon" style="color: var(--neon-green); font-size: 24px; margin-bottom: 15px;"><i class="fas fa-file-invoice"></i></div>
                         <h4 class="lang-es" style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 10px;">Ficha Técnica Digital Interactiva</h4>
@@ -1883,7 +1887,9 @@
                 </div>
 
                 <!-- HERRAMIENTA 3: Agente de Ventas de Eventos IA -->
-                <div class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                <div id="tool-agente-ia" class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                    <button onclick="shareTool('tool-agente-ia', this)" class="lang-es" title="Compartir esta herramienta" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
+                    <button onclick="shareTool('tool-agente-ia', this)" class="lang-en" title="Share this tool" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
                     <div>
                         <div class="card-icon" style="color: var(--neon-pink); font-size: 24px; margin-bottom: 15px;"><i class="fas fa-robot"></i></div>
                         <h4 class="lang-es" style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 10px;">Agente de Ventas para Eventos IA</h4>
@@ -1911,7 +1917,9 @@
                 </div>
 
                 <!-- HERRAMIENTA 4: Álbum de Recuerdos Digital -->
-                <div class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                <div id="tool-album-recuerdos" class="portfolio-card" style="background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; transition: var(--transition-smooth); position: relative; display: flex; flex-direction: column; justify-content: space-between;">
+                    <button onclick="shareTool('tool-album-recuerdos', this)" class="lang-es" title="Compartir esta herramienta" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
+                    <button onclick="shareTool('tool-album-recuerdos', this)" class="lang-en" title="Share this tool" style="position: absolute; top: 15px; right: 15px; width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.04); border: 1px solid var(--border-color); color: var(--text-secondary); display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 12px; transition: all .2s; z-index: 2;"><i class="fas fa-share-alt"></i></button>
                     <div>
                         <div class="card-icon" style="color: var(--neon-amber); font-size: 24px; margin-bottom: 15px;"><i class="fas fa-images"></i></div>
                         <h4 class="lang-es" style="font-family: var(--font-heading); font-size: 18px; font-weight: 700; margin-bottom: 10px;">Álbum de Recuerdos Digital</h4>
@@ -1928,7 +1936,9 @@
                             <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Personalizable: Novios, XV Años, Cumpleañero o Marca del Salón</li>
                             <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Dinámica de Marca: los Asistentes se Vuelven Promotores del Lugar</li>
                             <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Galería 3D Interactiva (Fotos y Videos)</li>
-                            <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Botones de Compartir Nativos a Redes Sociales</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Botón de Compartir Nativo: un Toque a WhatsApp, Correo o Cualquier App</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Íconos de Redes Sociales y Sitio Web de la Marca Anfitriona</li>
+                            <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Tarjetas de Contacto Personalizables (Salón, Planner o Anfitriones)</li>
                             <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Incentiva Reseñas en Google y Menciones en Redes</li>
                             <li style="margin-bottom: 6px;"><i class="fas fa-check" style="color: var(--neon-amber); margin-right: 8px;"></i> Descarga Directa de Fotos y Videos del Evento</li>
                         </ul>

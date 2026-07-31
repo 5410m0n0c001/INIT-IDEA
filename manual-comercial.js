@@ -531,3 +531,33 @@ window.closePdfModal = function() {
         document.body.style.overflow = 'auto';
     }
 };
+
+// Compartir el enlace directo a una herramienta puntual (ancla #id), sin compartir todo el sitio
+window.shareTool = function(sectionId, btnEl) {
+    const isEn = document.body.classList.contains('lang-en');
+    const card = document.getElementById(sectionId);
+    const titleEl = card ? card.querySelector(`h4.lang-${isEn ? 'en' : 'es'}`) : null;
+    const toolTitle = titleEl ? titleEl.textContent.trim() : 'INIT IDEA';
+    const url = window.location.origin + window.location.pathname + '#' + sectionId;
+
+    const shareData = {
+        title: toolTitle + ' · INIT IDEA',
+        text: isEn ? `Check out this tool from INIT IDEA: ${toolTitle}` : `Mira esta herramienta de INIT IDEA: ${toolTitle}`,
+        url: url
+    };
+
+    if (navigator.share) {
+        navigator.share(shareData).catch(err => { if (err.name !== 'AbortError') console.error(err); });
+        return;
+    }
+
+    navigator.clipboard.writeText(url).then(() => {
+        if (btnEl) {
+            const original = btnEl.innerHTML;
+            btnEl.innerHTML = '<i class="fas fa-check"></i>';
+            setTimeout(() => { btnEl.innerHTML = original; }, 1500);
+        }
+    }).catch(() => {
+        alert((isEn ? 'Copy this link: ' : 'Copia este enlace: ') + url);
+    });
+};
