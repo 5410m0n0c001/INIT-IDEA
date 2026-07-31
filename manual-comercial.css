@@ -234,6 +234,7 @@ main {
     flex-shrink: 0;
 }
 .dot-hero { background-color: var(--accent); }
+.dot-nosotros { background-color: var(--accent); }
 .dot-what { background-color: var(--neon-blue); }
 .dot-ecosistema { background-color: var(--neon-pink); }
 .dot-pkg { background-color: var(--neon-green); }
