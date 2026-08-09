@@ -383,6 +383,39 @@
       .model-cta { flex-direction: column; }
       .models-grid { grid-template-columns: 1fr; }
     }
+
+    /* ── Carrusel de momentos reales ── */
+    .quince-carousel-section {
+      padding: 70px 20px 90px;
+      background: #000;
+    }
+    .quince-carousel {
+      display: flex;
+      gap: 20px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      padding: 10px 20px 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .quince-carousel::-webkit-scrollbar { height: 8px; }
+    .quince-carousel::-webkit-scrollbar-thumb { background: rgba(180,79,255,0.4); border-radius: 10px; }
+    .quince-carousel-item {
+      scroll-snap-align: center;
+      flex: 0 0 auto;
+      width: 260px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 18px;
+      border: 1px solid rgba(180,79,255,0.25);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+      transition: transform 0.35s cubic-bezier(.25,.1,.25,1);
+    }
+    .quince-carousel-item:hover { transform: translateY(-8px) scale(1.03); }
+    @media (max-width: 640px) {
+      .quince-carousel-item { width: 200px; height: 300px; }
+    }
   </style>
 </head>
 <body class="lang-es">
@@ -543,6 +576,23 @@
         </div>
 
       </div><!-- /.models-grid -->
+    </section>
+
+    <!-- CARRUSEL: MOMENTOS REALES -->
+    <section class="quince-carousel-section">
+      <div class="models-header">
+        <span class="models-header-label">Momentos Reales</span>
+        <h2 class="models-header-title">Quinceañeras que nos han hecho parte de su historia</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="quince-carousel">
+        <img src="assets/quince-zoe.jpg" alt="Zoe - Mis XV años" class="quince-carousel-item">
+        <img src="assets/quince-hannah.jpg" alt="Hannah - Mis XV años" class="quince-carousel-item">
+        <img src="assets/quince-runway-vol1.jpg" alt="Primavera Haute Runway Vol. 1" class="quince-carousel-item">
+        <img src="assets/quince-runway-grandia.jpg" alt="Revive tu Grandía" class="quince-carousel-item">
+        <img src="assets/quince-runway-pasarela.jpg" alt="Quinceañeras en Pasarela" class="quince-carousel-item">
+        <img src="assets/quince-boda-manos.jpg" alt="Momentos reales" class="quince-carousel-item">
+      </div>
     </section>
 
     <!-- BOTTOM CTA -->
