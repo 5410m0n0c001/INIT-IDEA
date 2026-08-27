@@ -519,6 +519,10 @@ window.restartQuiz = restartQuiz;
 
 window.openPdfModal = function() {
     const modal = document.getElementById('pdfModal');
+    const iframe = document.getElementById('pdfIframe');
+    if (iframe) {
+        iframe.setAttribute('src', 'assets/ficha-tecnica-zoe.pdf');
+    }
     if (modal) {
         modal.style.display = 'flex';
         document.body.style.overflow = 'hidden';
@@ -527,6 +531,10 @@ window.openPdfModal = function() {
 
 window.closePdfModal = function() {
     const modal = document.getElementById('pdfModal');
+    const iframe = document.getElementById('pdfIframe');
+    if (iframe) {
+        iframe.setAttribute('src', '');
+    }
     if (modal) {
         modal.style.display = 'none';
         document.body.style.overflow = 'auto';
