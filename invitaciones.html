@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script src="ui-components.js" defer></script>
 </head>
 <body class="lang-es">
   <!-- SPLASH SCREEN -->
@@ -53,64 +54,66 @@
   </header>
 
   <main>
-    <section class="latest-projects" style="padding-top: 50px;">
-      <div class="latest-projects-container">
-        <div class="latest-projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
-          
-          <!-- MODELO BODAS -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <img src="assets/portada-bodas.jpg" alt="Invitaciones para Bodas" class="project-card-image">
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-heart"></i></div>
-                <h3 class="project-title">Invitaciones para Bodas</h3>
-                <p class="project-description">Elegancia y distinción para tu gran día.</p>
+    <section class="carousel3d-section">
+      <div class="carousel3d-header">
+        <span class="carousel3d-label">Colecciones</span>
+        <h2>Elige tu tipo de invitación</h2>
+        <p>Desliza, arrastra o toca una tarjeta para ver los modelos disponibles.</p>
+      </div>
+
+      <div class="carousel3d" id="invitacionesCarousel">
+        <div class="carousel3d-stage">
+          <div class="carousel3d-logo"><img src="logo2.0.jpeg" alt="INIT IDEA" loading="lazy"></div>
+          <div class="carousel3d-track">
+
+            <!-- MODELO BODAS -->
+            <article class="carousel3d-card media-card is-active" data-href="invitaciones-bodas.html">
+              <div class="c3d-media">
+                <img src="assets/portada-bodas.jpg" alt="Invitaciones para Bodas" loading="lazy">
               </div>
-              <a href="invitaciones-bodas.html" class="project-link">
-                <span>Ver Modelos</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- MODELO 15 AÑOS -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <img src="assets/portadainvitaciones15.png" alt="Invitaciones 15 años" class="project-card-image">
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-star"></i></div>
-                <h3 class="project-title">Invitaciones para 15 Años</h3>
-                <p class="project-description">Un diseño único para una celebración inolvidable.</p>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                <h4>Invitaciones para Bodas</h4>
+                <p>Elegancia y distinción para tu gran día.</p>
+                <span class="c3d-cta">Ver modelos <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </div>
-              <a href="modelos-15-anos.html" class="project-link">
-                <span>Ver Modelos</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+            </article>
 
-          <!-- MODELO INFANTIL -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <video class="project-video lazy-video" muted loop playsinline preload="none" data-src="https://5410m0n0c001.github.io/invitacion-alison-/assets/sobre.mp4">
-                <p>Tu navegador no soporta video.</p>
-              </video>
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-baby"></i></div>
-                <h3 class="project-title">Invitaciones Infantiles</h3>
-                <p class="project-description">Diversión y color para la fiesta más especial de los peques.</p>
+            <!-- MODELO 15 AÑOS -->
+            <article class="carousel3d-card media-card" data-href="modelos-15-anos.html">
+              <div class="c3d-media">
+                <img src="assets/portadainvitaciones15.png" alt="Invitaciones 15 años" loading="lazy">
               </div>
-              <a href="invitaciones-infantiles.html" class="project-link">
-                <span>Ver Modelos</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-star" aria-hidden="true"></i></div>
+                <h4>Invitaciones para 15 Años</h4>
+                <p>Un diseño único para una celebración inolvidable.</p>
+                <span class="c3d-cta">Ver modelos <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
+            <!-- MODELO INFANTIL -->
+            <article class="carousel3d-card media-card" data-href="invitaciones-infantiles.html">
+              <div class="c3d-media">
+                <video class="project-video lazy-video" muted loop playsinline preload="none" data-src="https://5410m0n0c001.github.io/invitacion-alison-/assets/sobre.mp4">
+                  <p>Tu navegador no soporta video.</p>
+                </video>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-baby" aria-hidden="true"></i></div>
+                <h4>Invitaciones Infantiles</h4>
+                <p>Diversión y color para la fiesta más especial de los peques.</p>
+                <span class="c3d-cta">Ver modelos <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
           </div>
+        </div>
 
-
+        <div class="carousel3d-controls">
+          <button type="button" class="carousel3d-arrow carousel3d-prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <div class="carousel3d-dots"></div>
+          <button type="button" class="carousel3d-arrow carousel3d-next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
     </section>

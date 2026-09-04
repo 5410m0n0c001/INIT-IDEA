@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script src="ui-components.js" defer></script>
 
   <style>
     /* ── Page-specific overrides ── */
@@ -458,198 +459,90 @@
       <div class="models-header">
         <span class="models-header-label">Colección XV Años</span>
         <h2 class="models-header-title">Nuestros Modelos Disponibles</h2>
-        <p class="models-header-sub">Selecciona el demo para explorar la invitación completa e interactiva</p>
+        <p class="models-header-sub">Desliza, arrastra o toca una tarjeta para abrir el demo completo</p>
         <div class="section-divider"></div>
       </div>
 
-      <div class="models-grid">
+      <div class="carousel3d" id="xvCarousel">
+        <div class="carousel3d-stage">
+          <div class="carousel3d-logo"><img src="logo2.0.jpeg" alt="INIT IDEA" loading="lazy"></div>
+          <div class="carousel3d-track">
 
-        <!-- ── MODELO 1: Angela (Demo con Visita Guiada) ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitaciondemoxvanos/"
-              title="Preview Angela XV Años"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-tour">
-            <i class="fas fa-route"></i> Visita Guiada
-          </span>
+            <!-- MODELO 1: Ángela -->
+            <article class="carousel3d-card media-card is-active" data-href="https://5410m0n0c001.github.io/invitaciondemoxvanos/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitaciondemoxvanos/" title="Preview Ángela XV Años" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-route" aria-hidden="true"></i></div>
+                <h4>Ángela — Elegancia Clásica</h4>
+                <p>Visita guiada interactiva, galería, cuenta regresiva y ubicación.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
 
-          <div class="model-body">
-            <div class="model-number">Modelo 01</div>
-            <h3 class="model-name">Ángela — Elegancia Clásica</h3>
-            <p class="model-desc">
-              Diseño elegante y romántico con visita guiada interactiva paso a paso.
-              Incluye galería de fotos, cuenta regresiva y ubicación del evento.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-route"></i> Tour interactivo</span>
-              <span class="model-tag"><i class="fas fa-images"></i> Galería</span>
-              <span class="model-tag"><i class="fas fa-clock"></i> Cuenta regresiva</span>
-              <span class="model-tag"><i class="fas fa-map-marker-alt"></i> Ubicación</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitaciondemoxvanos/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-angela-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
-          </div>
-        </div>
+            <!-- MODELO 2: Katherine -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/" title="Preview Katherine XV Años" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-music" aria-hidden="true"></i></div>
+                <h4>Katherine — Pasión &amp; Color</h4>
+                <p>Animaciones de entrada, música de fondo y diseño responsivo.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
 
-        <!-- ── MODELO 2: Katherine ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/"
-              title="Preview Katherine XV Años"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-gem"></i> Modelo Premium
-          </span>
+            <!-- MODELO 3: Zafiro -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitacion-muestra-zafiro/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitacion-muestra-zafiro/" title="Preview Zafiro XV Años" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+                <h4>Zafiro — Morado &amp; Realeza</h4>
+                <p>Paleta morada profunda, detalles dorados y efectos de partículas.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
 
-          <div class="model-body">
-            <div class="model-number">Modelo 02</div>
-            <h3 class="model-name">Katherine — Pasión &amp; Color</h3>
-            <p class="model-desc">
-              Invitación vibrante y moderna con animaciones de entrada, música de fondo y
-              diseño responsivo que impresiona en cualquier dispositivo.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-music"></i> Música</span>
-              <span class="model-tag"><i class="fas fa-magic"></i> Animaciones</span>
-              <span class="model-tag"><i class="fas fa-mobile-alt"></i> Responsivo</span>
-              <span class="model-tag"><i class="fas fa-palette"></i> Diseño único</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/ketherine-mis-xv-a-os/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-katherine-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
+            <!-- MODELO 4: Atelier · Haute Editorial -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitacion-haute-editorial/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitacion-haute-editorial/" title="Preview Atelier Haute Editorial" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-cube" aria-hidden="true"></i></div>
+                <h4>Atelier — Haute Editorial</h4>
+                <p>Diseño 3D estilo revista de moda, crema y dorado, con cuenta regresiva.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
+            <!-- MODELO 5: Bella -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitacion-bella-/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitacion-bella-/" title="Preview Bella - La Rosa Encantada" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+                <h4>Bella — La Rosa Encantada</h4>
+                <p>Escena 3D de castillo y rosa encantada, música y agendar evento.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
           </div>
         </div>
 
-        <!-- ── MODELO 3: Zafiro ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitacion-muestra-zafiro/"
-              title="Preview Zafiro XV Años"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-gem"></i> Zafiro
-          </span>
-
-          <div class="model-body">
-            <div class="model-number">Modelo 03</div>
-            <h3 class="model-name">Zafiro — Morado &amp; Realeza</h3>
-            <p class="model-desc">
-              Paleta morada profunda inspirada en la elegancia real. Detalles dorados,
-              efectos de partículas y una presentación sofisticada para una quinceañera especial.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-gem"></i> Tema Zafiro</span>
-              <span class="model-tag"><i class="fas fa-star"></i> Partículas</span>
-              <span class="model-tag"><i class="fas fa-crown"></i> Elegante</span>
-              <span class="model-tag"><i class="fas fa-palette"></i> Morado real</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitacion-muestra-zafiro/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-zafiro-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
-          </div>
+        <div class="carousel3d-controls">
+          <button type="button" class="carousel3d-arrow carousel3d-prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <div class="carousel3d-dots"></div>
+          <button type="button" class="carousel3d-arrow carousel3d-next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         </div>
+      </div>
 
-        <!-- ── MODELO 4: Atelier · Fernanda (Haute Editorial) ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitacion-haute-editorial/"
-              title="Preview Atelier Haute Editorial XV Años"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-gem"></i> Haute Editorial
-          </span>
-
-          <div class="model-body">
-            <div class="model-number">Modelo 04</div>
-            <h3 class="model-name">Atelier — Haute Editorial</h3>
-            <p class="model-desc">
-              Estética tipo revista de moda con elementos en 3D: tonos crema y dorado, tipografía serif
-              editorial y una intro interactiva "toca para comenzar" con cuenta regresiva en vivo.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-cube"></i> Diseño 3D</span>
-              <span class="model-tag"><i class="fas fa-clock"></i> Cuenta regresiva</span>
-              <span class="model-tag"><i class="fas fa-font"></i> Tipografía editorial</span>
-              <span class="model-tag"><i class="fas fa-hand-pointer"></i> Intro interactiva</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitacion-haute-editorial/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-haute-editorial-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- ── MODELO 5: Bella (La Rosa Encantada) ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitacion-bella-/"
-              title="Preview Bella - La Rosa Encantada XV Años"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-gem"></i> Cuento de Hadas
-          </span>
-
-          <div class="model-body">
-            <div class="model-number">Modelo 05</div>
-            <h3 class="model-name">Bella — La Rosa Encantada</h3>
-            <p class="model-desc">
-              Inspirada en un cuento de hadas: escena cinematográfica en 3D de castillo y rosa
-              encantada bajo cúpula de cristal, música de fondo y botón para agendar el evento.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-cube"></i> Diseño 3D</span>
-              <span class="model-tag"><i class="fas fa-music"></i> Música</span>
-              <span class="model-tag"><i class="fas fa-calendar-plus"></i> Agendar evento</span>
-              <span class="model-tag"><i class="fas fa-crown"></i> Tema princesa</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitacion-bella-/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-bella-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
-          </div>
-        </div>
-
-      </div><!-- /.models-grid -->
     </section>
 
     <!-- CARRUSEL: MOMENTOS REALES -->
