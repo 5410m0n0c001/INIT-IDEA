@@ -460,12 +460,32 @@ function initCarousel3D() {
         // Si se venía arrastrando, este clic es el final del gesto, no una
         // intención de abrir la tarjeta
         if (huboArrastre) { huboArrastre = false; e.preventDefault(); return; }
-        // Una tarjeta lateral primero se trae al frente
-        if (Math.abs(desfase(i)) > 0.5) { e.preventDefault(); irA(i); return; }
+
         const href = card.dataset.href;
-        if (!href) return;
-        if (card.dataset.target === '_blank') window.open(href, '_blank', 'noopener,noreferrer');
-        else window.location.href = href;
+
+        // Sin destino (fichas informativas) la tarjeta solo se trae al frente
+        if (!href) { irA(i % originales); return; }
+
+        // Con destino se abre al primer clic, esté al centro o de lado: pedir
+        // dos clics se siente como que la tarjeta no responde.
+
+        if (card.dataset.target === '_blank') {
+          window.open(href, '_blank', 'noopener,noreferrer');
+          return;
+        }
+
+        // Un ancla de la misma página no se resuelve cambiando el hash: hay
+        // páginas (el manual) que muestran una sección a la vez y escuchan el
+        // clic en su menú. Se reusa ese enlace para que hagan su trabajo.
+        if (href.charAt(0) === '#') {
+          const enlace = document.querySelector('a[href="' + href + '"]');
+          if (enlace) { enlace.click(); return; }
+          const destino = document.getElementById(href.slice(1));
+          if (destino) destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          return;
+        }
+
+        window.location.href = href;
       });
     });
 
