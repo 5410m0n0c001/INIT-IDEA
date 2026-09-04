@@ -538,6 +538,143 @@
 }
 
 /* ============================================================
+   Variante "redes sociales": un teléfono al centro y las tarjetas
+   como iconos de app translúcidos girando a su alrededor.
+   ============================================================ */
+.carousel3d.is-social .carousel3d-stage { perspective: 1100px; }
+
+/* En órbita el teléfono y las tarjetas comparten el mismo espacio 3D, así el
+   navegador decide cuáles pasan por delante y cuáles por detrás de él. */
+.carousel3d.is-orbit .carousel3d-stage {
+  transform-style: preserve-3d;
+  height: 520px;
+  overflow: visible;
+}
+.carousel3d.is-orbit .carousel3d-track { transform-style: preserve-3d; }
+.carousel3d.is-orbit .carousel3d-card {
+  top: 50%;
+  left: 50%;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .carousel3d.is-orbit .carousel3d-stage { height: 420px; }
+}
+
+/* Teléfono dibujado en CSS, con el logo en la pantalla */
+.carousel3d-phone {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
+.phone-body {
+  position: relative;
+  width: 210px;
+  height: 420px;
+  border-radius: 38px;
+  padding: 10px;
+  background: linear-gradient(160deg, #3a3a44 0%, #16161c 40%, #2c2c34 100%);
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.08),
+    0 30px 80px rgba(0,0,0,0.65),
+    0 0 90px rgba(180, 79, 255, 0.35);
+}
+.phone-island {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 74px;
+  height: 20px;
+  border-radius: 20px;
+  background: #07070a;
+  z-index: 2;
+}
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  /* Pantalla encendida: si queda tan oscura como el fondo, el logo se pierde */
+  background:
+    radial-gradient(circle at 50% 38%, rgba(180, 79, 255, 0.55) 0%, rgba(90, 40, 150, 0.35) 45%, rgba(12, 8, 24, 0.95) 100%),
+    #150c26;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phone-screen img {
+  width: 76%;
+  height: auto;
+  filter: brightness(1.9) drop-shadow(0 0 26px rgba(255, 255, 255, 0.55));
+}
+
+/* Tarjetas como iconos de app: translúcidas, dejan ver el teléfono */
+.carousel3d.is-social .carousel3d-card {
+  width: 132px;
+  height: 132px;
+  border-radius: 28px;
+  padding: 12px 8px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 6px;
+  background: rgba(24, 15, 44, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45);
+}
+.carousel3d.is-social .carousel3d-card.is-active {
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 18px 44px rgba(0,0,0,0.55), 0 0 30px rgba(180, 79, 255, 0.35);
+}
+.carousel3d.is-social .c3d-icon,
+.carousel3d.is-social .c3d-cta,
+.carousel3d.is-social .carousel3d-card > p { display: none; }
+
+.c3d-app {
+  width: 52px;
+  height: 52px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: var(--marca, #fff);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid color-mix(in srgb, var(--marca, #fff) 45%, transparent);
+  box-shadow: 0 0 18px color-mix(in srgb, var(--marca, #fff) 35%, transparent);
+  flex-shrink: 0;
+}
+.carousel3d.is-social .carousel3d-card h4 {
+  font-size: 0.78rem;
+  line-height: 1.2;
+  margin: 0;
+  color: #fff;
+}
+.c3d-red {
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--marca, rgba(255,255,255,0.7));
+  opacity: 0.9;
+}
+
+@media (max-width: 640px) {
+  .phone-body { width: 150px; height: 300px; border-radius: 28px; }
+  .phone-screen { border-radius: 22px; }
+  .carousel3d.is-social .carousel3d-card { width: 104px; height: 104px; border-radius: 22px; }
+  .c3d-app { width: 40px; height: 40px; font-size: 1.2rem; }
+}
+
+/* Pista para arrastrar también en vertical */
+.carousel3d.is-inclinable .carousel3d-stage { touch-action: none; }
+
+/* ============================================================
    Anillo 3D en giro continuo (galerías tipo escaparate)
    A diferencia del carrusel, aquí no hay pasos ni transiciones:
    el anillo gira sin parar a velocidad constante.
