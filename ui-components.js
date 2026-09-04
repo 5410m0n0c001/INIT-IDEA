@@ -581,7 +581,11 @@ function initCarousel3D() {
     // escena desde otro ángulo. Solo donde se pide con is-inclinable.
     // La órbita arranca ligeramente inclinada: vista de canto parecería una
     // simple fila horizontal en vez de un giro alrededor del teléfono.
-    let inclinacion = root.classList.contains('is-orbit') ? -14 : 0;
+    // Inclinación de partida: negativa mira desde abajo, positiva desde
+    // arriba. Un teléfono luce de frente; una laptop, ligeramente en picada.
+    let inclinacion = root.dataset.inclinacion !== undefined
+      ? parseFloat(root.dataset.inclinacion)
+      : (root.classList.contains('is-orbit') ? -14 : 0);
     let inicioY = 0, ultimoY = 0;
 
     function aplicarInclinacion() {

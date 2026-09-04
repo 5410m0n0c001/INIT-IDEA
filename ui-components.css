@@ -584,6 +584,50 @@
   .phone-modelo { width: 200px; height: 320px; }
 }
 
+/* MacBook del inicio: más ancha que alta, por eso su propio tamaño */
+.mac-modelo {
+  position: relative;
+  z-index: 1;
+  width: 660px;
+  height: 460px;
+  background: transparent;
+  --poster-color: transparent;
+  --progress-bar-color: var(--accent, #b44fff);
+  pointer-events: none;
+}
+@media (max-width: 640px) {
+  .mac-modelo { width: 340px; height: 250px; }
+}
+
+/* Tarjetas compactas para orbitar: se queda el icono y el título */
+.carousel3d.is-compact .carousel3d-card {
+  width: 158px;
+  height: 158px;
+  border-radius: 26px;
+  padding: 14px 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: 8px;
+  background: rgba(24, 15, 44, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.carousel3d.is-compact .carousel3d-card > p,
+.carousel3d.is-compact .c3d-cta { display: none; }
+.carousel3d.is-compact .c3d-icon { margin-bottom: 4px; }
+.carousel3d.is-compact .carousel3d-card h4 {
+  font-size: 0.8rem;
+  line-height: 1.2;
+  margin: 0;
+}
+@media (max-width: 640px) {
+  .carousel3d.is-compact .carousel3d-card { width: 116px; height: 116px; border-radius: 20px; }
+  .carousel3d.is-compact .carousel3d-card h4 { font-size: 0.68rem; }
+  .carousel3d.is-compact .c3d-icon { width: 34px; height: 34px; font-size: 0.95rem; }
+}
+
 /* Contenedor del teléfono: centrado en el escenario y sin robar clics */
 .carousel3d-phone {
   position: absolute;
