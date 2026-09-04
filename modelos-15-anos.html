@@ -390,33 +390,6 @@
       padding: 70px 20px 90px;
       background: #000;
     }
-    .quince-carousel {
-      display: flex;
-      gap: 20px;
-      overflow-x: auto;
-      scroll-snap-type: x mandatory;
-      padding: 10px 20px 30px;
-      max-width: 1100px;
-      margin: 0 auto;
-      -webkit-overflow-scrolling: touch;
-    }
-    .quince-carousel::-webkit-scrollbar { height: 8px; }
-    .quince-carousel::-webkit-scrollbar-thumb { background: rgba(180,79,255,0.4); border-radius: 10px; }
-    .quince-carousel-item {
-      scroll-snap-align: center;
-      flex: 0 0 auto;
-      width: 260px;
-      height: 380px;
-      object-fit: cover;
-      border-radius: 18px;
-      border: 1px solid rgba(180,79,255,0.25);
-      box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-      transition: transform 0.35s cubic-bezier(.25,.1,.25,1);
-    }
-    .quince-carousel-item:hover { transform: translateY(-8px) scale(1.03); }
-    @media (max-width: 640px) {
-      .quince-carousel-item { width: 200px; height: 300px; }
-    }
   </style>
 </head>
 <body class="lang-es">
@@ -545,20 +518,33 @@
 
     </section>
 
-    <!-- CARRUSEL: MOMENTOS REALES -->
+    <!-- MOMENTOS REALES: anillo 3D en giro continuo -->
     <section class="quince-carousel-section">
       <div class="models-header">
         <span class="models-header-label">Momentos Reales</span>
         <h2 class="models-header-title">Quinceañeras que nos han hecho parte de su historia</h2>
         <div class="section-divider"></div>
       </div>
-      <div class="quince-carousel">
-        <img src="assets/quince-zoe.jpg" alt="Zoe - Mis XV años" class="quince-carousel-item">
-        <img src="assets/quince-hannah.jpg" alt="Hannah - Mis XV años" class="quince-carousel-item">
-        <img src="assets/quince-runway-vol1.jpg" alt="Primavera Haute Runway Vol. 1" class="quince-carousel-item">
-        <img src="assets/quince-runway-grandia.jpg" alt="Revive tu Grandía" class="quince-carousel-item">
-        <img src="assets/quince-runway-pasarela.jpg" alt="Quinceañeras en Pasarela" class="quince-carousel-item">
-        <img src="assets/quince-boda-manos.jpg" alt="Momentos reales" class="quince-carousel-item">
+
+      <div class="ring3d" data-vuelta="22">
+        <div class="ring3d-stage">
+          <div class="ring3d-track">
+            <div class="ring3d-spin">
+
+            <figure class="ring3d-item"><img src="assets/quince-zoe.jpg" alt="Zoe — Mis XV años" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-sesion-julio.jpg" alt="Sesión de quinceañera, julio 2026" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-hannah.jpg" alt="Hannah — Mis XV años" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-asi-se-vivio.jpg" alt="Así se vivió la fiesta" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-runway-vol1.jpg" alt="Primavera Haute Runway Vol. 1" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-evento-julio.jpg" alt="Evento de fin de julio 2026" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-runway-grandia.jpg" alt="Revive tu Grandía" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-algo-diferente.jpg" alt="Hagamos algo diferente" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-runway-pasarela.jpg" alt="Quinceañeras en pasarela" loading="lazy"></figure>
+            <figure class="ring3d-item"><img src="assets/quince-boda-manos.jpg" alt="Momentos reales" loading="lazy"></figure>
+
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
