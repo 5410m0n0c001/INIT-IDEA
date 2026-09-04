@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v67';
+const CACHE_VERSION = 'v69';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -25,6 +25,7 @@ const PRECACHE_ASSETS = [
   'logo2.0.jpeg',
   'contact.vcf',
   'assets/initlogo.png',
+  'assets/iphone14.glb',
   'assets/og-invitaciones.png',
   'assets/og-tarjetas.png',
   'assets/1762379809138.jpg',

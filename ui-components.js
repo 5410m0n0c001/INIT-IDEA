@@ -595,6 +595,15 @@ function initCarousel3D() {
 
     // Ángulo desde el que se mira el modelo: el que deja la pantalla de frente
     const thetaBase = parseFloat(root.dataset.modeloTheta || '0');
+
+    // El teléfono dibujado en CSS se ve mientras el modelo carga; se retira
+    // cuando este ya está listo (model-viewer no siempre refleja el atributo).
+    if (modelo) {
+      const respaldo = root.querySelector('.phone-respaldo');
+      const retirar = () => { if (respaldo) respaldo.style.display = 'none'; };
+      if (modelo.loaded) retirar();
+      else modelo.addEventListener('load', retirar, { once: true });
+    }
     // Si el teléfono girara con la órbita, la pantalla acabaría de espaldas y
     // el logotipo dejaría de verse; solo acompaña la inclinación.
     function sincronizarModelo() {

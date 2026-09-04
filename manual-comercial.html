@@ -32,6 +32,7 @@
     <link rel="stylesheet" href="ui-components.css">
     <!-- FontAwesome from main repository for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
 </head>
 <body class="lang-es">
     <!-- Mobile Navigation Toggle -->
@@ -157,14 +158,22 @@
                     <p><span class="lang-es">Desliza, arrastra o toca una tarjeta para abrir la sección.</span><span class="lang-en">Swipe, drag or tap a card to open the section.</span></p>
                 </div>
 
-                <div class="carousel3d is-social is-orbit is-inclinable" id="manualCarousel" data-velocidad="0.45">
+                <div class="carousel3d is-social is-orbit is-inclinable" id="manualCarousel" data-velocidad="0.45" data-modelo-theta="180">
                   <div class="carousel3d-stage">
                     <div class="carousel3d-phone" aria-hidden="true">
-                      <div class="phone-body">
-                        <div class="phone-boton phone-boton-silencio"></div>
-                        <div class="phone-boton phone-boton-vol-arriba"></div>
-                        <div class="phone-boton phone-boton-vol-abajo"></div>
-                        <div class="phone-boton phone-boton-encendido"></div>
+                      <model-viewer
+                        class="phone-modelo"
+                        src="assets/iphone14.glb"
+                        alt="iPhone con el logotipo de INIT IDEA en pantalla"
+                        camera-orbit="0deg 90deg 105%"
+                        field-of-view="26deg"
+                        environment-image="neutral"
+                        exposure="1.15"
+                        shadow-intensity="0"
+                        disable-zoom
+                        interaction-prompt="none"
+                        loading="lazy"></model-viewer>
+                      <div class="phone-body phone-respaldo">
                         <div class="phone-marco">
                           <div class="phone-screen">
                             <div class="phone-island"></div>
