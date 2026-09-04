@@ -245,14 +245,14 @@ function initRing3D() {
     destino.addEventListener('pointerdown', e => {
       if (e.pointerType === 'touch') return;
       iniciar(e.clientX);
-      destino.setPointerCapture?.(e.pointerId);
     });
-    destino.addEventListener('pointermove', e => {
+    // En la ventana, para no perder el gesto si el puntero sale del anillo
+    window.addEventListener('pointermove', e => {
       if (e.pointerType === 'touch') return;
       mover(e.clientX);
     });
-    destino.addEventListener('pointerup', soltar);
-    destino.addEventListener('pointercancel', soltar);
+    window.addEventListener('pointerup', soltar);
+    window.addEventListener('pointercancel', soltar);
 
     destino.addEventListener('touchstart', e => iniciar(e.touches[0].clientX), { passive: true });
     destino.addEventListener('touchmove',  e => mover(e.touches[0].clientX),   { passive: true });
@@ -306,6 +306,7 @@ function initCarousel3D() {
     let objetivo = pos;          // a dónde llegar tras un clic
     let sentido = 1;             // 1 avanza a la derecha; -1 a la izquierda
     let arrastrando = false;
+    let huboArrastre = false;   // para no abrir el enlace al soltar un arrastre
     let enHover = false;
     let ultimoX = 0;
     let ultimoTs = null;
@@ -456,6 +457,10 @@ function initCarousel3D() {
 
     cards.forEach((card, i) => {
       card.addEventListener('click', e => {
+        // Si se venía arrastrando, este clic es el final del gesto, no una
+        // intención de abrir la tarjeta
+        if (huboArrastre) { huboArrastre = false; e.preventDefault(); return; }
+        // Una tarjeta lateral primero se trae al frente
         if (Math.abs(desfase(i)) > 0.5) { e.preventDefault(); irA(i); return; }
         const href = card.dataset.href;
         if (!href) return;
@@ -474,15 +479,32 @@ function initCarousel3D() {
     const zona = stage || root;
     const pasoPx = () => geometry().x;
 
-    function iniciar(x) { arrastrando = true; ultimoX = x; zona.classList.add('arrastrando'); }
+    // Un clic y un arrastre empiezan igual, así que no se arrastra hasta que
+    // el puntero recorre unos píxeles. Antes de ese umbral el gesto sigue
+    // siendo un clic normal y la tarjeta conserva su enlace.
+    const UMBRAL = 5;
+    let inicioX = 0;
+    let pendiente = false;   // se apretó, aún no se sabe si es clic o arrastre
+
+
+    function apretar(x) { pendiente = true; inicioX = x; ultimoX = x; }
+
     function mover(x) {
-      if (!arrastrando) return;
+      if (!pendiente && !arrastrando) return;
+      if (!arrastrando) {
+        if (Math.abs(x - inicioX) < UMBRAL) return;
+        arrastrando = true;
+        huboArrastre = true;
+        zona.classList.add('arrastrando');
+      }
       pos -= (x - ultimoX) / pasoPx();
       ultimoX = x;
       normalizar();
       render();
     }
+
     function soltar() {
+      pendiente = false;
       if (!arrastrando) return;
       arrastrando = false;
       objetivo = pos;
@@ -491,17 +513,18 @@ function initCarousel3D() {
 
     zona.addEventListener('pointerdown', e => {
       if (e.pointerType === 'touch') return;
-      iniciar(e.clientX);
-      zona.setPointerCapture?.(e.pointerId);
+      apretar(e.clientX);
     });
-    zona.addEventListener('pointermove', e => {
+    // El seguimiento va en la ventana para no perder el gesto si el puntero
+    // se sale del carrusel, pero sin capturarlo: capturarlo desviaría el clic.
+    window.addEventListener('pointermove', e => {
       if (e.pointerType === 'touch') return;
       mover(e.clientX);
     });
-    zona.addEventListener('pointerup', soltar);
-    zona.addEventListener('pointercancel', soltar);
+    window.addEventListener('pointerup', soltar);
+    window.addEventListener('pointercancel', soltar);
 
-    zona.addEventListener('touchstart', e => iniciar(e.touches[0].clientX), { passive: true });
+    zona.addEventListener('touchstart', e => apretar(e.touches[0].clientX), { passive: true });
     zona.addEventListener('touchmove',  e => mover(e.touches[0].clientX),   { passive: true });
     zona.addEventListener('touchend',   soltar);
 

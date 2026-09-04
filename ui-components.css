@@ -93,6 +93,10 @@
   width: 100%;
   height: 100%;
   transform-style: preserve-3d;
+  /* Las tarjetas viven con Z negativo, o sea detrás del plano de la pista.
+     Si la pista aceptara el puntero, se quedaría con todos los clics y las
+     tarjetas dejarían de ser pulsables. Ellas lo reactivan por su cuenta. */
+  pointer-events: none;
 }
 
 .carousel3d-card {
