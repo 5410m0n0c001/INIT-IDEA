@@ -31,9 +31,12 @@ function initSocialWidget() {
         <i class="${icon}" aria-hidden="true"></i><span>${label}</span>
       </a>`).join('');
 
-  const wrap = document.createElement('aside');
+  // Un <div>, no un <aside>: algunas páginas (manual-comercial.css) estilizan
+  // el elemento aside para su barra lateral y se llevarían el widget con él.
+  const wrap = document.createElement('div');
   wrap.className = 'social-container';
   wrap.id = 'socialContainer';
+  wrap.setAttribute('role', 'complementary');
   wrap.setAttribute('aria-label', 'Redes sociales');
   wrap.innerHTML = `
     <button id="socialToggle" class="social-toggle" aria-label="Ver redes sociales" aria-expanded="false">

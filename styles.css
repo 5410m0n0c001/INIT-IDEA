@@ -542,105 +542,6 @@ body {
 }
 
 /* Social & Chat Floating Buttons */
-.social-container {
-  position: fixed;
-  right: 30px; /* redes a la derecha; el contacto vive en la esquina opuesta */
-  bottom: 30px;
-  z-index: 1390;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 10px;
-}
-.social-toggle {
-  width: 54px;
-  height: 54px;
-  border-radius: 50%;
-  border: 1px solid var(--glass-border);
-  background: rgba(28, 28, 30, 0.92);
-  /* ANTES: backdrop-filter: blur(10px) — activo SIEMPRE = composite layer en móvil */
-  /* AHORA: solo en desktop con hover (no touchscreen) */
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-}
-@media (min-width: 1024px) and (hover: hover) {
-  .social-toggle {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-}
-@media (hover: hover) {
-  .social-toggle:hover {
-    transform: scale(1.05);
-  }
-}
-.social-logo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.social-dropdown {
-  position: absolute;
-  right: 64px;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  opacity: 0;
-  transform: translateX(10px);
-  visibility: hidden;
-  transition: opacity var(--transition-smooth), transform var(--transition-smooth), visibility var(--transition-smooth);
-  background: rgba(20, 20, 22, 0.97);
-  /* ANTES: backdrop-filter siempre activo — composite layer innecesaria en móvil */
-  border-radius: 16px;
-  padding: 10px;
-  border: 1px solid var(--glass-border);
-  max-height: 80vh;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-@media (min-width: 1024px) and (hover: hover) {
-  .social-dropdown {
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-  }
-}
-.social-dropdown.open {
-  opacity: 1;
-  transform: translateX(0);
-  visibility: visible;
-}
-.social {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 14px;
-  color: var(--text);
-  text-decoration: none;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-}
-@media (hover: hover) {
-  .social:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-}
-.social-legend {
-  font-size: 0.75rem;
-  color: var(--muted);
-  background: rgba(20, 20, 22, 0.9);
-  /* ANTES: backdrop-filter: blur(8px) — otra composite layer innecesaria */
-  padding: 4px 10px;
-  border-radius: 12px;
-  border: 1px solid var(--glass-border);
-}
-
 .hero-chat {
   position: fixed;
   left: 30px;
@@ -1271,27 +1172,6 @@ body {
 .splash-screen[aria-hidden="true"],
 .loading-screen[aria-hidden="true"] {
   will-change: auto;
-}
-
-
-/* ── SOCIAL DROPDOWN ACCESIBLE ───────────────────────────── */
-
-.social-dropdown {
-  overflow:   hidden;
-  max-height: 0;
-  transition: max-height 0.3s ease, opacity 0.3s ease;
-  opacity:    0;
-}
-
-.social-dropdown.open {
-  max-height: 600px; /* suficiente para todos los links */
-  opacity:    1;
-}
-
-/* Sin animación en lite-mode */
-.lite-mode .social-dropdown,
-.lite-mode .social-dropdown.open {
-  transition: none !important;
 }
 
 

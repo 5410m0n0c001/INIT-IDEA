@@ -124,10 +124,36 @@ function initNavigation() {
         const targetId = initialHash.substring(1);
         const isSection = Array.from(sections).some(sec => sec.id === targetId);
         if (isSection) {
-            // Un pequeño retraso para asegurar que la página se inicializó
-            setTimeout(() => {
+            // El navegador salta solo al ancla mientras la sección aún es
+            // visible, y vuelve a hacerlo cuando terminan de cargar imágenes.
+            // Sin esto se entra a media sección y la página parece rota.
+            if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+            // Ya guardamos a qué sección hay que ir, así que quitamos el ancla
+            // de la URL: sin ella el navegador deja de saltar por su cuenta.
+            history.replaceState(null, '', window.location.pathname);
+
+            // La página usa scroll suave: el salto al ancla es una animación
+            // larga que pisa cualquier corrección. Se desactiva mientras dura
+            // el arranque y se restaura después.
+            const raiz = document.documentElement;
+            const suavePrevio = raiz.style.scrollBehavior;
+            raiz.style.scrollBehavior = 'auto';
+
+            const abrir = () => {
                 switchSection(targetId);
-            }, 100);
+                window.scrollTo(0, 0);
+            };
+
+            setTimeout(abrir, 100);
+            window.addEventListener('load', () => {
+                abrir();
+                requestAnimationFrame(abrir);
+                setTimeout(() => {
+                    abrir();
+                    raiz.style.scrollBehavior = suavePrevio;
+                }, 400);
+            }, { once: true });
         }
     }
 }
