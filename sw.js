@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v46';
+const CACHE_VERSION = 'v49';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -47,7 +47,12 @@ const PRECACHE_ASSETS = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_STATIC)
-      .then(cache => cache.addAll(PRECACHE_ASSETS))
+      // cache: 'reload' obliga a traerlos de la red. Sin esto el precache se
+      // llena desde la caché HTTP del navegador y una versión nueva del SW
+      // puede quedarse guardando archivos viejos.
+      .then(cache => cache.addAll(
+        PRECACHE_ASSETS.map(url => new Request(url, { cache: 'reload' }))
+      ))
       .then(() => self.skipWaiting()) // activa el SW nuevo de inmediato
       .catch(err => console.warn('[SW] Pre-cache falló:', err))
   );

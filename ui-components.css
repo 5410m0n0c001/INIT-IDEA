@@ -302,6 +302,21 @@
   padding: 4px 0;
 }
 
+/* Reseñas dentro del carrusel: conservan su maquetación (foto, estrellas,
+   cita y autor) pero con el ancho de una tarjeta del componente */
+.carousel3d-card.testimonial-card {
+  width: 360px;
+  gap: 16px;
+  padding: 30px 26px;
+}
+.carousel3d-card.testimonial-card:hover { transform: none; }
+.carousel3d-card .testimonial-text { font-size: 0.9rem; line-height: 1.6; }
+.carousel3d-card .testimonial-image { margin: 0 auto; }
+.carousel3d-card .author-name { font-size: 1rem; }
+@media (max-width: 640px) {
+  .carousel3d-card.testimonial-card { width: 275px; padding: 24px 20px; }
+}
+
 /* Variante de menú por colores (secciones internas) */
 .carousel3d-card.tone-1 { background: linear-gradient(160deg, rgba(180,79,255,0.28), rgba(24,15,44,0.95)); }
 .carousel3d-card.tone-2 { background: linear-gradient(160deg, rgba(255,95,168,0.28), rgba(24,15,44,0.95)); }
