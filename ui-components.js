@@ -248,6 +248,8 @@ function initCarousel3D() {
 
     function goTo(i) {
       active = (i + cards.length) % cards.length;
+      // Las tarjetas con scroll propio (planes) vuelven a empezar arriba
+      cards.forEach(c => { if (c.scrollTop) c.scrollTop = 0; });
       render();
     }
     function next() { goTo(active + 1); }

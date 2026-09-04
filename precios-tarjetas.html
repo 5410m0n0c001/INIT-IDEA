@@ -49,9 +49,12 @@
       <div class="latest-projects-header">
         <h2 class="latest-projects-title">Elige tu Nivel</h2>
       </div>
-      <div class="grid" style="max-width: 1200px;">
-        <!-- ESENCIAL -->
-        <article class="card tier-card essential-border">
+      <div class="carousel3d is-tall" id="planesCarousel">
+        <div class="carousel3d-stage">
+          <div class="carousel3d-logo"><img src="logo2.0.jpeg" alt="INIT IDEA" loading="lazy"></div>
+          <div class="carousel3d-track">
+
+            <article class="carousel3d-card tier-card essential-border is-active">
           <div class="tier-badge" style="background: #2ecc71;">Esencial</div>
           <h3 class="tier-price-large">$1,000</h3>
           <p class="tier-tagline">Presencia profesional básica</p>
@@ -64,11 +67,9 @@
             <li><i class="fas fa-check"></i> Ubicación (Google Maps)</li>
             <li><i class="fas fa-check"></i> Botón “Agregar a contactos”</li>
             <li><i class="fas fa-check"></i> Hosting permanente</li>
-          </ul>
-        </article>
+          </ul></article>
 
-        <!-- PERSONALIZADO -->
-        <article class="card tier-card customized-border featured-tier">
+            <article class="carousel3d-card tier-card customized-border featured-tier">
           <div class="tier-badge" style="background: #f1c40f; color: #000;">Personalizado</div>
           <h3 class="tier-price-large">$1,500</h3>
           <p class="tier-tagline">Imagen de marca + interacción</p>
@@ -81,11 +82,9 @@
             <li><i class="fas fa-check"></i> Galería de imágenes</li>
             <li><i class="fas fa-check"></i> Versión bilingüe</li>
             <li><i class="fas fa-check"></i> Navegación tipo menú sticky</li>
-          </ul>
-        </article>
+          </ul></article>
 
-        <!-- PREMIUM -->
-        <article class="card tier-card premium-border">
+            <article class="carousel3d-card tier-card premium-border">
           <div class="tier-badge" style="background: #3498db;">Premium</div>
           <h3 class="tier-price-large">$2,000</h3>
           <p class="tier-tagline">Herramienta completa de conversión</p>
@@ -98,8 +97,16 @@
             <li><i class="fas fa-check"></i> Múltiples contactos / sucursales</li>
             <li><i class="fas fa-star"></i> <strong>Tarjeta PVC física con NFC</strong></li>
             <li><i class="fas fa-star"></i> <strong>Código QR personalizado</strong></li>
-          </ul>
-        </article>
+          </ul></article>
+
+          </div>
+        </div>
+
+        <div class="carousel3d-controls">
+          <button type="button" class="carousel3d-arrow carousel3d-prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <div class="carousel3d-dots"></div>
+          <button type="button" class="carousel3d-arrow carousel3d-next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
+        </div>
       </div>
     </section>
 
