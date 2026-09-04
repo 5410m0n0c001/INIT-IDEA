@@ -382,6 +382,28 @@ function initCarousel3D() {
     // Modo órbita: las tarjetas dan vueltas alrededor del objeto del centro,
     // pasando por delante y por detrás de él, en lugar de abrirse en abanico.
     const enOrbita = root.classList.contains('is-orbit');
+    const inclinable = root.classList.contains('is-inclinable');
+    const telefono = root.querySelector('.carousel3d-phone');
+    // Si hay modelo 3D no se le aplica un giro CSS —quedaría deformado—: se
+    // mueve su cámara, que es lo que de verdad lo hace girar.
+    const modelo = root.querySelector('model-viewer');
+
+    // El modelo 3D se dibuja en WebGL, así que el navegador no puede
+    // intercalarlo con las tarjetas dentro del mismo espacio CSS. Se usan dos
+    // capas —una delante y otra detrás del teléfono— y cada tarjeta cambia de
+    // capa al cruzar los costados, que es cuando no se nota.
+    let capaDetras = null;
+    if (enOrbita && modelo && stage) {
+      capaDetras = document.createElement('div');
+      capaDetras.className = 'carousel3d-track carousel3d-track-detras';
+      stage.insertBefore(capaDetras, stage.firstChild);
+    }
+
+    function ubicarEnCapa(card, alFrente) {
+      if (!capaDetras) return;
+      const destino = alFrente ? track : capaDetras;
+      if (card.parentElement !== destino) destino.appendChild(card);
+    }
 
     function radioOrbita() {
       const anchoTarjeta = cards[0].offsetWidth || 150;
@@ -402,6 +424,10 @@ function initCarousel3D() {
         const grados = (off / total) * 360;
         const rad = grados * Math.PI / 180;
         const z = Math.cos(rad);            // 1 al frente, -1 detrás
+        // Con modelo 3D la inclinación no va en la pista (deformaría el
+        // teléfono), así que cada tarjeta la lleva en su propio giro.
+        const inclina = modelo ? 'rotateX(' + inclinacion + 'deg) ' : '';
+        const desinclina = modelo ? ' rotateX(' + (-inclinacion) + 'deg)' : '';
 
         card.classList.toggle('is-active', abs < 0.5);
         card.style.pointerEvents = 'auto';
@@ -411,11 +437,15 @@ function initCarousel3D() {
         // El segundo giro cancela el primero: la tarjeta orbita pero siempre
         // mira de frente, como los pétalos alrededor de la rosa.
         card.style.transform =
-          'translate(-50%, -50%) rotateY(' + grados + 'deg) translateZ(' + R + 'px) rotateY(' + (-grados) + 'deg)';
+          'translate(-50%, -50%) ' + inclina +
+          'rotateY(' + grados + 'deg) translateZ(' + R + 'px) rotateY(' + (-grados) + 'deg)' + desinclina;
+
+        ubicarEnCapa(card, z >= 0);
       });
 
       dots.forEach((d, i) => d.classList.toggle('is-active', i === frente % originales));
       syncPreviewFrames(frente);
+      sincronizarModelo();
     }
 
     function render() {
@@ -549,8 +579,6 @@ function initCarousel3D() {
 
     // Inclinación vertical: arrastrando hacia arriba o abajo se mira la
     // escena desde otro ángulo. Solo donde se pide con is-inclinable.
-    const inclinable = root.classList.contains('is-inclinable');
-    const telefono = root.querySelector('.carousel3d-phone');
     // La órbita arranca ligeramente inclinada: vista de canto parecería una
     // simple fila horizontal en vez de un giro alrededor del teléfono.
     let inclinacion = root.classList.contains('is-orbit') ? -14 : 0;
@@ -558,8 +586,21 @@ function initCarousel3D() {
 
     function aplicarInclinacion() {
       const giro = 'rotateX(' + inclinacion + 'deg)';
-      track.style.transform = giro;
-      if (telefono) telefono.style.transform = 'translate(-50%, -50%) ' + giro;
+      if (!modelo) {
+        track.style.transform = giro;
+        if (telefono) telefono.style.transform = 'translate(-50%, -50%) ' + giro;
+      }
+      sincronizarModelo();
+    }
+
+    // Ángulo desde el que se mira el modelo: el que deja la pantalla de frente
+    const thetaBase = parseFloat(root.dataset.modeloTheta || '0');
+    // Si el teléfono girara con la órbita, la pantalla acabaría de espaldas y
+    // el logotipo dejaría de verse; solo acompaña la inclinación.
+    function sincronizarModelo() {
+      if (!modelo) return;
+      const phi = Math.max(25, Math.min(135, 90 - inclinacion));
+      modelo.setAttribute('camera-orbit', thetaBase + 'deg ' + phi.toFixed(1) + 'deg 105%');
     }
 
     function apretar(x, y) {
