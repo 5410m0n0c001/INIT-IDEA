@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script src="ui-components.js" defer></script>
 
   <style>
     /* ── Page-specific overrides (shared pattern with modelos-15-anos.html) ── */
@@ -393,88 +394,51 @@
       <div class="models-header">
         <span class="models-header-label">Colección Infantil</span>
         <h2 class="models-header-title">Nuestros Modelos Disponibles</h2>
-        <p class="models-header-sub">Selecciona el demo para explorar la invitación completa e interactiva</p>
+        <p class="models-header-sub">Desliza, arrastra o toca una tarjeta para abrir el demo completo</p>
         <div class="section-divider"></div>
       </div>
 
-      <div class="models-grid">
+      <div class="carousel3d" id="infantilCarousel">
+        <div class="carousel3d-stage">
+          <div class="carousel3d-logo"><img src="logo2.0.jpeg" alt="INIT IDEA" loading="lazy"></div>
+          <div class="carousel3d-track">
 
-        <!-- ── MODELO 1: Alison (2 años, temática abejita) ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitacion-alison-/"
-              title="Preview Alison - Cumpleaños Infantil"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-envelope"></i> Sobre Animado
-          </span>
+            <!-- MODELO 1: Alison -->
+            <article class="carousel3d-card media-card is-active" data-href="https://5410m0n0c001.github.io/invitacion-alison-/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitacion-alison-/" title="Preview Alison - Cumpleaños Infantil" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-envelope-open-text" aria-hidden="true"></i></div>
+                <h4>Alison — Fiesta Abejita</h4>
+                <p>Sobre animado, temática de abejita y flores, cuenta regresiva y ubicación.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
 
-          <div class="model-body">
-            <div class="model-number">Modelo 01</div>
-            <h3 class="model-name">Alison — Fiesta Abejita</h3>
-            <p class="model-desc">
-              Sobre animado que se abre al toque, temática tierna de abejita y flores,
-              cuenta regresiva en vivo y botón directo a la ubicación del evento.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-envelope-open-text"></i> Sobre animado</span>
-              <span class="model-tag"><i class="fas fa-clock"></i> Cuenta regresiva</span>
-              <span class="model-tag"><i class="fas fa-map-marker-alt"></i> Ubicación</span>
-              <span class="model-tag"><i class="fas fa-palette"></i> Diseño tierno</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitacion-alison-/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-alison-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
+            <!-- MODELO 2: Bella -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitacion-bella-/" data-target="_blank">
+              <div class="c3d-media">
+                <iframe src="https://5410m0n0c001.github.io/invitacion-bella-/" title="Preview Bella - La Rosa Encantada" loading="lazy" scrolling="no" tabindex="-1"></iframe>
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-crown" aria-hidden="true"></i></div>
+                <h4>Bella — La Rosa Encantada</h4>
+                <p>Escena 3D de castillo y rosa encantada, música y temática de princesa.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
           </div>
         </div>
 
-        <!-- ── MODELO 2: Bella (La Rosa Encantada, también en XV Años) ── -->
-        <div class="model-card">
-          <div class="model-preview">
-            <iframe
-              src="https://5410m0n0c001.github.io/invitacion-bella-/"
-              title="Preview Bella - La Rosa Encantada"
-              loading="lazy"
-              scrolling="no"
-              tabindex="-1"
-            ></iframe>
-            <div class="model-preview-overlay"></div>
-          </div>
-          <span class="model-badge badge-modelo">
-            <i class="fas fa-crown"></i> Tema Princesa
-          </span>
-
-          <div class="model-body">
-            <div class="model-number">Modelo 02</div>
-            <h3 class="model-name">Bella — La Rosa Encantada</h3>
-            <p class="model-desc">
-              Cuento de hadas estilo princesa con escena en 3D: castillo y rosa encantada bajo
-              cúpula de cristal, música de fondo y botón para agendar el evento. Ideal también
-              para fiestas temáticas de princesas.
-            </p>
-            <div class="model-tags">
-              <span class="model-tag"><i class="fas fa-cube"></i> Diseño 3D</span>
-              <span class="model-tag"><i class="fas fa-music"></i> Música</span>
-              <span class="model-tag"><i class="fas fa-calendar-plus"></i> Agendar evento</span>
-              <span class="model-tag"><i class="fas fa-crown"></i> Tema princesa</span>
-            </div>
-            <div class="model-cta">
-              <a href="https://5410m0n0c001.github.io/invitacion-bella-/" target="_blank" rel="noopener noreferrer" class="btn-demo" id="demo-bella-infantil-btn">
-                <i class="fas fa-play"></i> Ver Demo Completo
-              </a>
-            </div>
-          </div>
+        <div class="carousel3d-controls">
+          <button type="button" class="carousel3d-arrow carousel3d-prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <div class="carousel3d-dots"></div>
+          <button type="button" class="carousel3d-arrow carousel3d-next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         </div>
+      </div>
 
-      </div><!-- /.models-grid -->
     </section>
 
     <!-- BOTTOM CTA -->

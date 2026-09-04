@@ -221,9 +221,11 @@ function initScrollAnimations() {
   // No animar en gama baja o si el usuario prefiere movimiento reducido
   if (Device.prefersReducedMotion) return;
 
-  const animElements = document.querySelectorAll(
+  // Las tarjetas dentro de un carrusel quedan fuera: su posición 3D se
+  // controla por transform, y la animación de entrada lo pisa con !important.
+  const animElements = Array.from(document.querySelectorAll(
     '.card, .latest-project-card, .testimonial-card, .scroll-reveal, .pricing-card-preview, [data-animate]'
-  );
+  )).filter(el => !el.closest('.carousel3d'));
   if (!animElements.length) return;
 
   const observer = new IntersectionObserver((entries) => {

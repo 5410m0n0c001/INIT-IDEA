@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
   <link rel="stylesheet" href="styles.css">
   <script src="script.js" defer></script>
+  <script src="ui-components.js" defer></script>
 </head>
 <body class="lang-es">
   <!-- SPLASH SCREEN -->
@@ -51,63 +52,66 @@
   </header>
 
   <main>
-    <section class="latest-projects" style="padding-top: 50px;">
-      <div class="latest-projects-container">
-        <div class="latest-projects-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+    <section class="carousel3d-section">
+      <div class="carousel3d-header">
+        <span class="carousel3d-label">Colección Bodas</span>
+        <h2>Nuestros Modelos Disponibles</h2>
+        <p>Desliza, arrastra o toca una tarjeta para abrir el demo completo.</p>
+      </div>
 
-          <!-- DEMO COMPLETA -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <video class="project-video lazy-video" muted loop playsinline preload="none" data-src="assets/sobre.mp4">
-                <p>Tu navegador no soporta video.</p>
-              </video>
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-heart"></i></div>
-                <h3 class="project-title">Demo Completa</h3>
-                <p class="project-description">Todas las funcionalidades: cuenta regresiva, itinerario, confirmación de asistencia y más.</p>
+      <div class="carousel3d" id="bodasCarousel">
+        <div class="carousel3d-stage">
+          <div class="carousel3d-logo"><img src="logo2.0.jpeg" alt="INIT IDEA" loading="lazy"></div>
+          <div class="carousel3d-track">
+
+            <!-- DEMO COMPLETA -->
+            <article class="carousel3d-card media-card is-active" data-href="https://5410m0n0c001.github.io/invitacion-demo/" data-target="_blank">
+              <div class="c3d-media">
+                <video class="project-video lazy-video" muted loop playsinline preload="none" data-src="assets/sobre.mp4">
+                  <p>Tu navegador no soporta video.</p>
+                </video>
               </div>
-              <a href="https://5410m0n0c001.github.io/invitacion-demo/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
-
-          <!-- CARMESÍ -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <img src="assets/portada-carmesi.jpg" alt="Carmesí" class="project-card-image">
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-ring"></i></div>
-                <h3 class="project-title">Carmesí</h3>
-                <p class="project-description">Paleta guinda, sobre animado, itinerario y galería de fotos.</p>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-heart" aria-hidden="true"></i></div>
+                <h4>Demo Completa</h4>
+                <p>Cuenta regresiva, itinerario, confirmación de asistencia y más.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
               </div>
-              <a href="https://5410m0n0c001.github.io/invitacion-carmesi-boda-/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+            </article>
 
-          <!-- ORO -->
-          <div class="latest-project-card">
-            <div class="project-card-bg">
-              <img src="assets/portada-oro.jpg" alt="Oro" class="project-card-image">
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-content">
-                <div class="project-icon"><i class="fas fa-gem"></i></div>
-                <h3 class="project-title">Oro</h3>
-                <p class="project-description">Elegancia dorada, sobre animado, padrinos, itinerario y agendar en Google/Outlook/Apple Calendar.</p>
+            <!-- CARMESÍ -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitacion-carmesi-boda-/" data-target="_blank">
+              <div class="c3d-media">
+                <img src="assets/portada-carmesi.jpg" alt="Carmesí" loading="lazy">
               </div>
-              <a href="https://5410m0n0c001.github.io/invitaci-n-oro-demo/" target="_blank" rel="noopener noreferrer" class="project-link">
-                <span>Ver Demo</span> <i class="fas fa-arrow-right"></i>
-              </a>
-            </div>
-          </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-ring" aria-hidden="true"></i></div>
+                <h4>Carmesí</h4>
+                <p>Paleta guinda, sobre animado, itinerario y galería de fotos.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
 
+            <!-- ORO -->
+            <article class="carousel3d-card media-card" data-href="https://5410m0n0c001.github.io/invitaci-n-oro-demo/" data-target="_blank">
+              <div class="c3d-media">
+                <img src="assets/portada-oro.jpg" alt="Oro" loading="lazy">
+              </div>
+              <div class="c3d-body">
+                <div class="c3d-icon"><i class="fas fa-gem" aria-hidden="true"></i></div>
+                <h4>Oro</h4>
+                <p>Elegancia dorada, sobre animado, padrinos, itinerario y agendar en calendario.</p>
+                <span class="c3d-cta">Ver demo <i class="fas fa-arrow-right" aria-hidden="true"></i></span>
+              </div>
+            </article>
+
+          </div>
+        </div>
+
+        <div class="carousel3d-controls">
+          <button type="button" class="carousel3d-arrow carousel3d-prev" aria-label="Anterior"><i class="fas fa-chevron-left" aria-hidden="true"></i></button>
+          <div class="carousel3d-dots"></div>
+          <button type="button" class="carousel3d-arrow carousel3d-next" aria-label="Siguiente"><i class="fas fa-chevron-right" aria-hidden="true"></i></button>
         </div>
       </div>
     </section>
