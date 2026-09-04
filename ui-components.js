@@ -151,6 +151,44 @@ function initContactWidget() {
   });
 }
 
+// ── ANILLO 3D EN GIRO CONTINUO ────────────────────────────────
+// Las fotos se reparten sobre un cilindro que gira sin parar. No hay
+// pasos ni transiciones entre una y otra: es un movimiento constante.
+
+function initRing3D() {
+  const anillos = document.querySelectorAll('.ring3d');
+  if (!anillos.length) return;
+
+  anillos.forEach(root => {
+    const track = root.querySelector('.ring3d-track');
+    const spin  = root.querySelector('.ring3d-spin');
+    const items = Array.from(root.querySelectorAll('.ring3d-item'));
+    if (!track || !spin || !items.length) return;
+
+    const total = items.length;
+    const paso  = 360 / total;
+
+    function repartir() {
+      const ancho = items[0].offsetWidth || 230;
+      // Radio que separa las fotos sin que se encimen, más un respiro
+      const radio = Math.round((ancho / 2) / Math.tan(Math.PI / total)) + 40;
+      track.style.transform = 'translateZ(' + (-radio) + 'px)';
+      items.forEach((el, i) => {
+        el.style.transform = 'rotateY(' + (paso * i) + 'deg) translateZ(' + radio + 'px)';
+      });
+    }
+
+    // Una vuelta completa dura lo que indique data-vuelta (en segundos)
+    const vuelta = parseFloat(root.dataset.vuelta);
+    if (vuelta > 0) spin.style.animationDuration = vuelta + 's';
+
+    repartir();
+    window.addEventListener('resize', repartir);
+    // Las fotos pueden cambiar de alto al cargar
+    window.addEventListener('load', repartir, { once: true });
+  });
+}
+
 // ── CARRUSEL 3D REUTILIZABLE (estilo cover-flow) ──────────────
 
 function initCarousel3D() {
@@ -364,4 +402,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initSocialWidget();
   initContactWidget();
   initCarousel3D();
+  initRing3D();
 });
