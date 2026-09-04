@@ -544,8 +544,8 @@ body {
 /* Social & Chat Floating Buttons */
 .social-container {
   position: fixed;
-  right: 30px; /* Slightly more space */
-  bottom: 112px; /* stacked above the sitewide contact widget */
+  right: 30px; /* redes a la derecha; el contacto vive en la esquina opuesta */
+  bottom: 30px;
   z-index: 1390;
   display: flex;
   flex-direction: column;
@@ -643,8 +643,8 @@ body {
 
 .hero-chat {
   position: fixed;
-  left: 30px; /* Slightly more space */
-  bottom: 30px;
+  left: 30px;
+  bottom: 145px; /* apilado encima del botón de contacto y su leyenda */
   z-index: 1250;
   display: flex;
   flex-direction: column;

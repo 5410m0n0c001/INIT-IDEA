@@ -287,14 +287,19 @@
   align-items: center;
   justify-content: center;
   gap: 20px;
-  margin-top: 28px;
+  margin-top: 22px;
 }
+/* Las flechas van a los costados del escenario, no al pie */
 .carousel3d-arrow {
-  width: 44px;
-  height: 44px;
+  position: absolute;
+  top: 210px; /* mitad de la altura del escenario */
+  transform: translateY(-50%);
+  z-index: 20;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   border: 1px solid var(--glass-border, rgba(180, 79, 255, 0.22));
-  background: var(--glass-bg, rgba(24, 15, 44, 0.75));
+  background: rgba(20, 12, 38, 0.82);
   color: var(--text, #f5f3fb);
   display: flex;
   align-items: center;
@@ -302,13 +307,20 @@
   cursor: pointer;
   transition: background var(--transition-smooth, 0.3s cubic-bezier(0.25, 0.1, 0.25, 1)), transform var(--transition-smooth, 0.3s cubic-bezier(0.25, 0.1, 0.25, 1));
   flex-shrink: 0;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.45);
 }
+@media (min-width: 1024px) and (hover: hover) {
+  .carousel3d-arrow { backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); }
+}
+.carousel3d-prev { left: 8px; }
+.carousel3d-next { right: 8px; }
 @media (hover: hover) {
   .carousel3d-arrow:hover {
     background: linear-gradient(135deg, var(--accent, #b44fff), var(--accent-2, #ff5fa8));
-    transform: scale(1.06);
+    transform: translateY(-50%) scale(1.08);
   }
 }
+.carousel3d.is-tall .carousel3d-arrow { top: 310px; }
 .carousel3d-dots {
   display: flex;
   gap: 8px;
@@ -335,6 +347,10 @@
   .carousel3d-stage { height: 380px; }
   .carousel3d-card { width: 220px; height: 310px; margin: -155px 0 0 -110px; padding: 22px 18px; }
   .carousel3d-logo { width: 280px; height: 280px; }
+  .carousel3d-arrow { top: 190px; width: 42px; height: 42px; }
+  .carousel3d-prev { left: 2px; }
+  .carousel3d-next { right: 2px; }
+  .carousel3d.is-tall .carousel3d-arrow { top: 280px; }
 }
 
 /* ============================================================
@@ -342,12 +358,12 @@
    ============================================================ */
 .contact-widget {
   position: fixed;
-  right: 30px;
+  left: 30px;
   bottom: 30px;
   z-index: 1450;
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 10px;
 }
 .contact-widget-toggle {
@@ -386,7 +402,7 @@
 }
 .contact-widget-dropdown {
   position: absolute;
-  right: 0;
+  left: 0;
   bottom: 70px;
   display: flex;
   flex-direction: column;
@@ -452,6 +468,6 @@
 }
 
 @media (max-width: 480px) {
-  .contact-widget { right: 16px; bottom: 16px; }
-  .social-container { right: 16px; bottom: 96px; }
+  .contact-widget { left: 16px; bottom: 16px; }
+  .social-container { right: 16px; bottom: 16px; }
 }
