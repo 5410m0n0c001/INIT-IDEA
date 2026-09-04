@@ -100,7 +100,7 @@
   left: 50%;
   width: 260px;
   height: 340px;
-  margin: -170px 0 0 -130px;
+  margin: 0;
   border-radius: 22px;
   background: linear-gradient(160deg, var(--card, #180f2c) 0%, #100a1e 100%);
   border: 1px solid var(--glass-border, rgba(180, 79, 255, 0.22));
@@ -202,24 +202,16 @@
 }
 
 /* Variante alta: tarjetas con mucho contenido (planes y precios) */
+/* La altura la calcula el JS a partir de la tarjeta más alta: el contenido
+   se ve completo, sin scroll dentro de la tarjeta. */
 .carousel3d.is-tall .carousel3d-stage { height: 620px; }
 .carousel3d.is-tall .carousel3d-card {
   width: 330px;
-  height: 545px;
-  margin: -272px 0 0 -165px;
+  height: auto;
+  margin: 0;
   padding: 30px 26px;
-  overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: var(--accent, #b44fff) transparent;
+  overflow: visible;
 }
-.carousel3d.is-tall .carousel3d-card::-webkit-scrollbar { width: 5px; }
-.carousel3d.is-tall .carousel3d-card::-webkit-scrollbar-track { background: transparent; }
-.carousel3d.is-tall .carousel3d-card::-webkit-scrollbar-thumb {
-  background: rgba(180, 79, 255, 0.5);
-  border-radius: 10px;
-}
-/* Solo la tarjeta central necesita scroll; las laterales son decorativas */
-.carousel3d.is-tall .carousel3d-card:not(.is-active) { overflow: hidden; }
 .carousel3d.is-tall .carousel3d-card p { flex: none; }
 /* Dentro del carrusel el espacio es fijo: se compacta la ficha del plan */
 .carousel3d .tier-price-large {
@@ -265,8 +257,8 @@
   .carousel3d.is-tall .carousel3d-stage { height: 560px; }
   .carousel3d.is-tall .carousel3d-card {
     width: 270px;
-    height: 490px;
-    margin: -245px 0 0 -135px;
+    height: auto;
+    margin: 0;
     padding: 24px 20px;
   }
 }
@@ -368,7 +360,7 @@
 
 @media (max-width: 640px) {
   .carousel3d-stage { height: 380px; }
-  .carousel3d-card { width: 220px; height: 310px; margin: -155px 0 0 -110px; padding: 22px 18px; }
+  .carousel3d-card { width: 220px; height: 310px; margin: 0; padding: 22px 18px; }
   .carousel3d-logo { width: 280px; height: 280px; }
   .carousel3d-arrow { top: 190px; width: 42px; height: 42px; }
   .carousel3d-prev { left: 2px; }

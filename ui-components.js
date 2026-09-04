@@ -213,6 +213,28 @@ function initCarousel3D() {
       });
     }
 
+    // Cuando las tarjetas crecen con su contenido (planes), el escenario se
+    // ajusta a la más alta para que todo se lea sin scroll dentro de la tarjeta.
+    const stageEl = root.querySelector('.carousel3d-stage');
+    function ajustarAltura() {
+      if (!stageEl || !root.classList.contains('is-tall')) return;
+      const alta = cards.reduce((max, c) => Math.max(max, c.offsetHeight), 0);
+      if (!alta) return;
+      const altoEscenario = alta + 70;
+      const nuevo = altoEscenario + 'px';
+      if (stageEl.style.height === nuevo) return; // evita ciclos con el observer
+      stageEl.style.height = nuevo;
+      // Las flechas viven fuera del escenario: se recentran a mano
+      [prevBtn, nextBtn].forEach(b => { if (b) b.style.top = (altoEscenario / 2) + 'px'; });
+    }
+
+    // En páginas de una sola vista el carrusel puede nacer dentro de una
+    // sección oculta: ahí las tarjetas miden 0 y no hay altura que calcular.
+    // Se recalcula en cuanto la sección se muestra.
+    if ('ResizeObserver' in window) {
+      new ResizeObserver(ajustarAltura).observe(root);
+    }
+
     function render() {
       const g = geometry();
       cards.forEach((card, i) => {
@@ -224,11 +246,13 @@ function initCarousel3D() {
         const abs = Math.abs(offset);
         card.classList.toggle('is-active', offset === 0);
 
+        // El centrado va en el propio transform (y no con márgenes fijos),
+        // así las tarjetas pueden crecer según su contenido.
         if (abs > g.maxVisible) {
           const farX = (offset > 0 ? 1 : -1) * 640;
           card.style.opacity = '0';
           card.style.pointerEvents = 'none';
-          card.style.transform = `translate3d(${farX}px, 0, -640px) scale(0.4)`;
+          card.style.transform = `translate3d(calc(-50% + ${farX}px), -50%, -640px) scale(0.4)`;
           card.style.zIndex = '0';
           return;
         }
@@ -242,11 +266,12 @@ function initCarousel3D() {
         card.style.pointerEvents = 'auto';
         card.style.zIndex = String(100 - abs);
         card.style.transform =
-          `translate3d(${tx}px, 0, ${tz}px) rotateY(${rot}deg) scale(${scale})`;
+          `translate3d(calc(-50% + ${tx}px), -50%, ${tz}px) rotateY(${rot}deg) scale(${scale})`;
       });
 
       dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
       syncPreviewFrames();
+      ajustarAltura();
     }
 
     function goTo(i) {
@@ -329,6 +354,8 @@ function initCarousel3D() {
     });
 
     window.addEventListener('resize', render);
+    // Tipografías e imágenes cambian la altura al terminar de cargar
+    window.addEventListener('load', ajustarAltura, { once: true });
     render();
   }
 }
