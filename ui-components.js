@@ -604,12 +604,13 @@ function initCarousel3D() {
       if (modelo.loaded) retirar();
       else modelo.addEventListener('load', retirar, { once: true });
     }
-    // Si el teléfono girara con la órbita, la pantalla acabaría de espaldas y
-    // el logotipo dejaría de verse; solo acompaña la inclinación.
+    // El teléfono gira en sentido contrario al de los iconos —de ahí el signo
+    // invertido— y acompaña la inclinación del conjunto.
     function sincronizarModelo() {
       if (!modelo) return;
+      const theta = thetaBase - (pos / total) * 360;
       const phi = Math.max(25, Math.min(135, 90 - inclinacion));
-      modelo.setAttribute('camera-orbit', thetaBase + 'deg ' + phi.toFixed(1) + 'deg 105%');
+      modelo.setAttribute('camera-orbit', theta.toFixed(1) + 'deg ' + phi.toFixed(1) + 'deg 105%');
     }
 
     function apretar(x, y) {
