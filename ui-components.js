@@ -8,6 +8,62 @@
 
 'use strict';
 
+// ── WIDGET STICKY DE REDES SOCIALES (inyectado en TODAS las páginas) ──
+
+function initSocialWidget() {
+  // Evitar duplicados si la página ya trae el bloque en su HTML
+  if (document.getElementById('socialContainer')) return;
+
+  const redes = [
+    ['https://www.facebook.com/profile.php?id=61562772009526', 'fab fa-facebook',      'Facebook personal'],
+    ['https://www.facebook.com/profile.php?id=61582855106237', 'fab fa-facebook-f',    'Facebook INIT IDEA'],
+    ['https://www.instagram.com/alexros2.0/',                  'fab fa-instagram',     'Instagram'],
+    ['https://discord.gg/4kHSzxNz',                            'fab fa-discord',       'Discord'],
+    ['https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/', 'fab fa-linkedin-in', 'LinkedIn'],
+    ['https://x.com/alexros2_0',                               'fab fa-x-twitter',     'X (Twitter)'],
+    ['https://youtube.com/@salomonramirezortega',              'fab fa-youtube',       'YouTube'],
+    ['https://github.com/5410m0n0c001',                        'fab fa-github',        'GitHub'],
+    ['https://www.tiktok.com/@alexros2.0',                     'fab fa-tiktok',        'TikTok'],
+  ];
+
+  const enlaces = redes.map(([href, icon, label]) => `
+      <a class="social" href="${href}" target="_blank" rel="noopener noreferrer" aria-label="${label}">
+        <i class="${icon}" aria-hidden="true"></i><span>${label}</span>
+      </a>`).join('');
+
+  const wrap = document.createElement('aside');
+  wrap.className = 'social-container';
+  wrap.id = 'socialContainer';
+  wrap.setAttribute('aria-label', 'Redes sociales');
+  wrap.innerHTML = `
+    <button id="socialToggle" class="social-toggle" aria-label="Ver redes sociales" aria-expanded="false">
+      <img src="logo2.0.jpeg" alt="" class="social-logo" loading="lazy">
+    </button>
+    <div id="socialDropdown" class="social-dropdown" aria-hidden="true">${enlaces}
+    </div>
+    <div class="social-legend">Síguenos</div>
+  `;
+  document.body.appendChild(wrap);
+
+  const toggle   = document.getElementById('socialToggle');
+  const dropdown = document.getElementById('socialDropdown');
+
+  toggle.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!isOpen));
+    dropdown.setAttribute('aria-hidden', String(isOpen));
+    dropdown.classList.toggle('open', !isOpen);
+  });
+
+  document.addEventListener('click', e => {
+    if (!wrap.contains(e.target)) {
+      toggle.setAttribute('aria-expanded', 'false');
+      dropdown.setAttribute('aria-hidden', 'true');
+      dropdown.classList.remove('open');
+    }
+  });
+}
+
 // ── WIDGET STICKY DE CONTACTO (inyectado en TODAS las páginas) ──
 
 function initContactWidget() {
@@ -133,6 +189,27 @@ function initCarousel3D() {
       return { x: 260, z: 150, rot: 38, scaleStep: 0.14, maxVisible: 3 };
     }
 
+    // Previsualizaciones en iframe: son escaparates, no reproductores.
+    // Varias invitaciones llevan música propia, así que se les niega el
+    // permiso de autoplay y solo se mantiene cargada la tarjeta central;
+    // el resto se descarga para que nunca suenen dos a la vez.
+    const previewFrames = cards.map(card => card.querySelector('.c3d-media iframe'));
+
+    previewFrames.forEach(frame => {
+      if (!frame) return;
+      if (!frame.dataset.src) frame.dataset.src = frame.getAttribute('src') || '';
+      frame.setAttribute('allow', "autoplay 'none'; camera 'none'; microphone 'none'");
+      frame.setAttribute('src', 'about:blank');
+    });
+
+    function syncPreviewFrames() {
+      previewFrames.forEach((frame, i) => {
+        if (!frame || !frame.dataset.src) return;
+        const wanted = (i === active) ? frame.dataset.src : 'about:blank';
+        if (frame.getAttribute('src') !== wanted) frame.setAttribute('src', wanted);
+      });
+    }
+
     function render() {
       const g = geometry();
       cards.forEach((card, i) => {
@@ -166,6 +243,7 @@ function initCarousel3D() {
       });
 
       dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
+      syncPreviewFrames();
     }
 
     function goTo(i) {
@@ -251,6 +329,7 @@ function initCarousel3D() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  initSocialWidget();
   initContactWidget();
   initCarousel3D();
 });
