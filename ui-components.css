@@ -271,6 +271,29 @@
   }
 }
 
+/* Planes del manual comercial dentro del carrusel: conservan su maquetación
+   propia (.pricing-card) pero adaptada al espacio fijo de la tarjeta */
+.carousel3d-card.pricing-card {
+  padding: 28px 24px;
+}
+.carousel3d-card.pricing-card:hover {
+  transform: none; /* el 3D lo controla el carrusel, no el hover */
+  box-shadow: none;
+}
+.carousel3d-card .popular-tag {
+  top: 10px;
+  right: 18px;
+  z-index: 3;
+}
+.carousel3d-card .card-header { padding-bottom: 12px; margin-bottom: 12px; }
+.carousel3d-card .pkg-price .amount { font-size: 2rem; }
+.carousel3d-card .card-body ul { padding-left: 0; list-style: none; }
+.carousel3d-card .card-body li {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  padding: 5px 0;
+}
+
 /* Variante de menú por colores (secciones internas) */
 .carousel3d-card.tone-1 { background: linear-gradient(160deg, rgba(180,79,255,0.28), rgba(24,15,44,0.95)); }
 .carousel3d-card.tone-2 { background: linear-gradient(160deg, rgba(255,95,168,0.28), rgba(24,15,44,0.95)); }
