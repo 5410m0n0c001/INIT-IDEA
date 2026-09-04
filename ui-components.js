@@ -159,9 +159,12 @@ function initRing3D() {
   const anillos = document.querySelectorAll('.ring3d');
   if (!anillos.length) return;
 
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   anillos.forEach(root => {
     const track = root.querySelector('.ring3d-track');
     const spin  = root.querySelector('.ring3d-spin');
+    const stage = root.querySelector('.ring3d-stage');
     const items = Array.from(root.querySelectorAll('.ring3d-item'));
     if (!track || !spin || !items.length) return;
 
@@ -177,15 +180,83 @@ function initRing3D() {
         el.style.transform = 'rotateY(' + (paso * i) + 'deg) translateZ(' + radio + 'px)';
       });
     }
-
-    // Una vuelta completa dura lo que indique data-vuelta (en segundos)
-    const vuelta = parseFloat(root.dataset.vuelta);
-    if (vuelta > 0) spin.style.animationDuration = vuelta + 's';
-
     repartir();
     window.addEventListener('resize', repartir);
-    // Las fotos pueden cambiar de alto al cargar
     window.addEventListener('load', repartir, { once: true });
+
+    // A partir de aquí el giro lo lleva el JS, no la animación CSS: así se
+    // puede cambiar de sentido, arrastrar con el dedo y retomar al soltar.
+    root.classList.add('ring3d-manual');
+
+    const vuelta = parseFloat(root.dataset.vuelta) > 0 ? parseFloat(root.dataset.vuelta) : 22;
+    const gradosPorSeg = 360 / vuelta;
+
+    let angulo = 0;
+    let sentido = -1;          // -1 avanza a la derecha; 1 a la izquierda
+    let arrastrando = false;
+    let enHover = false;
+    let ultimoX = 0;
+    let ultimo = null;
+
+    function pintar() {
+      spin.style.transform = 'rotateY(' + angulo + 'deg)';
+    }
+
+    function paso_(ts) {
+      if (ultimo === null) ultimo = ts;
+      const dt = (ts - ultimo) / 1000;
+      ultimo = ts;
+      if (!arrastrando && !enHover && !sinMovimiento) {
+        angulo += sentido * gradosPorSeg * dt;
+        pintar();
+      }
+      requestAnimationFrame(paso_);
+    }
+    pintar();
+    requestAnimationFrame(paso_);
+
+    // Botones de sentido
+    root.querySelectorAll('[data-sentido]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        sentido = parseFloat(btn.dataset.sentido);
+        root.querySelectorAll('[data-sentido]').forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+      });
+    });
+
+    // Pausa al pasar el cursor, para poder mirar una foto
+    if (stage) {
+      stage.addEventListener('mouseenter', () => { enHover = true; });
+      stage.addEventListener('mouseleave', () => { enHover = false; });
+    }
+
+    // Arrastre: el usuario mueve el anillo a mano y al soltar sigue solo
+    const destino = stage || root;
+
+    function iniciar(x) { arrastrando = true; ultimoX = x; destino.classList.add('arrastrando'); }
+    function mover(x) {
+      if (!arrastrando) return;
+      angulo += (x - ultimoX) * 0.35; // grados por píxel
+      ultimoX = x;
+      pintar();
+    }
+    function soltar() { arrastrando = false; destino.classList.remove('arrastrando'); }
+
+    destino.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch') return;
+      iniciar(e.clientX);
+      destino.setPointerCapture?.(e.pointerId);
+    });
+    destino.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      mover(e.clientX);
+    });
+    destino.addEventListener('pointerup', soltar);
+    destino.addEventListener('pointercancel', soltar);
+
+    destino.addEventListener('touchstart', e => iniciar(e.touches[0].clientX), { passive: true });
+    destino.addEventListener('touchmove',  e => mover(e.touches[0].clientX),   { passive: true });
+    destino.addEventListener('touchend',   soltar);
   });
 }
 
@@ -195,20 +266,36 @@ function initCarousel3D() {
   const carousels = document.querySelectorAll('.carousel3d');
   if (!carousels.length) return;
 
+  const sinMovimiento = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   carousels.forEach(setupCarousel);
 
   function setupCarousel(root) {
-    const track  = root.querySelector('.carousel3d-track');
-    const cards  = Array.from(root.querySelectorAll('.carousel3d-card'));
-    const dotsEl = root.querySelector('.carousel3d-dots');
+    const track   = root.querySelector('.carousel3d-track');
+    const cards   = Array.from(root.querySelectorAll('.carousel3d-card'));
+    const dotsEl  = root.querySelector('.carousel3d-dots');
     const prevBtn = root.querySelector('.carousel3d-prev');
     const nextBtn = root.querySelector('.carousel3d-next');
+    const stage   = root.querySelector('.carousel3d-stage');
     if (!track || !cards.length) return;
 
-    let active = cards.findIndex(c => c.classList.contains('is-active'));
-    if (active < 0) active = 0;
+    const total = cards.length;
 
-    // Construir dots
+    // La posición es decimal: entre 3.0 y 4.0 la tarjeta va en camino. De ahí
+    // que el movimiento se vea continuo y no como una transición entre pasos.
+    let pos = Math.max(cards.findIndex(c => c.classList.contains('is-active')), 0);
+    let objetivo = pos;          // a dónde llegar tras un clic
+    let sentido = 1;             // 1 avanza a la derecha; -1 a la izquierda
+    let arrastrando = false;
+    let enHover = false;
+    let ultimoX = 0;
+    let ultimoTs = null;
+
+    // Velocidad de crucero, en tarjetas por segundo
+    const porSegundo = parseFloat(root.dataset.velocidad) > 0
+      ? parseFloat(root.dataset.velocidad)
+      : 0.26;                    // ~3.8 s por tarjeta
+
     let dots = [];
     if (dotsEl) {
       dotsEl.innerHTML = '';
@@ -216,8 +303,8 @@ function initCarousel3D() {
         const d = document.createElement('button');
         d.type = 'button';
         d.className = 'carousel3d-dot';
-        d.setAttribute('aria-label', `Ir a la tarjeta ${i + 1}`);
-        d.addEventListener('click', () => goTo(i));
+        d.setAttribute('aria-label', 'Ir a la tarjeta ' + (i + 1));
+        d.addEventListener('click', () => irA(i));
         dotsEl.appendChild(d);
         return d;
       });
@@ -225,17 +312,22 @@ function initCarousel3D() {
 
     function geometry() {
       const w = window.innerWidth;
-      if (w <= 640) return { x: 150, z: 90, rot: 32, scaleStep: 0.16, maxVisible: 2 };
+      if (w <= 640)  return { x: 150, z: 90,  rot: 32, scaleStep: 0.16, maxVisible: 2 };
       if (w <= 1024) return { x: 210, z: 120, rot: 34, scaleStep: 0.15, maxVisible: 3 };
       return { x: 260, z: 150, rot: 38, scaleStep: 0.14, maxVisible: 3 };
     }
 
-    // Previsualizaciones en iframe: son escaparates, no reproductores.
-    // Varias invitaciones llevan música propia, así que se les niega el
-    // permiso de autoplay y solo se mantiene cargada la tarjeta central;
-    // el resto se descarga para que nunca suenen dos a la vez.
-    const previewFrames = cards.map(card => card.querySelector('.c3d-media iframe'));
+    // Distancia con signo más corta alrededor del anillo
+    function desfase(i) {
+      let d = i - pos;
+      while (d >  total / 2) d -= total;
+      while (d < -total / 2) d += total;
+      return d;
+    }
 
+    // Previsualizaciones en iframe: solo la del frente queda cargada, para que
+    // ninguna invitación con música suene de fondo ni se empalmen dos.
+    const previewFrames = cards.map(c => c.querySelector('.c3d-media iframe'));
     previewFrames.forEach(frame => {
       if (!frame) return;
       if (!frame.dataset.src) frame.dataset.src = frame.getAttribute('src') || '';
@@ -243,158 +335,160 @@ function initCarousel3D() {
       frame.setAttribute('src', 'about:blank');
     });
 
-    function syncPreviewFrames() {
+    let frenteAnterior = -1;
+    function syncPreviewFrames(frente) {
+      if (frente === frenteAnterior) return;
+      frenteAnterior = frente;
       previewFrames.forEach((frame, i) => {
         if (!frame || !frame.dataset.src) return;
-        const wanted = (i === active) ? frame.dataset.src : 'about:blank';
-        if (frame.getAttribute('src') !== wanted) frame.setAttribute('src', wanted);
+        const quiere = (i === frente) ? frame.dataset.src : 'about:blank';
+        if (frame.getAttribute('src') !== quiere) frame.setAttribute('src', quiere);
       });
     }
 
-    // Cuando las tarjetas crecen con su contenido (planes), el escenario se
-    // ajusta a la más alta para que todo se lea sin scroll dentro de la tarjeta.
-    const stageEl = root.querySelector('.carousel3d-stage');
     function ajustarAltura() {
-      if (!stageEl || !root.classList.contains('is-tall')) return;
+      if (!stage || !root.classList.contains('is-tall')) return;
       const alta = cards.reduce((max, c) => Math.max(max, c.offsetHeight), 0);
       if (!alta) return;
-      const altoEscenario = alta + 70;
-      const nuevo = altoEscenario + 'px';
-      if (stageEl.style.height === nuevo) return; // evita ciclos con el observer
-      stageEl.style.height = nuevo;
-      // Las flechas viven fuera del escenario: se recentran a mano
-      [prevBtn, nextBtn].forEach(b => { if (b) b.style.top = (altoEscenario / 2) + 'px'; });
+      const alto = alta + 70;
+      const nuevo = alto + 'px';
+      if (stage.style.height === nuevo) return;
+      stage.style.height = nuevo;
+      [prevBtn, nextBtn].forEach(b => { if (b) b.style.top = (alto / 2) + 'px'; });
     }
-
-    // En páginas de una sola vista el carrusel puede nacer dentro de una
-    // sección oculta: ahí las tarjetas miden 0 y no hay altura que calcular.
-    // Se recalcula en cuanto la sección se muestra.
-    if ('ResizeObserver' in window) {
-      new ResizeObserver(ajustarAltura).observe(root);
-    }
+    if ('ResizeObserver' in window) new ResizeObserver(ajustarAltura).observe(root);
 
     function render() {
       const g = geometry();
+      let frente = 0, mejor = Infinity;
+
       cards.forEach((card, i) => {
-        let offset = i - active;
-        // Distancia circular más corta (para loop suave)
-        if (offset > cards.length / 2) offset -= cards.length;
-        if (offset < -cards.length / 2) offset += cards.length;
+        const off = desfase(i);
+        const abs = Math.abs(off);
+        if (abs < mejor) { mejor = abs; frente = i; }
 
-        const abs = Math.abs(offset);
-        card.classList.toggle('is-active', offset === 0);
+        card.classList.toggle('is-active', abs < 0.5);
 
-        // El centrado va en el propio transform (y no con márgenes fijos),
-        // así las tarjetas pueden crecer según su contenido.
         if (abs > g.maxVisible) {
-          const farX = (offset > 0 ? 1 : -1) * 640;
+          const lejos = (off > 0 ? 1 : -1) * 640;
           card.style.opacity = '0';
           card.style.pointerEvents = 'none';
-          card.style.transform = `translate3d(calc(-50% + ${farX}px), -50%, -640px) scale(0.4)`;
+          card.style.transform = 'translate3d(calc(-50% + ' + lejos + 'px), -50%, -640px) scale(0.4)';
           card.style.zIndex = '0';
           return;
         }
 
-        const scale = Math.max(1 - abs * g.scaleStep, 0.5);
-        const tx = offset * g.x;
-        const tz = -abs * g.z;
-        const rot = offset === 0 ? 0 : (offset > 0 ? -g.rot : g.rot);
+        const escala = Math.max(1 - abs * g.scaleStep, 0.5);
+        const tx  = off * g.x;
+        const tz  = -abs * g.z;
+        const rot = -off * g.rot;
 
         card.style.opacity = String(Math.max(1 - abs * 0.32, 0.35));
         card.style.pointerEvents = 'auto';
-        card.style.zIndex = String(100 - abs);
+        card.style.zIndex = String(Math.round(100 - abs * 10));
         card.style.transform =
-          `translate3d(calc(-50% + ${tx}px), -50%, ${tz}px) rotateY(${rot}deg) scale(${scale})`;
+          'translate3d(calc(-50% + ' + tx + 'px), -50%, ' + tz + 'px) rotateY(' + rot + 'deg) scale(' + escala + ')';
       });
 
-      dots.forEach((d, i) => d.classList.toggle('is-active', i === active));
-      syncPreviewFrames();
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === frente));
+      syncPreviewFrames(frente);
       ajustarAltura();
     }
 
-    function goTo(i) {
-      active = (i + cards.length) % cards.length;
-      // Las tarjetas con scroll propio (planes) vuelven a empezar arriba
-      cards.forEach(c => { if (c.scrollTop) c.scrollTop = 0; });
-      render();
+    function normalizar() {
+      while (pos < 0)      { pos += total; objetivo += total; }
+      while (pos >= total) { pos -= total; objetivo -= total; }
     }
-    function next() { goTo(active + 1); }
-    function prev() { goTo(active - 1); }
+
+    function latido(ts) {
+      if (ultimoTs === null) ultimoTs = ts;
+      const dt = Math.min((ts - ultimoTs) / 1000, 0.1);
+      ultimoTs = ts;
+
+      if (!arrastrando) {
+        const resto = objetivo - pos;
+        if (Math.abs(resto) > 0.002) {
+          // Llegar a la tarjeta pedida sin frenar de golpe
+          pos += resto * Math.min(dt * 6, 1);
+        } else if (!enHover && !sinMovimiento) {
+          pos += sentido * porSegundo * dt;
+          objetivo = pos;
+        }
+        normalizar();
+        render();
+      }
+      requestAnimationFrame(latido);
+    }
+
+    function irA(i) {
+      objetivo = pos + desfase(i);
+    }
+
+    // Las flechas avanzan una tarjeta y además fijan el sentido del recorrido
+    prevBtn?.addEventListener('click', () => { sentido = -1; objetivo = pos - 1; });
+    nextBtn?.addEventListener('click', () => { sentido =  1; objetivo = pos + 1; });
 
     cards.forEach((card, i) => {
-      card.addEventListener('click', (e) => {
-        if (i !== active) {
-          e.preventDefault();
-          goTo(i);
-          return;
-        }
-        // Tarjeta activa: seguir su enlace/acción
+      card.addEventListener('click', e => {
+        if (Math.abs(desfase(i)) > 0.5) { e.preventDefault(); irA(i); return; }
         const href = card.dataset.href;
         if (!href) return;
-
-        // Páginas de una sola vista (p. ej. el manual comercial): dejar que
-        // su propio manejador de anclas abra la sección correspondiente.
-        if (href.startsWith('#')) {
-          const link = document.querySelector('.nav-menu a[href="' + href + '"]');
-          if (link) link.click();
-          else window.location.hash = href;
-          return;
-        }
-
-        const target = card.dataset.target || '_self';
-        if (target === '_blank') {
-          window.open(href, '_blank', 'noopener,noreferrer');
-        } else {
-          window.location.href = href;
-        }
+        if (card.dataset.target === '_blank') window.open(href, '_blank', 'noopener,noreferrer');
+        else window.location.href = href;
       });
     });
 
-    prevBtn?.addEventListener('click', prev);
-    nextBtn?.addEventListener('click', next);
+    // Al acercar el cursor se detiene, para poder leer y hacer clic con calma
+    if (stage) {
+      stage.addEventListener('mouseenter', () => { enHover = true; });
+      stage.addEventListener('mouseleave', () => { enHover = false; });
+    }
 
-    // Swipe / drag
-    let startX = 0, deltaX = 0, dragging = false;
-    const stage = root.querySelector('.carousel3d-stage') || root;
+    // Arrastre: se mueve a mano y al soltar retoma su marcha
+    const zona = stage || root;
+    const pasoPx = () => geometry().x;
 
-    stage.addEventListener('touchstart', (e) => {
-      startX = e.touches[0].clientX; dragging = true;
-    }, { passive: true });
-    stage.addEventListener('touchmove', (e) => {
-      if (!dragging) return;
-      deltaX = e.touches[0].clientX - startX;
-    }, { passive: true });
-    stage.addEventListener('touchend', () => {
-      if (!dragging) return;
-      dragging = false;
-      if (deltaX > 40) prev();
-      else if (deltaX < -40) next();
-      deltaX = 0;
+    function iniciar(x) { arrastrando = true; ultimoX = x; zona.classList.add('arrastrando'); }
+    function mover(x) {
+      if (!arrastrando) return;
+      pos -= (x - ultimoX) / pasoPx();
+      ultimoX = x;
+      normalizar();
+      render();
+    }
+    function soltar() {
+      if (!arrastrando) return;
+      arrastrando = false;
+      objetivo = pos;
+      zona.classList.remove('arrastrando');
+    }
+
+    zona.addEventListener('pointerdown', e => {
+      if (e.pointerType === 'touch') return;
+      iniciar(e.clientX);
+      zona.setPointerCapture?.(e.pointerId);
     });
-
-    stage.addEventListener('pointerdown', (e) => {
-      if (e.pointerType === 'touch') return; // ya cubierto por touch events
-      startX = e.clientX; dragging = true;
+    zona.addEventListener('pointermove', e => {
+      if (e.pointerType === 'touch') return;
+      mover(e.clientX);
     });
-    stage.addEventListener('pointerup', (e) => {
-      if (!dragging || e.pointerType === 'touch') return;
-      dragging = false;
-      const d = e.clientX - startX;
-      if (d > 40) prev();
-      else if (d < -40) next();
-    });
+    zona.addEventListener('pointerup', soltar);
+    zona.addEventListener('pointercancel', soltar);
 
-    // Teclado
+    zona.addEventListener('touchstart', e => iniciar(e.touches[0].clientX), { passive: true });
+    zona.addEventListener('touchmove',  e => mover(e.touches[0].clientX),   { passive: true });
+    zona.addEventListener('touchend',   soltar);
+
     root.setAttribute('tabindex', '0');
-    root.addEventListener('keydown', (e) => {
-      if (e.key === 'ArrowLeft') prev();
-      if (e.key === 'ArrowRight') next();
+    root.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  { sentido = -1; objetivo = pos - 1; }
+      if (e.key === 'ArrowRight') { sentido =  1; objetivo = pos + 1; }
     });
 
     window.addEventListener('resize', render);
-    // Tipografías e imágenes cambian la altura al terminar de cargar
     window.addEventListener('load', ajustarAltura, { once: true });
     render();
+    requestAnimationFrame(latido);
   }
 }
 

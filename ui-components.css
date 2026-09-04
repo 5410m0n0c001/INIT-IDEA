@@ -64,7 +64,8 @@
   touch-action: pan-y;
   cursor: grab;
 }
-.carousel3d-stage:active { cursor: grabbing; }
+.carousel3d-stage:active,
+.carousel3d-stage.arrastrando { cursor: grabbing; }
 
 /* Logo centrado detrás de las tarjetas, dentro del carrusel */
 .carousel3d-logo {
@@ -110,7 +111,9 @@
   z-index: 1;
   cursor: pointer;
   will-change: transform, opacity;
-  transition: transform 0.55s cubic-bezier(.25,.1,.25,1), opacity 0.55s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+  /* El transform lo escribe el JS en cada fotograma: si además tuviera
+     transición, el movimiento continuo se arrastraría con retraso. */
+  transition: opacity 0.35s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
 /* Blindaje: varias páginas reutilizan sus propias clases de tarjeta
    (.testimonial-card, .pricing-card, .portfolio-card…) y muchas declaran
@@ -563,12 +566,50 @@
   from { transform: rotateY(0deg); }
   to   { transform: rotateY(-360deg); }
 }
-/* Al pasar el cursor se detiene, para poder mirar una foto */
+/* La animación CSS es solo el respaldo si el JS no llega a cargar. Cuando
+   toma el control, el giro se calcula por fotograma para poder cambiar de
+   sentido y arrastrar el anillo. */
+.ring3d-manual .ring3d-spin { animation: none; }
 @media (hover: hover) {
   .ring3d:hover .ring3d-spin { animation-play-state: paused; }
 }
 @media (prefers-reduced-motion: reduce) {
   .ring3d-spin { animation: none; }
+}
+
+.ring3d-stage { cursor: grab; touch-action: pan-y; }
+.ring3d-stage.arrastrando { cursor: grabbing; }
+
+/* Botones de sentido de giro */
+.ring3d-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border, rgba(180, 79, 255, 0.22));
+  background: rgba(20, 12, 38, 0.85);
+  color: var(--text, #f5f3fb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.ring3d-prev { left: 10px; }
+.ring3d-next { right: 10px; }
+@media (hover: hover) {
+  .ring3d-arrow:hover {
+    background: linear-gradient(135deg, var(--accent, #b44fff), var(--accent-2, #ff5fa8));
+    transform: translateY(-50%) scale(1.08);
+  }
+}
+.ring3d-arrow.is-active {
+  background: linear-gradient(135deg, var(--accent, #b44fff), var(--accent-2, #ff5fa8));
+  border-color: transparent;
 }
 
 .ring3d-item {
