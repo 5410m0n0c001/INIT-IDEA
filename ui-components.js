@@ -379,7 +379,47 @@ function initCarousel3D() {
     }
     if ('ResizeObserver' in window) new ResizeObserver(ajustarAltura).observe(root);
 
+    // Modo órbita: las tarjetas dan vueltas alrededor del objeto del centro,
+    // pasando por delante y por detrás de él, en lugar de abrirse en abanico.
+    const enOrbita = root.classList.contains('is-orbit');
+
+    function radioOrbita() {
+      const anchoTarjeta = cards[0].offsetWidth || 150;
+      const mitadEscenario = (stage ? stage.getBoundingClientRect().width : 900) / 2;
+      const holgado = Math.round((anchoTarjeta / 2) / Math.tan(Math.PI / total)) + 30;
+      return Math.max(160, Math.min(holgado, mitadEscenario - anchoTarjeta / 2 - 10));
+    }
+
+    function renderOrbita() {
+      const R = radioOrbita();
+      let frente = 0, mejor = Infinity;
+
+      cards.forEach((card, i) => {
+        const off = desfase(i);
+        const abs = Math.abs(off);
+        if (abs < mejor) { mejor = abs; frente = i; }
+
+        const grados = (off / total) * 360;
+        const rad = grados * Math.PI / 180;
+        const z = Math.cos(rad);            // 1 al frente, -1 detrás
+
+        card.classList.toggle('is-active', abs < 0.5);
+        card.style.pointerEvents = 'auto';
+        // Las de atrás se atenúan para dar profundidad, sin desaparecer
+        card.style.opacity = String(0.42 + 0.58 * ((z + 1) / 2));
+        card.style.zIndex = String(Math.round(500 + z * 100));
+        // El segundo giro cancela el primero: la tarjeta orbita pero siempre
+        // mira de frente, como los pétalos alrededor de la rosa.
+        card.style.transform =
+          'translate(-50%, -50%) rotateY(' + grados + 'deg) translateZ(' + R + 'px) rotateY(' + (-grados) + 'deg)';
+      });
+
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === frente % originales));
+      syncPreviewFrames(frente);
+    }
+
     function render() {
+      if (enOrbita) return renderOrbita();
       const g = geometry();
       let frente = 0, mejor = Infinity;
 
@@ -507,18 +547,46 @@ function initCarousel3D() {
     let pendiente = false;   // se apretó, aún no se sabe si es clic o arrastre
 
 
-    function apretar(x) { pendiente = true; inicioX = x; ultimoX = x; }
+    // Inclinación vertical: arrastrando hacia arriba o abajo se mira la
+    // escena desde otro ángulo. Solo donde se pide con is-inclinable.
+    const inclinable = root.classList.contains('is-inclinable');
+    const telefono = root.querySelector('.carousel3d-phone');
+    // La órbita arranca ligeramente inclinada: vista de canto parecería una
+    // simple fila horizontal en vez de un giro alrededor del teléfono.
+    let inclinacion = root.classList.contains('is-orbit') ? -14 : 0;
+    let inicioY = 0, ultimoY = 0;
 
-    function mover(x) {
+    function aplicarInclinacion() {
+      const giro = 'rotateX(' + inclinacion + 'deg)';
+      track.style.transform = giro;
+      if (telefono) telefono.style.transform = 'translate(-50%, -50%) ' + giro;
+    }
+
+    function apretar(x, y) {
+      pendiente = true;
+      inicioX = x; ultimoX = x;
+      inicioY = y; ultimoY = y;
+    }
+
+    function mover(x, y) {
       if (!pendiente && !arrastrando) return;
+      const dy = (y === undefined) ? 0 : y - inicioY;
       if (!arrastrando) {
-        if (Math.abs(x - inicioX) < UMBRAL) return;
+        if (Math.abs(x - inicioX) < UMBRAL && Math.abs(dy) < UMBRAL) return;
         arrastrando = true;
         huboArrastre = true;
         zona.classList.add('arrastrando');
       }
       pos -= (x - ultimoX) / pasoPx();
       ultimoX = x;
+
+      if (inclinable && y !== undefined) {
+        // Se limita para que la escena no llegue a verse por detrás
+        inclinacion = Math.max(-38, Math.min(38, inclinacion + (y - ultimoY) * 0.35));
+        ultimoY = y;
+        aplicarInclinacion();
+      }
+
       normalizar();
       render();
     }
@@ -533,19 +601,19 @@ function initCarousel3D() {
 
     zona.addEventListener('pointerdown', e => {
       if (e.pointerType === 'touch') return;
-      apretar(e.clientX);
+      apretar(e.clientX, e.clientY);
     });
     // El seguimiento va en la ventana para no perder el gesto si el puntero
     // se sale del carrusel, pero sin capturarlo: capturarlo desviaría el clic.
     window.addEventListener('pointermove', e => {
       if (e.pointerType === 'touch') return;
-      mover(e.clientX);
+      mover(e.clientX, e.clientY);
     });
     window.addEventListener('pointerup', soltar);
     window.addEventListener('pointercancel', soltar);
 
-    zona.addEventListener('touchstart', e => apretar(e.touches[0].clientX), { passive: true });
-    zona.addEventListener('touchmove',  e => mover(e.touches[0].clientX),   { passive: true });
+    zona.addEventListener('touchstart', e => apretar(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
+    zona.addEventListener('touchmove',  e => mover(e.touches[0].clientX, e.touches[0].clientY),   { passive: true });
     zona.addEventListener('touchend',   soltar);
 
     root.setAttribute('tabindex', '0');
@@ -556,6 +624,7 @@ function initCarousel3D() {
 
     window.addEventListener('resize', render);
     window.addEventListener('load', ajustarAltura, { once: true });
+    if (inclinable) aplicarInclinacion();
     render();
     requestAnimationFrame(latido);
   }
