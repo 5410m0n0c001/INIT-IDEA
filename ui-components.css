@@ -112,6 +112,18 @@
   will-change: transform, opacity;
   transition: transform 0.55s cubic-bezier(.25,.1,.25,1), opacity 0.55s ease, box-shadow 0.4s ease, border-color 0.4s ease;
 }
+/* Blindaje: varias páginas reutilizan sus propias clases de tarjeta
+   (.testimonial-card, .pricing-card, .portfolio-card…) y muchas declaran
+   position: relative. Al ir después en la cascada le ganaban al absolute del
+   carrusel y las tarjetas se apilaban fuera del escenario. Este selector de
+   dos clases tiene más peso y protege también futuras conversiones. */
+.carousel3d .carousel3d-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+}
+
 .carousel3d-card.is-active {
   border-color: rgba(180, 79, 255, 0.55);
   box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 40px rgba(180, 79, 255, 0.25);
