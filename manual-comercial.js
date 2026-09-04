@@ -114,6 +114,22 @@ function initNavigation() {
                 switchSection(targetId);
                 // Si la URL tiene un hash, actualizamos el hash del historial sin recargar
                 history.pushState(null, null, href);
+                return;
+            }
+
+            // El ancla puede apuntar a un bloque que vive dentro de otra
+            // sección (p. ej. "Ver Onboarding" desde Planes hacia Servicios
+            // Extra). Como esa sección está oculta, el salto nativo no hace
+            // nada: primero la abrimos y luego bajamos al bloque.
+            const destino = document.getElementById(targetId);
+            const seccionDelDestino = destino && destino.closest('main section');
+            if (seccionDelDestino) {
+                e.preventDefault();
+                switchSection(seccionDelDestino.id);
+                history.pushState(null, null, href);
+                setTimeout(() => {
+                    destino.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
             }
         }
     });
