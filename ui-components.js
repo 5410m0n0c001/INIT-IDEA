@@ -396,6 +396,12 @@ function initCarousel3D() {
     if (enOrbita && modelo && stage) {
       capaDetras = document.createElement('div');
       capaDetras.className = 'carousel3d-track carousel3d-track-detras';
+      // Los estilos van también en línea: si el navegador sirviera una hoja
+      // desfasada, esta capa quedaría fuera del escenario y sus tarjetas
+      // desaparecerían recortadas.
+      capaDetras.style.cssText =
+        'position:absolute;inset:0;width:100%;height:100%;z-index:1;' +
+        'transform-style:preserve-3d;pointer-events:none;';
       stage.insertBefore(capaDetras, stage.firstChild);
     }
 
@@ -408,9 +414,21 @@ function initCarousel3D() {
     function radioOrbita() {
       const anchoTarjeta = cards[0].offsetWidth || 150;
       const mitadEscenario = (stage ? stage.getBoundingClientRect().width : 900) / 2;
+      // Separación mínima para que no se encimen entre ellas
       const holgado = Math.round((anchoTarjeta / 2) / Math.tan(Math.PI / total)) + 30;
-      return Math.max(160, Math.min(holgado, mitadEscenario - anchoTarjeta / 2 - 10));
+      // Y además la órbita debe librar al objeto del centro: si lo cruzara,
+      // las tarjetas taparían la pantalla, que es lo que se quiere lucir.
+      const centro = root.querySelector('.carousel3d-phone');
+      const libre = centro
+        ? centro.getBoundingClientRect().width * 0.5 + anchoTarjeta * 0.45
+        : 0;
+      const tope = mitadEscenario - anchoTarjeta / 2 - 6;
+      return Math.max(160, Math.min(Math.max(holgado, libre), tope));
     }
+
+    // La órbita puede bajarse para rodear la base del equipo en vez de
+    // cruzarle la pantalla por el medio.
+    const desplazaY = parseFloat(root.dataset.orbitaY || '0');
 
     function renderOrbita() {
       const R = radioOrbita();
@@ -437,7 +455,7 @@ function initCarousel3D() {
         // El segundo giro cancela el primero: la tarjeta orbita pero siempre
         // mira de frente, como los pétalos alrededor de la rosa.
         card.style.transform =
-          'translate(-50%, -50%) ' + inclina +
+          'translate(-50%, -50%) translateY(' + desplazaY + 'px) ' + inclina +
           'rotateY(' + grados + 'deg) translateZ(' + R + 'px) rotateY(' + (-grados) + 'deg)' + desinclina;
 
         ubicarEnCapa(card, z >= 0);
