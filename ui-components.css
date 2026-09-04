@@ -286,6 +286,22 @@
   padding: 5px 0;
 }
 
+/* Herramientas del manual dentro del carrusel: son tarjetas anchas con
+   listas y botones de demo, así que necesitan más ancho que un plan */
+.carousel3d.is-wide .carousel3d-card { width: 400px; }
+@media (max-width: 640px) {
+  .carousel3d.is-wide .carousel3d-card { width: 280px; }
+}
+.carousel3d-card.portfolio-card ul {
+  padding-left: 0;
+  list-style: none;
+}
+.carousel3d-card.portfolio-card li {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  padding: 4px 0;
+}
+
 /* Variante de menú por colores (secciones internas) */
 .carousel3d-card.tone-1 { background: linear-gradient(160deg, rgba(180,79,255,0.28), rgba(24,15,44,0.95)); }
 .carousel3d-card.tone-2 { background: linear-gradient(160deg, rgba(255,95,168,0.28), rgba(24,15,44,0.95)); }
