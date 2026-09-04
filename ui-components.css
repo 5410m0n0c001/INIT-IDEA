@@ -567,6 +567,23 @@
 
 
 
+/* Modelo 3D del teléfono; mientras carga se ve el dibujado en CSS */
+.phone-modelo {
+  position: relative;
+  z-index: 1;
+  width: 300px;
+  height: 470px;
+  background: transparent;
+  --poster-color: transparent;
+  --progress-bar-color: var(--accent, #b44fff);
+  pointer-events: none;
+}
+.carousel3d-phone:has(.phone-modelo[loaded]) .phone-respaldo { display: none; }
+.phone-respaldo { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+@media (max-width: 640px) {
+  .phone-modelo { width: 200px; height: 320px; }
+}
+
 /* Contenedor del teléfono: centrado en el escenario y sin robar clics */
 .carousel3d-phone {
   position: absolute;
