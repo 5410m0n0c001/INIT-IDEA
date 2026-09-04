@@ -272,12 +272,31 @@ function initCarousel3D() {
 
   function setupCarousel(root) {
     const track   = root.querySelector('.carousel3d-track');
-    const cards   = Array.from(root.querySelectorAll('.carousel3d-card'));
+    let   cards   = Array.from(root.querySelectorAll('.carousel3d-card'));
     const dotsEl  = root.querySelector('.carousel3d-dots');
     const prevBtn = root.querySelector('.carousel3d-prev');
     const nextBtn = root.querySelector('.carousel3d-next');
     const stage   = root.querySelector('.carousel3d-stage');
     if (!track || !cards.length) return;
+
+    const originales = cards.length;
+
+    // El recorrido es circular: al pasar la última sigue la primera. Para que
+    // ese salto ocurra fuera de la vista y no parezca un rebote, hacen falta
+    // más tarjetas de las que caben en pantalla; si hay pocas, se clonan.
+    const MINIMO = 7;
+    if (originales < MINIMO) {
+      const copias = Math.ceil(MINIMO / originales) - 1;
+      for (let c = 0; c < copias; c++) {
+        cards.slice(0, originales).forEach(orig => {
+          const clon = orig.cloneNode(true);
+          clon.classList.remove('is-active');
+          clon.dataset.clon = '1';
+          track.appendChild(clon);
+        });
+      }
+      cards = Array.from(root.querySelectorAll('.carousel3d-card'));
+    }
 
     const total = cards.length;
 
@@ -296,10 +315,11 @@ function initCarousel3D() {
       ? parseFloat(root.dataset.velocidad)
       : 0.26;                    // ~3.8 s por tarjeta
 
+    // Un indicador por tarjeta real: los clones no cuentan
     let dots = [];
     if (dotsEl) {
       dotsEl.innerHTML = '';
-      dots = cards.map((_, i) => {
+      dots = Array.from({ length: originales }, (_, i) => {
         const d = document.createElement('button');
         d.type = 'button';
         d.className = 'carousel3d-dot';
@@ -390,7 +410,7 @@ function initCarousel3D() {
           'translate3d(calc(-50% + ' + tx + 'px), -50%, ' + tz + 'px) rotateY(' + rot + 'deg) scale(' + escala + ')';
       });
 
-      dots.forEach((d, i) => d.classList.toggle('is-active', i === frente));
+      dots.forEach((d, i) => d.classList.toggle('is-active', i === frente % originales));
       syncPreviewFrames(frente);
       ajustarAltura();
     }
@@ -420,8 +440,14 @@ function initCarousel3D() {
       requestAnimationFrame(latido);
     }
 
+    // Se busca la copia más cercana de esa tarjeta, para no cruzar el anillo
     function irA(i) {
-      objetivo = pos + desfase(i);
+      let mejor = null;
+      for (let k = i; k < total; k += originales) {
+        const d = desfase(k);
+        if (mejor === null || Math.abs(d) < Math.abs(mejor)) mejor = d;
+      }
+      objetivo = pos + (mejor === null ? 0 : mejor);
     }
 
     // Las flechas avanzan una tarjeta y además fijan el sentido del recorrido
