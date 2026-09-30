@@ -4,7 +4,6 @@ Invitación digital estática (HTML/CSS/JS, sin build) con rosa 3D que se abre c
 
 **Es una muestra.** Nombres, familia, lugar y fecha son ficticios; las confirmaciones llegan al
 WhatsApp de INIT IDEA y el álbum usa su propio identificador, separado del de cualquier cliente.
-Las imágenes de la galería son composiciones con los elementos de la invitación, no fotografías.
 
 ## Estructura
 - `index.html`: todos los textos visibles (nombres, lugares, horarios, regalos).
@@ -37,8 +36,8 @@ Agrega `?debug` a la URL para probar sin música.
 - WhatsApp de confirmaciones: INIT IDEA (777 238 3264)
 - Clave del panel de organizador: `initidea`
 - Para armar la invitación de un cliente: cambia los textos de `index.html`, la fecha y el
-  WhatsApp de `js/config.js`, y reemplaza las 6 `img/quinceanera-*.jpg` (con sus `-sm`),
-  `img/og.jpg` y `img/pases/*.jpg`, que llevan el nombre y la fecha dentro de la imagen.
+  WhatsApp de `js/config.js`, y reemplaza las 6 `img/quinceanera-*.jpg` (con sus `-sm`).
+  `img/og.jpg` y `img/pases/*.jpg` llevan el nombre y la fecha dentro de la imagen.
 
 ## Modelo 3D
 Se genera con Blender 5.2 en modo headless desde `blender/rosa.py` (fuera de este repo)
