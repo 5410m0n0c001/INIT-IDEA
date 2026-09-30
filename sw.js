@@ -8,7 +8,7 @@
 //  - Incrementa CACHE_VERSION en cada deploy importante
 // ============================================================
 
-const CACHE_VERSION = 'v85';
+const CACHE_VERSION = 'v86';
 const CACHE_STATIC  = `init-idea-static-${CACHE_VERSION}`;
 const CACHE_DYNAMIC = `init-idea-dynamic-${CACHE_VERSION}`;
 
@@ -88,9 +88,10 @@ self.addEventListener('fetch', event => {
   // 1. Ignorar requests que no son GET
   if (request.method !== 'GET') return;
 
-  // 2. ⚠️ CRÍTICO: Nunca interceptar videos MP4
+  // 2. ⚠️ CRÍTICO: Nunca interceptar audio ni video
   //    Dejar que el browser maneje el streaming y range requests
-  if (url.pathname.endsWith('.mp4') || url.pathname.endsWith('.webm')) {
+  //    (las invitaciones demo sirven su música como .m4a)
+  if (/\.(mp4|webm|m4a|mp3|ogg)$/.test(url.pathname)) {
     return; // no llamar event.respondWith → browser maneja solo
   }
 
