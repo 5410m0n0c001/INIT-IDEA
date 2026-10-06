@@ -22,6 +22,10 @@ WhatsApp de INIT IDEA y el álbum usa su propio identificador, separado del de c
   abierto: "Compartir" abre una ventana (nombre opcional + pases) y luego el menú nativo. El enlace
   `p/N.html?pases=5,2&para=…` muestra la tarjeta del pase como vista previa y redirige a la invitación,
   que saluda al invitado, muestra sus pases y limita la confirmación a sus lugares.
+- `js/retos.js`: ruleta de retos (10 categorías × 20 = 200 retos) debajo del álbum; "Tomar foto del reto"
+  abre la cámara del álbum.
+- Cámara: en Android se usa una cámara dentro de la página (getUserMedia) para que el sistema no cierre
+  el navegador por memoria; en iPhone, la cámara nativa. `diag/camara.html` compara ambas en un equipo.
 - `supabase/setup.sql`: bucket con límite de 2 MB, sin UPDATE anónimo y validación de URLs.
 
 ## Probar en local
@@ -31,7 +35,7 @@ npx http-server . -p 4500 -c-1
 Agrega `?debug` a la URL para probar sin música.
 
 ## Datos del demo
-- Quinceañera: Valentina Sofía Herrera Montes · sábado 15 de mayo de 2027
+- Quinceañera: Valentina Sofía Herrera Montes · sábado 15 de mayo de 2027, misa 3:30 p. m.
 - Lugar: Hacienda Los Almendros, Tepoztlán, Morelos
 - WhatsApp de confirmaciones: INIT IDEA (777 238 3264)
 - Clave del panel de organizador: `initidea`

@@ -1,8 +1,8 @@
 // Datos del evento que usa el JavaScript. Los textos visibles viven en index.html.
 // Invitación de muestra de INIT IDEA. Los datos son ficticios.
 window.INVITACION = {
-  // Fecha del evento con zona horaria (Morelos = UTC-6). Sin hora confirmada: cuenta hasta el inicio del día.
-  fechaEvento: '2027-05-15T00:00:00-06:00',
+  // Inicio de la misa con zona horaria (Morelos = UTC-6)
+  fechaEvento: '2027-05-15T15:30:00-06:00',
 
   // WhatsApp que recibe confirmaciones y el buzón de deseos (lada + número, sin espacios)
   whatsapp: '527772383264',
