@@ -48,7 +48,7 @@ The site is configured for zero-config deployment on **GitHub Pages**:
 | Platform | Link |
 | :--- | :--- |
 | **Official Site** | [INIT IDEA Live](https://5410m0n0c001.github.io/INIT-IDEA/) |
-| **Facebook** | [Init Idea FB](https://www.facebook.com/profile.php?id=61582855106237) |
+| **Facebook** | [Init Idea FB](https://www.facebook.com/profile.php?id=61592439857081) |
 | **Instagram** | [@alexros2.0](https://www.instagram.com/alexros2.0/) |
 | **TikTok** | [@alexros2.0](https://www.tiktok.com/@alexros2.0) |
 | **LinkedIn** | [Salomón Ramírez Ortega](https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/) |

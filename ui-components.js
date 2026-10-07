@@ -16,7 +16,7 @@ function initSocialWidget() {
 
   const redes = [
     ['https://www.facebook.com/profile.php?id=61562772009526', 'fab fa-facebook',      'Facebook personal'],
-    ['https://www.facebook.com/profile.php?id=61582855106237', 'fab fa-facebook-f',    'Facebook INIT IDEA'],
+    ['https://www.facebook.com/profile.php?id=61592439857081', 'fab fa-facebook-f',    'Facebook INIT IDEA'],
     ['https://www.instagram.com/alexros2.0/',                  'fab fa-instagram',     'Instagram'],
     ['https://discord.gg/4kHSzxNz',                            'fab fa-discord',       'Discord'],
     ['https://www.linkedin.com/in/salomon-ramirez-ortega-b8988a329/', 'fab fa-linkedin-in', 'LinkedIn'],
