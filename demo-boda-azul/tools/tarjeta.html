@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<!-- Plantilla para generar imágenes con tools/generar-imagenes.sh (navegador sin ventana).
+     ?tipo=pase&n=3  → tarjeta del pase 800×1000
+     ?tipo=og        → vista previa de la invitación 1200×630
+     ?tipo=og&n=3    → vista previa de un enlace con pases 1200×630 -->
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Newsreader:ital,wght@0,400;0,600;1,400&family=Updock&display=block" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  html, body { width: 100%; height: 100%; overflow: hidden; }
+  body { font-family: "Newsreader", serif; color: #142a5c; background: #f8f6f1; }
+  .pase { width: 800px; height: 1000px; position: relative; display: grid; justify-items: center; align-content: center; text-align: center; padding: 70px;
+    background: radial-gradient(120% 70% at 50% 0%, #ffffff, #f3efe6 70%); }
+  .pase::before { content: ""; position: absolute; inset: 28px; border: 2px solid #142a5c; border-radius: 10px; }
+  .pase::after { content: ""; position: absolute; inset: 40px; border: 1px solid rgba(20, 42, 92, 0.35); border-radius: 6px; }
+  .rosa { width: 210px; position: absolute; }
+  .r1 { top: -10px; left: -20px; transform: rotate(-20deg); }
+  .r2 { bottom: -10px; right: -20px; transform: rotate(160deg); width: 190px; }
+  .b1 { top: 70px; left: 140px; width: 110px; transform: rotate(25deg); }
+  .b2 { bottom: 170px; right: 30px; width: 100px; transform: rotate(-30deg); }
+  .sup { font: 600 22px "Newsreader"; letter-spacing: 0.45em; text-transform: uppercase; color: #2f5aa8; }
+  .nombres { font: 400 150px/0.95 "Updock"; margin: 20px 0 10px; }
+  .num { font: 400 230px/1 "DM Serif Text"; color: #142a5c; margin-top: 10px; }
+  .personas { font: 600 30px "Newsreader"; letter-spacing: 0.35em; text-transform: uppercase; }
+  .fecha { font: italic 400 34px "Newsreader"; color: #5d6886; margin-top: 30px; }
+  .og { width: 1200px; height: 630px; display: grid; grid-template-columns: 560px 1fr; background: #f8f6f1; }
+  .og img.foto { width: 560px; height: 630px; object-fit: cover; object-position: 50% 30%; }
+  .og .texto { display: grid; align-content: center; justify-items: center; text-align: center; padding: 40px; position: relative; }
+  .og .nombres { font-size: 130px; }
+  .og .num { font-size: 110px; margin: 0; }
+  .og .personas { font-size: 24px; }
+  .og .fecha { font-size: 32px; margin-top: 16px; }
+  .og .rosa { width: 150px; }
+  .og .r1 { top: -20px; left: auto; right: -20px; transform: rotate(200deg); }
+  .og .r2 { bottom: -20px; right: auto; left: -30px; width: 140px; transform: rotate(10deg); }
+</style>
+</head>
+<body>
+<script>
+  const q = new URLSearchParams(location.search);
+  const n = +q.get('n') || 0;
+  const personas = n ? `<p class="num">${n}</p><p class="personas">${n === 1 ? 'persona' : 'personas'}</p>` : '';
+  const flores = `<img class="rosa r1" src="../img/deco/rosa-azul-1.webp"><img class="rosa r2" src="../img/deco/rosa-azul-2.webp">`;
+  if (q.get('tipo') === 'pase') {
+    document.body.innerHTML = `<div class="pase">${flores}<img class="rosa b1" src="../img/deco/boton-blanco-1.webp"><img class="rosa b2" src="../img/deco/boton-blanco-2.webp">
+      <p class="sup">Pase de acceso</p><p class="nombres">Renata &amp; Mauricio</p>${personas}<p class="fecha">20 de noviembre de 2027 · Jardín Los Laureles</p></div>`;
+  } else {
+    document.body.innerHTML = `<div class="og"><img class="foto" src="../img/foto-06.jpg"><div class="texto">${flores}
+      <p class="sup">${n ? 'Pase de acceso' : 'Nuestra boda'}</p><p class="nombres">Renata &amp; Mauricio</p>${personas}<p class="fecha">Sábado 20 de noviembre de 2027</p></div></div>`;
+  }
+</script>
+</body>
+</html>

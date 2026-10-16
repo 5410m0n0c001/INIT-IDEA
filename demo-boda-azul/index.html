@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="googlebot" content="notranslate">
+  <meta name="theme-color" content="#050d24">
+  <title>Renata & Mauricio · Nuestra boda</title>
+  <meta name="description" content="Renata y Mauricio te invitan a celebrar su boda el sábado 20 de noviembre de 2027 en Jardín Los Laureles, Emiliano Zapata, Morelos. ¡Acompáñanos y confirma tu asistencia!">
+  <link rel="canonical" href="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/">
+
+  <!-- Vista previa al compartir (WhatsApp, Facebook, Telegram, iMessage) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_MX">
+  <meta property="og:site_name" content="Renata & Mauricio">
+  <meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/">
+  <meta property="og:title" content="Nuestra boda · Renata & Mauricio">
+  <meta property="og:description" content="Sábado 20 de noviembre de 2027 · Jardín Los Laureles. ¡Acompáñanos y confirma tu asistencia!">
+  <meta property="og:image" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/img/og.jpg?v=3">
+  <meta property="og:image:secure_url" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/img/og.jpg?v=3">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Renata y Mauricio abrazados en un jardín. Nuestra boda, 20 de noviembre de 2027.">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Nuestra boda · Renata & Mauricio">
+  <meta name="twitter:description" content="Sábado 20 de noviembre de 2027 · Jardín Los Laureles. ¡Acompáñanos!">
+  <meta name="twitter:image" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/img/og.jpg?v=3">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23142a5c'/%3E%3Ctext x='16' y='21' font-family='Georgia' font-size='13' text-anchor='middle' fill='%23fff'%3EA%26amp;J%3C/text%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Updock&display=swap" rel="stylesheet">
+  <link rel="preload" href="models/rosa.glb" as="fetch" type="model/gltf-binary" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css">
+  <link rel="stylesheet" href="css/boda.css?v=20261016b">
+  <link rel="stylesheet" href="css/tema-noche.css?v=20261016b">
+
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"
+      }
+    }
+  </script>
+  <script src="js/config.js?v=20261016b"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.js"></script>
+  <script defer src="js/app.js?v=20261016b"></script>
+  <script defer src="js/carmesi.js?v=20261016b"></script>
+  <script defer src="js/pases.js?v=20261016b"></script>
+  <script defer src="js/descargas.js?v=20261016b"></script>
+  <script type="module" src="js/escena3d.js?v=20261016b"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script defer src="js/album.js?v=20261016b"></script>
+  <script defer src="js/retos.js?v=20261016b"></script>
+</head>
+
+<body class="sobre-cerrado">
+  <!-- Íconos de línea (trazo azul marino) -->
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <symbol id="i-anillos" viewBox="0 0 24 24"><circle cx="9" cy="14" r="5.5"/><circle cx="15" cy="14" r="5.5"/><path d="M13.5 5.5 15 3.5l1.5 2-1.5 1.5z"/></symbol>
+      <symbol id="i-copa" viewBox="0 0 24 24"><path d="M5 3h14l-1.2 4.5A6 6 0 0 1 12 12a6 6 0 0 1-5.8-4.5zM12 12v8M8 21h8"/></symbol>
+      <symbol id="i-plato" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6.5"/><circle cx="12" cy="12" r="3.5"/><path d="M2.5 4v6M4 4v16M5.5 4v6M21 4c-1.5 1-2 3-2 6h2v10"/></symbol>
+      <symbol id="i-mesa" viewBox="0 0 24 24"><path d="M3 9h18M6 9v11M18 9v11M4 9l2-4h12l2 4"/></symbol>
+      <symbol id="i-corazon" viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></symbol>
+      <symbol id="i-manos" viewBox="0 0 24 24"><path d="M12 21V11M12 11c0-3-1.5-6-4-8M12 11c0-3 1.5-6 4-8M8 21c-3-1-4-4-4-7l2-3M16 21c3-1 4-4 4-7l-2-3"/></symbol>
+      <symbol id="i-violin" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/></symbol>
+      <symbol id="i-camara" viewBox="0 0 24 24"><path d="M3 8h4l2-3h6l2 3h4v12H3z"/><circle cx="12" cy="13.5" r="3.8"/></symbol>
+      <symbol id="i-brindis" viewBox="0 0 24 24"><path d="M4 3h6l-.6 4a2.4 2.4 0 0 1-4.8 0zM7 9.5V19M4.5 20h5M14 3h6l-.6 4a2.4 2.4 0 0 1-4.8 0zM17 9.5V19M14.5 20h5"/></symbol>
+      <symbol id="i-pastel" viewBox="0 0 24 24"><path d="M4 21h16M5 21v-6h14v6M7 15v-3h10v3M12 12V9M12 6.5c-.8-.8-.8-2 0-3 .8 1 .8 2.2 0 3z"/><path d="M5 18c1.2 1 2.3 1 3.5 0s2.3-1 3.5 0 2.3 1 3.5 0 2.3-1 3.5 0"/></symbol>
+      <symbol id="i-ramo" viewBox="0 0 24 24"><circle cx="9" cy="6" r="2.5"/><circle cx="15" cy="6" r="2.5"/><circle cx="12" cy="9.5" r="2.5"/><path d="M12 12v9M9 14l3 7 3-7M10 16h4"/></symbol>
+      <symbol id="i-chispas" viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M5.6 5.6l2.8 2.8M15.6 15.6l2.8 2.8M5.6 18.4l2.8-2.8M15.6 8.4l2.8-2.8"/><circle cx="12" cy="12" r="1.5"/></symbol>
+      <symbol id="i-vaso" viewBox="0 0 24 24"><path d="M6 8h12l-1.5 13h-9zM5 8h14M9 8c0-3 1-5 3-5s3 2 3 5"/></symbol>
+      <symbol id="i-luna" viewBox="0 0 24 24"><path d="M20 14.5A8.5 8.5 0 1 1 9.5 4a7 7 0 0 0 10.5 10.5z"/></symbol>
+      <symbol id="i-regalo" viewBox="0 0 24 24"><path d="M3 9h18v4H3zM5 13v8h14v-8M12 9v12M12 9c-2-4-6-4-6-1.5S10 9 12 9zm0 0c2-4 6-4 6-1.5S14 9 12 9z"/></symbol>
+      <symbol id="i-sobre" viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></symbol>
+      <symbol id="i-tarjeta" viewBox="0 0 24 24"><rect x="2.5" y="5" width="19" height="14" rx="2"/><path d="M2.5 9.5h19M6 15h4"/></symbol>
+      <symbol id="i-maleta" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V4h6v3M3 12h18"/></symbol>
+      <symbol id="i-vestido" viewBox="0 0 24 24"><path d="M9 2l1 4-2 5-4 10h16l-4-10-2-5 1-4M10 6h4"/></symbol>
+      <symbol id="i-clima" viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><path d="M8 2v1.5M2 8h1.5M3.8 3.8l1 1M12.2 3.8l-1 1"/><path d="M7 20h10a4 4 0 0 0 0-8 5 5 0 0 0-9.6 1.5A3.3 3.3 0 0 0 7 20z"/></symbol>
+      <symbol id="i-calendario" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4M12 14v4M10 16h4"/></symbol>
+      <symbol id="i-galeria" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-9 9"/></symbol>
+      <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+      <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M4 20l1.3-4A8.5 8.5 0 1 1 8 18.8z"/><path d="M9 8.5c0 3.5 3 6.5 6.5 6.5l1-1.6-2-1-1 .8a4 4 0 0 1-2.3-2.3l.8-1-1-2z"/></symbol>
+      <symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6"/></symbol>
+      <symbol id="i-sonido" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12"/></symbol>
+      <symbol id="i-silencio" viewBox="0 0 24 24"><path d="M4 9h4l5-4v14l-5-4H4zM16.5 9.5l5 5M21.5 9.5l-5 5"/></symbol>
+      <symbol id="i-copiar" viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></symbol>
+      <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></symbol>
+      <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/></symbol>
+      <symbol id="i-casa" viewBox="0 0 24 24"><path d="M3 11l9-7 9 7M5 9.5V20h14V9.5"/><path d="M12 17.5s-3-1.8-3-3.8a1.6 1.6 0 0 1 3-.8 1.6 1.6 0 0 1 3 .8c0 2-3 3.8-3 3.8z"/></symbol>
+      <symbol id="i-reloj" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></symbol>
+      <symbol id="i-check" viewBox="0 0 24 24"><path d="M4 12.5l4.5 4.5L20 6"/></symbol>
+      <symbol id="i-cubo" viewBox="0 0 24 24"><path d="M12 2.5l8.5 4.8v9.4L12 21.5l-8.5-4.8V7.3zM12 12l8.5-4.7M12 12v9.5M12 12L3.5 7.3"/></symbol>
+      <symbol id="i-flor" viewBox="0 0 24 24"><circle cx="12" cy="9" r="2"/><path d="M12 7c-1-3 2-4 2-1M14 9c3-1 4 2 1 2M12 11c1 3-2 4-2 1M10 9c-3 1-4-2-1-2M12 11v10M12 17c-2-2-5-2-6-1 2 2 4 2 6 1z"/></symbol>
+    </defs>
+  </svg>
+
+  <!-- Cielo nocturno con polvo de estrellas (tema noche) -->
+  <div class="cielo" aria-hidden="true"><i class="lejos"></i><i class="cerca"></i></div>
+
+  <!-- Foto de portada: capa fija detrás de la escena 3D; sube con el scroll al terminar la portada.
+       Para el video de portada: cambiar el <img> por <video autoplay muted loop playsinline poster="img/foto-09.jpg" src="video/portada.mp4"> -->
+  <div class="portada-foto" aria-hidden="true"><img src="img/foto-09.jpg" alt="" width="1066" height="1600" fetchpriority="high"></div>
+
+  <!-- Capa fija de la escena 3D: viaja con el scroll detrás del contenido -->
+  <div class="escena-3d" id="escena-3d" aria-hidden="true"></div>
+
+  <!-- SOBRE (Carmesí): sobre de papel marfil con tapa, solapas, filete dorado y sello de cera -->
+  <div class="sobre" id="sobre" role="dialog" aria-label="Invitación cerrada">
+    <p class="sobre-para" id="sobre-para">Una invitación para ti</p>
+    <div class="sobre-papel">
+      <div class="sobre-cuerpo"></div>
+      <div class="sobre-carta" aria-hidden="true">
+        <span class="carta-sup">Nuestra boda</span>
+        <span class="carta-nombres">Renata &amp; Mauricio</span>
+        <span class="carta-fecha">13 · diciembre · 2026</span>
+      </div>
+      <div class="sobre-lado sobre-izq"></div>
+      <div class="sobre-lado sobre-der"></div>
+      <div class="sobre-abajo"></div>
+      <div class="sobre-tapa"></div>
+      <button class="sello" id="sello" type="button" aria-label="Abrir invitación">
+        <span class="sello-iniciales">R<i>&amp;</i>M</span>
+      </button>
+    </div>
+    <p class="sobre-toca">Toca el sello para abrir</p>
+  </div>
+
+  <!-- Llegada desde el QR de las mesas (?action=take-photo) -->
+  <div class="llegada" id="llegada" hidden>
+    <p class="nombre-script">Renata &amp; Mauricio</p>
+    <p class="llegada-texto">¡Ayúdanos a capturar este momento!</p>
+    <button class="boton boton-lleno" type="button" id="llegada-camara"><svg><use href="#i-camara"/></svg>Abrir cámara</button>
+    <button class="boton" type="button" id="llegada-ver">Ver invitación</button>
+  </div>
+
+  <!-- Barra de navegación flotante (demo): la sección visible se resalta -->
+  <nav class="barra-nav" id="navegacion" aria-label="Secciones" hidden>
+    <ul>
+      <li><a href="#intro-video" aria-label="Inicio"><svg><use href="#i-casa"/></svg></a></li>
+      <li><a href="#fecha" aria-label="Fecha"><svg><use href="#i-calendario"/></svg></a></li>
+      <li><a href="#lugares" aria-label="Ubicación"><svg><use href="#i-pin"/></svg></a></li>
+      <li><a href="#ubica" aria-label="Ubica tu mesa"><svg><use href="#i-cubo"/></svg></a></li>
+      <li><a href="#programa" aria-label="Minuto a minuto"><svg><use href="#i-reloj"/></svg></a></li>
+      <li><a href="#menu" aria-label="Menú"><svg><use href="#i-plato"/></svg></a></li>
+      <li><a href="#regalos" aria-label="Regalos"><svg><use href="#i-regalo"/></svg></a></li>
+      <li><a href="#album" aria-label="Álbum"><svg><use href="#i-camara"/></svg></a></li>
+      <li><a href="#confirmar" aria-label="Confirmar asistencia"><svg><use href="#i-check"/></svg></a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <!-- VIDEO DE LA HISTORIA: primero que se ve al abrir el sobre. No va de fondo porque trae textos;
+         encima solo caen pétalos. Su sonido es la música de toda la invitación (la bocina solo silencia). -->
+    <section class="intro-video" id="intro-video" aria-label="Video de Renata y Mauricio">
+      <div class="petalos" aria-hidden="true"></div>
+      <video id="video-historia" class="intro-video-video" playsinline loop preload="metadata" poster="video/historia-poster.jpg" width="1280" height="720">
+        <source src="video/historia.mp4" type="video/mp4">
+      </video>
+      <a class="intro-seguir" href="#portada" aria-label="Ver la invitación"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
+    </section>
+
+    <!-- PORTADA: foto (luego video) + la rosa azul se abre con el scroll -->
+    <section class="portada" id="portada" aria-label="Portada">
+      <div class="portada-escena">
+        <div class="petalos" id="petalos" aria-hidden="true"></div>
+        <p class="portada-sup">Nuestra boda</p>
+        <div class="rosa-slot" data-rosa-slot="portada">
+          <img class="rosa-respaldo" src="img/deco/rosa-azul-1.webp" alt="Rosa azul" width="480" height="480">
+        </div>
+        <div class="portada-nombre">
+          <h1 class="nombre-script" id="nombres-portada">Renata <i>&amp;</i> Mauricio</h1>
+          <p class="portada-fecha"><span>Sábado</span><b>20</b><span>Noviembre</span></p>
+          <p class="portada-anio">2027</p>
+          <div class="portada-cuenta" aria-hidden="true">
+            <div><span data-c="dias">00</span><small>días</small></div>
+            <div><span data-c="horas">00</span><small>hrs</small></div>
+            <div><span data-c="minutos">00</span><small>min</small></div>
+            <div><span data-c="segundos">00</span><small>seg</small></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUESTRA BODA -->
+    <section class="invitacion bloque" data-lado="der" data-3d="anillos">
+      <p class="titulo-boda revelar">Nuestra <span>Boda</span></p>
+      <h2 class="nombres revelar"><span class="nombre-script">Renata</span><span class="y">&amp;</span><span class="nombre-script">Mauricio</span></h2>
+      <p class="para-quien revelar" id="para-quien" hidden></p>
+      <p class="cita revelar">Con amor en nuestros corazones y la emoción en el aire, te invitamos a ser testigo de nuestro amor mientras nos unimos en matrimonio. Acompáñanos a celebrar este hermoso comienzo.</p>
+    </section>
+
+    <div class="cadena" aria-hidden="true" data-dir="1"></div>
+
+    <!-- FOTO (entra deslizándose y girando desde la esquina, como en Carmesí) -->
+    <section class="foto-slide" data-frente data-lado="izq" data-ancho data-3d="anillos">
+      <img class="foto-full" src="img/foto-01.jpg" alt="Renata y Mauricio de espaldas tomados de la mano" width="1600" height="1066" loading="lazy">
+    </section>
+
+    <!-- FAMILIA -->
+    <section class="familia bloque" data-lado="izq" data-3d="corazon">
+      <p class="familia-intro revelar">Con la bendición de Dios y de nuestros padres</p>
+      <div class="familia-grupo revelar">
+        <h3>Padres de la novia</h3>
+        <p>Gerardo Linares Ortega</p>
+        <p>Silvia Ferrer Nava</p>
+      </div>
+      <div class="familia-grupo revelar">
+        <h3>Padres del novio</h3>
+        <p>Adriana Rivas Olmedo</p>
+        <p>Eduardo Castillo Bernal</p>
+      </div>
+      <div class="familia-grupo revelar">
+        <h3>Padrinos</h3>
+        <dl class="padrinos">
+          <div><dt>Biblia</dt><dd>Hugo Salcedo Marín</dd></div>
+          <div><dt>Ramo</dt><dd>Alonso Vega Cordero</dd><dd>Noemí Bustos Alcalá</dd></div>
+          <div><dt>Cojines</dt><dd>Rubén Paredes Solís</dd><dd>Lucía Montiel Serrano</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- FECHA + CUENTA REGRESIVA + AGENDAR -->
+    <section class="fecha bloque" id="fecha" data-lado="der" data-ancho data-3d="reloj">
+      <p class="fecha-sup revelar">Celebremos juntos el</p>
+      <div class="fecha-grid revelar">
+        <span class="fecha-dia-semana">Sábado</span>
+        <span class="fecha-num">20</span>
+        <span class="fecha-mes">Noviembre</span>
+        <span class="fecha-anio">2027</span>
+      </div>
+      <p class="fecha-hora revelar">4:00 p. m.</p>
+      <div class="cuenta revelar" id="cuenta" aria-live="off">
+        <div><span data-c="dias">00</span><small>días</small></div>
+        <div><span data-c="horas">00</span><small>horas</small></div>
+        <div><span data-c="minutos">00</span><small>min</small></div>
+        <div><span data-c="segundos">00</span><small>seg</small></div>
+      </div>
+      <p class="cuenta-fin" id="cuenta-fin" hidden>¡Hoy es el gran día!</p>
+      <div class="agendar revelar">
+        <a class="boton boton-lleno" id="agendar-btn" href="boda-renata-mauricio.ics?v=3" download><svg><use href="#i-calendario"/></svg>Agendar en mi calendario</a>
+        <button class="enlace" type="button" id="agendar-mas" aria-expanded="false" aria-controls="agendar-opciones">Otras opciones</button>
+        <div class="agendar-opciones" id="agendar-opciones" hidden>
+          <a id="cal-google" target="_blank" rel="noopener">Google Calendar</a>
+          <a id="cal-apple" href="boda-renata-mauricio.ics?v=3">Apple Calendar (iPhone)</a>
+          <a id="cal-outlook" target="_blank" rel="noopener">Outlook</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="foto-slide" data-frente data-lado="izq" data-ancho data-3d="reloj">
+      <img class="foto-full" src="img/foto-03.jpg" alt="Mauricio besa a Renata en la mejilla junto al barandal" width="1066" height="1600" loading="lazy">
+    </section>
+
+    <div class="cadena" aria-hidden="true" data-dir="-1"></div>
+
+    <!-- LUGARES: tarjetas de papel que entran girando (Carmesí) -->
+    <section class="lugares bloque" id="lugares" data-lado="der" data-3d="pin">
+      <h2 class="titulo revelar">Dónde</h2>
+      <article class="hoja" data-entra="izq">
+        <p class="hoja-tipo">Ceremonia religiosa</p>
+        <h3>Jardín Los Laureles</h3>
+        <p class="hoja-detalle">Área de jardín con vista al cerro</p>
+        <p class="hoja-hora">4:00 p. m.</p>
+        <p class="hoja-dir" data-dir-jardin>Camino a Los Laureles 24, Col. El Mirador, Xochitepec, Mor.</p>
+        <a class="boton" data-mapa href="#" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Cómo llegar</a>
+      </article>
+      <article class="hoja" data-entra="der">
+        <p class="hoja-tipo">Recepción</p>
+        <h3>Jardín Los Laureles</h3>
+        <p class="hoja-detalle">Cóctel de bienvenida y banquete en el mismo jardín</p>
+        <p class="hoja-hora">5:00 p. m.</p>
+        <a class="boton boton-blanco" href="mapa.html"><svg><use href="#i-cubo"/></svg>Ubica tu mesa</a>
+        <a class="boton" data-mapa href="#" target="_blank" rel="noopener"><svg><use href="#i-pin"/></svg>Cómo llegar</a>
+      </article>
+    </section>
+
+    <!-- UBICA TU MESA (demo): croquis 3D del jardín -->
+    <section class="ubica bloque" id="ubica" data-lado="izq" data-ancho data-3d="pin">
+      <h2 class="titulo revelar">Ubica tu mesa</h2>
+      <p class="revelar">Recorre en 3D el jardín: la ceremonia, el cóctel, la pista y las mesas.</p>
+      <a class="ubica-vista revelar" href="mapa.html">
+        <img src="img/croquis-vista.jpg" alt="Vista 3D del jardín con la ceremonia, la mesa principal, las mesas numeradas y la pista" width="1000" height="500" loading="lazy">
+        <span class="ubica-ver"><svg><use href="#i-cubo"/></svg>Ver en 3D</span>
+      </a>
+      <p class="nota revelar pendiente">Croquis provisional: se actualizará con las medidas del jardín</p>
+    </section>
+
+    <!-- PROGRAMA: minuto a minuto (checklist) -->
+    <section class="programa bloque porcelana" id="programa" data-lado="izq" data-ancho data-3d="campanas">
+      <h2 class="titulo revelar">Minuto a minuto</h2>
+      <ol class="linea">
+        <li class="revelar"><svg><use href="#i-anillos"/></svg><time datetime="16:00">4:00 <small>pm</small></time><span>Ceremonia religiosa <em>Jardín con vista al cerro</em></span></li>
+        <li class="revelar"><svg><use href="#i-copa"/></svg><time datetime="17:00">5:00 <small>pm</small></time><span>Cóctel de bienvenida</span></li>
+        <li class="revelar"><svg><use href="#i-mesa"/></svg><time datetime="17:30">5:30 <small>pm</small></time><span>Asignación de mesas</span></li>
+        <li class="revelar"><svg><use href="#i-corazon"/></svg><time datetime="17:40">5:40 <small>pm</small></time><span>Entrada triunfal de los novios</span></li>
+        <li class="revelar"><svg><use href="#i-manos"/></svg><time datetime="17:50">5:50 <small>pm</small></time><span>Bendición de los alimentos <em>A cargo del pastor</em></span></li>
+        <li class="revelar"><svg><use href="#i-plato"/></svg><time datetime="18:00">6:00 <small>pm</small></time><span>Inicia el banquete</span></li>
+        <li class="revelar"><svg><use href="#i-violin"/></svg><time datetime="18:00">6:00 <small>pm</small></time><span>Ameniza violinista <em>Hasta las 7:00 p. m.</em></span></li>
+        <li class="revelar"><svg><use href="#i-camara"/></svg><time datetime="19:00">7:00 <small>pm</small></time><span>Dinámica de fotos por mesa y cajita para la luna de miel</span></li>
+        <li class="revelar"><svg><use href="#i-brindis"/></svg><time datetime="19:30">7:30 <small>pm</small></time><span>Brindis y palabras de agradecimiento <em>Novios y papás de los novios</em></span></li>
+        <li class="revelar"><svg><use href="#i-pastel"/></svg><time datetime="20:00">8:00 <small>pm</small></time><span>Pastel y ponche</span></li>
+        <li class="revelar"><svg><use href="#i-galeria"/></svg><time datetime="20:00">8:00 <small>pm</small></time><span>Cabina de fotos <em>Hasta las 10:00 p. m.</em></span></li>
+        <li class="revelar"><svg><use href="#i-ramo"/></svg><time datetime="21:00">9:00 <small>pm</small></time><span>Ramo y botonier <em>Víbora de la mar tradicional</em></span></li>
+        <li class="revelar"><svg><use href="#i-chispas"/></svg><time datetime="21:30">9:30 <small>pm</small></time><span>Pirotecnia en cascada</span></li>
+        <li class="revelar"><svg><use href="#i-vaso"/></svg><time datetime="21:40">9:40 <small>pm</small></time><span>Tornafiesta: barra de esquites</span></li>
+        <li class="revelar"><svg><use href="#i-luna"/></svg><time datetime="22:00">10:00 <small>pm</small></time><span>Fin del evento <em>¡Gracias por acompañarnos!</em></span></li>
+      </ol>
+    </section>
+
+    <!-- CÓCTEL DE RECEPCIÓN -->
+    <section class="coctel bloque" data-lado="der" data-3d="copa">
+      <h2 class="titulo revelar">Cóctel de recepción</h2>
+      <div class="tarjeta revelar">
+        <svg><use href="#i-copa"/></svg>
+        <h3>Barra mix</h3>
+        <p>Aguas frescas de sabor, margaritas y piñadas.</p>
+      </div>
+      <div class="tarjeta revelar">
+        <svg><use href="#i-mesa"/></svg>
+        <h3>Lounge</h3>
+        <p>Una sala lounge y cuatro periqueras altas para convivir.</p>
+      </div>
+      <div class="tarjeta revelar">
+        <svg><use href="#i-chispas"/></svg>
+        <h3>Letras gigantes</h3>
+        <p>Letras iluminadas <b>R &amp; M</b> para tus fotos.</p>
+      </div>
+    </section>
+
+    <section class="foto-slide" data-frente data-lado="der" data-ancho data-3d="copa">
+      <img class="foto-full" src="img/foto-05.jpg" alt="Renata y Mauricio tomados de la mano en un sendero" width="1066" height="1600" loading="lazy">
+    </section>
+
+    <!-- MENÚ con pestañas (demo) -->
+    <section class="menu bloque porcelana" id="menu" data-lado="izq" data-3d="banquete">
+      <h2 class="titulo revelar">Menú</h2>
+      <div class="menu-pestanas revelar" role="tablist">
+        <button type="button" role="tab" aria-selected="true" aria-controls="menu-banquete" id="tab-banquete">Banquete</button>
+        <button type="button" role="tab" aria-selected="false" aria-controls="menu-bebidas" id="tab-bebidas">Bebidas y más</button>
+      </div>
+      <div class="menu-panel revelar" id="menu-banquete" role="tabpanel" aria-labelledby="tab-banquete">
+        <div class="menu-tiempo">
+          <h4>Primer tiempo</h4>
+          <p class="menu-plato">Barbacoa de res</p>
+          <p>Con arroz, frijoles, cebolla, cilantro, limones, salsas y tortillas.</p>
+        </div>
+        <div class="menu-tiempo">
+          <h4>Postre</h4>
+          <p class="menu-plato">Pastel de bodas</p>
+          <p>Acompañado de ponche.</p>
+        </div>
+        <div class="menu-tiempo">
+          <h4>Tornafiesta</h4>
+          <p class="menu-plato">Barra de esquites</p>
+        </div>
+      </div>
+      <div class="menu-panel" id="menu-bebidas" role="tabpanel" aria-labelledby="tab-bebidas" hidden>
+        <div class="menu-tiempo">
+          <h4>Barra mix</h4>
+          <p class="menu-plato">Aguas frescas de sabor</p>
+          <p class="menu-plato">Margaritas y piñadas</p>
+        </div>
+        <div class="menu-tiempo">
+          <h4>Con el pastel</h4>
+          <p class="menu-plato">Ponche</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="cadena" aria-hidden="true" data-dir="1"></div>
+
+
+    <!-- VIDEO "UN POQUITO DE NOSOTROS": solo trae efectos de sonido, así que suena junto con la música.
+         Al aparecer intenta reproducirse con sonido; si el navegador no lo deja, el botón lo activa. -->
+    <section class="sentenciados bloque" id="sentenciados" data-lado="der" data-ancho data-3d="rosa">
+      <h2 class="titulo revelar">Un poquito de nosotros</h2>
+      <figure class="sentenciados-marco revelar">
+        <video id="video-sentenciados" playsinline muted loop preload="metadata" poster="video/sentenciados-poster.jpg" width="720" height="960">
+          <source src="video/sentenciados.mp4?v=2" type="video/mp4">
+        </video>
+        <button class="sentenciados-sonido" id="sentenciados-sonido" type="button" aria-pressed="false"><svg><use href="#i-sonido"/></svg><span>Activar sonido</span></button>
+      </figure>
+    </section>
+
+    <section class="foto-slide" data-frente data-lado="izq" data-ancho data-3d="rosa">
+      <img class="foto-full" src="img/foto-07.jpg" alt="Mauricio besa la frente de Renata en un puente del jardín" width="1600" height="1066" loading="lazy">
+    </section>
+
+    <!-- VESTIMENTA -->
+    <section class="vestimenta bloque" id="vestimenta" data-lado="der" data-3d="monio">
+      <h2 class="titulo revelar">Código de vestimenta</h2>
+      <p class="vestimenta-tipo revelar">Te pedimos no vestir de estos colores</p>
+      <ul class="colores-evitar revelar" aria-label="Colores que no se deben usar">
+        <li><span style="--c:#14213d"></span>Azul marino</li>
+        <li><span style="--c:#c8102e"></span>Rojo</li>
+        <li><span style="--c:#ffffff"></span>Blanco</li>
+      </ul>
+      <p class="nota revelar">Gracias por tomarlo en cuenta.</p>
+    </section>
+
+    <section class="foto-slide" data-frente data-lado="izq" data-ancho data-3d="monio">
+      <img class="foto-full" src="img/foto-10.jpg" alt="Mauricio sentado en una banca toma la mano de Renata" width="1600" height="1066" loading="lazy">
+    </section>
+
+    <!-- REGALOS -->
+    <section class="regalos bloque porcelana" id="regalos" data-lado="izq" data-3d="regalo">
+      <h2 class="titulo revelar">Regalos</h2>
+      <p class="regalos-lema revelar">Tu presencia es nuestro mejor regalo</p>
+      <div class="regalos-grid">
+        <div class="tarjeta revelar">
+          <svg><use href="#i-sobre"/></svg>
+          <h3>Lluvia de sobres</h3>
+          <p>Es la tradición de regalar dinero en efectivo dentro de un sobre. Habrá una cajita especial para la luna de miel.</p>
+        </div>
+        <div class="tarjeta revelar">
+          <svg><use href="#i-tarjeta"/></svg>
+          <h3>Transferencia</h3>
+          <p>Si lo prefieres, puedes hacer una transferencia a la siguiente cuenta:</p>
+          <p class="cuenta-dato"><span>Banco:</span> <b id="banco">BBVA</b></p>
+          <p class="cuenta-dato"><span>Número de cuenta:</span> <b id="cuenta-banco">1234 5678 9012 3456</b></p>
+          <p class="cuenta-dato"><span>Titular:</span> <b id="titular">Renata Ferrer Linares</b></p>
+          <button class="enlace" type="button" data-copiar="#cuenta-banco"><svg><use href="#i-copiar"/></svg>Copiar cuenta</button>
+          <p class="regalo-deseo">Si nos haces llegar tu detalle a la distancia, nos encantará leer tu deseo en el <a href="#buzon">Buzón de deseos</a>.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CLIMA (demo) -->
+    <section class="clima bloque" data-lado="izq" data-3d="clima">
+      <h2 class="titulo revelar">El clima</h2>
+      <p class="revelar">Consulta el pronóstico para el día de la boda y planea tu atuendo.</p>
+      <a class="boton revelar" id="clima-enlace" href="#" target="_blank" rel="noopener"><svg><use href="#i-clima"/></svg>Ver pronóstico</a>
+      <p class="nota revelar pendiente" id="clima-pendiente">Disponible en cuanto confirmemos la ubicación</p>
+    </section>
+
+    <div class="cadena" aria-hidden="true" data-dir="-1"></div>
+
+    <!-- GALERÍA -->
+    <section class="galeria bloque" data-lado="der" data-ancho data-3d="rosa">
+      <h2 class="titulo revelar">Nuestra historia</h2>
+      <div class="mosaico" id="mosaico">
+        <button class="m m-alta" type="button" data-full="img/foto-06.jpg"><img src="img/foto-06-sm.jpg" alt="Renata y Mauricio abrazados frente a una cascada" loading="lazy"></button>
+        <button class="m" type="button" data-full="img/foto-04.jpg"><img src="img/foto-04-sm.jpg" alt="Renata y Mauricio abrazados mirándose" loading="lazy"></button>
+        <button class="m" type="button" data-full="img/foto-02.jpg"><img src="img/foto-02-sm.jpg" alt="Renata abraza a Mauricio junto al barandal" loading="lazy"></button>
+        <button class="m m-ancha" type="button" data-full="img/foto-10.jpg"><img src="img/foto-10-sm.jpg" alt="Mauricio sentado en una banca toma la mano de Renata" loading="lazy"></button>
+        <button class="m" type="button" data-full="img/foto-05.jpg"><img src="img/foto-05-sm.jpg" alt="Renata y Mauricio tomados de la mano en un sendero" loading="lazy"></button>
+        <button class="m" type="button" data-full="img/foto-08.jpg"><img src="img/foto-08-sm.jpg" alt="Renata y Mauricio frente a frente en las vías" loading="lazy"></button>
+        <button class="m m-ancha" type="button" data-full="img/foto-09.jpg"><img src="img/foto-09-sm.jpg" alt="Mauricio carga a Renata en las vías del tren" loading="lazy"></button>
+      </div>
+    </section>
+
+    <!-- ÁLBUM DE INVITADOS -->
+    <section class="album bloque" id="album" data-lado="izq" data-ancho data-3d="camara">
+      <h2 class="titulo revelar">Álbum de la boda</h2>
+      <p class="album-intro revelar">El día del evento, sube aquí tus fotos. Todos las verán al instante.</p>
+      <input type="file" id="album-camara" accept="image/*" capture="environment" hidden>
+      <input type="file" id="album-input" accept="image/*" multiple hidden>
+      <div class="album-acciones revelar" id="album-acciones">
+        <button class="boton boton-lleno" type="button" id="album-camara-btn"><svg><use href="#i-camara"/></svg>Tomar foto</button>
+        <button class="boton" type="button" id="album-subir"><svg><use href="#i-galeria"/></svg>Elegir de galería</button>
+      </div>
+      <div class="album-estado" id="album-estado" role="status" aria-live="polite"></div>
+      <div class="album-grid" id="album-grid"></div>
+      <button class="boton" type="button" id="album-mas" hidden>Ver más fotos</button>
+      <div class="retos revelar" id="retos">
+        <h3 class="retos-titulo">Ruleta de retos</h3>
+        <p class="retos-texto">Gira la ruleta, cumple tu reto y súbelo al álbum.</p>
+        <div class="ruleta">
+          <svg id="ruleta-svg" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+          <span class="ruleta-aguja" aria-hidden="true"></span>
+          <button class="ruleta-centro" type="button" id="ruleta-girar">Girar</button>
+        </div>
+        <div class="reto-carta" id="reto-carta" role="status" aria-live="polite" hidden>
+          <p class="reto-cat" id="reto-cat"></p>
+          <p class="reto-texto" id="reto-texto"></p>
+          <button class="boton boton-lleno" type="button" id="reto-foto"><svg><use href="#i-camara"/></svg>Tomar foto del reto</button>
+          <button class="enlace" type="button" id="reto-otro">Girar otra vez</button>
+        </div>
+      </div>
+      <div class="album-qr revelar">
+        <div class="album-qr-codigo" id="album-qr" aria-label="Código QR para abrir la cámara del álbum"></div>
+        <p>Escanea este código en la fiesta para abrir la cámara y subir tus fotos al álbum.</p>
+        <button class="enlace" type="button" id="album-qr-compartir">Compartir código QR</button>
+      </div>
+    </section>
+
+    <!-- HASHTAG -->
+    <section class="hashtag bloque" data-lado="der" data-3d="instagram">
+      <h2 class="titulo revelar">Comparte</h2>
+      <p class="revelar">Sube tus fotos a Instagram con nuestro hashtag</p>
+      <a class="hashtag-enlace revelar" href="https://www.instagram.com/explore/tags/renataymauricio2027/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg>#RenataYMauricio2027</a>
+    </section>
+
+    <!-- BUZÓN DE DESEOS -->
+    <section class="deseos bloque" id="buzon" data-lado="izq" data-3d="sobre">
+      <h2 class="titulo revelar">Buzón de deseos</h2>
+      <p class="revelar">Déjanos un mensaje para nuestra nueva vida juntos. Si quieres, acompáñalo con una imagen: un recuerdo, una selfie o el detalle que nos quieras dejar. Lo guardaremos con mucho cariño.</p>
+      <form id="form-deseos" class="revelar">
+        <label class="oculto" for="deseo">Tu mensaje</label>
+        <textarea id="deseo" rows="4" maxlength="500" placeholder="Escribe tu mensaje aquí" required></textarea>
+        <input type="file" id="deseo-foto" accept="image/*" hidden>
+        <label class="deseo-imagen" for="deseo-foto" id="deseo-agregar"><svg><use href="#i-galeria"/></svg>Acompañar con una imagen <small>(opcional)</small></label>
+        <div class="deseo-vista" id="deseo-vista" hidden>
+          <img id="deseo-vista-img" alt="Imagen que acompaña tu mensaje">
+          <button class="enlace" type="button" id="deseo-quitar">Quitar imagen</button>
+        </div>
+        <button class="boton" type="submit"><svg><use href="#i-whatsapp"/></svg>Enviar mensaje</button>
+      </form>
+    </section>
+
+    <!-- PASES DEL INVITADO (solo si el enlace trae ?pases=...) -->
+    <section class="mis-pases bloque" id="mis-pases" data-lado="izq" data-ancho data-3d="sobre">
+      <h2 class="titulo revelar">Tus pases</h2>
+      <p class="mis-pases-texto revelar" id="mis-pases-texto"></p>
+      <div class="mis-pases-grid" id="mis-pases-grid"></div>
+      <p class="nota revelar">Presenta tus pases en la entrada. Toca uno para verlo en grande.</p>
+    </section>
+
+    <!-- CONFIRMACIÓN: la rosa vuelve, cerrada -->
+    <section class="confirmar" id="confirmar" data-lado="cierre">
+      <div class="rosa-slot rosa-slot-cierre" data-rosa-slot="cierre">
+        <img class="rosa-respaldo" src="img/deco/boton-blanco-1.webp" alt="" width="480" height="480" loading="lazy">
+      </div>
+      <div class="confirmar-panel revelar">
+        <h2 class="titulo">Confirma tu asistencia</h2>
+        <form id="form-rsvp">
+          <label for="rsvp-nombre">Nombre y apellido</label>
+          <input id="rsvp-nombre" type="text" maxlength="60" autocomplete="name" required>
+          <fieldset>
+            <legend>¿Nos acompañas?</legend>
+            <label class="opcion"><input type="radio" name="asiste" value="si" checked><span>Sí, asistiré</span></label>
+            <label class="opcion"><input type="radio" name="asiste" value="no"><span>No podré asistir</span></label>
+          </fieldset>
+          <div class="rsvp-lugares" id="rsvp-lugares" hidden>
+            <label for="rsvp-cuantos">¿Cuántas personas asistirán?</label>
+            <select id="rsvp-cuantos"></select>
+            <p class="rsvp-max" id="rsvp-max"></p>
+          </div>
+          <button class="boton boton-lleno" type="submit"><svg><use href="#i-whatsapp"/></svg>Confirmar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- DESPEDIDA -->
+    <section class="despedida" data-lado="final">
+      <img class="despedida-foto revelar" src="img/foto-04.jpg" alt="Renata y Mauricio abrazados" width="1600" height="1066" loading="lazy">
+      <!-- hueco para la rosa: queda entre la foto y los textos -->
+      <div class="rosa-slot rosa-slot-final" data-rosa-slot="final">
+        <img class="rosa-respaldo" src="img/deco/rosa-azul-1.webp" alt="" width="480" height="480" loading="lazy">
+      </div>
+      <p class="despedida-texto revelar">¡Te esperamos!</p>
+      <p class="nombre-script revelar">Renata <i>&amp;</i> Mauricio</p>
+      <p class="credito">Invitación digital por INIT IDEA</p>
+    </section>
+  </main>
+
+  <!-- Modo organizador: clave (3 toques en los nombres de la portada) -->
+  <div class="org-fondo" id="org-pin" hidden>
+    <form class="org-panel" id="org-pin-form" role="dialog" aria-modal="true" aria-labelledby="org-pin-titulo">
+      <h2 class="org-titulo" id="org-pin-titulo">Panel de administrador</h2>
+      <label for="org-pin-input">Clave</label>
+      <input id="org-pin-input" type="password" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+      <p class="org-error" id="org-pin-error" hidden>Clave incorrecta</p>
+      <button class="boton boton-lleno" type="submit">Entrar</button>
+      <button class="enlace org-secundario" type="button" id="org-pin-cancelar">Cancelar</button>
+    </form>
+  </div>
+
+  <!-- Modo organizador: elegir pases antes de compartir -->
+  <div class="org-fondo" id="org-envio" hidden>
+    <div class="org-panel" role="dialog" aria-modal="true" aria-labelledby="org-envio-titulo">
+      <button class="org-cerrar" type="button" id="org-cerrar" aria-label="Cerrar">×</button>
+      <h2 class="org-titulo" id="org-envio-titulo">Enviar invitación</h2>
+      <p class="org-enviado" id="org-enviado" role="status" hidden></p>
+      <label for="org-nombre">Nombre del invitado</label>
+      <input id="org-nombre" type="text" maxlength="60" placeholder="Ej. Familia López" autocomplete="off">
+      <p class="org-sub">Toca los pases que vas a enviar</p>
+      <div class="org-pases" id="org-pases">
+        <button type="button" data-n="1"><img src="img/pases/pase-1.jpg" alt=""><span>1</span></button>
+        <button type="button" data-n="2"><img src="img/pases/pase-2.jpg" alt=""><span>2</span></button>
+        <button type="button" data-n="3"><img src="img/pases/pase-3.jpg" alt=""><span>3</span></button>
+        <button type="button" data-n="4"><img src="img/pases/pase-4.jpg" alt=""><span>4</span></button>
+        <button type="button" data-n="5"><img src="img/pases/pase-5.jpg" alt=""><span>5</span></button>
+      </div>
+      <div class="org-elegidos" id="org-elegidos" aria-live="polite"></div>
+      <p class="org-total" id="org-total"></p>
+      <label class="org-check"><input type="checkbox" id="org-adjuntar" checked> Adjuntar las imágenes de los pases</label>
+      <p class="org-falta" id="org-falta" aria-live="polite"></p>
+      <button class="boton boton-lleno" type="button" id="org-enviar" disabled>Compartir</button>
+      <button class="boton org-descargas-abrir" type="button" id="org-descargas-abrir"><svg><use href="#i-galeria"/></svg>Descargar fotos y videos</button>
+      <button class="enlace org-secundario" type="button" id="org-salir">Salir del panel</button>
+    </div>
+  </div>
+
+  <!-- Modo organizador: descargar fotos y videos (solo administrador). Aquí también se ve el video
+       "Un poquito de nosotros", que no aparece en la invitación pública. -->
+  <div class="org-fondo" id="org-descargas" hidden>
+    <div class="org-panel org-panel-ancho" role="dialog" aria-modal="true" aria-labelledby="org-descargas-titulo">
+      <button class="org-cerrar" type="button" id="desc-cerrar" aria-label="Volver">×</button>
+      <h2 class="org-titulo" id="org-descargas-titulo">Descargar fotos y videos</h2>
+      <p class="org-sub">Toca lo que quieras guardar y luego el botón de abajo. También puedes descargar cada cosa con su flechita.</p>
+      <div class="desc-lista" id="desc-lista"></div>
+      <div class="desc-pie">
+        <label class="org-check"><input type="checkbox" id="desc-todo"> Seleccionar todo</label>
+        <p class="org-total" id="desc-total">Nada seleccionado</p>
+        <button class="boton boton-lleno" type="button" id="desc-bajar" disabled>Descargar seleccionados</button>
+        <button class="boton" type="button" id="desc-guardar" hidden>Guardar en Fotos</button>
+        <p class="org-falta" id="desc-estado" aria-live="polite"></p>
+        <button class="enlace org-secundario" type="button" id="desc-volver">Volver a enviar invitaciones</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cámara dentro de la invitación (Android: evita que el sistema cierre la página) -->
+  <div class="camara" id="camara" role="dialog" aria-modal="true" aria-label="Cámara" hidden>
+    <video id="camara-video" playsinline muted autoplay></video>
+    <img id="camara-vista" alt="Foto tomada" hidden>
+    <p class="camara-reto" id="camara-reto" hidden></p>
+    <div class="camara-controles">
+      <button class="camara-btn" type="button" id="camara-cerrar" aria-label="Cerrar cámara">×</button>
+      <button class="camara-disparo" type="button" id="camara-disparo" aria-label="Tomar foto"></button>
+      <button class="camara-btn" type="button" id="camara-voltear" aria-label="Cambiar cámara"><svg viewBox="0 0 24 24"><path d="M4 7h3l2-2.5h6L17 7h3v12H4zM9 13a3 3 0 0 0 5.6 1.5M15 13a3 3 0 0 0-5.6-1.5M14.6 16.5V14.6h1.8M9.4 9.5v1.9H7.6"/></svg></button>
+    </div>
+    <div class="camara-revisar">
+      <button class="boton" type="button" id="camara-repetir">Repetir</button>
+      <button class="boton boton-lleno" type="button" id="camara-subir">Subir al álbum</button>
+    </div>
+  </div>
+
+  <!-- Visor de fotos -->
+  <div class="visor" id="visor" hidden>
+    <button class="visor-cerrar" type="button" aria-label="Cerrar">×</button>
+    <button class="visor-prev" type="button" aria-label="Anterior">‹</button>
+    <img class="visor-img" alt="">
+    <button class="visor-sig" type="button" aria-label="Siguiente">›</button>
+  </div>
+
+  <!-- Compartir: al tocarlo el ícono gira y florece una rosa azul -->
+  <button class="compartir" id="compartir" type="button" hidden>
+    <svg viewBox="0 0 48 48" aria-hidden="true">
+      <g class="c-share">
+        <path d="M30 15.5 18 22.5M18 25.5 30 32.5"/>
+        <circle cx="32.5" cy="14" r="4"/><circle cx="15.5" cy="24" r="4"/><circle cx="32.5" cy="34" r="4"/>
+      </g>
+      <g class="c-rosa">
+        <path class="c-hoja" d="M26 33c5 4 10 4 12 2-2-4-7-5-12-2z"/>
+        <path class="c-petalo" style="--r:0deg;--k:0" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo" style="--r:72deg;--k:1" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo" style="--r:144deg;--k:2" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo" style="--r:216deg;--k:3" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo" style="--r:288deg;--k:4" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo c-interno" style="--r:36deg;--k:5;--s:.6" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo c-interno" style="--r:108deg;--k:6;--s:.6" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo c-interno" style="--r:180deg;--k:7;--s:.6" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo c-interno" style="--r:252deg;--k:8;--s:.6" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-petalo c-interno" style="--r:324deg;--k:9;--s:.6" d="M24 24C18 22 15.5 15 19 11.5 21 9.5 27 9.5 29 11.5 32.5 15 30 22 24 24z"/>
+        <path class="c-centro" d="M24 21.2a2.8 2.8 0 1 1-2.8 2.8 4.6 4.6 0 0 1 4.6-4.6 6.4 6.4 0 0 1 6.4 6.4"/>
+      </g>
+    </svg>
+    <span>Compartir</span>
+  </button>
+
+  <button class="musica" id="musica" type="button" aria-label="Silenciar" hidden>
+    <svg class="ico-on"><use href="#i-sonido"/></svg><svg class="ico-off"><use href="#i-silencio"/></svg>
+  </button>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+</body>
+</html>
