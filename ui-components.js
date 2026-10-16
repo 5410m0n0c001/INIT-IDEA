@@ -685,9 +685,29 @@ function initCarousel3D() {
     window.addEventListener('pointerup', soltar);
     window.addEventListener('pointercancel', soltar);
 
-    zona.addEventListener('touchstart', e => apretar(e.touches[0].clientX, e.touches[0].clientY), { passive: true });
-    zona.addEventListener('touchmove',  e => mover(e.touches[0].clientX, e.touches[0].clientY),   { passive: true });
-    zona.addEventListener('touchend',   soltar);
+    // En táctil el dedo tiene que poder desplazar la página. Con un dedo solo se
+    // gira en horizontal: el movimiento vertical se lo queda el navegador (de ahí
+    // el touch-action: pan-y del CSS) y por eso no se le pasa la Y a mover().
+    // La inclinación se hace con dos dedos, un gesto que el navegador no usa.
+    const centro = t => ({ x: (t[0].clientX + t[1].clientX) / 2, y: (t[0].clientY + t[1].clientY) / 2 });
+
+    zona.addEventListener('touchstart', e => {
+      if (e.touches.length === 2) { const c = centro(e.touches); apretar(c.x, c.y); }
+      else if (e.touches.length === 1) apretar(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    zona.addEventListener('touchmove', e => {
+      if (inclinable && e.touches.length === 2) {
+        const c = centro(e.touches);
+        e.preventDefault();  // con dos dedos mandamos nosotros
+        mover(c.x, c.y);
+      } else if (e.touches.length === 1) {
+        mover(e.touches[0].clientX);  // sin Y: un dedo no inclina, la página baja
+      }
+    }, { passive: false });
+
+    zona.addEventListener('touchend',    soltar);
+    zona.addEventListener('touchcancel', soltar);
 
     root.setAttribute('tabindex', '0');
     root.addEventListener('keydown', e => {
