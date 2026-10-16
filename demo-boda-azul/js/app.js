@@ -357,9 +357,11 @@
     abrirWhatsApp(texto);
   });
 
-  // ---------- Recorrido guiado (demo): las dos caras de la invitación ----------
-  // La primera mitad es lo que ve el invitado; la segunda, el panel del anfitrión.
-  // Se muestra una vez por teléfono; con ?recorrido en la URL se puede repetir en una demostración.
+  // ---------- Recorrido guiado (demo): toda la invitación y después el panel del anfitrión ----------
+  // Primero recorre cada sección explicando para qué sirve; luego enseña el lado que solo ve quien
+  // organiza. Cierra aclarando que el precio depende de cuánto se incluya, no de un "desde $500"
+  // que haría pensar que todo lo anterior cuesta eso.
+  // Se muestra una vez por teléfono; con ?recorrido en la URL se repite para una demostración.
   function recorrido() {
     const driver = window.driver?.js?.driver;
     if (!driver || silencio) return;
@@ -368,56 +370,93 @@
       try { if (localStorage.getItem('demo-recorrido')) return; localStorage.setItem('demo-recorrido', '1'); } catch { return; }
     }
     const abrirPanel = () => window.organizador?.abrir();
-    const cerrarPanel = () => { const f = $('#org-envio'); if (f && !f.hidden) $('#org-cerrar')?.click(); };
+    const cerrarPanel = () => {
+      const f = $('#org-envio');
+      if (f && !f.hidden) { f.hidden = true; document.body.style.overflow = ''; }
+    };
+    const paso = (element, title, description, extra = {}) =>
+      (element ? { element, popover: { title, description }, ...extra } : { popover: { title, description }, ...extra });
 
     const guia = driver({
       showProgress: true,
       nextBtnText: 'Siguiente',
       prevBtnText: 'Anterior',
-      doneBtnText: '¡Listo!',
+      doneBtnText: 'Listo',
       progressText: '{{current}} de {{total}}',
       popoverClass: 'recorrido',
       onDestroyStarted: () => { cerrarPanel(); guia.destroy(); },
       steps: [
-        { popover: {
-          title: 'Invitación de muestra',
-          description: 'Esta es una invitación real de INIT IDEA, con datos de ejemplo. Te vamos a enseñar sus dos caras: lo que ve tu invitado y lo que solo ves tú.' } },
+        paso(null, 'Invitación de muestra',
+          'Esta es una invitación real de INIT IDEA con datos de ejemplo. La vamos a recorrer sección por sección para que veas <b>qué hace cada parte</b>, y al final te enseñamos el lado que solo ve quien organiza.'),
 
-        { element: '#navegacion', popover: {
-          title: 'Primero, lo que ve tu invitado',
-          description: 'Con estos íconos salta a la fecha, la ubicación, el menú, los regalos, el álbum o la confirmación, sin tener que deslizar.' } },
+        paso('#intro-video', 'Abre con su historia',
+          'Lo primero al abrir el sobre es un video. Puede ser su sesión de fotos, un clip de la pedida o el que ustedes quieran. Es el gancho: el invitado se queda viendo antes de leer nada.'),
 
-        { element: '#compartir', popover: {
-          title: 'Se comparte con un toque',
-          description: 'Un clic y la invitación viaja a WhatsApp, Instagram, Telegram, correo… a donde sea.' } },
+        paso('#portada', 'Portada y cuenta regresiva',
+          'Los nombres, la fecha y los días que faltan, corriendo en vivo. La rosa es un modelo 3D de verdad: se va abriendo conforme el invitado baja.'),
 
-        { popover: {
-          title: 'Ahora, lo que solo ves tú',
-          description: 'Aquí empieza la parte que no ve nadie más: desde la propia invitación mandas los pases, controlas los lugares y descargas tus fotos y videos.' } },
+        paso('#navegacion', 'Navegación rápida',
+          'Con estos íconos salta a cualquier sección sin deslizar: la fecha, el lugar, su mesa, el menú, los regalos, el álbum o la confirmación.'),
 
-        { element: '#nombres-portada', popover: {
-          title: 'Tres toques y entras',
-          description: 'Toca <b>3 veces rápido</b> sobre sus nombres y se abre el panel de administrador. Pide una clave — en este demo es <b>demo</b>. Tus invitados nunca la ven.' } },
+        paso('#fecha', 'Que no se les olvide',
+          'Un toque y el evento se guarda en su propio calendario, sea Google, Apple u Outlook, con la hora, el lugar y el enlace. El recordatorio les llega solo.'),
 
-        { element: '#org-nombre', onHighlightStarted: abrirPanel, popover: {
-          title: '1. El nombre del invitado',
-          description: 'Escribes a quién le mandas la invitación. Ejemplo: <b>Familia López</b>. Ese nombre aparecerá en su sobre y la invitación lo saludará por su nombre.' } },
+        paso('#lugares', 'Cómo llegar',
+          'Dirección y botón de mapa que abre su app de navegación. Más abajo está hasta el <b>pronóstico del clima</b> para ese día, para que sepan cómo vestirse.'),
 
-        { element: '#org-pases', onHighlightStarted: abrirPanel, popover: {
-          title: '2. Cuántos lugares le das',
-          description: 'Tocas el número de personas que entran con ese pase. ¿Van 6? Tocas el 4 y luego el 2. Solo podrá confirmar hasta esos lugares: se acabó el “éramos cuatro pero llegamos siete”.' } },
+        paso('#ubica', 'Ubica tu mesa, en 3D',
+          'El invitado busca su nombre y el salón gira hasta su mesa. Se acabó el "¿dónde me toca?" y el amontonamiento en la entrada.'),
 
-        { element: '#org-enviar', onHighlightStarted: abrirPanel, popover: {
-          title: '3. Enviar, y listo',
-          description: 'Un solo envío lleva su nombre, su enlace y las imágenes de sus pases. Nada de copiar, pegar ni buscar fotos en la galería. Al volver de WhatsApp, el panel ya está vacío y listo para el siguiente invitado.' } },
+        paso('#programa', 'Minuto a minuto',
+          'La hora exacta de cada momento: ceremonia, cóctel, comida, vals, pastel. Los invitados dejan de preguntar y nadie se pierde lo importante.'),
 
-        { element: '#org-descargas-abrir', onHighlightStarted: abrirPanel, popover: {
-          title: 'Tus fotos y tus videos',
-          description: 'Desde aquí descargas los videos, las fotos de la sesión, las tarjetas de los pases y todo lo que suban tus invitados al álbum durante la fiesta.' } },
+        paso('#menu', 'El menú',
+          'Lo que se va a servir, tiempo por tiempo. Útil de verdad para quien tiene alguna alergia o restricción.'),
 
-        { popover: {
-          title: '¿La quieres así para tu evento?',
-          description: 'Todo esto se personaliza: colores, fotos, música, secciones. Desde $500.<br><br><b>5410m0n0c001.github.io/INIT-IDEA</b>' } },
+        paso('#sentenciados', 'Un poquito de ustedes',
+          'Un segundo video, más personal. Aquí cabe lo que quieran: cómo se conocieron, un mensaje para sus invitados o algo que los haga reír.'),
+
+        paso('#vestimenta', 'Código de vestimenta',
+          'Qué ponerse y qué colores están reservados, con los tonos a la vista. Para que nadie llegue del color de la novia.'),
+
+        paso('#regalos', 'Regalos',
+          'Lluvia de sobres, transferencia o mesa de regalos, lo que ustedes decidan. Con el dato listo para copiar de un toque, sin que nadie tenga que preguntarlo.'),
+
+        paso('#album', 'Álbum en vivo',
+          'Durante la fiesta tus invitados suben sus fotos desde su celular y <b>todos las ven al instante</b>. Hay código QR para las mesas y una ruleta de retos que los anima a tomar fotos divertidas. Terminas con cientos de fotos que ningún fotógrafo habría alcanzado.'),
+
+        paso('#buzon', 'Buzón de deseos',
+          'Quien no pueda ir, o quiera decirles algo, les deja un mensaje que llega directo a su WhatsApp.'),
+
+        paso('#confirmar', 'Confirmación',
+          'Confirma con un toque y la respuesta les llega al celular. Si recibió pases, solo puede confirmar hasta los lugares que le dieron.'),
+
+        paso('#compartir', 'Compartir',
+          'Un clic y la invitación viaja a WhatsApp, Instagram, Telegram o correo. A donde sea.'),
+
+        paso('#nombres-portada', 'Ahora, lo que solo ves tú',
+          'Hasta aquí, lo que ve tu invitado. Toca <b>3 veces rápido</b> sobre los nombres y se abre el panel de administrador. Pide una clave: en este demo es <b>demo</b>. Tus invitados nunca la ven.'),
+
+        paso('#org-nombre', '1. A quién se la mandas',
+          'Escribes el nombre del invitado. Por ejemplo, <b>Familia López</b>. Ese nombre aparece en su sobre y la invitación lo saluda al abrirla.',
+          { onHighlightStarted: abrirPanel }),
+
+        paso('#org-pases', '2. Cuántos lugares le das',
+          'Tocas el número de personas que entran con ese pase. ¿Van 6? Tocas el 4 y luego el 2. Solo podrá confirmar hasta esos lugares: se acabó el "éramos cuatro pero llegamos siete".',
+          { onHighlightStarted: abrirPanel }),
+
+        paso('#org-enviar', '3. Enviar, y listo',
+          'Un solo envío lleva su nombre, su enlace y las imágenes de sus pases. Nada de copiar, pegar ni buscar fotos en la galería. Al volver de WhatsApp el panel ya está vacío, listo para el siguiente invitado.',
+          { onHighlightStarted: abrirPanel }),
+
+        paso('#org-descargas-abrir', 'Tus fotos y tus videos',
+          'Desde aquí descargas los videos, las fotos de la sesión, las tarjetas de los pases y todo lo que subieron tus invitados durante la fiesta.',
+          { onHighlightStarted: abrirPanel }),
+
+        // El panel se cierra antes del cierre: si sigue abierto queda encima y el texto no se lee.
+        paso(null, '¿Cuánto cuesta algo así?',
+          'Acabas de recorrer <b>una de las versiones más completas</b>, con casi todo incluido. No es el precio de entrada.<br><br>Los niveles van <b>desde $500</b> la más sencilla, con portada, fecha, mapa y confirmación, hasta <b>$3,000</b> la Premium con diseño a la medida. Extras como el álbum en vivo, los pases por invitado o la mesa en 3D se suman aparte.<br><br>El precio depende de <b>hasta dónde quieras llegar</b>. Todos los niveles y extras están a la vista, sin que tengas que preguntar:<br><b>5410m0n0c001.github.io/INIT-IDEA</b>',
+          { onHighlightStarted: cerrarPanel }),
       ],
     });
     guia.drive();
