@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#07132f">
+<meta name="robots" content="noindex, nofollow">
+<title>Guía para enviar sus invitaciones · Renata & Mauricio</title>
+<meta name="description" content="Guía paso a paso con fotos: cómo abrir el panel, elegir los pases, enviar las invitaciones por WhatsApp y descargar sus fotos y videos.">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Renata & Mauricio">
+<meta property="og:url" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/guia/">
+<meta property="og:title" content="Guía para enviar sus invitaciones · Renata & Mauricio">
+<meta property="og:description" content="Guía paso a paso con fotos: cómo abrir el panel, elegir los pases, enviar las invitaciones por WhatsApp y descargar sus fotos y videos.">
+<meta property="og:image" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/guia/og-guia.jpg?v=2">
+<meta property="og:image:secure_url" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/guia/og-guia.jpg?v=2">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Guía paso a paso: cómo mandar las invitaciones con pases de Renata y Mauricio">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Guía para enviar sus invitaciones · Renata & Mauricio">
+<meta name="twitter:description" content="Guía paso a paso con fotos: cómo abrir el panel, elegir los pases, enviar las invitaciones por WhatsApp y descargar sus fotos y videos.">
+<meta name="twitter:image" content="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/guia/og-guia.jpg?v=2">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Text&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400&family=Updock&display=swap">
+<style>
+  /* Una sola columna tipo celular, con el mismo cielo nocturno y champán de la invitación.
+     Diseño de un solo mundo visual (oscuro), con colores explícitos en ambos temas. */
+  :root {
+    --noche: #07132f;
+    --noche-2: #10275e;
+    --tinta: #e6ecfa;
+    --suave: #a9bce3;
+    --champan: #e7cf9c;
+    --linea: rgba(214, 226, 255, 0.18);
+    --f-titulo: "DM Serif Text", Georgia, serif;
+    --f-texto: "Newsreader", Georgia, serif;
+    --f-script: "Updock", "DM Serif Text", cursive;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--noche); color: var(--tinta);
+    background-image: radial-gradient(70% 40% at 85% 0%, rgba(64, 112, 230, 0.35), transparent 70%), radial-gradient(60% 35% at 0% 60%, rgba(38, 84, 200, 0.28), transparent 70%);
+    font: 400 1.12rem/1.6 var(--f-texto);
+  }
+  .hoja { max-width: 34rem; margin: 0 auto; padding-inline: 18px; padding-block: 2.2rem 4rem; display: grid; gap: 2.4rem; }
+  header { text-align: center; display: grid; gap: 0.4rem; }
+  .script { font: 400 3.6rem/1 var(--f-script); color: var(--champan); }
+  h1 { margin: 0; font: 400 clamp(1.8rem, 7vw, 2.3rem)/1.15 var(--f-titulo); text-wrap: balance; }
+  .intro { margin: 0; color: var(--suave); }
+  .datos { display: grid; gap: 0.7rem; padding: 1.1rem 1.2rem; border: 1px solid var(--linea); border-radius: 18px; background: rgba(46, 80, 170, 0.35); }
+  .dato { display: grid; gap: 0.15rem; }
+  .dato small { font: 600 0.72rem var(--f-texto); letter-spacing: 0.22em; text-transform: uppercase; color: var(--suave); }
+  .dato b { font: 400 1.25rem var(--f-titulo); color: var(--champan); overflow-wrap: anywhere; }
+  .clave { font-size: 2rem !important; letter-spacing: 0.06em; }
+  .copiar { justify-self: start; margin-top: 0.2rem; padding: 0.45rem 0.9rem; border: 1px solid var(--champan); border-radius: 999px; background: transparent; color: var(--champan); font: 600 0.8rem var(--f-texto); letter-spacing: 0.08em; cursor: pointer; }
+  .copiar:focus-visible { outline: 2px solid var(--champan); outline-offset: 3px; }
+  ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 2.6rem; counter-reset: paso; }
+  .paso { display: grid; gap: 0.9rem; counter-increment: paso; }
+  .paso-cabeza { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; align-items: center; }
+  .paso-cabeza::before {
+    content: counter(paso); display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+    background: var(--champan); color: var(--noche); font: 400 1.4rem var(--f-titulo);
+  }
+  h2 { margin: 0; font: 400 1.45rem/1.2 var(--f-titulo); text-wrap: balance; }
+  .paso p { margin: 0; }
+  .paso strong { color: var(--champan); font-weight: 600; }
+  .ejemplo { color: var(--suave); font-style: italic; }
+  figure { margin: 0; justify-self: center; width: min(100%, 19rem); }
+  figure img { display: block; width: 100%; height: auto; border-radius: 24px; border: 6px solid #1b2c55; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5); }
+  .par { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  .par figure { width: 100%; }
+  .adjuntar { display: grid; gap: 0.6rem; padding: 1.1rem 1.2rem; border-radius: 18px; border: 1px solid var(--linea); background: rgba(46, 80, 170, 0.35); }
+  .adjuntar h3 { margin: 0; font: 400 1.2rem/1.25 var(--f-titulo); color: var(--champan); text-wrap: balance; }
+  .ayuda { display: grid; gap: 0.8rem; padding: 1.2rem; border-radius: 18px; border: 1px dashed var(--linea); }
+  .ayuda h2 { font-size: 1.25rem; }
+  .ayuda ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; }
+  footer { text-align: center; color: var(--suave); font-size: 0.9rem; }
+</style>
+
+</head>
+<body>
+<main class="hoja">
+  <header>
+    <span class="script">Renata &amp; Mauricio</span>
+    <h1>Cómo mandar sus invitaciones con pases</h1>
+    <p class="intro">Sigan los pasos en orden. En cada foto, el círculo dorado marca dónde tocar. Al final: cómo descargar sus fotos y videos.</p>
+  </header>
+
+  <section class="datos" aria-label="Datos que van a necesitar">
+    <div class="dato"><small>Su invitación</small><b id="enlace">5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/</b>
+      <button class="copiar" type="button" data-copiar="https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/">Copiar enlace</button></div>
+    <div class="dato"><small>Clave del panel</small><b class="clave">demo</b></div>
+  </section>
+
+  <ol>
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Abran el sobre</h2></div>
+      <p>Abran el enlace de su invitación. Verán un sobre: toquen el <strong>sello azul</strong>.</p>
+      <figure><img src="fotos/paso-1-sobre.jpg" alt="Sobre cerrado con el sello azul marcado con un círculo dorado" width="780" height="1688"></figure>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Bajen hasta sus nombres</h2></div>
+      <p>Empieza un video. <strong>Deslicen el dedo hacia arriba</strong> para bajar. Sigan bajando poquito a poquito hasta que la rosa azul se abra y aparezcan sus nombres grandes: <strong>Renata &amp; Mauricio</strong>.</p>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Toquen 3 veces sus nombres</h2></div>
+      <p>Toquen <strong>3 veces rápido</strong> justo encima de <strong>Renata &amp; Mauricio</strong>, como cuando tocan una puerta: toc, toc, toc.</p>
+      <figure><img src="fotos/paso-2-nombres.jpg" alt="Portada con los nombres Renata y Mauricio marcados con un círculo dorado" width="780" height="1688"></figure>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Escriban la clave</h2></div>
+      <p>Sale una ventanita que dice <strong>Panel de administrador</strong>. Escriban la clave <strong>demo</strong> y toquen <strong>Entrar</strong>.</p>
+      <div class="par">
+        <figure><img src="fotos/paso-3-clave.jpg" alt="Ventana de clave con el campo marcado y la clave demo escrita" width="780" height="1688"></figure>
+        <figure><img src="fotos/paso-3b-entrar.jpg" alt="Botón Entrar marcado con un círculo dorado" width="780" height="1688"></figure>
+      </div>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Escriban el nombre del invitado</h2></div>
+      <p>Se abre <strong>Enviar invitación</strong>. En la primera casilla escriban el nombre de quien la va a recibir.</p>
+      <p class="ejemplo">Ejemplo: Familia López. Ese nombre aparecerá en su sobre.</p>
+      <figure><img src="fotos/paso-4-nombre.jpg" alt="Casilla Nombre del invitado con Familia López escrito" width="780" height="1688"></figure>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Toquen cuántas personas van</h2></div>
+      <p>Hay 5 tarjetitas con los números <strong>1, 2, 3, 4 y 5</strong>. Cada número es cuántas personas entran con ese pase. Toquen el que corresponde.</p>
+      <p class="ejemplo">¿Van 4? Toquen el 4. ¿Van 6? Toquen el 4 y luego el 2. ¿Se equivocaron? Toquen la etiqueta “Pase de 4 ×” y se quita.</p>
+      <figure><img src="fotos/paso-5-pases.jpg" alt="Tarjetas de pases del 1 al 5, con un pase de 4 y uno de 2 elegidos: total 6 lugares" width="780" height="1688"></figure>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Toquen Compartir y envíen</h2></div>
+      <p>Toquen el botón dorado <strong>Compartir</strong>. Se abre el menú del teléfono: elijan <strong>WhatsApp</strong>, busquen a su invitado y toquen <strong>Enviar</strong>.</p>
+      <p class="ejemplo">El botón Compartir se enciende solo cuando ya escribieron el nombre y eligieron al menos un pase.</p>
+      <div class="adjuntar">
+        <h3>¿Marcar “Adjuntar las imágenes de los pases”?</h3>
+        <p>En los dos casos, <strong>los pases siempre aparecen dentro de la invitación</strong>, en “Tus pases”. La casilla solo decide qué llega en el mensaje de WhatsApp:</p>
+        <p><strong>✅ Marcada:</strong> el invitado recibe las tarjetas de sus pases como fotos, junto con el mensaje y el enlace. Las puede guardar y enseñar en la entrada.</p>
+        <p><strong>⬜ Sin marcar:</strong> recibe solo el mensaje con el enlace. WhatsApp muestra la vista previa de su pase, y lo ve al abrir la invitación.</p>
+      </div>
+      <figure><img src="fotos/paso-6-compartir.jpg" alt="Botón Compartir marcado con un círculo dorado" width="780" height="1688"></figure>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>¿Otro invitado? Repitan</h2></div>
+      <p>Al regresar a la invitación, la ventana <strong>Enviar invitación</strong> ya está abierta otra vez, vacía, con un aviso verde: <strong>“✓ Enviada a Familia López”</strong>. Repitan desde el paso 5 con el siguiente invitado.</p>
+      <p>Cuando terminen, toquen <strong>Salir del panel</strong> o la ✕ de arriba.</p>
+    </li>
+
+    <li class="paso">
+      <div class="paso-cabeza"><h2>Descargar fotos y videos</h2></div>
+      <p>Abran el panel como en los pasos 1 a 4 y, en la ventana <strong>Enviar invitación</strong>, toquen <strong>Descargar fotos y videos</strong>.</p>
+      <p>Ahí están <strong>los dos videos</strong> (incluido <strong>“Un poquito de nosotros”</strong>, que solo ustedes pueden ver), las <strong>fotos de la sesión</strong>, las <strong>tarjetas de los pases</strong> y las <strong>fotos que suban sus invitados</strong> al álbum.</p>
+      <p>Marquen la casilla de lo que quieran (o <strong>Seleccionar todo</strong>) y toquen <strong>Descargar seleccionados</strong>. Para bajar una sola cosa, toquen su flechita <strong>↓</strong>.</p>
+      <p class="ejemplo">En iPhone, al terminar aparece el botón “Guardar en Fotos” para pasarlos a su galería.</p>
+      <div class="par">
+        <figure><img src="fotos/paso-8-descargas-boton.jpg" alt="Botón Descargar fotos y videos marcado con un círculo dorado" width="780" height="1688"></figure>
+        <figure><img src="fotos/paso-9-descargas.jpg" alt="Panel Descargar fotos y videos con videos y fotos seleccionadas y el botón Descargar seleccionados marcado" width="780" height="1688"></figure>
+      </div>
+    </li>
+  </ol>
+
+  <section class="paso" aria-label="Lo que recibe el invitado">
+    <h2>Esto es lo que ve su invitado</h2>
+    <p>Su sobre lleva su nombre, y dentro encuentra la sección <strong>Tus pases</strong> con sus lugares. Al confirmar, solo puede elegir hasta los lugares que le dieron, y la confirmación les llega por WhatsApp.</p>
+    <div class="par">
+      <figure><img src="fotos/paso-7-invitado-sobre.jpg" alt="Sobre del invitado con el texto Para: Familia López" width="780" height="1688"></figure>
+      <figure><img src="fotos/paso-7-invitado-pases.jpg" alt="Sección Tus pases: Familia López, tienes 6 lugares reservados, con un pase de 4 y uno de 2" width="780" height="1688"></figure>
+    </div>
+  </section>
+
+  <section class="ayuda">
+    <h2>Si algo no sale</h2>
+    <ul>
+      <li><strong>No aparece la ventanita de la clave:</strong> toquen más rápido, justo encima de las letras de sus nombres.</li>
+      <li><strong>Dice “Clave incorrecta”:</strong> escriban <strong>demo</strong> otra vez, sin espacios.</li>
+      <li><strong>No ven sus nombres:</strong> bajen un poquito más; aparecen cuando la rosa ya está abierta.</li>
+      <li><strong>El botón Compartir está apagado:</strong> falta escribir el nombre o elegir un pase; debajo de los pases dice qué falta.</li>
+    </ul>
+  </section>
+
+  <footer>Invitación digital por INIT IDEA</footer>
+</main>
+
+<script>
+  document.querySelectorAll('[data-copiar]').forEach((b) => b.addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText(b.dataset.copiar); b.textContent = 'Enlace copiado'; }
+    catch {
+      const t = document.getElementById('enlace'); const r = document.createRange(); r.selectNodeContents(t);
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r); b.textContent = 'Enlace seleccionado';
+    }
+  }));
+</script>
+</body>
+</html>

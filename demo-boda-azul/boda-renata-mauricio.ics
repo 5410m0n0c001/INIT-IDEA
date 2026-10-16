@@ -1,0 +1,23 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//INIT IDEA//Invitacion//ES
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:boda-renata-mauricio-20271120@initidea
+DTSTAMP:20261014T120000Z
+DTSTART:20271120T220000Z
+DTEND:20261214T040000Z
+SUMMARY:Boda de Renata & Mauricio
+LOCATION:Jardín Los Laureles\, Camino a Los Laureles 24\, Col. El Mirador\, Xochitepec\, Mor.
+DESCRIPTION:Ceremonia religiosa a las 4:00 p. m. y recepción en el mismo jar
+ dín.\nUbicación: https://www.google.com/maps/search/?api=1&query=Xochitepec%2C+Morelos\nInvitación: https://
+ 5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/
+URL:https://5410m0n0c001.github.io/INIT-IDEA/demo-boda-azul/
+BEGIN:VALARM
+TRIGGER:-P1D
+ACTION:DISPLAY
+DESCRIPTION:Mañana es la boda de Renata & Mauricio
+END:VALARM
+END:VEVENT
+END:VCALENDAR
