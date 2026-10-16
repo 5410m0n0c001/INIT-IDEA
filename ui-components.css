@@ -807,8 +807,11 @@
   .c3d-app { width: 40px; height: 40px; font-size: 1.2rem; }
 }
 
-/* Pista para arrastrar también en vertical */
-.carousel3d.is-inclinable .carousel3d-stage { touch-action: none; }
+/* Se arrastra también en vertical, pero el dedo nunca le quita el scroll a la
+   página: con pan-y el navegador se queda el movimiento vertical de un dedo y
+   a nosotros nos llega el horizontal. La inclinación en táctil va con dos
+   dedos (ver ui-components.js), que es un gesto que el navegador no usa. */
+.carousel3d.is-inclinable .carousel3d-stage { touch-action: pan-y; }
 
 /* ============================================================
    Anillo 3D en giro continuo (galerías tipo escaparate)
