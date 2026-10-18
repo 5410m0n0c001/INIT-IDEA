@@ -184,12 +184,14 @@ main { position: relative; z-index: 1; overflow-x: clip; }
   background: radial-gradient(70% 45% at 50% 50%, rgba(70, 115, 230, 0.28), transparent 70%), #050d24; /* tapa la foto fija de la portada */
   overflow: hidden;
 }
-.intro-video-video { position: relative; z-index: 0; width: min(100vw, 72rem); height: auto; aspect-ratio: 16 / 9; background: #000; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(231, 207, 156, 0.3); }
+/* El video de la historia es vertical (formato celular): se ajusta a lo alto de la
+   pantalla sin desbordar a lo ancho en teléfonos angostos. */
+.intro-video-video { position: relative; z-index: 0; width: min(100vw, calc(74svh * 9 / 16)); height: auto; aspect-ratio: 9 / 16; background: #000; box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(231, 207, 156, 0.3); }
 .intro-video .petalos { z-index: 1; }
 .intro-seguir { position: relative; z-index: 2; display: grid; place-items: center; width: 2.8rem; height: 2.8rem; border-radius: 50%; border: 1px solid rgba(231, 207, 156, 0.6); color: #e7cf9c; animation: bajar 1.8s ease-in-out infinite; }
 .intro-seguir svg { width: 1.3rem; height: 1.3rem; }
 @keyframes bajar { 50% { transform: translateY(6px); } }
-@media (min-width: 900px) { .intro-video-video { width: min(86vw, 72rem); border-radius: 6px; } }
+@media (min-width: 900px) { .intro-video-video { width: min(86vw, calc(78svh * 9 / 16)); border-radius: 6px; } }
 
 /* ============ Portada ============ */
 .portada { height: 290svh; position: relative; }
