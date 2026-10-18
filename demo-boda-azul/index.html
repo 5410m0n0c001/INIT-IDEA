@@ -33,8 +33,8 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Updock&display=swap" rel="stylesheet">
   <link rel="preload" href="models/rosa.glb" as="fetch" type="model/gltf-binary" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.css">
-  <link rel="stylesheet" href="css/boda.css?v=20261018a">
-  <link rel="stylesheet" href="css/tema-noche.css?v=20261018a">
+  <link rel="stylesheet" href="css/boda.css?v=20261018c">
+  <link rel="stylesheet" href="css/tema-noche.css?v=20261018c">
 
   <script type="importmap">
     {
@@ -44,20 +44,20 @@
       }
     }
   </script>
-  <script src="js/config.js?v=20261018a"></script>
+  <script src="js/config.js?v=20261018c"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/driver.js@1.3.1/dist/driver.js.iife.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.js"></script>
-  <script defer src="js/app.js?v=20261018a"></script>
-  <script defer src="js/carmesi.js?v=20261018a"></script>
-  <script defer src="js/pases.js?v=20261018a"></script>
-  <script defer src="js/descargas.js?v=20261018a"></script>
-  <script type="module" src="js/escena3d.js?v=20261018a"></script>
+  <script defer src="js/app.js?v=20261018c"></script>
+  <script defer src="js/carmesi.js?v=20261018c"></script>
+  <script defer src="js/pases.js?v=20261018c"></script>
+  <script defer src="js/descargas.js?v=20261018c"></script>
+  <script type="module" src="js/escena3d.js?v=20261018c"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script defer src="js/album.js?v=20261018a"></script>
-  <script defer src="js/retos.js?v=20261018a"></script>
+  <script defer src="js/album.js?v=20261018c"></script>
+  <script defer src="js/retos.js?v=20261018c"></script>
 </head>
 
 <body class="sobre-cerrado">
@@ -161,7 +161,7 @@
          encima solo caen pétalos. Su sonido es la música de toda la invitación (la bocina solo silencia). -->
     <section class="intro-video" id="intro-video" aria-label="Video de Renata y Mauricio">
       <div class="petalos" aria-hidden="true"></div>
-      <video id="video-historia" class="intro-video-video" playsinline loop preload="metadata" poster="video/historia-poster.jpg" width="720" height="1280">
+      <video id="video-historia" class="intro-video-video" playsinline loop preload="metadata" poster="video/historia-poster.jpg" width="1280" height="720">
         <source src="video/historia.mp4" type="video/mp4">
       </video>
       <a class="intro-seguir" href="#portada" aria-label="Ver la invitación"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
@@ -378,6 +378,18 @@
     <div class="cadena" aria-hidden="true" data-dir="1"></div>
 
 
+    <!-- VIDEO "NUESTRA HISTORIA": va entre la apertura y el video gracioso. Vertical,
+         grabado para verse en el celular. -->
+    <section class="sentenciados bloque" id="nuestra-historia" data-lado="izq" data-ancho data-3d="rosa">
+      <h2 class="titulo revelar">Nuestra historia</h2>
+      <figure class="sentenciados-marco historia-marco revelar">
+        <video id="video-nuestra-historia" playsinline muted loop preload="none" poster="video/nuestra-historia-poster.jpg" width="720" height="1280">
+          <source src="video/nuestra-historia.mp4" type="video/mp4">
+        </video>
+        <button class="sentenciados-sonido" id="nuestra-historia-sonido" type="button" aria-pressed="false"><svg><use href="#i-sonido"/></svg><span>Activar sonido</span></button>
+      </figure>
+    </section>
+
     <!-- VIDEO "UN POQUITO DE NOSOTROS": solo trae efectos de sonido, así que suena junto con la música.
          Al aparecer intenta reproducirse con sonido; si el navegador no lo deja, el botón lo activa. -->
     <section class="sentenciados bloque" id="sentenciados" data-lado="der" data-ancho data-3d="rosa">
@@ -445,7 +457,7 @@
 
     <!-- GALERÍA -->
     <section class="galeria bloque" data-lado="der" data-ancho data-3d="rosa">
-      <h2 class="titulo revelar">Nuestra historia</h2>
+      <h2 class="titulo revelar">Galería</h2>
       <div class="mosaico" id="mosaico">
         <button class="m m-alta" type="button" data-full="img/foto-06.jpg"><img src="img/foto-06-sm.jpg" alt="Renata y Mauricio abrazados frente a una cascada" loading="lazy"></button>
         <button class="m" type="button" data-full="img/foto-04.jpg"><img src="img/foto-04-sm.jpg" alt="Renata y Mauricio abrazados mirándose" loading="lazy"></button>

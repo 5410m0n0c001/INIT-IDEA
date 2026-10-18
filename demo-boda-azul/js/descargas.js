@@ -15,6 +15,7 @@
   const GRUPOS = [
     { titulo: 'Videos', tipo: 'video', items: [
       { nombre: 'Video de nuestra historia', url: 'video/historia.mp4', poster: 'video/historia-poster.jpg', archivo: 'Renata-y-Mauricio-nuestra-historia.mp4' },
+      { nombre: 'Nuestra historia (celular)', url: 'video/nuestra-historia.mp4', poster: 'video/nuestra-historia-poster.jpg', archivo: 'Renata-y-Mauricio-nuestra-historia-celular.mp4' },
       { nombre: 'Un poquito de nosotros', url: 'video/sentenciados.mp4?v=2', poster: 'video/sentenciados-poster.jpg', archivo: 'Renata-y-Mauricio-un-poquito-de-nosotros.mp4' },
     ] },
     { titulo: 'Fotos de la sesión', tipo: 'foto', items: Array.from({ length: 10 }, (_, i) => {
